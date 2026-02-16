@@ -14,12 +14,14 @@ Live site: https://chrismilla.github.io/cot-dashboard-live/
 - Bias component breakdown (institutional pressure, fast-money pressure, momentum, alignment)
 - Trade playbook bullets (directional framing for next 1-5 sessions)
 - Intraday pulse from 5-minute bars (price change, range position, session structure)
+- Forex Factory red-folder calendar (high-impact events, USD-only or all)
 - COT positioning history chart and latest report table
 
 ## Data sources
 
 - CFTC TFF disaggregated report (weekly)
 - Yahoo Finance chart API (5-minute bars, intraday)
+- Forex Factory weekly XML calendar (high-impact events)
 
 ## Automation
 

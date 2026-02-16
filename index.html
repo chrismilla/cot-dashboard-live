@@ -520,6 +520,125 @@
         font-size: 0.87rem;
       }
 
+      .news-panel {
+        border: 1px solid #5a2d34;
+        border-radius: 16px;
+        padding: 0.75rem 0.9rem;
+        margin-bottom: 0.8rem;
+        background: linear-gradient(145deg, rgba(95, 29, 41, 0.34), rgba(28, 12, 21, 0.84));
+      }
+
+      .news-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .news-toggle {
+        display: inline-flex;
+        border: 1px solid #713745;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .news-btn {
+        border: none;
+        border-left: 1px solid #713745;
+        background: #3f1a25;
+        color: #d2a9b3;
+        font-family: inherit;
+        font-size: 0.73rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        padding: 0.34rem 0.58rem;
+        cursor: pointer;
+      }
+
+      .news-btn:first-child {
+        border-left: none;
+      }
+
+      .news-btn.active {
+        background: linear-gradient(145deg, #7b3044, #5a2232);
+        color: #ffe7ec;
+      }
+
+      .news-meta {
+        margin-top: 0.35rem;
+        color: #cf97a5;
+        font-size: 0.76rem;
+      }
+
+      .news-grid {
+        margin-top: 0.7rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem;
+      }
+
+      .news-card {
+        border: 1px solid #6d3342;
+        border-radius: 12px;
+        padding: 0.6rem;
+        background: rgba(44, 16, 27, 0.62);
+      }
+
+      .news-card h4 {
+        margin: 0;
+        font-size: 0.85rem;
+      }
+
+      .news-list {
+        margin: 0.55rem 0 0;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .news-item {
+        border-top: 1px solid rgba(183, 93, 115, 0.3);
+        padding: 0.42rem 0;
+      }
+
+      .news-item:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .news-time {
+        color: #ffd3dd;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.77rem;
+      }
+
+      .news-title {
+        margin-top: 0.12rem;
+        color: #f7d8e0;
+        font-size: 0.84rem;
+        line-height: 1.3;
+      }
+
+      .news-country {
+        display: inline-block;
+        margin-right: 0.35rem;
+        border: 1px solid #7d3b4b;
+        border-radius: 999px;
+        padding: 0.08rem 0.38rem;
+        background: rgba(125, 59, 75, 0.25);
+        color: #ffd6df;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.68rem;
+        font-weight: 600;
+      }
+
+      .news-empty {
+        margin: 0.45rem 0 0;
+        color: #cf97a5;
+        font-size: 0.79rem;
+      }
+
       .context-list li {
         margin-bottom: 0.45rem;
         color: #d3def7;
@@ -537,7 +656,8 @@
         .hero,
         .grid-top,
         .panel-grid,
-        .split-bottom {
+        .split-bottom,
+        .news-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -589,6 +709,31 @@
         <p class="eyebrow">This Week Setup</p>
         <h3 id="context-alert-title">-</h3>
         <p id="context-alert-text">-</p>
+      </section>
+      <section class="news-panel">
+        <div class="news-head">
+          <div>
+            <p class="eyebrow" style="color: #f3bcc9">Forex Factory Red Folder</p>
+            <h3 style="margin: 0.2rem 0 0; font-size: 1.02rem">High-Impact Event Risk</h3>
+          </div>
+          <div class="news-toggle">
+            <button class="news-btn active" id="news-usd">USD Only</button>
+            <button class="news-btn" id="news-all">All</button>
+          </div>
+        </div>
+        <p class="news-meta" id="news-meta">Loading red-folder events...</p>
+        <div class="news-grid">
+          <article class="news-card">
+            <h4>Next 24 Hours</h4>
+            <ul class="news-list" id="news-next24"></ul>
+            <p class="news-empty" id="news-next24-empty" style="display: none">No high-impact events in the next 24h.</p>
+          </article>
+          <article class="news-card">
+            <h4>Later This Week</h4>
+            <ul class="news-list" id="news-week"></ul>
+            <p class="news-empty" id="news-week-empty" style="display: none">No additional high-impact events found.</p>
+          </article>
+        </div>
       </section>
 
       <section class="grid-top">
@@ -716,7 +861,7 @@
       </section>
 
       <footer>
-        Sources: CFTC Traders in Financial Futures + Yahoo Finance chart data (5m bars). COT is as-of Tuesday and published Friday.
+        Sources: CFTC Traders in Financial Futures, Yahoo Finance chart data (5m bars), Forex Factory weekly calendar (high-impact feed). COT is as-of Tuesday and published Friday.
       </footer>
     </main>
 
@@ -728,6 +873,7 @@
         snapshot: null,
         activeMarket: "dow_jones",
         chartMode: localStorage.getItem("cot_chart_mode") || "trend",
+        newsFilter: localStorage.getItem("cot_news_filter") || "usd",
         isRefreshing: false,
       };
 
@@ -742,6 +888,13 @@
         errorBox: document.getElementById("error-box"),
         contextAlertTitle: document.getElementById("context-alert-title"),
         contextAlertText: document.getElementById("context-alert-text"),
+        newsUsd: document.getElementById("news-usd"),
+        newsAll: document.getElementById("news-all"),
+        newsMeta: document.getElementById("news-meta"),
+        newsNext24: document.getElementById("news-next24"),
+        newsWeek: document.getElementById("news-week"),
+        newsNext24Empty: document.getElementById("news-next24-empty"),
+        newsWeekEmpty: document.getElementById("news-week-empty"),
         heroBiasLabel: document.getElementById("hero-bias-label"),
         heroBiasScore: document.getElementById("hero-bias-score"),
         heroBiasPlaybook: document.getElementById("hero-bias-playbook"),
@@ -851,6 +1004,46 @@
         state.isRefreshing = isRefreshing;
         el.refreshBtn.disabled = isRefreshing;
         el.refreshBtn.textContent = isRefreshing ? "Syncing..." : "Sync Now";
+      }
+
+      function setNewsFilter(filter) {
+        state.newsFilter = filter === "all" ? "all" : "usd";
+        localStorage.setItem("cot_news_filter", state.newsFilter);
+        el.newsUsd.classList.toggle("active", state.newsFilter === "usd");
+        el.newsAll.classList.toggle("active", state.newsFilter === "all");
+      }
+
+      function fmtEventTime(isoUtc, fallbackDate, fallbackTime) {
+        if (!isoUtc) {
+          return [fallbackDate || "-", fallbackTime || "Tentative"].join(" ");
+        }
+        const date = new Date(isoUtc);
+        if (Number.isNaN(date.getTime())) {
+          return [fallbackDate || "-", fallbackTime || "Tentative"].join(" ");
+        }
+        return date.toLocaleString(undefined, {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      }
+
+      function renderNewsList(node, items) {
+        node.innerHTML = items
+          .map((event) => {
+            const when = fmtEventTime(event.datetime_utc, event.date, event.time);
+            return `
+              <li class="news-item">
+                <div class="news-time">${when}</div>
+                <div class="news-title">
+                  <span class="news-country">${event.country || "--"}</span>${event.title || "Untitled event"}
+                </div>
+              </li>
+            `;
+          })
+          .join("");
       }
 
       function biasClass(score) {
@@ -1294,14 +1487,61 @@
         el.contextAlertText.textContent = text;
       }
 
+      function renderRedFolderPanel() {
+        const redFolder = state.snapshot?.news?.red_folder || {};
+        if (redFolder.error) {
+          el.newsMeta.textContent = `Feed error: ${redFolder.error}`;
+          el.newsNext24.innerHTML = "";
+          el.newsWeek.innerHTML = "";
+          el.newsNext24Empty.style.display = "block";
+          el.newsWeekEmpty.style.display = "block";
+          return;
+        }
+
+        const filterUsd = state.newsFilter === "usd";
+        const next24Base = Array.isArray(redFolder.next_24h_high_impact) ? redFolder.next_24h_high_impact : [];
+        const weekBase = Array.isArray(redFolder.upcoming_high_impact) ? redFolder.upcoming_high_impact : [];
+
+        const applyFilter = (events) => {
+          if (!filterUsd) return events;
+          return events.filter((event) => event.country === "USD");
+        };
+
+        const next24 = applyFilter(next24Base).slice(0, 8);
+        const next24Iso = new Set(next24.map((event) => event.datetime_utc || `${event.date}-${event.time}-${event.title}`));
+        const week = applyFilter(weekBase)
+          .filter((event) => !next24Iso.has(event.datetime_utc || `${event.date}-${event.time}-${event.title}`))
+          .slice(0, 10);
+
+        const fetchedAt = redFolder.fetched_at_utc ? fmtDateTime(redFolder.fetched_at_utc) : "-";
+        const upcomingCount = filterUsd
+          ? Number(redFolder.upcoming_usd_high_impact_count || 0)
+          : Number(redFolder.upcoming_high_impact_count || 0);
+        const scope = filterUsd ? "USD red-folder" : "all red-folder";
+        el.newsMeta.textContent = `${upcomingCount} upcoming ${scope} events. Feed time: ${fetchedAt}`;
+
+        renderNewsList(el.newsNext24, next24);
+        renderNewsList(el.newsWeek, week);
+
+        el.newsNext24Empty.style.display = next24.length ? "none" : "block";
+        el.newsWeekEmpty.style.display = week.length ? "none" : "block";
+      }
+
       function renderContext(market) {
         const bias = market.bias || {};
         const intraday = market.intraday || {};
+        const redFolder = state.snapshot?.news?.red_folder || {};
+        const newsBase = state.newsFilter === "usd" ? redFolder.upcoming_usd_high_impact : redFolder.upcoming_high_impact;
+        const nextNews = Array.isArray(newsBase) && newsBase.length ? newsBase[0] : null;
+        const nextNewsText = nextNews
+          ? `${nextNews.country || "--"} ${nextNews.title || "Event"} at ${fmtEventTime(nextNews.datetime_utc, nextNews.date, nextNews.time)}.`
+          : "No high-impact events queued in selected filter.";
         const context = [
           `Asset managers are in the ${fmtNumber(bias.asset_percentile || 0, 1)} percentile of the last ${state.snapshot.history_weeks} weeks.`,
           `Leveraged funds are in the ${fmtNumber(bias.leveraged_percentile || 0, 1)} percentile; 4-week delta is ${fmtSigned(bias.leveraged_4w_delta || 0)} contracts.`,
           `Open interest 4-week change: ${fmtSigned(bias.open_interest_4w_delta || 0)} contracts.`,
           `Intraday move: ${fmtSigned(intraday.change_pct || 0, 2, "%")} with range position ${fmtNumber(intraday.range_position_pct || 0, 1)}%.`,
+          `Next red-folder risk: ${nextNewsText}`,
         ];
 
         el.contextList.innerHTML = context.map((line) => `<li>${line}</li>`).join("");
@@ -1338,6 +1578,7 @@
         renderTabs();
         renderHeader(market);
         renderContextAlert(market);
+        renderRedFolderPanel();
         renderTopCards(market);
         renderIntradayPanel(market);
         renderIntradayChart(market);
@@ -1391,9 +1632,22 @@
           renderDashboard();
         }
       });
+      el.newsUsd.addEventListener("click", () => {
+        setNewsFilter("usd");
+        if (state.snapshot) {
+          renderDashboard();
+        }
+      });
+      el.newsAll.addEventListener("click", () => {
+        setNewsFilter("all");
+        if (state.snapshot) {
+          renderDashboard();
+        }
+      });
 
       updateLastSynced();
       setChartMode(state.chartMode === "compare" ? "compare" : "trend");
+      setNewsFilter(state.newsFilter === "all" ? "all" : "usd");
       updateNextReportCountdown();
       setInterval(updateNextReportCountdown, 1000 * 30);
 

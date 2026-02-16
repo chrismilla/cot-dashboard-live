@@ -1,9 +1,10 @@
 import argparse
 import json
 import math
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional, Union
+import xml.etree.ElementTree as ET
 
 import pandas as pd
 import requests
@@ -20,6 +21,7 @@ from .data import (
 )
 
 YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
+FOREX_FACTORY_WEEK_URL = "https://nfs.faireconomy.media/ff_calendar_thisweek.xml"
 INTRADAY_TICKERS = {
     "dow_jones": "DIA",
     "nasdaq_100": "QQQ",
@@ -269,6 +271,115 @@ def _fetch_intraday_by_market() -> dict[str, dict]:
     return snapshots
 
 
+def _parse_ff_datetime_utc(date_value: str, time_value: str) -> tuple[Optional[datetime], bool]:
+    if not date_value:
+        return None, True
+
+    date_value = date_value.strip()
+    time_value = (time_value or "").strip()
+    if not time_value:
+        return None, True
+
+    lowered = time_value.lower()
+    if "all day" in lowered or "tentative" in lowered:
+        try:
+            day = datetime.strptime(date_value, "%m-%d-%Y").replace(tzinfo=timezone.utc)
+            return day, True
+        except ValueError:
+            return None, True
+
+    normalized = lowered.replace(" ", "")
+    for fmt in ("%m-%d-%Y %I:%M%p", "%m-%d-%Y %I%p"):
+        try:
+            parsed = datetime.strptime(f"{date_value} {normalized}", fmt).replace(tzinfo=timezone.utc)
+            return parsed, False
+        except ValueError:
+            continue
+    return None, True
+
+
+def _fetch_forex_factory_red_folder() -> dict:
+    headers = {"User-Agent": "Mozilla/5.0 (cot-dashboard bot)"}
+    now_utc = datetime.now(timezone.utc)
+
+    try:
+        response = requests.get(FOREX_FACTORY_WEEK_URL, headers=headers, timeout=30)
+        response.raise_for_status()
+        root = ET.fromstring(response.content)
+    except Exception as exc:
+        return {
+            "source": "Forex Factory",
+            "source_url": FOREX_FACTORY_WEEK_URL,
+            "timezone_assumed": "UTC",
+            "fetched_at_utc": _utc_now_iso(),
+            "error": str(exc),
+            "high_impact": [],
+            "upcoming_high_impact": [],
+            "next_24h_high_impact": [],
+            "upcoming_usd_high_impact": [],
+        }
+
+    events: list[dict] = []
+    for event_node in root.findall("event"):
+        fields = {}
+        for child in event_node:
+            fields[child.tag] = (child.text or "").strip()
+
+        impact = fields.get("impact", "")
+        if impact.lower() != "high":
+            continue
+
+        date_value = fields.get("date", "")
+        time_value = fields.get("time", "")
+        event_dt, is_tentative = _parse_ff_datetime_utc(date_value, time_value)
+
+        event_payload = {
+            "title": fields.get("title", ""),
+            "country": fields.get("country", ""),
+            "impact": impact,
+            "date": date_value,
+            "time": time_value,
+            "datetime_utc": event_dt.isoformat().replace("+00:00", "Z") if event_dt else None,
+            "is_tentative": bool(is_tentative),
+            "forecast": fields.get("forecast", ""),
+            "previous": fields.get("previous", ""),
+            "actual": fields.get("actual", ""),
+        }
+        events.append(event_payload)
+
+    events.sort(
+        key=lambda event: (
+            event["datetime_utc"] is None,
+            event["datetime_utc"] or "",
+            event.get("country", ""),
+            event.get("title", ""),
+        )
+    )
+
+    upcoming = [event for event in events if event.get("datetime_utc") and datetime.fromisoformat(event["datetime_utc"].replace("Z", "+00:00")) >= now_utc]
+    next_24h_cutoff = now_utc + timedelta(hours=24)
+    next_24h = [
+        event
+        for event in upcoming
+        if event.get("datetime_utc") and datetime.fromisoformat(event["datetime_utc"].replace("Z", "+00:00")) <= next_24h_cutoff
+    ]
+    upcoming_usd = [event for event in upcoming if event.get("country") == "USD"]
+
+    return {
+        "source": "Forex Factory",
+        "source_url": FOREX_FACTORY_WEEK_URL,
+        "timezone_assumed": "UTC",
+        "fetched_at_utc": _utc_now_iso(),
+        "high_impact_count": len(events),
+        "upcoming_high_impact_count": len(upcoming),
+        "upcoming_usd_high_impact_count": len(upcoming_usd),
+        "high_impact": events[:120],
+        "upcoming_high_impact": upcoming[:80],
+        "next_24h_high_impact": next_24h[:40],
+        "upcoming_usd_high_impact": upcoming_usd[:40],
+    }
+
+
 def _to_history_rows(df: pd.DataFrame) -> list[dict]:
     rows: list[dict] = []
     for _, row in df.iterrows():
@@ -330,6 +441,7 @@ def build_snapshot(
     raw = load_financials(force_refresh=force_refresh, url=url)
     normalized = normalize_frame(raw)
     intraday_by_market = _fetch_intraday_by_market()
+    red_folder = _fetch_forex_factory_red_folder()
 
     markets = {
         key: _build_market_payload(
@@ -345,6 +457,9 @@ def build_snapshot(
         "generated_at_utc": _utc_now_iso(),
         "source_url": url or DEFAULT_COT_URL,
         "intraday_source": "Yahoo Finance chart API",
+        "news": {
+            "red_folder": red_folder,
+        },
         "history_weeks": history_weeks,
         "markets": markets,
     }
