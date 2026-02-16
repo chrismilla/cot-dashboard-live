@@ -1,0 +1,45 @@
+name: Refresh COT data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 22 * * 5"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Refresh snapshot
+        run: |
+          python -m cot_dashboard.web_data \
+            --force-refresh \
+            --history-weeks 104 \
+            --output data/cot_snapshot.json
+
+      - name: Commit data update
+        run: |
+          if git diff --quiet; then
+            echo "No data changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cot_snapshot.json
+          git commit -m "Weekly COT snapshot update"
+          git push

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COT Index Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <style>
+      :root {
+        --bg: #070b16;
+        --bg-soft: #0f1930;
+        --card: #111d34;
+        --line: #1f2e4c;
+        --text: #e8edf7;
+        --muted: #99a8c7;
+        --up: #36d399;
+        --down: #f87272;
+        --flat: #7c8cad;
+        --asset: #f59e0b;
+        --leveraged: #38bdf8;
+        --oi: #e2e8f0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.16), transparent 42%),
+          radial-gradient(circle at 92% 16%, rgba(245, 158, 11, 0.16), transparent 38%),
+          var(--bg);
+        color: var(--text);
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .shell {
+        width: min(1140px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 2rem 0 3.5rem;
+      }
+
+      .hero {
+        border: 1px solid var(--line);
+        background: linear-gradient(140deg, rgba(17, 29, 52, 0.95), rgba(15, 25, 48, 0.88));
+        border-radius: 24px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero h1 {
+        margin: 0 0 0.45rem;
+        font-size: clamp(1.6rem, 2.5vw, 2.35rem);
+        letter-spacing: 0.01em;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .status-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.45rem 0.8rem;
+        background: rgba(15, 25, 48, 0.75);
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .market-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-bottom: 1rem;
+      }
+
+      .tab {
+        font-family: inherit;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        background: var(--bg-soft);
+        border-radius: 12px;
+        padding: 0.6rem 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 120ms ease;
+      }
+
+      .tab:hover {
+        color: var(--text);
+      }
+
+      .tab.active {
+        background: #172a4d;
+        color: var(--text);
+        border-color: #3567be;
+        box-shadow: 0 12px 30px rgba(10, 23, 48, 0.45);
+      }
+
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        background: var(--card);
+        border-radius: 18px;
+        padding: 1rem;
+      }
+
+      .label {
+        margin: 0;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .value {
+        margin: 0.25rem 0;
+        font-size: clamp(1.2rem, 2vw, 1.7rem);
+        font-weight: 700;
+      }
+
+      .mono {
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .delta {
+        margin: 0;
+        font-size: 0.9rem;
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .delta.up {
+        color: var(--up);
+      }
+
+      .delta.down {
+        color: var(--down);
+      }
+
+      .delta.flat {
+        color: var(--flat);
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(17, 29, 52, 0.95), rgba(13, 22, 40, 0.95));
+        border-radius: 24px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .panel h2,
+      .panel h3 {
+        margin: 0;
+      }
+
+      .subtle {
+        margin-top: 0.4rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      #positioning-chart {
+        height: 430px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        margin-top: 0.8rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 640px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 0.7rem 0.5rem;
+        border-top: 1px solid #1d2c4a;
+      }
+
+      th {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        border-top: none;
+      }
+
+      td.mono {
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .align-right {
+        text-align: right;
+      }
+
+      .error {
+        display: none;
+        border: 1px solid rgba(248, 113, 113, 0.45);
+        background: rgba(248, 113, 113, 0.1);
+        color: #fecaca;
+        border-radius: 12px;
+        padding: 0.8rem 0.9rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .error.show {
+        display: block;
+      }
+
+      footer {
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-align: center;
+      }
+
+      @media (max-width: 760px) {
+        .shell {
+          width: min(1140px, calc(100% - 1.2rem));
+          padding-top: 1.2rem;
+        }
+
+        #positioning-chart {
+          height: 340px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <h1>COT Index Dashboard</h1>
+        <p>Weekly CFTC positioning for Dow Jones, Nasdaq-100, and S&P 500 futures.</p>
+        <div class="status-row">
+          <span class="chip" id="generated-at">Refreshing data...</span>
+          <span class="chip" id="latest-report">Waiting for snapshot...</span>
+        </div>
+      </section>
+
+      <div class="error" id="error-box"></div>
+      <div class="market-tabs" id="market-tabs"></div>
+
+      <section class="kpi-grid">
+        <article class="card">
+          <p class="label">Asset Managers Net</p>
+          <p class="value mono" id="asset-net">-</p>
+          <p class="delta flat" id="asset-change">-</p>
+        </article>
+        <article class="card">
+          <p class="label">Leveraged Funds Net</p>
+          <p class="value mono" id="leveraged-net">-</p>
+          <p class="delta flat" id="leveraged-change">-</p>
+        </article>
+        <article class="card">
+          <p class="label">Open Interest</p>
+          <p class="value mono" id="open-interest">-</p>
+          <p class="delta flat" id="open-interest-change">-</p>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2 id="chart-title">Market Positioning</h2>
+        <p class="subtle" id="chart-subtitle"></p>
+        <div id="positioning-chart"></div>
+      </section>
+
+      <section class="panel">
+        <h3>Latest 12 Reports</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Report Date</th>
+                <th class="align-right">Asset Managers Net</th>
+                <th class="align-right">Leveraged Funds Net</th>
+                <th class="align-right">Open Interest</th>
+              </tr>
+            </thead>
+            <tbody id="history-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        Source: CFTC Public Reporting (Traders in Financial Futures, disaggregated). Data is as-of Tuesday and published Friday.
+      </footer>
+    </main>
+
+    <script>
+      const MARKET_ORDER = ["dow_jones", "nasdaq_100", "sp_500"];
+      const state = {
+        snapshot: null,
+        activeMarket: "dow_jones",
+      };
+
+      const el = {
+        tabs: document.getElementById("market-tabs"),
+        generatedAt: document.getElementById("generated-at"),
+        latestReport: document.getElementById("latest-report"),
+        errorBox: document.getElementById("error-box"),
+        chartTitle: document.getElementById("chart-title"),
+        chartSubtitle: document.getElementById("chart-subtitle"),
+        assetNet: document.getElementById("asset-net"),
+        assetChange: document.getElementById("asset-change"),
+        leveragedNet: document.getElementById("leveraged-net"),
+        leveragedChange: document.getElementById("leveraged-change"),
+        openInterest: document.getElementById("open-interest"),
+        openInterestChange: document.getElementById("open-interest-change"),
+        historyBody: document.getElementById("history-body"),
+      };
+
+      function fmtNumber(value) {
+        return Number(value || 0).toLocaleString();
+      }
+
+      function fmtSigned(value) {
+        const n = Number(value || 0);
+        const sign = n > 0 ? "+" : "";
+        return `${sign}${n.toLocaleString()}`;
+      }
+
+      function fmtDate(dateString) {
+        const d = new Date(dateString);
+        if (Number.isNaN(d.getTime())) return dateString || "-";
+        return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+      }
+
+      function fmtDateTime(dateString) {
+        const d = new Date(dateString);
+        if (Number.isNaN(d.getTime())) return dateString || "-";
+        return d.toLocaleString(undefined, {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          timeZoneName: "short",
+        });
+      }
+
+      function applyDeltaStyle(node, value) {
+        node.classList.remove("up", "down", "flat");
+        if (value > 0) node.classList.add("up");
+        else if (value < 0) node.classList.add("down");
+        else node.classList.add("flat");
+      }
+
+      function renderTabs() {
+        const markets = state.snapshot?.markets || {};
+        const keys = MARKET_ORDER.filter((key) => markets[key]).concat(
+          Object.keys(markets).filter((key) => !MARKET_ORDER.includes(key))
+        );
+
+        el.tabs.innerHTML = "";
+        keys.forEach((key) => {
+          const market = markets[key];
+          const button = document.createElement("button");
+          button.className = `tab ${key === state.activeMarket ? "active" : ""}`;
+          button.textContent = market?.label || key;
+          button.addEventListener("click", () => {
+            state.activeMarket = key;
+            renderDashboard();
+          });
+          el.tabs.appendChild(button);
+        });
+      }
+
+      function renderKpis(market) {
+        const latest = market.latest || {};
+        el.assetNet.textContent = fmtNumber(latest.asset_mgr_net);
+        el.assetChange.textContent = `Weekly change: ${fmtSigned(latest.asset_mgr_change)}`;
+        applyDeltaStyle(el.assetChange, latest.asset_mgr_change || 0);
+
+        el.leveragedNet.textContent = fmtNumber(latest.leveraged_net);
+        el.leveragedChange.textContent = `Weekly change: ${fmtSigned(latest.leveraged_change)}`;
+        applyDeltaStyle(el.leveragedChange, latest.leveraged_change || 0);
+
+        el.openInterest.textContent = fmtNumber(latest.open_interest);
+        el.openInterestChange.textContent = `Weekly change: ${fmtSigned(latest.open_interest_change)}`;
+        applyDeltaStyle(el.openInterestChange, latest.open_interest_change || 0);
+      }
+
+      function renderChart(market) {
+        const history = (market.history || []).slice();
+        const dates = history.map((row) => row.report_date);
+        const asset = history.map((row) => row.asset_mgr_net);
+        const leveraged = history.map((row) => row.leveraged_net);
+        const oi = history.map((row) => row.open_interest);
+
+        const traces = [
+          {
+            type: "scatter",
+            mode: "lines+markers",
+            name: "Asset Managers Net",
+            x: dates,
+            y: asset,
+            marker: { size: 4, color: "#f59e0b" },
+            line: { width: 2.5, color: "#f59e0b" },
+          },
+          {
+            type: "scatter",
+            mode: "lines+markers",
+            name: "Leveraged Funds Net",
+            x: dates,
+            y: leveraged,
+            marker: { size: 4, color: "#38bdf8" },
+            line: { width: 2.5, color: "#38bdf8" },
+          },
+          {
+            type: "bar",
+            name: "Open Interest",
+            x: dates,
+            y: oi,
+            yaxis: "y2",
+            marker: { color: "rgba(226,232,240,0.22)" },
+            opacity: 0.9,
+          },
+        ];
+
+        const layout = {
+          margin: { l: 48, r: 52, t: 18, b: 42 },
+          paper_bgcolor: "rgba(0, 0, 0, 0)",
+          plot_bgcolor: "rgba(8, 14, 29, 0.85)",
+          font: { family: "Space Grotesk, sans-serif", color: "#d8e4ff" },
+          legend: { orientation: "h", y: 1.13, x: 0 },
+          hovermode: "x unified",
+          yaxis: {
+            title: "Net Contracts",
+            gridcolor: "rgba(80, 105, 150, 0.24)",
+            zerolinecolor: "rgba(145, 170, 220, 0.45)",
+          },
+          yaxis2: {
+            title: "Open Interest",
+            overlaying: "y",
+            side: "right",
+            showgrid: false,
+          },
+          xaxis: {
+            type: "date",
+            tickformat: "%b %Y",
+            gridcolor: "rgba(80, 105, 150, 0.18)",
+          },
+        };
+
+        Plotly.react("positioning-chart", traces, layout, {
+          displayModeBar: false,
+          responsive: true,
+        });
+      }
+
+      function renderTable(market) {
+        const history = (market.history || []).slice(-12).reverse();
+        el.historyBody.innerHTML = history
+          .map(
+            (row) => `
+              <tr>
+                <td>${fmtDate(row.report_date)}</td>
+                <td class="align-right mono">${fmtNumber(row.asset_mgr_net)}</td>
+                <td class="align-right mono">${fmtNumber(row.leveraged_net)}</td>
+                <td class="align-right mono">${fmtNumber(row.open_interest)}</td>
+              </tr>
+            `
+          )
+          .join("");
+      }
+
+      function renderDashboard() {
+        if (!state.snapshot?.markets) return;
+        const market = state.snapshot.markets[state.activeMarket];
+        if (!market) return;
+
+        renderTabs();
+        renderKpis(market);
+        renderChart(market);
+        renderTable(market);
+
+        el.generatedAt.textContent = `Snapshot generated: ${fmtDateTime(state.snapshot.generated_at_utc)}`;
+        el.latestReport.textContent = `${market.label} latest report: ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
+
+        el.chartTitle.textContent = `${market.label} COT Positioning`;
+        el.chartSubtitle.textContent = market.market_name || "";
+      }
+
+      async function loadSnapshot() {
+        try {
+          const response = await fetch(`./data/cot_snapshot.json?ts=${Date.now()}`, {
+            cache: "no-store",
+          });
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          const payload = await response.json();
+          if (!payload || !payload.markets || Object.keys(payload.markets).length === 0) {
+            throw new Error("Snapshot format is invalid.");
+          }
+          state.snapshot = payload;
+          if (!payload.markets[state.activeMarket]) {
+            state.activeMarket = Object.keys(payload.markets)[0];
+          }
+
+          el.errorBox.textContent = "";
+          el.errorBox.classList.remove("show");
+          renderDashboard();
+        } catch (error) {
+          el.errorBox.textContent = `Failed to load dashboard snapshot. ${error.message}`;
+          el.errorBox.classList.add("show");
+        }
+      }
+
+      loadSnapshot();
+    </script>
+  </body>
+</html>
