@@ -3,28 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COT Trader Dashboard</title>
+    <title>COT Glance Board</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <style>
       :root {
-        --bg: #071127;
-        --bg-soft: #0d1b39;
-        --card: #111f40;
-        --line: #24355d;
-        --text: #ecf2ff;
-        --muted: #93a7ce;
-        --up: #22c55e;
-        --down: #ef4444;
-        --neutral: #9ca3af;
-        --asset: #f59e0b;
-        --leveraged: #38bdf8;
-        --oi: #e2e8f0;
+        --bg: #060d1d;
+        --panel: #0f1d3a;
+        --panel-soft: #142850;
+        --line: #243d6f;
+        --text: #eff4ff;
+        --muted: #9db4df;
+        --bull: #22c55e;
+        --bear: #ef4444;
+        --neutral: #94a3b8;
+        --warn: #f97316;
       }
 
       * {
@@ -33,182 +31,160 @@
 
       body {
         margin: 0;
-        min-height: 100vh;
         color: var(--text);
-        font-family: "Space Grotesk", sans-serif;
+        font-family: "Sora", sans-serif;
         background:
-          radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.2), transparent 35%),
-          radial-gradient(circle at 95% 10%, rgba(245, 158, 11, 0.18), transparent 34%),
-          linear-gradient(160deg, #071127 0%, #0a1430 55%, #0e1b3d 100%);
+          radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.26), transparent 34%),
+          radial-gradient(circle at 96% 4%, rgba(249, 115, 22, 0.24), transparent 30%),
+          linear-gradient(160deg, #060d1d 0%, #091630 55%, #0e1f42 100%);
       }
 
-      .shell {
-        width: min(1240px, calc(100% - 1.8rem));
+      .wrap {
+        width: min(1280px, calc(100% - 1rem));
         margin: 0 auto;
-        padding: 1.4rem 0 2.2rem;
+        padding: 1rem 0 1.5rem;
       }
 
-      .hero {
-        display: grid;
-        grid-template-columns: 1.6fr 1fr;
-        gap: 1rem;
+      .top {
         border: 1px solid var(--line);
-        border-radius: 26px;
-        padding: 1.2rem;
-        background: linear-gradient(145deg, rgba(17, 31, 64, 0.95), rgba(8, 19, 45, 0.95));
-        margin-bottom: 0.9rem;
+        border-radius: 24px;
+        background: linear-gradient(145deg, rgba(15, 29, 58, 0.96), rgba(10, 21, 45, 0.96));
+        padding: 0.95rem;
+        margin-bottom: 0.8rem;
       }
 
-      .hero h1 {
-        margin: 0 0 0.35rem;
-        font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+      .top-row {
+        display: grid;
+        grid-template-columns: 1.2fr auto;
+        gap: 0.8rem;
+        align-items: center;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.28rem, 3.4vw, 2rem);
         letter-spacing: 0.01em;
       }
 
-      .hero p {
-        margin: 0;
+      .sub {
+        margin: 0.18rem 0 0;
         color: var(--muted);
+        font-size: 0.86rem;
       }
 
-      .hero-actions {
-        margin-top: 0.8rem;
+      .actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.45rem;
+        justify-content: flex-end;
       }
 
-      .action-btn {
-        border: 1px solid #375184;
+      .btn {
+        border: 1px solid #3d5f98;
         border-radius: 999px;
-        background: linear-gradient(145deg, #1a3670, #142a57);
-        color: #dbe7ff;
+        padding: 0.45rem 0.84rem;
+        background: linear-gradient(145deg, #234582, #173262);
+        color: #e8f0ff;
         font-family: inherit;
-        font-size: 0.8rem;
-        font-weight: 600;
-        padding: 0.38rem 0.8rem;
+        font-size: 0.79rem;
+        font-weight: 700;
         cursor: pointer;
-        transition: 120ms ease;
       }
 
-      .action-btn:hover {
-        filter: brightness(1.12);
-      }
-
-      .action-btn:disabled {
+      .btn:disabled {
         opacity: 0.7;
         cursor: wait;
       }
 
-      .hero-meta {
-        margin-top: 0.8rem;
+      .chip-row {
+        margin-top: 0.6rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.55rem;
+        gap: 0.45rem;
       }
 
       .chip {
         border: 1px solid var(--line);
         border-radius: 999px;
-        padding: 0.36rem 0.7rem;
-        font-size: 0.78rem;
+        background: rgba(14, 28, 58, 0.8);
         color: var(--muted);
-        background: rgba(9, 20, 46, 0.75);
+        padding: 0.28rem 0.62rem;
+        font-size: 0.74rem;
+        font-family: "IBM Plex Mono", monospace;
       }
 
-      .hero-bias {
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        padding: 0.9rem;
-        background: linear-gradient(145deg, rgba(13, 28, 59, 0.95), rgba(10, 20, 46, 0.95));
-      }
-
-      .eyebrow {
-        margin: 0;
-        font-size: 0.73rem;
-        color: var(--muted);
-        letter-spacing: 0.09em;
-        text-transform: uppercase;
-      }
-
-      .hero-bias h2 {
-        margin: 0.35rem 0 0.2rem;
-        font-size: 1.45rem;
-      }
-
-      .hero-bias .mono {
-        font-size: 0.88rem;
-      }
-
-      .error {
-        display: none;
-        border: 1px solid rgba(239, 68, 68, 0.5);
-        background: rgba(239, 68, 68, 0.14);
-        color: #fecaca;
-        border-radius: 12px;
-        padding: 0.7rem 0.9rem;
-        margin-bottom: 0.8rem;
-      }
-
-      .error.show {
-        display: block;
-      }
-
-      .market-tabs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-        margin-bottom: 0.7rem;
+      .tabs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+        margin-top: 0.75rem;
       }
 
       .tab {
-        font-family: inherit;
         border: 1px solid var(--line);
-        color: var(--muted);
-        background: var(--bg-soft);
-        border-radius: 11px;
-        padding: 0.52rem 0.9rem;
-        font-weight: 600;
+        border-radius: 14px;
+        padding: 0.7rem;
+        background: #0f2247;
+        color: #aec3ea;
+        font-family: inherit;
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
         cursor: pointer;
-        transition: 130ms ease;
-      }
-
-      .tab:hover {
-        color: var(--text);
       }
 
       .tab.active {
-        color: var(--text);
-        border-color: #4f7ecd;
-        background: linear-gradient(145deg, #203d76, #142b58);
-        box-shadow: 0 10px 26px rgba(10, 20, 44, 0.45);
+        color: #f3f7ff;
+        border-color: #6ea0ef;
+        background: linear-gradient(145deg, #234a8e, #183663);
+        box-shadow: 0 10px 28px rgba(10, 25, 52, 0.45);
       }
 
-      .grid-top {
+      .alert {
+        margin-top: 0.75rem;
+        border: 1px solid #3a5f9b;
+        border-radius: 16px;
+        padding: 0.62rem 0.8rem;
+        background: linear-gradient(145deg, rgba(29, 64, 129, 0.35), rgba(11, 27, 58, 0.92));
+      }
+
+      .alert b {
+        font-size: 0.95rem;
+      }
+
+      .alert span {
+        color: #cfdef7;
+        font-size: 0.84rem;
+      }
+
+      .glance {
+        margin-top: 0.82rem;
         display: grid;
-        grid-template-columns: 1.1fr 1fr 1fr;
-        gap: 0.75rem;
-        margin-bottom: 0.85rem;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.6rem;
       }
 
       .card {
         border: 1px solid var(--line);
         border-radius: 18px;
-        padding: 0.9rem;
-        background: linear-gradient(180deg, rgba(17, 31, 64, 0.95), rgba(11, 21, 47, 0.95));
+        padding: 0.85rem;
+        background: linear-gradient(180deg, rgba(15, 29, 58, 0.96), rgba(10, 20, 43, 0.96));
+        min-height: 155px;
       }
 
       .label {
         margin: 0;
         color: var(--muted);
-        font-size: 0.72rem;
+        font-size: 0.71rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
       }
 
-      .value {
-        margin: 0.25rem 0 0.1rem;
-        font-size: clamp(1.15rem, 2vw, 1.55rem);
-        font-weight: 700;
+      .big {
+        margin: 0.32rem 0 0;
+        font-size: clamp(1.35rem, 3vw, 2.15rem);
+        line-height: 1;
+        font-weight: 800;
       }
 
       .mono {
@@ -216,73 +192,48 @@
       }
 
       .delta {
-        margin: 0;
-        font-size: 0.84rem;
+        margin-top: 0.28rem;
+        font-size: 0.82rem;
         font-family: "IBM Plex Mono", monospace;
       }
 
       .up {
-        color: var(--up);
+        color: var(--bull);
       }
 
       .down {
-        color: var(--down);
+        color: var(--bear);
       }
 
       .flat {
         color: var(--neutral);
       }
 
-      .bias-meter {
-        margin-top: 0.65rem;
-        height: 14px;
+      .gauge {
+        margin-top: 0.6rem;
+        height: 18px;
         position: relative;
         border-radius: 999px;
-        border: 1px solid #2a3f6d;
-        background: linear-gradient(90deg, rgba(239, 68, 68, 0.35) 0%, rgba(148, 163, 184, 0.18) 50%, rgba(34, 197, 94, 0.35) 100%);
-        overflow: hidden;
+        border: 1px solid #30508b;
+        background: linear-gradient(90deg, rgba(239, 68, 68, 0.45), rgba(148, 163, 184, 0.18), rgba(34, 197, 94, 0.45));
       }
 
-      .bias-center {
+      .gauge-marker {
         position: absolute;
-        top: -1px;
-        bottom: -1px;
-        left: 50%;
-        width: 1px;
-        background: rgba(203, 213, 225, 0.7);
-      }
-
-      .bias-fill {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        background: rgba(56, 189, 248, 0.42);
-      }
-
-      .bias-marker {
-        position: absolute;
-        top: -4px;
+        top: -3px;
         width: 2px;
-        height: 20px;
-        background: #f8fafc;
-        box-shadow: 0 0 10px rgba(248, 250, 252, 0.7);
+        height: 22px;
+        background: #ffffff;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
       }
 
-      .bias-sub {
-        margin-top: 0.45rem;
-        display: flex;
-        justify-content: space-between;
-        color: var(--muted);
-        font-size: 0.75rem;
-      }
-
-      .range-track {
-        margin-top: 0.45rem;
+      .range {
+        margin-top: 0.7rem;
+        height: 15px;
         position: relative;
-        height: 12px;
         border-radius: 999px;
-        border: 1px solid #2a3f6d;
-        background: rgba(148, 163, 184, 0.13);
+        border: 1px solid #30508b;
+        background: rgba(148, 163, 184, 0.15);
       }
 
       .range-fill {
@@ -291,1366 +242,800 @@
         top: 0;
         bottom: 0;
         border-radius: 999px;
-        background: linear-gradient(90deg, rgba(34, 197, 94, 0.75), rgba(56, 189, 248, 0.78));
+        background: linear-gradient(90deg, rgba(34, 197, 94, 0.86), rgba(56, 189, 248, 0.86));
       }
 
       .range-marker {
         position: absolute;
-        top: -4px;
+        top: -3px;
         width: 2px;
-        height: 20px;
-        background: #f8fafc;
+        height: 21px;
+        background: #fff;
       }
 
-      .mini-grid {
-        margin-top: 0.65rem;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.42rem;
-      }
-
-      .mini {
-        border: 1px solid #24365f;
-        border-radius: 10px;
-        padding: 0.45rem;
-        background: rgba(10, 21, 47, 0.85);
-      }
-
-      .mini .k {
-        margin: 0;
+      .range-meta {
+        margin-top: 0.35rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.73rem;
         color: var(--muted);
-        font-size: 0.66rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
       }
 
-      .mini .v {
-        margin: 0.2rem 0 0;
-        font-size: 0.81rem;
-        font-family: "IBM Plex Mono", monospace;
+      .news-next {
+        border: 1px solid #6b3341;
+        background: linear-gradient(180deg, rgba(77, 26, 38, 0.55), rgba(36, 14, 22, 0.9));
+      }
+
+      .news-next .label {
+        color: #f2becd;
+      }
+
+      .news-next .big {
+        font-size: clamp(1.02rem, 2.2vw, 1.34rem);
+        line-height: 1.2;
+      }
+
+      .news-next .delta {
+        color: #f6d5dd;
+      }
+
+      .panels {
+        margin-top: 0.6rem;
+        display: grid;
+        grid-template-columns: 1.18fr 1fr;
+        gap: 0.6rem;
       }
 
       .panel {
         border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 0.9rem;
-        background: linear-gradient(180deg, rgba(17, 31, 64, 0.96), rgba(10, 20, 45, 0.96));
-        margin-bottom: 0.85rem;
-      }
-
-      .panel h3,
-      .panel h2 {
-        margin: 0;
+        border-radius: 20px;
+        padding: 0.78rem;
+        background: linear-gradient(180deg, rgba(15, 29, 58, 0.96), rgba(10, 20, 43, 0.96));
       }
 
       .panel-head {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 0.8rem;
+        align-items: center;
+        gap: 0.5rem;
         flex-wrap: wrap;
       }
 
-      .toggle-group {
+      .panel-head h2,
+      .panel-head h3 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .toggle {
         display: inline-flex;
-        border: 1px solid #2a3f6d;
+        border: 1px solid #2f4f8b;
         border-radius: 10px;
         overflow: hidden;
       }
 
-      .toggle-btn {
+      .tbtn {
         border: none;
-        border-left: 1px solid #2a3f6d;
-        background: #0d1f43;
-        color: var(--muted);
+        border-left: 1px solid #2f4f8b;
+        background: #122850;
+        color: #9db4df;
         font-family: inherit;
-        font-size: 0.76rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
+        font-size: 0.73rem;
         text-transform: uppercase;
-        padding: 0.4rem 0.62rem;
+        font-weight: 700;
+        padding: 0.36rem 0.6rem;
         cursor: pointer;
       }
 
-      .toggle-btn:first-child {
+      .tbtn:first-child {
         border-left: none;
       }
 
-      .toggle-btn.active {
-        background: linear-gradient(145deg, #1d3a76, #142c5e);
-        color: #e6efff;
+      .tbtn.active {
+        background: linear-gradient(145deg, #214581, #173463);
+        color: #edf3ff;
       }
 
-      .subtle {
-        margin-top: 0.25rem;
-        color: var(--muted);
-        font-size: 0.86rem;
+      #intraday-chart,
+      #weekly-chart {
+        height: 320px;
+        margin-top: 0.45rem;
       }
 
-      .panel-grid {
-        display: grid;
-        grid-template-columns: 1.25fr 0.95fr;
-        gap: 0.75rem;
-      }
-
-      #intraday-chart {
-        height: 270px;
-        margin-top: 0.55rem;
-      }
-
-      #positioning-chart {
-        height: 430px;
-      }
-
-      .component-row {
-        margin-top: 0.62rem;
-      }
-
-      .component-head {
+      .rf-header {
         display: flex;
         justify-content: space-between;
-        gap: 0.45rem;
-        font-size: 0.78rem;
-      }
-
-      .component-bar {
-        margin-top: 0.25rem;
-        height: 10px;
-        position: relative;
-        border-radius: 999px;
-        border: 1px solid #2a3f6d;
-        background: rgba(148, 163, 184, 0.13);
-        overflow: hidden;
-      }
-
-      .component-fill {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-      }
-
-      .component-fill.up {
-        background: linear-gradient(90deg, rgba(34, 197, 94, 0.86), rgba(16, 185, 129, 0.86));
-      }
-
-      .component-fill.down {
-        background: linear-gradient(90deg, rgba(248, 113, 113, 0.86), rgba(239, 68, 68, 0.86));
-      }
-
-      .playbook {
-        margin-top: 0.75rem;
-        border: 1px solid #2a3f6d;
-        border-radius: 12px;
-        padding: 0.65rem;
-        background: rgba(10, 21, 47, 0.82);
-      }
-
-      .playbook p {
-        margin: 0 0 0.45rem;
-        font-size: 0.82rem;
-        color: var(--muted);
-      }
-
-      .playbook ul {
-        margin: 0;
-        padding-left: 1rem;
-      }
-
-      .playbook li {
-        margin-bottom: 0.35rem;
-        font-size: 0.88rem;
-      }
-
-      .split-bottom {
-        display: grid;
-        grid-template-columns: 1.35fr 0.9fr;
-        gap: 0.75rem;
-      }
-
-      .table-wrap {
-        overflow-x: auto;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
         margin-top: 0.6rem;
       }
 
-      table {
-        width: 100%;
-        min-width: 640px;
-        border-collapse: collapse;
-      }
-
-      th,
-      td {
-        padding: 0.62rem 0.45rem;
-        border-top: 1px solid #24365f;
-      }
-
-      th {
-        border-top: none;
-        color: var(--muted);
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .align-right {
-        text-align: right;
-      }
-
-      .context-list {
-        margin: 0.55rem 0 0;
-        padding-left: 1rem;
-      }
-
-      .context-alert {
-        border: 1px solid #315084;
-        border-radius: 16px;
-        padding: 0.75rem 0.9rem;
-        margin-bottom: 0.8rem;
-        background: linear-gradient(145deg, rgba(29, 58, 118, 0.4), rgba(12, 26, 58, 0.86));
-      }
-
-      .context-alert h3 {
-        margin: 0.24rem 0 0.14rem;
-        font-size: 1.03rem;
-      }
-
-      .context-alert p {
-        margin: 0;
-        color: #d3def7;
-        font-size: 0.87rem;
-      }
-
-      .news-panel {
-        border: 1px solid #5a2d34;
-        border-radius: 16px;
-        padding: 0.75rem 0.9rem;
-        margin-bottom: 0.8rem;
-        background: linear-gradient(145deg, rgba(95, 29, 41, 0.34), rgba(28, 12, 21, 0.84));
-      }
-
-      .news-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.6rem;
-        flex-wrap: wrap;
-      }
-
-      .news-toggle {
+      .rf-toggle {
         display: inline-flex;
-        border: 1px solid #713745;
+        border: 1px solid #724157;
         border-radius: 10px;
         overflow: hidden;
       }
 
-      .news-btn {
+      .rf-btn {
         border: none;
-        border-left: 1px solid #713745;
-        background: #3f1a25;
-        color: #d2a9b3;
+        border-left: 1px solid #724157;
+        background: #451b2a;
+        color: #e0b0bd;
         font-family: inherit;
-        font-size: 0.73rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
+        font-size: 0.72rem;
         text-transform: uppercase;
-        padding: 0.34rem 0.58rem;
+        font-weight: 700;
+        padding: 0.34rem 0.56rem;
         cursor: pointer;
       }
 
-      .news-btn:first-child {
+      .rf-btn:first-child {
         border-left: none;
       }
 
-      .news-btn.active {
-        background: linear-gradient(145deg, #7b3044, #5a2232);
-        color: #ffe7ec;
+      .rf-btn.active {
+        background: linear-gradient(145deg, #7f3047, #602336);
+        color: #ffe7ed;
       }
 
-      .news-meta {
-        margin-top: 0.35rem;
-        color: #cf97a5;
-        font-size: 0.76rem;
-      }
-
-      .news-grid {
-        margin-top: 0.7rem;
+      .rf-strip {
+        margin-top: 0.5rem;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 0.55rem;
       }
 
-      .news-card {
-        border: 1px solid #6d3342;
-        border-radius: 12px;
-        padding: 0.6rem;
-        background: rgba(44, 16, 27, 0.62);
+      .rf-card {
+        border: 1px solid #704154;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(82, 29, 44, 0.58), rgba(37, 14, 24, 0.9));
+        padding: 0.58rem;
       }
 
-      .news-card h4 {
-        margin: 0;
-        font-size: 0.85rem;
-      }
-
-      .news-list {
-        margin: 0.55rem 0 0;
-        padding-left: 0;
-        list-style: none;
-      }
-
-      .news-item {
-        border-top: 1px solid rgba(183, 93, 115, 0.3);
-        padding: 0.42rem 0;
-      }
-
-      .news-item:first-child {
-        border-top: none;
-        padding-top: 0;
-      }
-
-      .news-time {
-        color: #ffd3dd;
+      .rf-time {
+        color: #ffd8e2;
         font-family: "IBM Plex Mono", monospace;
-        font-size: 0.77rem;
+        font-size: 0.74rem;
       }
 
-      .news-title {
-        margin-top: 0.12rem;
-        color: #f7d8e0;
-        font-size: 0.84rem;
-        line-height: 1.3;
+      .rf-title {
+        margin-top: 0.18rem;
+        font-size: 0.82rem;
+        line-height: 1.28;
       }
 
-      .news-country {
+      .cc {
         display: inline-block;
-        margin-right: 0.35rem;
-        border: 1px solid #7d3b4b;
+        margin-right: 0.32rem;
+        border: 1px solid #8b5467;
         border-radius: 999px;
-        padding: 0.08rem 0.38rem;
-        background: rgba(125, 59, 75, 0.25);
-        color: #ffd6df;
+        padding: 0.08rem 0.35rem;
+        background: rgba(112, 65, 84, 0.35);
         font-family: "IBM Plex Mono", monospace;
         font-size: 0.68rem;
-        font-weight: 600;
+        color: #ffe5ec;
       }
 
-      .news-empty {
-        margin: 0.45rem 0 0;
-        color: #cf97a5;
-        font-size: 0.79rem;
+      .error {
+        margin-top: 0.6rem;
+        display: none;
+        border: 1px solid #8b3e4e;
+        border-radius: 12px;
+        padding: 0.65rem 0.78rem;
+        background: rgba(139, 62, 78, 0.18);
+        color: #ffd3dc;
+        font-size: 0.84rem;
       }
 
-      .context-list li {
-        margin-bottom: 0.45rem;
-        color: #d3def7;
-        font-size: 0.9rem;
+      .error.show {
+        display: block;
+      }
+
+      .mini {
+        margin-top: 0.42rem;
+        color: var(--muted);
+        font-size: 0.74rem;
       }
 
       footer {
-        margin-top: 0.4rem;
+        margin-top: 0.7rem;
+        color: #8ca3cb;
+        font-size: 0.72rem;
         text-align: center;
-        color: var(--muted);
-        font-size: 0.76rem;
       }
 
-      @media (max-width: 1040px) {
-        .hero,
-        .grid-top,
-        .panel-grid,
-        .split-bottom,
-        .news-grid {
+      @media (max-width: 1120px) {
+        .glance,
+        .rf-strip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .panels {
           grid-template-columns: 1fr;
         }
       }
 
       @media (max-width: 760px) {
-        .shell {
-          width: min(1240px, calc(100% - 1rem));
-          padding-top: 1rem;
+        .top-row {
+          grid-template-columns: 1fr;
         }
 
-        #positioning-chart {
-          height: 345px;
+        .actions {
+          justify-content: flex-start;
         }
 
-        #intraday-chart {
-          height: 220px;
+        .tabs,
+        .glance,
+        .rf-strip {
+          grid-template-columns: 1fr;
+        }
+
+        #intraday-chart,
+        #weekly-chart {
+          height: 255px;
         }
       }
     </style>
   </head>
   <body>
-    <main class="shell">
-      <section class="hero">
-        <div>
-          <h1>COT Trader Dashboard</h1>
-          <p>Weekly bias + intraday pulse for Dow, Nasdaq, and S&P setups.</p>
-          <div class="hero-actions">
-            <button class="action-btn" id="refresh-btn">Sync Now</button>
-            <span class="chip" id="last-synced">Last synced: --</span>
-            <span class="chip" id="next-report">Next COT: --</span>
-          </div>
-          <div class="hero-meta">
-            <span class="chip" id="generated-at">Refreshing data...</span>
-            <span class="chip" id="latest-report">Waiting for snapshot...</span>
-            <span class="chip" id="intraday-updated">Intraday update pending...</span>
-          </div>
-        </div>
-        <div class="hero-bias">
-          <p class="eyebrow">Active Weekly Bias</p>
-          <h2 id="hero-bias-label">-</h2>
-          <p class="mono" id="hero-bias-score">Score - | Conviction -</p>
-          <p class="subtle" id="hero-bias-playbook">-</p>
-        </div>
-      </section>
-
-      <div class="error" id="error-box"></div>
-      <div class="market-tabs" id="market-tabs"></div>
-      <section class="context-alert">
-        <p class="eyebrow">This Week Setup</p>
-        <h3 id="context-alert-title">-</h3>
-        <p id="context-alert-text">-</p>
-      </section>
-      <section class="news-panel">
-        <div class="news-head">
+    <main class="wrap">
+      <section class="top">
+        <div class="top-row">
           <div>
-            <p class="eyebrow" style="color: #f3bcc9">Forex Factory Red Folder</p>
-            <h3 style="margin: 0.2rem 0 0; font-size: 1.02rem">High-Impact Event Risk</h3>
+            <h1>COT Glance Board</h1>
+            <p class="sub">One-screen weekly bias + intraday + red-folder risk.</p>
           </div>
-          <div class="news-toggle">
-            <button class="news-btn active" id="news-usd">USD Only</button>
-            <button class="news-btn" id="news-all">All</button>
+          <div class="actions">
+            <button class="btn" id="sync-btn">Sync</button>
           </div>
         </div>
-        <p class="news-meta" id="news-meta">Loading red-folder events...</p>
-        <div class="news-grid">
-          <article class="news-card">
-            <h4>Next 24 Hours</h4>
-            <ul class="news-list" id="news-next24"></ul>
-            <p class="news-empty" id="news-next24-empty" style="display: none">No high-impact events in the next 24h.</p>
-          </article>
-          <article class="news-card">
-            <h4>Later This Week</h4>
-            <ul class="news-list" id="news-week"></ul>
-            <p class="news-empty" id="news-week-empty" style="display: none">No additional high-impact events found.</p>
-          </article>
+        <div class="chip-row">
+          <span class="chip" id="chip-generated">Generated --</span>
+          <span class="chip" id="chip-report">Report --</span>
+          <span class="chip" id="chip-intraday">Intraday --</span>
+          <span class="chip" id="chip-next-cot">Next COT --</span>
+          <span class="chip" id="chip-last-sync">Last sync --</span>
+        </div>
+
+        <div class="tabs" id="market-tabs"></div>
+
+        <div class="alert">
+          <b id="setup-title">Setup --</b>
+          <span id="setup-text">Waiting for data...</span>
         </div>
       </section>
 
-      <section class="grid-top">
+      <section class="glance">
         <article class="card">
-          <p class="label">Bias Meter</p>
-          <p class="value" id="bias-label">-</p>
-          <p class="delta mono" id="bias-score">-</p>
-          <div class="bias-meter">
-            <span class="bias-center"></span>
-            <span class="bias-fill" id="bias-fill"></span>
-            <span class="bias-marker" id="bias-marker"></span>
-          </div>
-          <div class="bias-sub">
-            <span>Bearish</span>
-            <span>Neutral</span>
-            <span>Bullish</span>
-          </div>
+          <p class="label">Weekly Bias</p>
+          <p class="big" id="bias-label">--</p>
+          <p class="delta mono" id="bias-score">--</p>
+          <div class="gauge"><span class="gauge-marker" id="bias-marker"></span></div>
+          <p class="mini" id="bias-mini">--</p>
         </article>
 
         <article class="card">
-          <p class="label">Intraday Pulse</p>
-          <p class="value mono" id="intraday-last">-</p>
-          <p class="delta mono" id="intraday-change">-</p>
-          <div class="range-track">
+          <p class="label">Intraday Price</p>
+          <p class="big mono" id="price-last">--</p>
+          <p class="delta mono" id="price-change">--</p>
+          <p class="mini" id="price-state">--</p>
+        </article>
+
+        <article class="card">
+          <p class="label">Session Range</p>
+          <p class="big mono" id="range-pos">--</p>
+          <div class="range">
             <span class="range-fill" id="range-fill"></span>
             <span class="range-marker" id="range-marker"></span>
           </div>
-          <div class="bias-sub">
-            <span id="intraday-low">Low -</span>
-            <span id="intraday-high">High -</span>
+          <div class="range-meta">
+            <span id="range-low">Low --</span>
+            <span id="range-high">High --</span>
           </div>
         </article>
 
-        <article class="card">
-          <p class="label">Positioning Snapshot</p>
-          <p class="value mono" id="asset-net">-</p>
-          <p class="delta" id="asset-change">-</p>
-          <p class="value mono" style="font-size: 1.05rem" id="leveraged-net">-</p>
-          <p class="delta" id="leveraged-change">-</p>
-          <p class="delta mono flat" id="open-interest-line">-</p>
+        <article class="card news-next">
+          <p class="label">Next Red Folder</p>
+          <p class="big" id="next-news-title">--</p>
+          <p class="delta" id="next-news-time">--</p>
+          <p class="mini" id="next-news-meta">--</p>
         </article>
       </section>
 
-      <section class="panel panel-grid">
-        <article>
-          <h3 id="intraday-title">Intraday Structure</h3>
-          <p class="subtle" id="intraday-subtitle">-</p>
-          <div id="intraday-chart"></div>
-          <div class="mini-grid">
-            <div class="mini">
-              <p class="k">Session Open</p>
-              <p class="v" id="mini-open">-</p>
-            </div>
-            <div class="mini">
-              <p class="k">Range Position</p>
-              <p class="v" id="mini-range-pos">-</p>
-            </div>
-            <div class="mini">
-              <p class="k">Volume (1D)</p>
-              <p class="v" id="mini-volume">-</p>
-            </div>
-            <div class="mini">
-              <p class="k">State</p>
-              <p class="v" id="mini-state">-</p>
-            </div>
-            <div class="mini">
-              <p class="k">Asset Percentile</p>
-              <p class="v" id="mini-asset-pctl">-</p>
-            </div>
-            <div class="mini">
-              <p class="k">Lev Percentile</p>
-              <p class="v" id="mini-lev-pctl">-</p>
-            </div>
+      <div class="error" id="error-box"></div>
+
+      <section class="panels">
+        <article class="panel">
+          <div class="panel-head">
+            <h2 id="intraday-title">Intraday</h2>
           </div>
+          <div id="intraday-chart"></div>
         </article>
 
-        <article>
-          <h3>Bias Components</h3>
-          <p class="subtle">Use this as your weekly direction filter.</p>
-          <div id="bias-components"></div>
-          <div class="playbook">
-            <p>Trade Playbook</p>
-            <ul id="trade-list"></ul>
+        <article class="panel">
+          <div class="panel-head">
+            <h3 id="weekly-title">Weekly Structure</h3>
+            <div class="toggle">
+              <button class="tbtn" id="mode-trend">Trend</button>
+              <button class="tbtn" id="mode-shift">Shift</button>
+            </div>
           </div>
+          <div id="weekly-chart"></div>
         </article>
       </section>
 
       <section class="panel">
-        <div class="panel-head">
-          <div>
-            <h2 id="chart-title">Market Positioning</h2>
-            <p class="subtle" id="chart-subtitle"></p>
-          </div>
-          <div class="toggle-group">
-            <button class="toggle-btn active" id="mode-trend">Trend</button>
-            <button class="toggle-btn" id="mode-compare">Weekly Shift</button>
+        <div class="rf-header">
+          <h3>Forex Factory Red Folder</h3>
+          <div class="rf-toggle">
+            <button class="rf-btn" id="rf-usd">USD</button>
+            <button class="rf-btn" id="rf-all">All</button>
           </div>
         </div>
-        <div id="positioning-chart"></div>
-      </section>
-
-      <section class="split-bottom">
-        <article class="panel">
-          <h3>Latest 12 Reports</h3>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Report Date</th>
-                  <th class="align-right">Asset Managers Net</th>
-                  <th class="align-right">Leveraged Funds Net</th>
-                  <th class="align-right">Open Interest</th>
-                </tr>
-              </thead>
-              <tbody id="history-body"></tbody>
-            </table>
-          </div>
-        </article>
-
-        <article class="panel">
-          <h3>Weekly Context</h3>
-          <p class="subtle">Use these to frame your next 1-5 sessions.</p>
-          <ul class="context-list" id="context-list"></ul>
-        </article>
+        <p class="mini" id="rf-meta">--</p>
+        <div class="rf-strip" id="rf-strip"></div>
       </section>
 
       <footer>
-        Sources: CFTC Traders in Financial Futures, Yahoo Finance chart data (5m bars), Forex Factory weekly calendar (high-impact feed). COT is as-of Tuesday and published Friday.
+        CFTC + Yahoo + Forex Factory. Keep it simple: bias, price, risk.
       </footer>
     </main>
 
     <script>
       const MARKET_ORDER = ["dow_jones", "nasdaq_100", "sp_500"];
-      const MARKET_ETF = { dow_jones: "DIA", nasdaq_100: "QQQ", sp_500: "SPY" };
+      const ETF = { dow_jones: "DIA", nasdaq_100: "QQQ", sp_500: "SPY" };
 
       const state = {
         snapshot: null,
         activeMarket: "dow_jones",
-        chartMode: localStorage.getItem("cot_chart_mode") || "trend",
-        newsFilter: localStorage.getItem("cot_news_filter") || "usd",
-        isRefreshing: false,
+        chartMode: localStorage.getItem("glance_chart_mode") || "trend",
+        newsFilter: localStorage.getItem("glance_news_filter") || "usd",
+        loading: false,
       };
 
       const el = {
-        tabs: document.getElementById("market-tabs"),
-        refreshBtn: document.getElementById("refresh-btn"),
-        lastSynced: document.getElementById("last-synced"),
-        nextReport: document.getElementById("next-report"),
-        generatedAt: document.getElementById("generated-at"),
-        latestReport: document.getElementById("latest-report"),
-        intradayUpdated: document.getElementById("intraday-updated"),
-        errorBox: document.getElementById("error-box"),
-        contextAlertTitle: document.getElementById("context-alert-title"),
-        contextAlertText: document.getElementById("context-alert-text"),
-        newsUsd: document.getElementById("news-usd"),
-        newsAll: document.getElementById("news-all"),
-        newsMeta: document.getElementById("news-meta"),
-        newsNext24: document.getElementById("news-next24"),
-        newsWeek: document.getElementById("news-week"),
-        newsNext24Empty: document.getElementById("news-next24-empty"),
-        newsWeekEmpty: document.getElementById("news-week-empty"),
-        heroBiasLabel: document.getElementById("hero-bias-label"),
-        heroBiasScore: document.getElementById("hero-bias-score"),
-        heroBiasPlaybook: document.getElementById("hero-bias-playbook"),
+        syncBtn: document.getElementById("sync-btn"),
+        chipGenerated: document.getElementById("chip-generated"),
+        chipReport: document.getElementById("chip-report"),
+        chipIntraday: document.getElementById("chip-intraday"),
+        chipNextCot: document.getElementById("chip-next-cot"),
+        chipLastSync: document.getElementById("chip-last-sync"),
+        marketTabs: document.getElementById("market-tabs"),
+        setupTitle: document.getElementById("setup-title"),
+        setupText: document.getElementById("setup-text"),
         biasLabel: document.getElementById("bias-label"),
         biasScore: document.getElementById("bias-score"),
-        biasFill: document.getElementById("bias-fill"),
         biasMarker: document.getElementById("bias-marker"),
-        intradayLast: document.getElementById("intraday-last"),
-        intradayChange: document.getElementById("intraday-change"),
-        intradayLow: document.getElementById("intraday-low"),
-        intradayHigh: document.getElementById("intraday-high"),
+        biasMini: document.getElementById("bias-mini"),
+        priceLast: document.getElementById("price-last"),
+        priceChange: document.getElementById("price-change"),
+        priceState: document.getElementById("price-state"),
+        rangePos: document.getElementById("range-pos"),
         rangeFill: document.getElementById("range-fill"),
         rangeMarker: document.getElementById("range-marker"),
-        assetNet: document.getElementById("asset-net"),
-        assetChange: document.getElementById("asset-change"),
-        leveragedNet: document.getElementById("leveraged-net"),
-        leveragedChange: document.getElementById("leveraged-change"),
-        openInterestLine: document.getElementById("open-interest-line"),
+        rangeLow: document.getElementById("range-low"),
+        rangeHigh: document.getElementById("range-high"),
+        nextNewsTitle: document.getElementById("next-news-title"),
+        nextNewsTime: document.getElementById("next-news-time"),
+        nextNewsMeta: document.getElementById("next-news-meta"),
         intradayTitle: document.getElementById("intraday-title"),
-        intradaySubtitle: document.getElementById("intraday-subtitle"),
-        miniOpen: document.getElementById("mini-open"),
-        miniRangePos: document.getElementById("mini-range-pos"),
-        miniVolume: document.getElementById("mini-volume"),
-        miniState: document.getElementById("mini-state"),
-        miniAssetPct: document.getElementById("mini-asset-pctl"),
-        miniLevPct: document.getElementById("mini-lev-pctl"),
-        biasComponents: document.getElementById("bias-components"),
-        tradeList: document.getElementById("trade-list"),
-        chartTitle: document.getElementById("chart-title"),
-        chartSubtitle: document.getElementById("chart-subtitle"),
+        weeklyTitle: document.getElementById("weekly-title"),
         modeTrend: document.getElementById("mode-trend"),
-        modeCompare: document.getElementById("mode-compare"),
-        historyBody: document.getElementById("history-body"),
-        contextList: document.getElementById("context-list"),
+        modeShift: document.getElementById("mode-shift"),
+        rfUsd: document.getElementById("rf-usd"),
+        rfAll: document.getElementById("rf-all"),
+        rfMeta: document.getElementById("rf-meta"),
+        rfStrip: document.getElementById("rf-strip"),
+        error: document.getElementById("error-box"),
       };
 
-      function fmtNumber(value, digits = 0) {
-        const n = Number(value);
-        if (!Number.isFinite(n)) return "-";
-        return n.toLocaleString(undefined, { minimumFractionDigits: digits, maximumFractionDigits: digits });
+      function fmtNum(v, d = 0) {
+        const n = Number(v);
+        if (!Number.isFinite(n)) return "--";
+        return n.toLocaleString(undefined, { minimumFractionDigits: d, maximumFractionDigits: d });
       }
 
-      function fmtSigned(value, digits = 0, suffix = "") {
-        const n = Number(value);
-        if (!Number.isFinite(n)) return "-";
-        const sign = n > 0 ? "+" : "";
-        return `${sign}${fmtNumber(n, digits)}${suffix}`;
+      function fmtSigned(v, d = 0, suffix = "") {
+        const n = Number(v);
+        if (!Number.isFinite(n)) return "--";
+        return `${n > 0 ? "+" : ""}${fmtNum(n, d)}${suffix}`;
       }
 
-      function fmtDate(dateString) {
-        const d = new Date(dateString);
-        if (Number.isNaN(d.getTime())) return dateString || "-";
-        return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+      function toneClass(v) {
+        const n = Number(v);
+        if (!Number.isFinite(n) || n === 0) return "flat";
+        return n > 0 ? "up" : "down";
       }
 
-      function fmtDateTime(dateString) {
-        const d = new Date(dateString);
-        if (Number.isNaN(d.getTime())) return dateString || "-";
+      function fmtDate(v) {
+        const d = new Date(v);
+        if (Number.isNaN(d.getTime())) return v || "--";
+        return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+      }
+
+      function fmtTime(v) {
+        const d = new Date(v);
+        if (Number.isNaN(d.getTime())) return v || "--";
         return d.toLocaleString(undefined, {
-          year: "numeric",
           month: "short",
           day: "numeric",
           hour: "2-digit",
           minute: "2-digit",
-          timeZoneName: "short",
         });
       }
 
-      function updateLastSynced(label) {
-        const text = label || localStorage.getItem("cot_last_synced") || "--";
-        el.lastSynced.textContent = `Last synced: ${text}`;
-      }
-
-      function markSyncedNow() {
-        const label = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        localStorage.setItem("cot_last_synced", label);
-        updateLastSynced(label);
-      }
-
-      function updateNextReportCountdown() {
-        const nowNY = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
-        const nextFriday = new Date(nowNY);
-        const dayDiff = (5 - nowNY.getDay() + 7) % 7;
-        nextFriday.setDate(nowNY.getDate() + dayDiff);
-        nextFriday.setHours(15, 30, 0, 0);
-
-        if (nowNY.getDay() === 5 && nowNY.getTime() >= nextFriday.getTime()) {
-          nextFriday.setDate(nextFriday.getDate() + 7);
-        }
-
-        const diff = Math.max(0, nextFriday.getTime() - nowNY.getTime());
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const releaseDate = nextFriday.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-        el.nextReport.textContent = `Next COT: ${d}d ${h}h ${m}m (${releaseDate} 3:30 PM ET)`;
+      function setLoading(flag) {
+        state.loading = flag;
+        el.syncBtn.disabled = flag;
+        el.syncBtn.textContent = flag ? "Syncing..." : "Sync";
       }
 
       function setChartMode(mode) {
-        state.chartMode = mode;
-        localStorage.setItem("cot_chart_mode", mode);
-        el.modeTrend.classList.toggle("active", mode === "trend");
-        el.modeCompare.classList.toggle("active", mode === "compare");
+        state.chartMode = mode === "shift" ? "shift" : "trend";
+        localStorage.setItem("glance_chart_mode", state.chartMode);
+        el.modeTrend.classList.toggle("active", state.chartMode === "trend");
+        el.modeShift.classList.toggle("active", state.chartMode === "shift");
       }
 
-      function setRefreshState(isRefreshing) {
-        state.isRefreshing = isRefreshing;
-        el.refreshBtn.disabled = isRefreshing;
-        el.refreshBtn.textContent = isRefreshing ? "Syncing..." : "Sync Now";
+      function setNewsFilter(mode) {
+        state.newsFilter = mode === "all" ? "all" : "usd";
+        localStorage.setItem("glance_news_filter", state.newsFilter);
+        el.rfUsd.classList.toggle("active", state.newsFilter === "usd");
+        el.rfAll.classList.toggle("active", state.newsFilter === "all");
       }
 
-      function setNewsFilter(filter) {
-        state.newsFilter = filter === "all" ? "all" : "usd";
-        localStorage.setItem("cot_news_filter", state.newsFilter);
-        el.newsUsd.classList.toggle("active", state.newsFilter === "usd");
-        el.newsAll.classList.toggle("active", state.newsFilter === "all");
-      }
-
-      function fmtEventTime(isoUtc, fallbackDate, fallbackTime) {
-        if (!isoUtc) {
-          return [fallbackDate || "-", fallbackTime || "Tentative"].join(" ");
+      function updateNextCotCountdown() {
+        const nowNY = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+        const next = new Date(nowNY);
+        const dayDiff = (5 - nowNY.getDay() + 7) % 7;
+        next.setDate(nowNY.getDate() + dayDiff);
+        next.setHours(15, 30, 0, 0);
+        if (nowNY.getDay() === 5 && nowNY.getTime() >= next.getTime()) {
+          next.setDate(next.getDate() + 7);
         }
-        const date = new Date(isoUtc);
-        if (Number.isNaN(date.getTime())) {
-          return [fallbackDate || "-", fallbackTime || "Tentative"].join(" ");
-        }
-        return date.toLocaleString(undefined, {
-          weekday: "short",
-          month: "short",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-        });
+        const diff = Math.max(0, next.getTime() - nowNY.getTime());
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        el.chipNextCot.textContent = `Next COT ${d}d ${h}h ${m}m`;
       }
 
-      function renderNewsList(node, items) {
-        node.innerHTML = items
-          .map((event) => {
-            const when = fmtEventTime(event.datetime_utc, event.date, event.time);
-            return `
-              <li class="news-item">
-                <div class="news-time">${when}</div>
-                <div class="news-title">
-                  <span class="news-country">${event.country || "--"}</span>${event.title || "Untitled event"}
-                </div>
-              </li>
-            `;
-          })
-          .join("");
-      }
-
-      function biasClass(score) {
-        if (score > 0) return "up";
-        if (score < 0) return "down";
-        return "flat";
-      }
-
-      function applyDeltaStyle(node, value) {
-        node.classList.remove("up", "down", "flat");
-        node.classList.add(biasClass(Number(value) || 0));
-      }
-
-      function renderTabs() {
+      function buildTabs() {
         const markets = state.snapshot?.markets || {};
-        const keys = MARKET_ORDER.filter((key) => markets[key]).concat(
-          Object.keys(markets).filter((key) => !MARKET_ORDER.includes(key))
-        );
-
-        el.tabs.innerHTML = "";
-        keys.forEach((key) => {
+        el.marketTabs.innerHTML = "";
+        MARKET_ORDER.forEach((key) => {
           const market = markets[key];
-          const button = document.createElement("button");
-          button.className = `tab ${key === state.activeMarket ? "active" : ""}`;
-          button.textContent = market?.label || key;
-          button.addEventListener("click", () => {
+          if (!market) return;
+          const btn = document.createElement("button");
+          btn.className = `tab ${key === state.activeMarket ? "active" : ""}`;
+          btn.textContent = market.label;
+          btn.addEventListener("click", () => {
             state.activeMarket = key;
-            renderDashboard();
+            render();
           });
-          el.tabs.appendChild(button);
+          el.marketTabs.appendChild(btn);
         });
       }
 
-      function renderBiasMeter(score) {
-        const clamped = Math.max(-100, Math.min(100, Number(score) || 0));
-        const position = (clamped + 100) / 2;
-        const start = Math.min(position, 50);
-        const end = Math.max(position, 50);
-
-        el.biasFill.style.left = `${start}%`;
-        el.biasFill.style.width = `${end - start}%`;
-        el.biasMarker.style.left = `${position}%`;
-        el.biasFill.style.background =
-          clamped >= 0
-            ? "linear-gradient(90deg, rgba(56,189,248,0.75), rgba(34,197,94,0.75))"
-            : "linear-gradient(90deg, rgba(248,113,113,0.82), rgba(239,68,68,0.82))";
+      function getUpcomingNews() {
+        const rf = state.snapshot?.news?.red_folder || {};
+        const list = Array.isArray(rf.upcoming_high_impact) ? rf.upcoming_high_impact : [];
+        const filtered = state.newsFilter === "usd" ? list.filter((e) => e.country === "USD") : list;
+        return filtered;
       }
 
-      function renderTopCards(market) {
-        const latest = market.latest || {};
-        const bias = market.bias || {};
-        const intraday = market.intraday || {};
+      function renderSetup(market) {
+        const score = Number(market?.bias?.score || 0);
+        const chg = Number(market?.intraday?.change_pct || 0);
+        let title = "Balanced";
+        let text = "Wait for clean break or rejection. Keep size tight.";
+
+        if (score >= 20) {
+          title = "Bullish Week";
+          text = "Prefer long setups. Buy dips, avoid shorting random red candles.";
+        } else if (score <= -20) {
+          title = "Bearish Week";
+          text = "Prefer short setups. Sell pops, avoid chasing low-probability longs.";
+        }
+
+        if (Math.abs(chg) > 1.2) {
+          text += " Volatility expanded today.";
+        }
+
+        el.setupTitle.textContent = title;
+        el.setupText.textContent = text;
+      }
+
+      function renderCards(market) {
+        const bias = market?.bias || {};
+        const intra = market?.intraday || {};
+        const latest = market?.latest || {};
 
         const score = Number(bias.score || 0);
+        const scoreClass = toneClass(score);
         el.biasLabel.textContent = bias.label || "Neutral";
-        el.biasScore.textContent = `Score ${fmtSigned(score, 1)} | Conviction ${fmtNumber(bias.conviction || 0, 0)}%`;
-        applyDeltaStyle(el.biasScore, score);
-        renderBiasMeter(score);
+        el.biasScore.className = `delta mono ${scoreClass}`;
+        el.biasScore.textContent = `Score ${fmtSigned(score, 1)} | Conviction ${fmtNum(bias.conviction || 0, 0)}%`;
+        el.biasMini.textContent = `Asset pct ${fmtNum(bias.asset_percentile || 0, 1)} | Lev pct ${fmtNum(bias.leveraged_percentile || 0, 1)}`;
 
-        if (intraday.error) {
-          el.intradayLast.textContent = "Intraday unavailable";
-          el.intradayChange.textContent = intraday.error;
-          el.intradayLow.textContent = "Low -";
-          el.intradayHigh.textContent = "High -";
-          el.rangeFill.style.width = "0%";
-          el.rangeMarker.style.left = "0%";
-          el.intradayChange.className = "delta mono flat";
+        const marker = Math.max(0, Math.min(100, ((score + 100) / 200) * 100));
+        el.biasMarker.style.left = `${marker}%`;
+
+        const ticker = intra.symbol || ETF[state.activeMarket] || "--";
+        el.priceLast.textContent = `${ticker} ${fmtNum(intra.last, 2)}`;
+        const pc = Number(intra.change_pct || 0);
+        el.priceChange.className = `delta mono ${toneClass(pc)}`;
+        el.priceChange.textContent = `${fmtSigned(intra.change, 2)} (${fmtSigned(pc, 2, "%")})`;
+        el.priceState.textContent = intra.market_state ? `State ${intra.market_state}` : "State --";
+
+        const rp = Math.max(0, Math.min(100, Number(intra.range_position_pct || 0)));
+        el.rangePos.textContent = `${fmtNum(rp, 1)}%`;
+        el.rangeFill.style.width = `${rp}%`;
+        el.rangeMarker.style.left = `${rp}%`;
+        el.rangeLow.textContent = `Low ${fmtNum(intra.day_low, 2)}`;
+        el.rangeHigh.textContent = `High ${fmtNum(intra.day_high, 2)}`;
+
+        const news = getUpcomingNews();
+        const next = news[0];
+        if (next) {
+          el.nextNewsTitle.textContent = `${next.country || "--"} ${next.title || "Event"}`;
+          el.nextNewsTime.textContent = fmtTime(next.datetime_utc || `${next.date} ${next.time}`);
+          el.nextNewsMeta.textContent = `${news.length} upcoming (${state.newsFilter.toUpperCase()})`;
         } else {
-          const changePct = Number(intraday.change_pct || 0);
-          el.intradayLast.textContent = `${intraday.symbol || MARKET_ETF[state.activeMarket] || "-"} ${fmtNumber(intraday.last, 2)}`;
-          el.intradayChange.textContent = `${fmtSigned(intraday.change, 2)} (${fmtSigned(changePct, 2, "%")})`;
-          applyDeltaStyle(el.intradayChange, changePct);
-          el.intradayLow.textContent = `Low ${fmtNumber(intraday.day_low, 2)}`;
-          el.intradayHigh.textContent = `High ${fmtNumber(intraday.day_high, 2)}`;
-          const pos = Math.max(0, Math.min(100, Number(intraday.range_position_pct || 0)));
-          el.rangeFill.style.width = `${pos}%`;
-          el.rangeMarker.style.left = `${pos}%`;
+          el.nextNewsTitle.textContent = "No upcoming red-folder";
+          el.nextNewsTime.textContent = "--";
+          el.nextNewsMeta.textContent = "No event risk in filter";
         }
 
-        el.assetNet.textContent = `Asset ${fmtNumber(latest.asset_mgr_net)}`;
-        el.assetChange.textContent = `Wk Δ ${fmtSigned(latest.asset_mgr_change)}`;
-        applyDeltaStyle(el.assetChange, latest.asset_mgr_change || 0);
-
-        el.leveragedNet.textContent = `Lev ${fmtNumber(latest.leveraged_net)}`;
-        el.leveragedChange.textContent = `Wk Δ ${fmtSigned(latest.leveraged_change)}`;
-        applyDeltaStyle(el.leveragedChange, latest.leveraged_change || 0);
-
-        el.openInterestLine.textContent = `OI ${fmtNumber(latest.open_interest)} | Wk Δ ${fmtSigned(latest.open_interest_change)}`;
-        applyDeltaStyle(el.openInterestLine, latest.open_interest_change || 0);
-      }
-
-      function renderIntradayPanel(market) {
-        const intraday = market.intraday || {};
-        const bias = market.bias || {};
-        const ticker = intraday.symbol || MARKET_ETF[state.activeMarket] || "-";
-
-        el.intradayTitle.textContent = `${market.label} Intraday (${ticker})`;
-        el.intradaySubtitle.textContent = intraday.error
-          ? "Intraday feed unavailable right now"
-          : `Market state: ${intraday.market_state || "Unknown"} | Last tick: ${fmtDateTime(intraday.regular_market_time_utc || intraday.as_of_utc)}`;
-
-        el.miniOpen.textContent = fmtNumber(intraday.day_open, 2);
-        el.miniRangePos.textContent = `${fmtNumber(intraday.range_position_pct, 1)}%`;
-        el.miniVolume.textContent = fmtNumber(intraday.day_volume || 0);
-        el.miniState.textContent = intraday.market_state || "-";
-        el.miniAssetPct.textContent = `${fmtNumber(bias.asset_percentile || 0, 1)} pct`;
-        el.miniLevPct.textContent = `${fmtNumber(bias.leveraged_percentile || 0, 1)} pct`;
+        el.chipReport.textContent = `Report ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
+        el.chipIntraday.textContent = `Intraday ${fmtTime(intra.as_of_utc || state.snapshot.generated_at_utc)}`;
       }
 
       function renderIntradayChart(market) {
-        const intraday = market.intraday || {};
-        const bars = Array.isArray(intraday.bars) ? intraday.bars : [];
-
-        if (bars.length < 2 || intraday.error) {
-          const layout = {
-            margin: { l: 40, r: 18, t: 14, b: 30 },
-            paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(9,19,43,0.9)",
-            font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
-            annotations: [
-              {
-                text: "Intraday bars unavailable",
-                xref: "paper",
-                yref: "paper",
-                x: 0.5,
-                y: 0.5,
-                showarrow: false,
-                font: { size: 13, color: "#93a7ce" },
-              },
-            ],
-            xaxis: { visible: false },
-            yaxis: { visible: false },
-          };
-          Plotly.react("intraday-chart", [], layout, { displayModeBar: false, responsive: true });
+        const intra = market?.intraday || {};
+        const bars = Array.isArray(intra.bars) ? intra.bars : [];
+        if (bars.length < 2 || intra.error) {
+          Plotly.react(
+            "intraday-chart",
+            [],
+            {
+              margin: { l: 30, r: 10, t: 10, b: 24 },
+              paper_bgcolor: "rgba(0,0,0,0)",
+              plot_bgcolor: "rgba(10,20,44,0.85)",
+              font: { family: "Sora, sans-serif", color: "#d7e6ff" },
+              annotations: [
+                { text: "No intraday bars", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false },
+              ],
+              xaxis: { visible: false },
+              yaxis: { visible: false },
+            },
+            { displayModeBar: false, responsive: true }
+          );
           return;
         }
 
-        const x = bars.map((bar) => bar.t);
-        const y = bars.map((bar) => bar.c);
-        const delta = Number(intraday.change_pct || 0);
-        const lineColor = delta >= 0 ? "#22c55e" : "#ef4444";
+        const x = bars.map((b) => b.t);
+        const y = bars.map((b) => b.c);
+        const bullish = Number(intra.change_pct || 0) >= 0;
+        const color = bullish ? "#22c55e" : "#ef4444";
 
-        const traces = [
+        Plotly.react(
+          "intraday-chart",
+          [
+            {
+              type: "scatter",
+              mode: "lines",
+              x,
+              y,
+              line: { color, width: 3 },
+              fill: "tozeroy",
+              fillcolor: bullish ? "rgba(34,197,94,0.18)" : "rgba(239,68,68,0.18)",
+              hovertemplate: "%{x}<br>%{y:.2f}<extra></extra>",
+            },
+          ],
           {
-            type: "scatter",
-            mode: "lines",
-            x,
-            y,
-            line: { color: lineColor, width: 2.6 },
-            fill: "tozeroy",
-            fillcolor: delta >= 0 ? "rgba(34,197,94,0.14)" : "rgba(239,68,68,0.14)",
-            hovertemplate: "%{x}<br>%{y:.2f}<extra></extra>",
+            margin: { l: 42, r: 12, t: 8, b: 28 },
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(10,20,44,0.85)",
+            font: { family: "Sora, sans-serif", color: "#d7e6ff" },
+            hovermode: "x unified",
+            xaxis: { type: "date", tickformat: "%H:%M", gridcolor: "rgba(120,150,205,0.16)" },
+            yaxis: { gridcolor: "rgba(120,150,205,0.2)", zeroline: false },
           },
-        ];
-
-        const layout = {
-          margin: { l: 45, r: 16, t: 12, b: 34 },
-          paper_bgcolor: "rgba(0,0,0,0)",
-          plot_bgcolor: "rgba(9,19,43,0.9)",
-          font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
-          hovermode: "x unified",
-          xaxis: {
-            type: "date",
-            gridcolor: "rgba(110, 143, 201, 0.17)",
-            tickformat: "%H:%M",
-          },
-          yaxis: {
-            gridcolor: "rgba(110, 143, 201, 0.22)",
-            zeroline: false,
-          },
-        };
-
-        Plotly.react("intraday-chart", traces, layout, { displayModeBar: false, responsive: true });
+          { displayModeBar: false, responsive: true }
+        );
       }
 
-      function renderBiasComponents(market) {
-        const components = market.bias?.components || {};
-        const list = [
-          ["Institutional Pressure", Number(components.institutional_pressure || 0)],
-          ["Fast Money Pressure", Number(components.fast_money_pressure || 0)],
-          ["Institutional Momentum", Number(components.institutional_momentum || 0)],
-          ["Fast Money Momentum", Number(components.fast_money_momentum || 0)],
-          ["Alignment", Number(components.alignment || 0)],
-        ];
+      function renderWeeklyChart(market) {
+        const history = Array.isArray(market.history) ? market.history : [];
+        if (history.length < 2) {
+          Plotly.react(
+            "weekly-chart",
+            [],
+            {
+              margin: { l: 30, r: 10, t: 10, b: 24 },
+              paper_bgcolor: "rgba(0,0,0,0)",
+              plot_bgcolor: "rgba(10,20,44,0.85)",
+              annotations: [
+                { text: "No weekly rows", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false },
+              ],
+              xaxis: { visible: false },
+              yaxis: { visible: false },
+            },
+            { displayModeBar: false, responsive: true }
+          );
+          return;
+        }
 
-        el.biasComponents.innerHTML = list
-          .map(([label, value]) => {
-            const width = Math.max(1, Math.min(100, Math.abs(value)));
-            const cls = value >= 0 ? "up" : "down";
+        if (state.chartMode === "shift") {
+          const latest = history[history.length - 1];
+          const prev = history[history.length - 2];
+          const labels = ["Asset", "Leveraged", "OI"];
+          const vals = [
+            Number(latest.asset_mgr_net || 0) - Number(prev.asset_mgr_net || 0),
+            Number(latest.leveraged_net || 0) - Number(prev.leveraged_net || 0),
+            Number(latest.open_interest || 0) - Number(prev.open_interest || 0),
+          ];
+          const colors = vals.map((v) => (v >= 0 ? "rgba(34,197,94,0.9)" : "rgba(239,68,68,0.9)"));
+
+          Plotly.react(
+            "weekly-chart",
+            [
+              {
+                type: "bar",
+                x: labels,
+                y: vals,
+                marker: { color: colors, line: { color: "rgba(8,14,30,1)", width: 1 } },
+                text: vals.map((v) => fmtSigned(v)),
+                textposition: "outside",
+                hovertemplate: "%{x} Δ %{y:,}<extra></extra>",
+              },
+            ],
+            {
+              margin: { l: 42, r: 12, t: 20, b: 36 },
+              paper_bgcolor: "rgba(0,0,0,0)",
+              plot_bgcolor: "rgba(10,20,44,0.85)",
+              font: { family: "Sora, sans-serif", color: "#d7e6ff" },
+              yaxis: { gridcolor: "rgba(120,150,205,0.2)", zerolinecolor: "rgba(150,170,220,0.45)" },
+              annotations: [
+                {
+                  text: `${fmtDate(prev.report_date)} → ${fmtDate(latest.report_date)}`,
+                  x: 0,
+                  y: 1.14,
+                  xref: "paper",
+                  yref: "paper",
+                  showarrow: false,
+                  font: { size: 11, color: "#9db4df" },
+                },
+              ],
+            },
+            { displayModeBar: false, responsive: true }
+          );
+          return;
+        }
+
+        const x = history.map((h) => h.report_date);
+        const asset = history.map((h) => h.asset_mgr_net);
+        const lev = history.map((h) => h.leveraged_net);
+
+        Plotly.react(
+          "weekly-chart",
+          [
+            { type: "scatter", mode: "lines", x, y: asset, name: "Asset", line: { color: "#f59e0b", width: 3 } },
+            { type: "scatter", mode: "lines", x, y: lev, name: "Leveraged", line: { color: "#38bdf8", width: 3 } },
+          ],
+          {
+            margin: { l: 42, r: 12, t: 10, b: 30 },
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(10,20,44,0.85)",
+            font: { family: "Sora, sans-serif", color: "#d7e6ff" },
+            hovermode: "x unified",
+            legend: { orientation: "h", y: 1.12, x: 0 },
+            xaxis: { type: "date", tickformat: "%b %Y", gridcolor: "rgba(120,150,205,0.16)" },
+            yaxis: { gridcolor: "rgba(120,150,205,0.2)", zerolinecolor: "rgba(150,170,220,0.45)" },
+          },
+          { displayModeBar: false, responsive: true }
+        );
+      }
+
+      function renderNewsStrip() {
+        const rf = state.snapshot?.news?.red_folder || {};
+        const all = Array.isArray(rf.upcoming_high_impact) ? rf.upcoming_high_impact : [];
+        const list = state.newsFilter === "usd" ? all.filter((e) => e.country === "USD") : all;
+        const show = list.slice(0, 8);
+
+        const fetched = rf.fetched_at_utc ? fmtTime(rf.fetched_at_utc) : "--";
+        el.rfMeta.textContent = `${list.length} events • filter ${state.newsFilter.toUpperCase()} • feed ${fetched}`;
+
+        if (!show.length) {
+          el.rfStrip.innerHTML = `<div class="rf-card"><div class="rf-title">No high-impact events in this filter.</div></div>`;
+          return;
+        }
+
+        el.rfStrip.innerHTML = show
+          .map((e) => {
+            const t = e.datetime_utc ? fmtTime(e.datetime_utc) : `${e.date || "--"} ${e.time || "--"}`;
             return `
-              <div class="component-row">
-                <div class="component-head">
-                  <span>${label}</span>
-                  <span class="mono ${cls}">${fmtSigned(value, 1)}</span>
-                </div>
-                <div class="component-bar">
-                  <span class="component-fill ${cls}" style="left: ${value >= 0 ? 50 : 50 - width / 2}%; width: ${width / 2}%"></span>
-                </div>
-              </div>
+              <article class="rf-card">
+                <div class="rf-time">${t}</div>
+                <div class="rf-title"><span class="cc">${e.country || "--"}</span>${e.title || "Event"}</div>
+              </article>
             `;
           })
           .join("");
       }
 
-      function buildTradeLines(market) {
-        const bias = market.bias || {};
-        const intraday = market.intraday || {};
-        const score = Number(bias.score || 0);
-        const changePct = Number(intraday.change_pct || 0);
-        const rangePos = Number(intraday.range_position_pct || 50);
-
-        const lines = [];
-        lines.push(bias.playbook || "Use weekly bias as your direction filter.");
-
-        if (score >= 15 && changePct < 0) {
-          lines.push("Long bias + red session: watch for dip holds and reclaim setups.");
-        } else if (score <= -15 && changePct > 0) {
-          lines.push("Short bias + green session: watch for failed bounces to fade.");
-        } else {
-          lines.push("Bias and session are aligned; continuation setups have better odds.");
-        }
-
-        if (rangePos >= 80) {
-          lines.push("Price is near session highs; avoid chasing late unless trend is expanding.");
-        } else if (rangePos <= 20) {
-          lines.push("Price is near session lows; wait for reversal signal or clean breakdown.");
-        } else {
-          lines.push("Price is mid-range; prefer breakout-confirmation or fade-at-extremes entries.");
-        }
-
-        return lines;
-      }
-
-      function renderPlaybook(market) {
-        el.tradeList.innerHTML = buildTradeLines(market)
-          .map((line) => `<li>${line}</li>`)
-          .join("");
-      }
-
-      function renderPositioningChart(market) {
-        const history = Array.isArray(market.history) ? market.history.slice() : [];
-        if (state.chartMode === "compare") {
-          if (history.length < 2) {
-            const layout = {
-              margin: { l: 40, r: 18, t: 14, b: 34 },
-              paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(9,19,43,0.87)",
-              font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
-              annotations: [
-                {
-                  text: "Need at least 2 weekly rows for comparison view",
-                  xref: "paper",
-                  yref: "paper",
-                  x: 0.5,
-                  y: 0.5,
-                  showarrow: false,
-                  font: { size: 13, color: "#93a7ce" },
-                },
-              ],
-              xaxis: { visible: false },
-              yaxis: { visible: false },
-            };
-            Plotly.react("positioning-chart", [], layout, { displayModeBar: false, responsive: true });
-            return;
-          }
-
-          const latest = history[history.length - 1];
-          const previous = history[history.length - 2];
-
-          const labels = ["Asset Managers", "Leveraged Funds", "Open Interest"];
-          const deltas = [
-            Number(latest.asset_mgr_net || 0) - Number(previous.asset_mgr_net || 0),
-            Number(latest.leveraged_net || 0) - Number(previous.leveraged_net || 0),
-            Number(latest.open_interest || 0) - Number(previous.open_interest || 0),
-          ];
-          const colors = deltas.map((v) => (v >= 0 ? "rgba(34,197,94,0.85)" : "rgba(239,68,68,0.85)"));
-
-          const traces = [
-            {
-              type: "bar",
-              x: labels,
-              y: deltas,
-              marker: { color: colors, line: { color: "rgba(13, 20, 42, 1)", width: 1 } },
-              text: deltas.map((v) => fmtSigned(v)),
-              textposition: "outside",
-              cliponaxis: false,
-              hovertemplate: "%{x}<br>Weekly Δ %{y:,}<extra></extra>",
-            },
-          ];
-
-          const layout = {
-            margin: { l: 48, r: 24, t: 24, b: 50 },
-            paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(9,19,43,0.87)",
-            font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
-            hovermode: "x",
-            yaxis: {
-              title: "Weekly Change (contracts)",
-              gridcolor: "rgba(110, 143, 201, 0.24)",
-              zerolinecolor: "rgba(140, 170, 220, 0.5)",
-            },
-            xaxis: {
-              tickfont: { size: 12 },
-            },
-            annotations: [
-              {
-                text: `Comparison: ${fmtDate(previous.report_date)} → ${fmtDate(latest.report_date)}`,
-                xref: "paper",
-                yref: "paper",
-                x: 0,
-                y: 1.16,
-                showarrow: false,
-                font: { size: 12, color: "#93a7ce" },
-              },
-            ],
-          };
-
-          Plotly.react("positioning-chart", traces, layout, { displayModeBar: false, responsive: true });
-          return;
-        }
-
-        const dates = history.map((row) => row.report_date);
-        const asset = history.map((row) => row.asset_mgr_net);
-        const leveraged = history.map((row) => row.leveraged_net);
-        const oi = history.map((row) => row.open_interest);
-
-        const assetMA = history.map((_, i) => {
-          const start = Math.max(0, i - 12);
-          const chunk = history.slice(start, i + 1).map((row) => Number(row.asset_mgr_net || 0));
-          return chunk.reduce((a, b) => a + b, 0) / chunk.length;
-        });
-
-        const traces = [
-          {
-            type: "scatter",
-            mode: "lines",
-            name: "Asset Managers Net",
-            x: dates,
-            y: asset,
-            line: { color: "#f59e0b", width: 2.7 },
-          },
-          {
-            type: "scatter",
-            mode: "lines",
-            name: "Asset 13w Avg",
-            x: dates,
-            y: assetMA,
-            line: { color: "#fbbf24", width: 1.7, dash: "dot" },
-          },
-          {
-            type: "scatter",
-            mode: "lines",
-            name: "Leveraged Net",
-            x: dates,
-            y: leveraged,
-            line: { color: "#38bdf8", width: 2.5 },
-          },
-          {
-            type: "bar",
-            name: "Open Interest",
-            x: dates,
-            y: oi,
-            yaxis: "y2",
-            marker: { color: "rgba(226,232,240,0.23)" },
-          },
-        ];
-
-        const layout = {
-          margin: { l: 48, r: 54, t: 16, b: 38 },
-          paper_bgcolor: "rgba(0,0,0,0)",
-          plot_bgcolor: "rgba(9,19,43,0.87)",
-          font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
-          legend: { orientation: "h", y: 1.12, x: 0 },
-          hovermode: "x unified",
-          yaxis: {
-            title: "Net Contracts",
-            gridcolor: "rgba(110, 143, 201, 0.24)",
-            zerolinecolor: "rgba(140, 170, 220, 0.5)",
-          },
-          yaxis2: {
-            title: "Open Interest",
-            overlaying: "y",
-            side: "right",
-            showgrid: false,
-          },
-          xaxis: {
-            type: "date",
-            tickformat: "%b %Y",
-            gridcolor: "rgba(110, 143, 201, 0.17)",
-          },
-        };
-
-        Plotly.react("positioning-chart", traces, layout, { displayModeBar: false, responsive: true });
-      }
-
-      function renderHistoryTable(market) {
-        const history = Array.isArray(market.history) ? market.history.slice(-12).reverse() : [];
-        el.historyBody.innerHTML = history
-          .map(
-            (row) => `
-              <tr>
-                <td>${fmtDate(row.report_date)}</td>
-                <td class="align-right mono">${fmtNumber(row.asset_mgr_net)}</td>
-                <td class="align-right mono">${fmtNumber(row.leveraged_net)}</td>
-                <td class="align-right mono">${fmtNumber(row.open_interest)}</td>
-              </tr>
-            `
-          )
-          .join("");
-      }
-
-      function renderContextAlert(market) {
-        const bias = market.bias || {};
-        const intraday = market.intraday || {};
-        const score = Number(bias.score || 0);
-        const changePct = Number(intraday.change_pct || 0);
-        const rangePos = Number(intraday.range_position_pct || 50);
-
-        let title = "Neutral Setup";
-        let text = "Let intraday structure decide direction and avoid over-sizing in the middle of range.";
-
-        if (score >= 20) {
-          title = "Bullish Weekly Bias";
-          text = "Prefer longs on pullbacks into support. If a session is red inside bullish bias, look for reclaim setups instead of chasing breakdowns.";
-        } else if (score <= -20) {
-          title = "Bearish Weekly Bias";
-          text = "Prefer short setups on failed bounces. If sessions squeeze green, wait for rejection at resistance before re-shorting.";
-        }
-
-        if (rangePos >= 80) {
-          text += " Price is at upper range; expect either breakout follow-through or sharp mean reversion.";
-        } else if (rangePos <= 20) {
-          text += " Price is at lower range; watch for flush-and-reclaim vs trend continuation.";
-        }
-
-        if (Math.abs(changePct) > 1.2) {
-          text += " Session volatility is expanded today; tighten confirmation rules.";
-        }
-
-        el.contextAlertTitle.textContent = title;
-        el.contextAlertText.textContent = text;
-      }
-
-      function renderRedFolderPanel() {
-        const redFolder = state.snapshot?.news?.red_folder || {};
-        if (redFolder.error) {
-          el.newsMeta.textContent = `Feed error: ${redFolder.error}`;
-          el.newsNext24.innerHTML = "";
-          el.newsWeek.innerHTML = "";
-          el.newsNext24Empty.style.display = "block";
-          el.newsWeekEmpty.style.display = "block";
-          return;
-        }
-
-        const filterUsd = state.newsFilter === "usd";
-        const next24Base = Array.isArray(redFolder.next_24h_high_impact) ? redFolder.next_24h_high_impact : [];
-        const weekBase = Array.isArray(redFolder.upcoming_high_impact) ? redFolder.upcoming_high_impact : [];
-
-        const applyFilter = (events) => {
-          if (!filterUsd) return events;
-          return events.filter((event) => event.country === "USD");
-        };
-
-        const next24 = applyFilter(next24Base).slice(0, 8);
-        const next24Iso = new Set(next24.map((event) => event.datetime_utc || `${event.date}-${event.time}-${event.title}`));
-        const week = applyFilter(weekBase)
-          .filter((event) => !next24Iso.has(event.datetime_utc || `${event.date}-${event.time}-${event.title}`))
-          .slice(0, 10);
-
-        const fetchedAt = redFolder.fetched_at_utc ? fmtDateTime(redFolder.fetched_at_utc) : "-";
-        const upcomingCount = filterUsd
-          ? Number(redFolder.upcoming_usd_high_impact_count || 0)
-          : Number(redFolder.upcoming_high_impact_count || 0);
-        const scope = filterUsd ? "USD red-folder" : "all red-folder";
-        el.newsMeta.textContent = `${upcomingCount} upcoming ${scope} events. Feed time: ${fetchedAt}`;
-
-        renderNewsList(el.newsNext24, next24);
-        renderNewsList(el.newsWeek, week);
-
-        el.newsNext24Empty.style.display = next24.length ? "none" : "block";
-        el.newsWeekEmpty.style.display = week.length ? "none" : "block";
-      }
-
-      function renderContext(market) {
-        const bias = market.bias || {};
-        const intraday = market.intraday || {};
-        const redFolder = state.snapshot?.news?.red_folder || {};
-        const newsBase = state.newsFilter === "usd" ? redFolder.upcoming_usd_high_impact : redFolder.upcoming_high_impact;
-        const nextNews = Array.isArray(newsBase) && newsBase.length ? newsBase[0] : null;
-        const nextNewsText = nextNews
-          ? `${nextNews.country || "--"} ${nextNews.title || "Event"} at ${fmtEventTime(nextNews.datetime_utc, nextNews.date, nextNews.time)}.`
-          : "No high-impact events queued in selected filter.";
-        const context = [
-          `Asset managers are in the ${fmtNumber(bias.asset_percentile || 0, 1)} percentile of the last ${state.snapshot.history_weeks} weeks.`,
-          `Leveraged funds are in the ${fmtNumber(bias.leveraged_percentile || 0, 1)} percentile; 4-week delta is ${fmtSigned(bias.leveraged_4w_delta || 0)} contracts.`,
-          `Open interest 4-week change: ${fmtSigned(bias.open_interest_4w_delta || 0)} contracts.`,
-          `Intraday move: ${fmtSigned(intraday.change_pct || 0, 2, "%")} with range position ${fmtNumber(intraday.range_position_pct || 0, 1)}%.`,
-          `Next red-folder risk: ${nextNewsText}`,
-        ];
-
-        el.contextList.innerHTML = context.map((line) => `<li>${line}</li>`).join("");
-      }
-
       function renderHeader(market) {
-        const bias = market.bias || {};
-        const intraday = market.intraday || {};
-        const score = Number(bias.score || 0);
-
-        el.generatedAt.textContent = `Snapshot generated: ${fmtDateTime(state.snapshot.generated_at_utc)}`;
-        el.latestReport.textContent = `${market.label} report: ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
-        el.intradayUpdated.textContent = `Intraday update: ${fmtDateTime(intraday.as_of_utc || state.snapshot.generated_at_utc)}`;
-
-        el.heroBiasLabel.textContent = `${market.label}: ${bias.label || "Neutral"}`;
-        el.heroBiasScore.textContent = `Score ${fmtSigned(score, 1)} | Conviction ${fmtNumber(bias.conviction || 0, 0)}%`;
-        el.heroBiasPlaybook.textContent = bias.playbook || "Use this bias to select direction each week.";
-        applyDeltaStyle(el.heroBiasScore, score);
-
-        if (state.chartMode === "trend") {
-          el.chartTitle.textContent = `${market.label} Positioning + Weekly Structure`;
-          el.chartSubtitle.textContent = market.market_name || "";
-        } else {
-          el.chartTitle.textContent = `${market.label} Weekly Shift`;
-          el.chartSubtitle.textContent = `Latest report change snapshot (${market.contract_code})`;
-        }
+        el.chipGenerated.textContent = `Generated ${fmtTime(state.snapshot.generated_at_utc)}`;
+        const last = localStorage.getItem("glance_last_sync") || "--";
+        el.chipLastSync.textContent = `Last sync ${last}`;
+        el.intradayTitle.textContent = `${market.label} Intraday (${market.intraday?.symbol || ETF[state.activeMarket] || "--"})`;
+        el.weeklyTitle.textContent = state.chartMode === "trend" ? "Weekly Trend" : "Weekly Shift";
       }
 
-      function renderDashboard() {
+      function render() {
         if (!state.snapshot?.markets) return;
         const market = state.snapshot.markets[state.activeMarket];
         if (!market) return;
 
-        renderTabs();
+        buildTabs();
         renderHeader(market);
-        renderContextAlert(market);
-        renderRedFolderPanel();
-        renderTopCards(market);
-        renderIntradayPanel(market);
+        renderSetup(market);
+        renderCards(market);
         renderIntradayChart(market);
-        renderBiasComponents(market);
-        renderPlaybook(market);
-        renderPositioningChart(market);
-        renderHistoryTable(market);
-        renderContext(market);
+        renderWeeklyChart(market);
+        renderNewsStrip();
       }
 
       async function loadSnapshot(manual = false) {
-        setRefreshState(true);
+        setLoading(true);
         try {
-          const response = await fetch(`./data/cot_snapshot.json?ts=${Date.now()}`, { cache: "no-store" });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-          const payload = await response.json();
-          if (!payload || !payload.markets || Object.keys(payload.markets).length === 0) {
-            throw new Error("Snapshot format is invalid.");
-          }
-
+          const res = await fetch(`./data/cot_snapshot.json?ts=${Date.now()}`, { cache: "no-store" });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const payload = await res.json();
+          if (!payload?.markets) throw new Error("Bad snapshot");
           state.snapshot = payload;
           if (!payload.markets[state.activeMarket]) {
             state.activeMarket = Object.keys(payload.markets)[0];
           }
-
-          el.errorBox.textContent = "";
-          el.errorBox.classList.remove("show");
-          if (manual || !localStorage.getItem("cot_last_synced")) {
-            markSyncedNow();
+          el.error.classList.remove("show");
+          if (manual || !localStorage.getItem("glance_last_sync")) {
+            const now = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+            localStorage.setItem("glance_last_sync", now);
           }
-          renderDashboard();
-        } catch (error) {
-          el.errorBox.textContent = `Failed to load dashboard snapshot. ${error.message}`;
-          el.errorBox.classList.add("show");
+          render();
+        } catch (e) {
+          el.error.textContent = `Failed to load data: ${e.message}`;
+          el.error.classList.add("show");
         } finally {
-          setRefreshState(false);
+          setLoading(false);
         }
       }
 
-      el.refreshBtn.addEventListener("click", () => loadSnapshot(true));
+      el.syncBtn.addEventListener("click", () => loadSnapshot(true));
       el.modeTrend.addEventListener("click", () => {
         setChartMode("trend");
-        if (state.snapshot) {
-          renderDashboard();
-        }
+        if (state.snapshot) render();
       });
-      el.modeCompare.addEventListener("click", () => {
-        setChartMode("compare");
-        if (state.snapshot) {
-          renderDashboard();
-        }
+      el.modeShift.addEventListener("click", () => {
+        setChartMode("shift");
+        if (state.snapshot) render();
       });
-      el.newsUsd.addEventListener("click", () => {
+      el.rfUsd.addEventListener("click", () => {
         setNewsFilter("usd");
-        if (state.snapshot) {
-          renderDashboard();
-        }
+        if (state.snapshot) render();
       });
-      el.newsAll.addEventListener("click", () => {
+      el.rfAll.addEventListener("click", () => {
         setNewsFilter("all");
-        if (state.snapshot) {
-          renderDashboard();
-        }
+        if (state.snapshot) render();
       });
 
-      updateLastSynced();
-      setChartMode(state.chartMode === "compare" ? "compare" : "trend");
-      setNewsFilter(state.newsFilter === "all" ? "all" : "usd");
-      updateNextReportCountdown();
-      setInterval(updateNextReportCountdown, 1000 * 30);
-
+      setChartMode(state.chartMode);
+      setNewsFilter(state.newsFilter);
+      updateNextCotCountdown();
+      setInterval(updateNextCotCountdown, 30000);
       loadSnapshot();
     </script>
   </body>
