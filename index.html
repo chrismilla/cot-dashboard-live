@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COT Index Dashboard</title>
+    <title>COT Trader Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,15 +13,15 @@
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <style>
       :root {
-        --bg: #070b16;
-        --bg-soft: #0f1930;
-        --card: #111d34;
-        --line: #1f2e4c;
-        --text: #e8edf7;
-        --muted: #99a8c7;
-        --up: #36d399;
-        --down: #f87272;
-        --flat: #7c8cad;
+        --bg: #071127;
+        --bg-soft: #0d1b39;
+        --card: #111f40;
+        --line: #24355d;
+        --text: #ecf2ff;
+        --muted: #93a7ce;
+        --up: #22c55e;
+        --down: #ef4444;
+        --neutral: #9ca3af;
         --asset: #f59e0b;
         --leveraged: #38bdf8;
         --oi: #e2e8f0;
@@ -34,61 +34,101 @@
       body {
         margin: 0;
         min-height: 100vh;
-        background:
-          radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.16), transparent 42%),
-          radial-gradient(circle at 92% 16%, rgba(245, 158, 11, 0.16), transparent 38%),
-          var(--bg);
         color: var(--text);
         font-family: "Space Grotesk", sans-serif;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.2), transparent 35%),
+          radial-gradient(circle at 95% 10%, rgba(245, 158, 11, 0.18), transparent 34%),
+          linear-gradient(160deg, #071127 0%, #0a1430 55%, #0e1b3d 100%);
       }
 
       .shell {
-        width: min(1140px, calc(100% - 2rem));
+        width: min(1240px, calc(100% - 1.8rem));
         margin: 0 auto;
-        padding: 2rem 0 3.5rem;
+        padding: 1.4rem 0 2.2rem;
       }
 
       .hero {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 1rem;
         border: 1px solid var(--line);
-        background: linear-gradient(140deg, rgba(17, 29, 52, 0.95), rgba(15, 25, 48, 0.88));
-        border-radius: 24px;
-        padding: 1.5rem;
-        margin-bottom: 1rem;
+        border-radius: 26px;
+        padding: 1.2rem;
+        background: linear-gradient(145deg, rgba(17, 31, 64, 0.95), rgba(8, 19, 45, 0.95));
+        margin-bottom: 0.9rem;
       }
 
       .hero h1 {
-        margin: 0 0 0.45rem;
-        font-size: clamp(1.6rem, 2.5vw, 2.35rem);
+        margin: 0 0 0.35rem;
+        font-size: clamp(1.35rem, 2.6vw, 2.1rem);
         letter-spacing: 0.01em;
       }
 
       .hero p {
         margin: 0;
         color: var(--muted);
-        line-height: 1.5;
       }
 
-      .status-row {
+      .hero-meta {
+        margin-top: 0.8rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-top: 0.9rem;
+        gap: 0.55rem;
       }
 
       .chip {
         border: 1px solid var(--line);
         border-radius: 999px;
-        padding: 0.45rem 0.8rem;
-        background: rgba(15, 25, 48, 0.75);
+        padding: 0.36rem 0.7rem;
+        font-size: 0.78rem;
         color: var(--muted);
-        font-size: 0.86rem;
+        background: rgba(9, 20, 46, 0.75);
+      }
+
+      .hero-bias {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 0.9rem;
+        background: linear-gradient(145deg, rgba(13, 28, 59, 0.95), rgba(10, 20, 46, 0.95));
+      }
+
+      .eyebrow {
+        margin: 0;
+        font-size: 0.73rem;
+        color: var(--muted);
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .hero-bias h2 {
+        margin: 0.35rem 0 0.2rem;
+        font-size: 1.45rem;
+      }
+
+      .hero-bias .mono {
+        font-size: 0.88rem;
+      }
+
+      .error {
+        display: none;
+        border: 1px solid rgba(239, 68, 68, 0.5);
+        background: rgba(239, 68, 68, 0.14);
+        color: #fecaca;
+        border-radius: 12px;
+        padding: 0.7rem 0.9rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .error.show {
+        display: block;
       }
 
       .market-tabs {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.65rem;
-        margin-bottom: 1rem;
+        gap: 0.55rem;
+        margin-bottom: 0.85rem;
       }
 
       .tab {
@@ -96,11 +136,11 @@
         border: 1px solid var(--line);
         color: var(--muted);
         background: var(--bg-soft);
-        border-radius: 12px;
-        padding: 0.6rem 1rem;
+        border-radius: 11px;
+        padding: 0.52rem 0.9rem;
         font-weight: 600;
         cursor: pointer;
-        transition: 120ms ease;
+        transition: 130ms ease;
       }
 
       .tab:hover {
@@ -108,37 +148,37 @@
       }
 
       .tab.active {
-        background: #172a4d;
         color: var(--text);
-        border-color: #3567be;
-        box-shadow: 0 12px 30px rgba(10, 23, 48, 0.45);
+        border-color: #4f7ecd;
+        background: linear-gradient(145deg, #203d76, #142b58);
+        box-shadow: 0 10px 26px rgba(10, 20, 44, 0.45);
       }
 
-      .kpi-grid {
+      .grid-top {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: 1.1fr 1fr 1fr;
         gap: 0.75rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.85rem;
       }
 
       .card {
         border: 1px solid var(--line);
-        background: var(--card);
         border-radius: 18px;
-        padding: 1rem;
+        padding: 0.9rem;
+        background: linear-gradient(180deg, rgba(17, 31, 64, 0.95), rgba(11, 21, 47, 0.95));
       }
 
       .label {
         margin: 0;
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
         color: var(--muted);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
 
       .value {
-        margin: 0.25rem 0;
-        font-size: clamp(1.2rem, 2vw, 1.7rem);
+        margin: 0.25rem 0 0.1rem;
+        font-size: clamp(1.15rem, 2vw, 1.55rem);
         font-weight: 700;
       }
 
@@ -148,107 +188,286 @@
 
       .delta {
         margin: 0;
-        font-size: 0.9rem;
+        font-size: 0.84rem;
         font-family: "IBM Plex Mono", monospace;
       }
 
-      .delta.up {
+      .up {
         color: var(--up);
       }
 
-      .delta.down {
+      .down {
         color: var(--down);
       }
 
-      .delta.flat {
-        color: var(--flat);
+      .flat {
+        color: var(--neutral);
+      }
+
+      .bias-meter {
+        margin-top: 0.65rem;
+        height: 14px;
+        position: relative;
+        border-radius: 999px;
+        border: 1px solid #2a3f6d;
+        background: linear-gradient(90deg, rgba(239, 68, 68, 0.35) 0%, rgba(148, 163, 184, 0.18) 50%, rgba(34, 197, 94, 0.35) 100%);
+        overflow: hidden;
+      }
+
+      .bias-center {
+        position: absolute;
+        top: -1px;
+        bottom: -1px;
+        left: 50%;
+        width: 1px;
+        background: rgba(203, 213, 225, 0.7);
+      }
+
+      .bias-fill {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background: rgba(56, 189, 248, 0.42);
+      }
+
+      .bias-marker {
+        position: absolute;
+        top: -4px;
+        width: 2px;
+        height: 20px;
+        background: #f8fafc;
+        box-shadow: 0 0 10px rgba(248, 250, 252, 0.7);
+      }
+
+      .bias-sub {
+        margin-top: 0.45rem;
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+
+      .range-track {
+        margin-top: 0.45rem;
+        position: relative;
+        height: 12px;
+        border-radius: 999px;
+        border: 1px solid #2a3f6d;
+        background: rgba(148, 163, 184, 0.13);
+      }
+
+      .range-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(34, 197, 94, 0.75), rgba(56, 189, 248, 0.78));
+      }
+
+      .range-marker {
+        position: absolute;
+        top: -4px;
+        width: 2px;
+        height: 20px;
+        background: #f8fafc;
+      }
+
+      .mini-grid {
+        margin-top: 0.65rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.42rem;
+      }
+
+      .mini {
+        border: 1px solid #24365f;
+        border-radius: 10px;
+        padding: 0.45rem;
+        background: rgba(10, 21, 47, 0.85);
+      }
+
+      .mini .k {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.66rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .mini .v {
+        margin: 0.2rem 0 0;
+        font-size: 0.81rem;
+        font-family: "IBM Plex Mono", monospace;
       }
 
       .panel {
         border: 1px solid var(--line);
-        background: linear-gradient(180deg, rgba(17, 29, 52, 0.95), rgba(13, 22, 40, 0.95));
-        border-radius: 24px;
-        padding: 1rem;
-        margin-bottom: 1rem;
+        border-radius: 22px;
+        padding: 0.9rem;
+        background: linear-gradient(180deg, rgba(17, 31, 64, 0.96), rgba(10, 20, 45, 0.96));
+        margin-bottom: 0.85rem;
       }
 
-      .panel h2,
-      .panel h3 {
+      .panel h3,
+      .panel h2 {
         margin: 0;
       }
 
       .subtle {
-        margin-top: 0.4rem;
+        margin-top: 0.25rem;
         color: var(--muted);
-        font-size: 0.9rem;
+        font-size: 0.86rem;
+      }
+
+      .panel-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.95fr;
+        gap: 0.75rem;
+      }
+
+      #intraday-chart {
+        height: 270px;
+        margin-top: 0.55rem;
       }
 
       #positioning-chart {
         height: 430px;
       }
 
+      .component-row {
+        margin-top: 0.62rem;
+      }
+
+      .component-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.45rem;
+        font-size: 0.78rem;
+      }
+
+      .component-bar {
+        margin-top: 0.25rem;
+        height: 10px;
+        position: relative;
+        border-radius: 999px;
+        border: 1px solid #2a3f6d;
+        background: rgba(148, 163, 184, 0.13);
+        overflow: hidden;
+      }
+
+      .component-fill {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+      }
+
+      .component-fill.up {
+        background: linear-gradient(90deg, rgba(34, 197, 94, 0.86), rgba(16, 185, 129, 0.86));
+      }
+
+      .component-fill.down {
+        background: linear-gradient(90deg, rgba(248, 113, 113, 0.86), rgba(239, 68, 68, 0.86));
+      }
+
+      .playbook {
+        margin-top: 0.75rem;
+        border: 1px solid #2a3f6d;
+        border-radius: 12px;
+        padding: 0.65rem;
+        background: rgba(10, 21, 47, 0.82);
+      }
+
+      .playbook p {
+        margin: 0 0 0.45rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .playbook ul {
+        margin: 0;
+        padding-left: 1rem;
+      }
+
+      .playbook li {
+        margin-bottom: 0.35rem;
+        font-size: 0.88rem;
+      }
+
+      .split-bottom {
+        display: grid;
+        grid-template-columns: 1.35fr 0.9fr;
+        gap: 0.75rem;
+      }
+
       .table-wrap {
         overflow-x: auto;
-        margin-top: 0.8rem;
+        margin-top: 0.6rem;
       }
 
       table {
         width: 100%;
-        border-collapse: collapse;
         min-width: 640px;
+        border-collapse: collapse;
       }
 
       th,
       td {
-        text-align: left;
-        padding: 0.7rem 0.5rem;
-        border-top: 1px solid #1d2c4a;
+        padding: 0.62rem 0.45rem;
+        border-top: 1px solid #24365f;
       }
 
       th {
-        font-size: 0.75rem;
+        border-top: none;
+        color: var(--muted);
+        font-size: 0.7rem;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: var(--muted);
-        border-top: none;
-      }
-
-      td.mono {
-        font-family: "IBM Plex Mono", monospace;
       }
 
       .align-right {
         text-align: right;
       }
 
-      .error {
-        display: none;
-        border: 1px solid rgba(248, 113, 113, 0.45);
-        background: rgba(248, 113, 113, 0.1);
-        color: #fecaca;
-        border-radius: 12px;
-        padding: 0.8rem 0.9rem;
-        margin-bottom: 0.9rem;
+      .context-list {
+        margin: 0.55rem 0 0;
+        padding-left: 1rem;
       }
 
-      .error.show {
-        display: block;
+      .context-list li {
+        margin-bottom: 0.45rem;
+        color: #d3def7;
+        font-size: 0.9rem;
       }
 
       footer {
-        color: var(--muted);
-        font-size: 0.8rem;
+        margin-top: 0.4rem;
         text-align: center;
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+
+      @media (max-width: 1040px) {
+        .hero,
+        .grid-top,
+        .panel-grid,
+        .split-bottom {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 760px) {
         .shell {
-          width: min(1140px, calc(100% - 1.2rem));
-          padding-top: 1.2rem;
+          width: min(1240px, calc(100% - 1rem));
+          padding-top: 1rem;
         }
 
         #positioning-chart {
-          height: 340px;
+          height: 345px;
+        }
+
+        #intraday-chart {
+          height: 220px;
         }
       }
     </style>
@@ -256,32 +475,108 @@
   <body>
     <main class="shell">
       <section class="hero">
-        <h1>COT Index Dashboard</h1>
-        <p>Weekly CFTC positioning for Dow Jones, Nasdaq-100, and S&P 500 futures.</p>
-        <div class="status-row">
-          <span class="chip" id="generated-at">Refreshing data...</span>
-          <span class="chip" id="latest-report">Waiting for snapshot...</span>
+        <div>
+          <h1>COT Trader Dashboard</h1>
+          <p>Weekly bias + intraday pulse for Dow, Nasdaq, and S&P setups.</p>
+          <div class="hero-meta">
+            <span class="chip" id="generated-at">Refreshing data...</span>
+            <span class="chip" id="latest-report">Waiting for snapshot...</span>
+            <span class="chip" id="intraday-updated">Intraday update pending...</span>
+          </div>
+        </div>
+        <div class="hero-bias">
+          <p class="eyebrow">Active Weekly Bias</p>
+          <h2 id="hero-bias-label">-</h2>
+          <p class="mono" id="hero-bias-score">Score - | Conviction -</p>
+          <p class="subtle" id="hero-bias-playbook">-</p>
         </div>
       </section>
 
       <div class="error" id="error-box"></div>
       <div class="market-tabs" id="market-tabs"></div>
 
-      <section class="kpi-grid">
+      <section class="grid-top">
         <article class="card">
-          <p class="label">Asset Managers Net</p>
+          <p class="label">Bias Meter</p>
+          <p class="value" id="bias-label">-</p>
+          <p class="delta mono" id="bias-score">-</p>
+          <div class="bias-meter">
+            <span class="bias-center"></span>
+            <span class="bias-fill" id="bias-fill"></span>
+            <span class="bias-marker" id="bias-marker"></span>
+          </div>
+          <div class="bias-sub">
+            <span>Bearish</span>
+            <span>Neutral</span>
+            <span>Bullish</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="label">Intraday Pulse</p>
+          <p class="value mono" id="intraday-last">-</p>
+          <p class="delta mono" id="intraday-change">-</p>
+          <div class="range-track">
+            <span class="range-fill" id="range-fill"></span>
+            <span class="range-marker" id="range-marker"></span>
+          </div>
+          <div class="bias-sub">
+            <span id="intraday-low">Low -</span>
+            <span id="intraday-high">High -</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="label">Positioning Snapshot</p>
           <p class="value mono" id="asset-net">-</p>
-          <p class="delta flat" id="asset-change">-</p>
+          <p class="delta" id="asset-change">-</p>
+          <p class="value mono" style="font-size: 1.05rem" id="leveraged-net">-</p>
+          <p class="delta" id="leveraged-change">-</p>
+          <p class="delta mono flat" id="open-interest-line">-</p>
         </article>
-        <article class="card">
-          <p class="label">Leveraged Funds Net</p>
-          <p class="value mono" id="leveraged-net">-</p>
-          <p class="delta flat" id="leveraged-change">-</p>
+      </section>
+
+      <section class="panel panel-grid">
+        <article>
+          <h3 id="intraday-title">Intraday Structure</h3>
+          <p class="subtle" id="intraday-subtitle">-</p>
+          <div id="intraday-chart"></div>
+          <div class="mini-grid">
+            <div class="mini">
+              <p class="k">Session Open</p>
+              <p class="v" id="mini-open">-</p>
+            </div>
+            <div class="mini">
+              <p class="k">Range Position</p>
+              <p class="v" id="mini-range-pos">-</p>
+            </div>
+            <div class="mini">
+              <p class="k">Volume (1D)</p>
+              <p class="v" id="mini-volume">-</p>
+            </div>
+            <div class="mini">
+              <p class="k">State</p>
+              <p class="v" id="mini-state">-</p>
+            </div>
+            <div class="mini">
+              <p class="k">Asset Percentile</p>
+              <p class="v" id="mini-asset-pctl">-</p>
+            </div>
+            <div class="mini">
+              <p class="k">Lev Percentile</p>
+              <p class="v" id="mini-lev-pctl">-</p>
+            </div>
+          </div>
         </article>
-        <article class="card">
-          <p class="label">Open Interest</p>
-          <p class="value mono" id="open-interest">-</p>
-          <p class="delta flat" id="open-interest-change">-</p>
+
+        <article>
+          <h3>Bias Components</h3>
+          <p class="subtle">Use this as your weekly direction filter.</p>
+          <div id="bias-components"></div>
+          <div class="playbook">
+            <p>Trade Playbook</p>
+            <ul id="trade-list"></ul>
+          </div>
         </article>
       </section>
 
@@ -291,30 +586,40 @@
         <div id="positioning-chart"></div>
       </section>
 
-      <section class="panel">
-        <h3>Latest 12 Reports</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Report Date</th>
-                <th class="align-right">Asset Managers Net</th>
-                <th class="align-right">Leveraged Funds Net</th>
-                <th class="align-right">Open Interest</th>
-              </tr>
-            </thead>
-            <tbody id="history-body"></tbody>
-          </table>
-        </div>
+      <section class="split-bottom">
+        <article class="panel">
+          <h3>Latest 12 Reports</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Report Date</th>
+                  <th class="align-right">Asset Managers Net</th>
+                  <th class="align-right">Leveraged Funds Net</th>
+                  <th class="align-right">Open Interest</th>
+                </tr>
+              </thead>
+              <tbody id="history-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h3>Weekly Context</h3>
+          <p class="subtle">Use these to frame your next 1-5 sessions.</p>
+          <ul class="context-list" id="context-list"></ul>
+        </article>
       </section>
 
       <footer>
-        Source: CFTC Public Reporting (Traders in Financial Futures, disaggregated). Data is as-of Tuesday and published Friday.
+        Sources: CFTC Traders in Financial Futures + Yahoo Finance chart data (5m bars). COT is as-of Tuesday and published Friday.
       </footer>
     </main>
 
     <script>
       const MARKET_ORDER = ["dow_jones", "nasdaq_100", "sp_500"];
+      const MARKET_ETF = { dow_jones: "DIA", nasdaq_100: "QQQ", sp_500: "SPY" };
+
       const state = {
         snapshot: null,
         activeMarket: "dow_jones",
@@ -324,26 +629,53 @@
         tabs: document.getElementById("market-tabs"),
         generatedAt: document.getElementById("generated-at"),
         latestReport: document.getElementById("latest-report"),
+        intradayUpdated: document.getElementById("intraday-updated"),
         errorBox: document.getElementById("error-box"),
-        chartTitle: document.getElementById("chart-title"),
-        chartSubtitle: document.getElementById("chart-subtitle"),
+        heroBiasLabel: document.getElementById("hero-bias-label"),
+        heroBiasScore: document.getElementById("hero-bias-score"),
+        heroBiasPlaybook: document.getElementById("hero-bias-playbook"),
+        biasLabel: document.getElementById("bias-label"),
+        biasScore: document.getElementById("bias-score"),
+        biasFill: document.getElementById("bias-fill"),
+        biasMarker: document.getElementById("bias-marker"),
+        intradayLast: document.getElementById("intraday-last"),
+        intradayChange: document.getElementById("intraday-change"),
+        intradayLow: document.getElementById("intraday-low"),
+        intradayHigh: document.getElementById("intraday-high"),
+        rangeFill: document.getElementById("range-fill"),
+        rangeMarker: document.getElementById("range-marker"),
         assetNet: document.getElementById("asset-net"),
         assetChange: document.getElementById("asset-change"),
         leveragedNet: document.getElementById("leveraged-net"),
         leveragedChange: document.getElementById("leveraged-change"),
-        openInterest: document.getElementById("open-interest"),
-        openInterestChange: document.getElementById("open-interest-change"),
+        openInterestLine: document.getElementById("open-interest-line"),
+        intradayTitle: document.getElementById("intraday-title"),
+        intradaySubtitle: document.getElementById("intraday-subtitle"),
+        miniOpen: document.getElementById("mini-open"),
+        miniRangePos: document.getElementById("mini-range-pos"),
+        miniVolume: document.getElementById("mini-volume"),
+        miniState: document.getElementById("mini-state"),
+        miniAssetPct: document.getElementById("mini-asset-pctl"),
+        miniLevPct: document.getElementById("mini-lev-pctl"),
+        biasComponents: document.getElementById("bias-components"),
+        tradeList: document.getElementById("trade-list"),
+        chartTitle: document.getElementById("chart-title"),
+        chartSubtitle: document.getElementById("chart-subtitle"),
         historyBody: document.getElementById("history-body"),
+        contextList: document.getElementById("context-list"),
       };
 
-      function fmtNumber(value) {
-        return Number(value || 0).toLocaleString();
+      function fmtNumber(value, digits = 0) {
+        const n = Number(value);
+        if (!Number.isFinite(n)) return "-";
+        return n.toLocaleString(undefined, { minimumFractionDigits: digits, maximumFractionDigits: digits });
       }
 
-      function fmtSigned(value) {
-        const n = Number(value || 0);
+      function fmtSigned(value, digits = 0, suffix = "") {
+        const n = Number(value);
+        if (!Number.isFinite(n)) return "-";
         const sign = n > 0 ? "+" : "";
-        return `${sign}${n.toLocaleString()}`;
+        return `${sign}${fmtNumber(n, digits)}${suffix}`;
       }
 
       function fmtDate(dateString) {
@@ -365,11 +697,15 @@
         });
       }
 
+      function biasClass(score) {
+        if (score > 0) return "up";
+        if (score < 0) return "down";
+        return "flat";
+      }
+
       function applyDeltaStyle(node, value) {
         node.classList.remove("up", "down", "flat");
-        if (value > 0) node.classList.add("up");
-        else if (value < 0) node.classList.add("down");
-        else node.classList.add("flat");
+        node.classList.add(biasClass(Number(value) || 0));
       }
 
       function renderTabs() {
@@ -392,46 +728,249 @@
         });
       }
 
-      function renderKpis(market) {
-        const latest = market.latest || {};
-        el.assetNet.textContent = fmtNumber(latest.asset_mgr_net);
-        el.assetChange.textContent = `Weekly change: ${fmtSigned(latest.asset_mgr_change)}`;
-        applyDeltaStyle(el.assetChange, latest.asset_mgr_change || 0);
+      function renderBiasMeter(score) {
+        const clamped = Math.max(-100, Math.min(100, Number(score) || 0));
+        const position = (clamped + 100) / 2;
+        const start = Math.min(position, 50);
+        const end = Math.max(position, 50);
 
-        el.leveragedNet.textContent = fmtNumber(latest.leveraged_net);
-        el.leveragedChange.textContent = `Weekly change: ${fmtSigned(latest.leveraged_change)}`;
-        applyDeltaStyle(el.leveragedChange, latest.leveraged_change || 0);
-
-        el.openInterest.textContent = fmtNumber(latest.open_interest);
-        el.openInterestChange.textContent = `Weekly change: ${fmtSigned(latest.open_interest_change)}`;
-        applyDeltaStyle(el.openInterestChange, latest.open_interest_change || 0);
+        el.biasFill.style.left = `${start}%`;
+        el.biasFill.style.width = `${end - start}%`;
+        el.biasMarker.style.left = `${position}%`;
+        el.biasFill.style.background =
+          clamped >= 0
+            ? "linear-gradient(90deg, rgba(56,189,248,0.75), rgba(34,197,94,0.75))"
+            : "linear-gradient(90deg, rgba(248,113,113,0.82), rgba(239,68,68,0.82))";
       }
 
-      function renderChart(market) {
-        const history = (market.history || []).slice();
+      function renderTopCards(market) {
+        const latest = market.latest || {};
+        const bias = market.bias || {};
+        const intraday = market.intraday || {};
+
+        const score = Number(bias.score || 0);
+        el.biasLabel.textContent = bias.label || "Neutral";
+        el.biasScore.textContent = `Score ${fmtSigned(score, 1)} | Conviction ${fmtNumber(bias.conviction || 0, 0)}%`;
+        applyDeltaStyle(el.biasScore, score);
+        renderBiasMeter(score);
+
+        if (intraday.error) {
+          el.intradayLast.textContent = "Intraday unavailable";
+          el.intradayChange.textContent = intraday.error;
+          el.intradayLow.textContent = "Low -";
+          el.intradayHigh.textContent = "High -";
+          el.rangeFill.style.width = "0%";
+          el.rangeMarker.style.left = "0%";
+          el.intradayChange.className = "delta mono flat";
+        } else {
+          const changePct = Number(intraday.change_pct || 0);
+          el.intradayLast.textContent = `${intraday.symbol || MARKET_ETF[state.activeMarket] || "-"} ${fmtNumber(intraday.last, 2)}`;
+          el.intradayChange.textContent = `${fmtSigned(intraday.change, 2)} (${fmtSigned(changePct, 2, "%")})`;
+          applyDeltaStyle(el.intradayChange, changePct);
+          el.intradayLow.textContent = `Low ${fmtNumber(intraday.day_low, 2)}`;
+          el.intradayHigh.textContent = `High ${fmtNumber(intraday.day_high, 2)}`;
+          const pos = Math.max(0, Math.min(100, Number(intraday.range_position_pct || 0)));
+          el.rangeFill.style.width = `${pos}%`;
+          el.rangeMarker.style.left = `${pos}%`;
+        }
+
+        el.assetNet.textContent = `Asset ${fmtNumber(latest.asset_mgr_net)}`;
+        el.assetChange.textContent = `Wk Δ ${fmtSigned(latest.asset_mgr_change)}`;
+        applyDeltaStyle(el.assetChange, latest.asset_mgr_change || 0);
+
+        el.leveragedNet.textContent = `Lev ${fmtNumber(latest.leveraged_net)}`;
+        el.leveragedChange.textContent = `Wk Δ ${fmtSigned(latest.leveraged_change)}`;
+        applyDeltaStyle(el.leveragedChange, latest.leveraged_change || 0);
+
+        el.openInterestLine.textContent = `OI ${fmtNumber(latest.open_interest)} | Wk Δ ${fmtSigned(latest.open_interest_change)}`;
+        applyDeltaStyle(el.openInterestLine, latest.open_interest_change || 0);
+      }
+
+      function renderIntradayPanel(market) {
+        const intraday = market.intraday || {};
+        const bias = market.bias || {};
+        const ticker = intraday.symbol || MARKET_ETF[state.activeMarket] || "-";
+
+        el.intradayTitle.textContent = `${market.label} Intraday (${ticker})`;
+        el.intradaySubtitle.textContent = intraday.error
+          ? "Intraday feed unavailable right now"
+          : `Market state: ${intraday.market_state || "Unknown"} | Last tick: ${fmtDateTime(intraday.regular_market_time_utc || intraday.as_of_utc)}`;
+
+        el.miniOpen.textContent = fmtNumber(intraday.day_open, 2);
+        el.miniRangePos.textContent = `${fmtNumber(intraday.range_position_pct, 1)}%`;
+        el.miniVolume.textContent = fmtNumber(intraday.day_volume || 0);
+        el.miniState.textContent = intraday.market_state || "-";
+        el.miniAssetPct.textContent = `${fmtNumber(bias.asset_percentile || 0, 1)} pct`;
+        el.miniLevPct.textContent = `${fmtNumber(bias.leveraged_percentile || 0, 1)} pct`;
+      }
+
+      function renderIntradayChart(market) {
+        const intraday = market.intraday || {};
+        const bars = Array.isArray(intraday.bars) ? intraday.bars : [];
+
+        if (bars.length < 2 || intraday.error) {
+          const layout = {
+            margin: { l: 40, r: 18, t: 14, b: 30 },
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(9,19,43,0.9)",
+            font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
+            annotations: [
+              {
+                text: "Intraday bars unavailable",
+                xref: "paper",
+                yref: "paper",
+                x: 0.5,
+                y: 0.5,
+                showarrow: false,
+                font: { size: 13, color: "#93a7ce" },
+              },
+            ],
+            xaxis: { visible: false },
+            yaxis: { visible: false },
+          };
+          Plotly.react("intraday-chart", [], layout, { displayModeBar: false, responsive: true });
+          return;
+        }
+
+        const x = bars.map((bar) => bar.t);
+        const y = bars.map((bar) => bar.c);
+        const delta = Number(intraday.change_pct || 0);
+        const lineColor = delta >= 0 ? "#22c55e" : "#ef4444";
+
+        const traces = [
+          {
+            type: "scatter",
+            mode: "lines",
+            x,
+            y,
+            line: { color: lineColor, width: 2.6 },
+            fill: "tozeroy",
+            fillcolor: delta >= 0 ? "rgba(34,197,94,0.14)" : "rgba(239,68,68,0.14)",
+            hovertemplate: "%{x}<br>%{y:.2f}<extra></extra>",
+          },
+        ];
+
+        const layout = {
+          margin: { l: 45, r: 16, t: 12, b: 34 },
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: "rgba(9,19,43,0.9)",
+          font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
+          hovermode: "x unified",
+          xaxis: {
+            type: "date",
+            gridcolor: "rgba(110, 143, 201, 0.17)",
+            tickformat: "%H:%M",
+          },
+          yaxis: {
+            gridcolor: "rgba(110, 143, 201, 0.22)",
+            zeroline: false,
+          },
+        };
+
+        Plotly.react("intraday-chart", traces, layout, { displayModeBar: false, responsive: true });
+      }
+
+      function renderBiasComponents(market) {
+        const components = market.bias?.components || {};
+        const list = [
+          ["Institutional Pressure", Number(components.institutional_pressure || 0)],
+          ["Fast Money Pressure", Number(components.fast_money_pressure || 0)],
+          ["Institutional Momentum", Number(components.institutional_momentum || 0)],
+          ["Fast Money Momentum", Number(components.fast_money_momentum || 0)],
+          ["Alignment", Number(components.alignment || 0)],
+        ];
+
+        el.biasComponents.innerHTML = list
+          .map(([label, value]) => {
+            const width = Math.max(1, Math.min(100, Math.abs(value)));
+            const cls = value >= 0 ? "up" : "down";
+            return `
+              <div class="component-row">
+                <div class="component-head">
+                  <span>${label}</span>
+                  <span class="mono ${cls}">${fmtSigned(value, 1)}</span>
+                </div>
+                <div class="component-bar">
+                  <span class="component-fill ${cls}" style="left: ${value >= 0 ? 50 : 50 - width / 2}%; width: ${width / 2}%"></span>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+      }
+
+      function buildTradeLines(market) {
+        const bias = market.bias || {};
+        const intraday = market.intraday || {};
+        const score = Number(bias.score || 0);
+        const changePct = Number(intraday.change_pct || 0);
+        const rangePos = Number(intraday.range_position_pct || 50);
+
+        const lines = [];
+        lines.push(bias.playbook || "Use weekly bias as your direction filter.");
+
+        if (score >= 15 && changePct < 0) {
+          lines.push("Long bias + red session: watch for dip holds and reclaim setups.");
+        } else if (score <= -15 && changePct > 0) {
+          lines.push("Short bias + green session: watch for failed bounces to fade.");
+        } else {
+          lines.push("Bias and session are aligned; continuation setups have better odds.");
+        }
+
+        if (rangePos >= 80) {
+          lines.push("Price is near session highs; avoid chasing late unless trend is expanding.");
+        } else if (rangePos <= 20) {
+          lines.push("Price is near session lows; wait for reversal signal or clean breakdown.");
+        } else {
+          lines.push("Price is mid-range; prefer breakout-confirmation or fade-at-extremes entries.");
+        }
+
+        return lines;
+      }
+
+      function renderPlaybook(market) {
+        el.tradeList.innerHTML = buildTradeLines(market)
+          .map((line) => `<li>${line}</li>`)
+          .join("");
+      }
+
+      function renderPositioningChart(market) {
+        const history = Array.isArray(market.history) ? market.history.slice() : [];
         const dates = history.map((row) => row.report_date);
         const asset = history.map((row) => row.asset_mgr_net);
         const leveraged = history.map((row) => row.leveraged_net);
         const oi = history.map((row) => row.open_interest);
 
+        const assetMA = history.map((_, i) => {
+          const start = Math.max(0, i - 12);
+          const chunk = history.slice(start, i + 1).map((row) => Number(row.asset_mgr_net || 0));
+          return chunk.reduce((a, b) => a + b, 0) / chunk.length;
+        });
+
         const traces = [
           {
             type: "scatter",
-            mode: "lines+markers",
+            mode: "lines",
             name: "Asset Managers Net",
             x: dates,
             y: asset,
-            marker: { size: 4, color: "#f59e0b" },
-            line: { width: 2.5, color: "#f59e0b" },
+            line: { color: "#f59e0b", width: 2.7 },
           },
           {
             type: "scatter",
-            mode: "lines+markers",
-            name: "Leveraged Funds Net",
+            mode: "lines",
+            name: "Asset 13w Avg",
+            x: dates,
+            y: assetMA,
+            line: { color: "#fbbf24", width: 1.7, dash: "dot" },
+          },
+          {
+            type: "scatter",
+            mode: "lines",
+            name: "Leveraged Net",
             x: dates,
             y: leveraged,
-            marker: { size: 4, color: "#38bdf8" },
-            line: { width: 2.5, color: "#38bdf8" },
+            line: { color: "#38bdf8", width: 2.5 },
           },
           {
             type: "bar",
@@ -439,22 +978,21 @@
             x: dates,
             y: oi,
             yaxis: "y2",
-            marker: { color: "rgba(226,232,240,0.22)" },
-            opacity: 0.9,
+            marker: { color: "rgba(226,232,240,0.23)" },
           },
         ];
 
         const layout = {
-          margin: { l: 48, r: 52, t: 18, b: 42 },
-          paper_bgcolor: "rgba(0, 0, 0, 0)",
-          plot_bgcolor: "rgba(8, 14, 29, 0.85)",
-          font: { family: "Space Grotesk, sans-serif", color: "#d8e4ff" },
-          legend: { orientation: "h", y: 1.13, x: 0 },
+          margin: { l: 48, r: 54, t: 16, b: 38 },
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: "rgba(9,19,43,0.87)",
+          font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
+          legend: { orientation: "h", y: 1.12, x: 0 },
           hovermode: "x unified",
           yaxis: {
             title: "Net Contracts",
-            gridcolor: "rgba(80, 105, 150, 0.24)",
-            zerolinecolor: "rgba(145, 170, 220, 0.45)",
+            gridcolor: "rgba(110, 143, 201, 0.24)",
+            zerolinecolor: "rgba(140, 170, 220, 0.5)",
           },
           yaxis2: {
             title: "Open Interest",
@@ -465,18 +1003,15 @@
           xaxis: {
             type: "date",
             tickformat: "%b %Y",
-            gridcolor: "rgba(80, 105, 150, 0.18)",
+            gridcolor: "rgba(110, 143, 201, 0.17)",
           },
         };
 
-        Plotly.react("positioning-chart", traces, layout, {
-          displayModeBar: false,
-          responsive: true,
-        });
+        Plotly.react("positioning-chart", traces, layout, { displayModeBar: false, responsive: true });
       }
 
-      function renderTable(market) {
-        const history = (market.history || []).slice(-12).reverse();
+      function renderHistoryTable(market) {
+        const history = Array.isArray(market.history) ? market.history.slice(-12).reverse() : [];
         el.historyBody.innerHTML = history
           .map(
             (row) => `
@@ -491,35 +1026,64 @@
           .join("");
       }
 
+      function renderContext(market) {
+        const bias = market.bias || {};
+        const intraday = market.intraday || {};
+        const context = [
+          `Asset managers are in the ${fmtNumber(bias.asset_percentile || 0, 1)} percentile of the last ${state.snapshot.history_weeks} weeks.`,
+          `Leveraged funds are in the ${fmtNumber(bias.leveraged_percentile || 0, 1)} percentile; 4-week delta is ${fmtSigned(bias.leveraged_4w_delta || 0)} contracts.`,
+          `Open interest 4-week change: ${fmtSigned(bias.open_interest_4w_delta || 0)} contracts.`,
+          `Intraday move: ${fmtSigned(intraday.change_pct || 0, 2, "%")} with range position ${fmtNumber(intraday.range_position_pct || 0, 1)}%.`,
+        ];
+
+        el.contextList.innerHTML = context.map((line) => `<li>${line}</li>`).join("");
+      }
+
+      function renderHeader(market) {
+        const bias = market.bias || {};
+        const intraday = market.intraday || {};
+        const score = Number(bias.score || 0);
+
+        el.generatedAt.textContent = `Snapshot generated: ${fmtDateTime(state.snapshot.generated_at_utc)}`;
+        el.latestReport.textContent = `${market.label} report: ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
+        el.intradayUpdated.textContent = `Intraday update: ${fmtDateTime(intraday.as_of_utc || state.snapshot.generated_at_utc)}`;
+
+        el.heroBiasLabel.textContent = `${market.label}: ${bias.label || "Neutral"}`;
+        el.heroBiasScore.textContent = `Score ${fmtSigned(score, 1)} | Conviction ${fmtNumber(bias.conviction || 0, 0)}%`;
+        el.heroBiasPlaybook.textContent = bias.playbook || "Use this bias to select direction each week.";
+        applyDeltaStyle(el.heroBiasScore, score);
+
+        el.chartTitle.textContent = `${market.label} Positioning + Weekly Structure`;
+        el.chartSubtitle.textContent = market.market_name || "";
+      }
+
       function renderDashboard() {
         if (!state.snapshot?.markets) return;
         const market = state.snapshot.markets[state.activeMarket];
         if (!market) return;
 
         renderTabs();
-        renderKpis(market);
-        renderChart(market);
-        renderTable(market);
-
-        el.generatedAt.textContent = `Snapshot generated: ${fmtDateTime(state.snapshot.generated_at_utc)}`;
-        el.latestReport.textContent = `${market.label} latest report: ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
-
-        el.chartTitle.textContent = `${market.label} COT Positioning`;
-        el.chartSubtitle.textContent = market.market_name || "";
+        renderHeader(market);
+        renderTopCards(market);
+        renderIntradayPanel(market);
+        renderIntradayChart(market);
+        renderBiasComponents(market);
+        renderPlaybook(market);
+        renderPositioningChart(market);
+        renderHistoryTable(market);
+        renderContext(market);
       }
 
       async function loadSnapshot() {
         try {
-          const response = await fetch(`./data/cot_snapshot.json?ts=${Date.now()}`, {
-            cache: "no-store",
-          });
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-          }
+          const response = await fetch(`./data/cot_snapshot.json?ts=${Date.now()}`, { cache: "no-store" });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
           const payload = await response.json();
           if (!payload || !payload.markets || Object.keys(payload.markets).length === 0) {
             throw new Error("Snapshot format is invalid.");
           }
+
           state.snapshot = payload;
           if (!payload.markets[state.activeMarket]) {
             state.activeMarket = Object.keys(payload.markets)[0];

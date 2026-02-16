@@ -3,6 +3,9 @@ name: Refresh COT data
 on:
   workflow_dispatch:
   schedule:
+    # Hourly during US cash session window (roughly 8am-5pm ET weekdays).
+    - cron: "5 13-22 * * 1-5"
+    # Weekly post-CFTC release refresh.
     - cron: "20 22 * * 5"
 
 permissions:
@@ -41,5 +44,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/cot_snapshot.json
-          git commit -m "Weekly COT snapshot update"
+          git commit -m "Refresh COT and intraday snapshot"
           git push
