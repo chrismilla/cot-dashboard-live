@@ -3,33 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COT Aura Board</title>
+    <title>COT Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <style>
       :root {
-        --bg-0: #050b18;
-        --bg-1: #081631;
-        --bg-2: #112a58;
-        --panel: rgba(12, 26, 54, 0.78);
-        --panel-strong: rgba(14, 30, 62, 0.92);
-        --line: rgba(121, 159, 227, 0.28);
-        --line-strong: rgba(151, 188, 255, 0.42);
-        --text: #f1f5ff;
-        --muted: #a4badf;
-        --bull: #22c55e;
-        --bear: #ef4444;
-        --neutral: #9ca3af;
-        --hot: #ff7a2f;
-        --pink: #f472b6;
-        --gold: #fbbf24;
-        --cyan: #38bdf8;
-        --shadow: 0 26px 70px rgba(2, 7, 19, 0.52);
+        --bg: #edf2f8;
+        --bg-2: #e7eef8;
+        --panel: rgba(255, 255, 255, 0.74);
+        --panel-strong: rgba(255, 255, 255, 0.92);
+        --line: rgba(15, 23, 42, 0.1);
+        --line-strong: rgba(15, 23, 42, 0.16);
+        --text: #0f172a;
+        --muted: #64748b;
+        --bull: #16a34a;
+        --bear: #dc2626;
+        --neutral: #64748b;
+        --shadow: 0 24px 50px rgba(15, 23, 42, 0.1);
       }
 
       * {
@@ -38,233 +33,91 @@
 
       body {
         margin: 0;
-        color: var(--text);
-        font-family: "Sora", sans-serif;
-        background:
-          radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.28), transparent 34%),
-          radial-gradient(circle at 100% 0%, rgba(255, 122, 47, 0.24), transparent 30%),
-          radial-gradient(circle at 50% 100%, rgba(244, 114, 182, 0.12), transparent 38%),
-          linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-2) 100%);
         min-height: 100vh;
-      }
-
-      body::before,
-      body::after {
-        content: "";
-        position: fixed;
-        z-index: -1;
-        width: 34vw;
-        height: 34vw;
-        border-radius: 999px;
-        filter: blur(82px);
-        opacity: 0.4;
-        pointer-events: none;
-      }
-
-      body::before {
-        left: -10vw;
-        top: 12vh;
-        background: rgba(56, 189, 248, 0.38);
-      }
-
-      body::after {
-        right: -8vw;
-        top: 18vh;
-        background: rgba(255, 122, 47, 0.34);
+        color: var(--text);
+        font-family: "Manrope", sans-serif;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.2), transparent 34%),
+          radial-gradient(circle at 100% 0%, rgba(14, 165, 233, 0.18), transparent 30%),
+          radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.12), transparent 42%),
+          linear-gradient(170deg, var(--bg) 0%, var(--bg-2) 100%);
       }
 
       .shell {
-        width: min(1340px, calc(100% - 1rem));
+        width: min(1320px, calc(100% - 1rem));
         margin: 0 auto;
-        padding: 0.95rem 0 1.3rem;
+        padding: 1rem 0 1.3rem;
+      }
+
+      .glass {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        backdrop-filter: blur(18px) saturate(125%);
+        -webkit-backdrop-filter: blur(18px) saturate(125%);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
       }
 
       .hero {
-        position: relative;
-        overflow: hidden;
-        border-radius: 28px;
-        border: 1px solid var(--line-strong);
-        background:
-          linear-gradient(140deg, rgba(18, 38, 78, 0.88), rgba(8, 19, 41, 0.9)),
-          radial-gradient(circle at 85% 10%, rgba(255, 122, 47, 0.24), transparent 40%),
-          radial-gradient(circle at 10% 90%, rgba(56, 189, 248, 0.2), transparent 42%);
-        box-shadow: var(--shadow);
-        padding: 1rem;
+        padding: 0.95rem;
       }
 
-      .hero-grid {
+      .hero-top {
         display: grid;
-        grid-template-columns: 1.45fr auto;
-        gap: 0.95rem;
+        grid-template-columns: 1fr auto;
+        gap: 0.75rem;
         align-items: start;
       }
 
       .eyebrow {
         margin: 0;
-        color: #bad0f5;
-        font-size: 0.7rem;
+        color: #3b82f6;
+        font-size: 0.68rem;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
-        font-weight: 700;
-      }
-
-      h1 {
-        margin: 0.22rem 0 0;
-        font-size: clamp(1.35rem, 3.9vw, 2.55rem);
-        line-height: 1.04;
-        letter-spacing: -0.02em;
-      }
-
-      .hero-sub {
-        margin: 0.36rem 0 0;
-        color: var(--muted);
-        font-size: 0.86rem;
-      }
-
-      .setup {
-        margin-top: 0.72rem;
-        border: 1px solid rgba(134, 171, 235, 0.36);
-        border-radius: 14px;
-        padding: 0.58rem 0.72rem;
-        background: rgba(11, 24, 48, 0.75);
-      }
-
-      .setup b {
-        font-size: 0.95rem;
-      }
-
-      .setup span {
-        display: block;
-        margin-top: 0.12rem;
-        color: #d8e4fb;
-        font-size: 0.82rem;
-      }
-
-      .chips {
-        margin-top: 0.65rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.42rem;
-      }
-
-      .chip {
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 0.28rem 0.58rem;
-        background: rgba(9, 20, 43, 0.72);
-        color: var(--muted);
-        font-size: 0.73rem;
-        font-family: "IBM Plex Mono", monospace;
-      }
-
-      .hero-right {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: flex-end;
-      }
-
-      .sync-btn {
-        border: 1px solid #4570b5;
-        border-radius: 999px;
-        background: linear-gradient(145deg, #27519a, #1a3f7a);
-        color: #eef5ff;
-        font-family: inherit;
-        font-weight: 700;
-        font-size: 0.79rem;
-        padding: 0.45rem 0.88rem;
-        cursor: pointer;
-      }
-
-      .sync-btn:disabled {
-        opacity: 0.72;
-        cursor: wait;
-      }
-
-      .bias-pill {
-        border: 1px solid rgba(151, 188, 255, 0.4);
-        border-radius: 14px;
-        padding: 0.56rem 0.72rem;
-        min-width: 214px;
-        text-align: right;
-        background: rgba(11, 24, 48, 0.82);
-      }
-
-      .bias-pill .k {
-        margin: 0;
-        color: #bcd2f8;
-        font-size: 0.64rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-      }
-
-      .bias-pill .v {
-        margin: 0.1rem 0 0;
-        font-size: 1.25rem;
+        letter-spacing: 0.14em;
         font-weight: 800;
       }
 
-      .bias-pill .m {
+      h1 {
         margin: 0.2rem 0 0;
+        font-size: clamp(1.42rem, 3.2vw, 2.4rem);
+        letter-spacing: -0.02em;
+        line-height: 1.03;
+      }
+
+      .sub {
+        margin: 0.34rem 0 0;
         color: var(--muted);
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.74rem;
+        font-size: 0.84rem;
       }
 
-      .tabs {
-        margin-top: 0.78rem;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.46rem;
-      }
-
-      .tab {
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        padding: 0.66rem;
-        background: rgba(13, 29, 59, 0.82);
-        color: #b3c8ef;
+      .sync {
+        border: 1px solid rgba(15, 23, 42, 0.14);
+        border-radius: 999px;
+        background: linear-gradient(140deg, #ffffff, #eef5ff);
+        color: #0f172a;
         font-family: inherit;
-        font-size: 0.83rem;
         font-weight: 700;
-        letter-spacing: 0.03em;
+        font-size: 0.78rem;
+        padding: 0.44rem 0.86rem;
         cursor: pointer;
-        transition: 120ms ease;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
       }
 
-      .tab:hover {
-        transform: translateY(-1px);
+      .sync:disabled {
+        opacity: 0.65;
+        cursor: wait;
       }
 
-      .tab.active {
-        border-color: #85b1f1;
-        color: #f3f8ff;
-        background: linear-gradient(145deg, rgba(42, 82, 154, 0.9), rgba(24, 55, 104, 0.88));
-        box-shadow: 0 10px 24px rgba(9, 21, 43, 0.42);
-      }
-
-      .grid-kpi {
-        margin-top: 0.66rem;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.56rem;
-      }
-
-      .kpi {
-        border: 1px solid var(--line);
+      .hero-bias {
+        margin-top: 0.62rem;
         border-radius: 18px;
-        padding: 0.78rem;
-        background: linear-gradient(180deg, rgba(13, 28, 58, 0.9), rgba(10, 21, 45, 0.88));
-        box-shadow: inset 0 0 0 1px rgba(111, 145, 207, 0.08);
-        min-height: 152px;
+        padding: 0.66rem 0.74rem;
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
       }
 
-      .kpi.news {
-        border-color: rgba(171, 85, 109, 0.46);
-        background: linear-gradient(180deg, rgba(72, 24, 38, 0.58), rgba(35, 12, 22, 0.9));
-      }
-
-      .kpi .label {
+      .hero-bias .k {
         margin: 0;
         color: var(--muted);
         font-size: 0.68rem;
@@ -272,21 +125,121 @@
         letter-spacing: 0.12em;
       }
 
-      .kpi.news .label {
-        color: #f1bdcc;
-      }
-
-      .kpi .big {
-        margin: 0.34rem 0 0;
-        font-size: clamp(1.35rem, 2.8vw, 2.08rem);
-        line-height: 1;
+      .hero-bias .v {
+        margin: 0.16rem 0 0;
+        font-size: 1.08rem;
         font-weight: 800;
       }
 
-      .kpi .sub {
-        margin: 0.24rem 0 0;
+      .hero-bias .m {
+        margin: 0.18rem 0 0;
         color: var(--muted);
-        font-size: 0.74rem;
+        font-size: 0.73rem;
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .chips {
+        margin-top: 0.62rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.38rem;
+      }
+
+      .chip {
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.82);
+        padding: 0.24rem 0.54rem;
+        color: var(--muted);
+        font-size: 0.71rem;
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .tabs {
+        margin-top: 0.62rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.42rem;
+      }
+
+      .tab {
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--muted);
+        padding: 0.62rem;
+        font-family: inherit;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 120ms ease;
+      }
+
+      .tab.active {
+        background: linear-gradient(145deg, #ffffff, #f0f6ff);
+        border-color: rgba(59, 130, 246, 0.35);
+        color: #0f172a;
+        box-shadow: 0 8px 22px rgba(37, 99, 235, 0.15);
+      }
+
+      .plan {
+        margin-top: 0.62rem;
+        border-radius: 16px;
+        border: 1px solid rgba(59, 130, 246, 0.24);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(239, 246, 255, 0.86));
+        padding: 0.62rem 0.74rem;
+      }
+
+      .plan b {
+        font-size: 0.92rem;
+      }
+
+      .plan span {
+        display: block;
+        margin-top: 0.12rem;
+        color: #334155;
+        font-size: 0.79rem;
+      }
+
+      .grid {
+        margin-top: 0.58rem;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+
+      .card {
+        padding: 0.72rem;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+        box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+        min-height: 152px;
+      }
+
+      .card.red {
+        border-color: rgba(225, 29, 72, 0.24);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 241, 244, 0.92));
+      }
+
+      .label {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.67rem;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+      }
+
+      .card.red .label {
+        color: #be123c;
+      }
+
+      .big {
+        margin: 0.32rem 0 0;
+        font-size: clamp(1.36rem, 2.6vw, 2rem);
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -0.02em;
       }
 
       .mono {
@@ -294,8 +247,8 @@
       }
 
       .delta {
-        margin-top: 0.24rem;
-        font-size: 0.8rem;
+        margin-top: 0.22rem;
+        font-size: 0.79rem;
         font-family: "IBM Plex Mono", monospace;
       }
 
@@ -311,31 +264,37 @@
         color: var(--neutral);
       }
 
+      .mini {
+        margin-top: 0.2rem;
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+
       .gauge {
-        margin-top: 0.58rem;
-        height: 18px;
-        position: relative;
+        margin-top: 0.56rem;
+        height: 16px;
         border-radius: 999px;
-        border: 1px solid #335797;
-        background: linear-gradient(90deg, rgba(239, 68, 68, 0.48), rgba(148, 163, 184, 0.2), rgba(34, 197, 94, 0.48));
+        border: 1px solid var(--line-strong);
+        background: linear-gradient(90deg, rgba(220, 38, 38, 0.36), rgba(148, 163, 184, 0.16), rgba(22, 163, 74, 0.36));
+        position: relative;
       }
 
       .gauge-marker {
         position: absolute;
         top: -3px;
         width: 2px;
-        height: 22px;
-        background: #fff;
-        box-shadow: 0 0 12px rgba(255, 255, 255, 0.95);
+        height: 21px;
+        background: #0f172a;
+        box-shadow: 0 0 8px rgba(15, 23, 42, 0.35);
       }
 
       .range {
-        margin-top: 0.62rem;
-        height: 16px;
-        position: relative;
+        margin-top: 0.56rem;
+        height: 14px;
         border-radius: 999px;
-        border: 1px solid #335797;
-        background: rgba(148, 163, 184, 0.16);
+        border: 1px solid var(--line-strong);
+        background: rgba(148, 163, 184, 0.2);
+        position: relative;
       }
 
       .range-fill {
@@ -344,70 +303,74 @@
         top: 0;
         bottom: 0;
         border-radius: 999px;
-        background: linear-gradient(90deg, rgba(34, 197, 94, 0.9), rgba(56, 189, 248, 0.9));
+        background: linear-gradient(90deg, rgba(22, 163, 74, 0.76), rgba(14, 165, 233, 0.78));
       }
 
       .range-marker {
         position: absolute;
         top: -3px;
         width: 2px;
-        height: 21px;
-        background: #fff;
+        height: 20px;
+        background: #0f172a;
       }
 
       .range-meta {
-        margin-top: 0.3rem;
+        margin-top: 0.26rem;
         display: flex;
         justify-content: space-between;
         color: var(--muted);
-        font-size: 0.71rem;
+        font-size: 0.69rem;
       }
 
       .panels {
-        margin-top: 0.56rem;
+        margin-top: 0.5rem;
         display: grid;
         grid-template-columns: 1.2fr 1fr;
-        gap: 0.56rem;
+        gap: 0.5rem;
       }
 
       .panel {
-        border: 1px solid var(--line);
+        padding: 0.68rem;
         border-radius: 20px;
-        padding: 0.72rem;
-        background: linear-gradient(180deg, rgba(13, 28, 58, 0.9), rgba(10, 21, 45, 0.88));
+        border: 1px solid var(--line);
+        background: var(--panel);
+        backdrop-filter: blur(16px) saturate(118%);
+        -webkit-backdrop-filter: blur(16px) saturate(118%);
+        box-shadow: var(--shadow);
       }
 
       .panel-head {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 0.4rem;
+        gap: 0.35rem;
         flex-wrap: wrap;
       }
 
       .panel-head h2,
       .panel-head h3 {
         margin: 0;
-        font-size: 0.98rem;
+        font-size: 0.95rem;
       }
 
       .toggle {
         display: inline-flex;
-        border: 1px solid #355a9b;
+        border: 1px solid var(--line-strong);
         border-radius: 10px;
         overflow: hidden;
+        background: rgba(255, 255, 255, 0.7);
       }
 
       .tbtn {
         border: none;
-        border-left: 1px solid #355a9b;
-        background: rgba(15, 32, 67, 0.86);
-        color: #a5bce3;
+        border-left: 1px solid var(--line-strong);
+        background: transparent;
+        color: var(--muted);
+        padding: 0.32rem 0.52rem;
         font-family: inherit;
-        font-size: 0.71rem;
-        text-transform: uppercase;
+        font-size: 0.69rem;
         font-weight: 700;
-        padding: 0.34rem 0.56rem;
+        text-transform: uppercase;
         cursor: pointer;
       }
 
@@ -416,54 +379,56 @@
       }
 
       .tbtn.active {
-        background: linear-gradient(145deg, rgba(45, 88, 167, 0.9), rgba(26, 58, 112, 0.9));
-        color: #f1f6ff;
+        background: #ffffff;
+        color: #0f172a;
       }
 
       #intraday-chart,
       #weekly-chart {
-        height: 325px;
-        margin-top: 0.4rem;
+        height: 320px;
+        margin-top: 0.36rem;
       }
 
-      .news-board {
-        margin-top: 0.56rem;
-        border: 1px solid rgba(166, 78, 103, 0.48);
+      .news {
+        margin-top: 0.5rem;
+        padding: 0.68rem;
         border-radius: 20px;
-        padding: 0.72rem;
-        background: linear-gradient(180deg, rgba(67, 22, 35, 0.56), rgba(30, 11, 19, 0.9));
+        border: 1px solid rgba(225, 29, 72, 0.22);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(255, 240, 244, 0.9));
+        box-shadow: var(--shadow);
       }
 
       .news-head {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 0.48rem;
+        gap: 0.35rem;
         flex-wrap: wrap;
       }
 
       .news-head h3 {
         margin: 0;
-        font-size: 0.98rem;
+        font-size: 0.95rem;
       }
 
       .rf-toggle {
         display: inline-flex;
-        border: 1px solid #8b4a63;
+        border: 1px solid rgba(225, 29, 72, 0.24);
         border-radius: 10px;
         overflow: hidden;
+        background: rgba(255, 255, 255, 0.84);
       }
 
       .rf-btn {
         border: none;
-        border-left: 1px solid #8b4a63;
-        background: rgba(65, 24, 37, 0.84);
-        color: #e0b0bf;
+        border-left: 1px solid rgba(225, 29, 72, 0.24);
+        background: transparent;
+        color: #9f1239;
+        padding: 0.3rem 0.5rem;
         font-family: inherit;
-        font-size: 0.7rem;
-        text-transform: uppercase;
+        font-size: 0.68rem;
         font-weight: 700;
-        padding: 0.32rem 0.52rem;
+        text-transform: uppercase;
         cursor: pointer;
       }
 
@@ -472,63 +437,64 @@
       }
 
       .rf-btn.active {
-        background: linear-gradient(145deg, rgba(136, 49, 74, 0.9), rgba(95, 33, 50, 0.9));
-        color: #ffe6ed;
+        background: #ffe4eb;
+        color: #881337;
       }
 
       .news-meta {
-        margin: 0.35rem 0 0;
-        color: #e2b9c5;
-        font-size: 0.73rem;
+        margin: 0.34rem 0 0;
+        color: #9f1239;
+        font-size: 0.71rem;
         font-family: "IBM Plex Mono", monospace;
       }
 
-      .rf-grid {
-        margin-top: 0.46rem;
+      .news-grid {
+        margin-top: 0.42rem;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.46rem;
+        gap: 0.42rem;
       }
 
-      .rf-card {
-        border: 1px solid rgba(148, 72, 95, 0.62);
+      .news-card {
         border-radius: 14px;
-        padding: 0.56rem;
-        background: linear-gradient(180deg, rgba(84, 31, 47, 0.62), rgba(45, 15, 27, 0.9));
+        border: 1px solid rgba(225, 29, 72, 0.24);
+        background: rgba(255, 255, 255, 0.86);
+        padding: 0.5rem;
       }
 
-      .rf-time {
-        color: #ffd7e2;
+      .news-time {
+        color: #be123c;
         font-family: "IBM Plex Mono", monospace;
-        font-size: 0.73rem;
+        font-size: 0.7rem;
       }
 
-      .rf-title {
-        margin-top: 0.18rem;
-        line-height: 1.28;
-        font-size: 0.81rem;
+      .news-title {
+        margin-top: 0.15rem;
+        font-size: 0.79rem;
+        line-height: 1.26;
+        color: #3f0d1f;
       }
 
       .cc {
         display: inline-block;
-        margin-right: 0.3rem;
-        border: 1px solid #97617a;
+        margin-right: 0.28rem;
+        border: 1px solid rgba(225, 29, 72, 0.34);
         border-radius: 999px;
-        padding: 0.08rem 0.35rem;
-        background: rgba(118, 59, 79, 0.38);
-        color: #ffe7ee;
+        padding: 0.06rem 0.3rem;
+        background: #ffe6ee;
+        color: #881337;
         font-family: "IBM Plex Mono", monospace;
-        font-size: 0.66rem;
+        font-size: 0.64rem;
       }
 
       .error {
-        margin-top: 0.56rem;
-        border: 1px solid rgba(179, 69, 89, 0.66);
+        margin-top: 0.5rem;
         border-radius: 12px;
-        padding: 0.65rem 0.78rem;
-        background: rgba(179, 69, 89, 0.18);
-        color: #ffd2dd;
-        font-size: 0.82rem;
+        border: 1px solid rgba(220, 38, 38, 0.26);
+        background: rgba(254, 226, 226, 0.86);
+        color: #991b1b;
+        padding: 0.62rem 0.74rem;
+        font-size: 0.79rem;
         display: none;
       }
 
@@ -537,15 +503,15 @@
       }
 
       footer {
-        margin-top: 0.62rem;
+        margin-top: 0.54rem;
         text-align: center;
-        color: #90a8d1;
-        font-size: 0.71rem;
+        color: #64748b;
+        font-size: 0.69rem;
       }
 
-      @media (max-width: 1160px) {
-        .grid-kpi,
-        .rf-grid {
+      @media (max-width: 1140px) {
+        .grid,
+        .news-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
@@ -555,38 +521,35 @@
       }
 
       @media (max-width: 760px) {
-        .hero-grid {
+        .hero-top {
           grid-template-columns: 1fr;
         }
 
-        .hero-right {
-          align-items: flex-start;
-        }
-
         .tabs,
-        .grid-kpi,
-        .rf-grid {
+        .grid,
+        .news-grid {
           grid-template-columns: 1fr;
         }
 
         #intraday-chart,
         #weekly-chart {
-          height: 252px;
+          height: 250px;
         }
       }
     </style>
   </head>
   <body>
     <main class="shell">
-      <section class="hero">
-        <div class="hero-grid">
+      <section class="hero glass">
+        <div class="hero-top">
           <div>
-            <p class="eyebrow">COT Aura</p>
-            <h1 id="hero-market">Loading...</h1>
-            <p class="hero-sub">Beautiful, glanceable trading board.</p>
-            <div class="setup">
-              <b id="setup-title">Setup --</b>
-              <span id="setup-text">Waiting for data...</span>
+            <p class="eyebrow">COT Studio</p>
+            <h1 id="hero-market">Loading…</h1>
+            <p class="sub">Apple-like, minimal, glance-first.</p>
+            <div class="hero-bias">
+              <p class="k">Weekly Bias</p>
+              <p class="v" id="hero-bias">--</p>
+              <p class="m" id="hero-bias-meta">--</p>
             </div>
             <div class="chips">
               <span class="chip" id="chip-generated">Generated --</span>
@@ -596,36 +559,34 @@
               <span class="chip" id="chip-last-sync">Last sync --</span>
             </div>
           </div>
-          <div class="hero-right">
-            <button class="sync-btn" id="sync-btn">Sync</button>
-            <div class="bias-pill">
-              <p class="k">Weekly Bias</p>
-              <p class="v" id="hero-bias">--</p>
-              <p class="m" id="hero-bias-meta">--</p>
-            </div>
-          </div>
+          <div><button class="sync" id="sync-btn">Sync</button></div>
         </div>
 
         <div class="tabs" id="market-tabs"></div>
+
+        <div class="plan">
+          <b id="setup-title">Setup --</b>
+          <span id="setup-text">Waiting for data...</span>
+        </div>
       </section>
 
-      <section class="grid-kpi">
-        <article class="kpi">
+      <section class="grid">
+        <article class="card">
           <p class="label">Bias Gauge</p>
           <p class="big" id="bias-label">--</p>
           <p class="delta mono" id="bias-score">--</p>
           <div class="gauge"><span class="gauge-marker" id="bias-marker"></span></div>
-          <p class="sub" id="bias-mini">--</p>
+          <p class="mini" id="bias-mini">--</p>
         </article>
 
-        <article class="kpi">
+        <article class="card">
           <p class="label">Intraday Price</p>
           <p class="big mono" id="price-last">--</p>
           <p class="delta mono" id="price-change">--</p>
-          <p class="sub" id="price-state">--</p>
+          <p class="mini" id="price-state">--</p>
         </article>
 
-        <article class="kpi">
+        <article class="card">
           <p class="label">Session Range</p>
           <p class="big mono" id="range-pos">--</p>
           <div class="range">
@@ -638,19 +599,17 @@
           </div>
         </article>
 
-        <article class="kpi news">
+        <article class="card red">
           <p class="label">Next Red Folder</p>
           <p class="big" id="next-news-title">--</p>
           <p class="delta" id="next-news-time">--</p>
-          <p class="sub" id="next-news-meta">--</p>
+          <p class="mini" id="next-news-meta">--</p>
         </article>
       </section>
 
       <section class="panels">
         <article class="panel">
-          <div class="panel-head">
-            <h2 id="intraday-title">Intraday</h2>
-          </div>
+          <div class="panel-head"><h2 id="intraday-title">Intraday</h2></div>
           <div id="intraday-chart"></div>
         </article>
 
@@ -666,7 +625,7 @@
         </article>
       </section>
 
-      <section class="news-board">
+      <section class="news">
         <div class="news-head">
           <h3>Forex Factory Red Folder</h3>
           <div class="rf-toggle">
@@ -675,14 +634,12 @@
           </div>
         </div>
         <p class="news-meta" id="rf-meta">--</p>
-        <div class="rf-grid" id="rf-strip"></div>
+        <div class="news-grid" id="rf-strip"></div>
       </section>
 
       <div class="error" id="error-box"></div>
 
-      <footer>
-        CFTC + Yahoo + Forex Factory. Bias, price, event risk.
-      </footer>
+      <footer>CFTC + Yahoo + Forex Factory</footer>
     </main>
 
     <script>
@@ -692,8 +649,8 @@
       const state = {
         snapshot: null,
         activeMarket: "dow_jones",
-        chartMode: localStorage.getItem("aura_chart_mode") || "trend",
-        newsFilter: localStorage.getItem("aura_news_filter") || "usd",
+        chartMode: localStorage.getItem("apple_chart_mode") || "trend",
+        newsFilter: localStorage.getItem("apple_news_filter") || "usd",
         loading: false,
       };
 
@@ -763,12 +720,7 @@
       function fmtTime(v) {
         const d = new Date(v);
         if (Number.isNaN(d.getTime())) return v || "--";
-        return d.toLocaleString(undefined, {
-          month: "short",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-        });
+        return d.toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
       }
 
       function setLoading(flag) {
@@ -779,14 +731,14 @@
 
       function setChartMode(mode) {
         state.chartMode = mode === "shift" ? "shift" : "trend";
-        localStorage.setItem("aura_chart_mode", state.chartMode);
+        localStorage.setItem("apple_chart_mode", state.chartMode);
         el.modeTrend.classList.toggle("active", state.chartMode === "trend");
         el.modeShift.classList.toggle("active", state.chartMode === "shift");
       }
 
       function setNewsFilter(mode) {
         state.newsFilter = mode === "all" ? "all" : "usd";
-        localStorage.setItem("aura_news_filter", state.newsFilter);
+        localStorage.setItem("apple_news_filter", state.newsFilter);
         el.rfUsd.classList.toggle("active", state.newsFilter === "usd");
         el.rfAll.classList.toggle("active", state.newsFilter === "all");
       }
@@ -833,17 +785,16 @@
       function renderSetup(market) {
         const score = Number(market?.bias?.score || 0);
         const chg = Number(market?.intraday?.change_pct || 0);
-        let title = "Neutral Zone";
-        let text = "Wait for clean level reaction before pressing size.";
 
+        let title = "Neutral Week";
+        let text = "Wait for clean confirmation before sizing up.";
         if (score >= 20) {
           title = "Bullish Week";
-          text = "Lean long. Buy pullbacks and avoid impulsive short fades.";
+          text = "Favor long continuation setups on controlled pullbacks.";
         } else if (score <= -20) {
           title = "Bearish Week";
-          text = "Lean short. Fade pops and avoid weak countertrend longs.";
+          text = "Favor short continuation setups after bounce failures.";
         }
-
         if (Math.abs(chg) > 1.2) {
           text += " Volatility elevated.";
         }
@@ -864,10 +815,10 @@
         el.biasMarker.style.left = `${Math.max(0, Math.min(100, (score + 100) / 2))}%`;
 
         const ticker = intra.symbol || ETF[state.activeMarket] || "--";
-        const changePct = Number(intra.change_pct || 0);
+        const chgPct = Number(intra.change_pct || 0);
         el.priceLast.textContent = `${ticker} ${fmtNum(intra.last, 2)}`;
-        el.priceChange.className = `delta mono ${toneClass(changePct)}`;
-        el.priceChange.textContent = `${fmtSigned(intra.change, 2)} (${fmtSigned(changePct, 2, "%")})`;
+        el.priceChange.className = `delta mono ${toneClass(chgPct)}`;
+        el.priceChange.textContent = `${fmtSigned(intra.change, 2)} (${fmtSigned(chgPct, 2, "%")})`;
         el.priceState.textContent = intra.market_state ? `State ${intra.market_state}` : "State --";
 
         const rp = Math.max(0, Math.min(100, Number(intra.range_position_pct || 0)));
@@ -886,22 +837,23 @@
         } else {
           el.nextNewsTitle.textContent = "No upcoming red-folder";
           el.nextNewsTime.textContent = "--";
-          el.nextNewsMeta.textContent = "No event risk in filter";
+          el.nextNewsMeta.textContent = "No events in filter";
         }
       }
 
       function renderIntradayChart(market) {
         const intra = market?.intraday || {};
         const bars = Array.isArray(intra.bars) ? intra.bars : [];
+
         if (bars.length < 2 || intra.error) {
           Plotly.react(
             "intraday-chart",
             [],
             {
-              margin: { l: 30, r: 10, t: 10, b: 24 },
+              margin: { l: 32, r: 10, t: 10, b: 24 },
               paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(9,18,39,0.82)",
-              font: { family: "Sora, sans-serif", color: "#d7e6ff" },
+              plot_bgcolor: "rgba(255,255,255,0.72)",
+              font: { family: "Manrope, sans-serif", color: "#334155" },
               annotations: [{ text: "No intraday bars", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false }],
               xaxis: { visible: false },
               yaxis: { visible: false },
@@ -914,30 +866,19 @@
         const x = bars.map((b) => b.t);
         const y = bars.map((b) => b.c);
         const bullish = Number(intra.change_pct || 0) >= 0;
-        const color = bullish ? "#22c55e" : "#ef4444";
+        const color = bullish ? "#16a34a" : "#dc2626";
 
         Plotly.react(
           "intraday-chart",
-          [
-            {
-              type: "scatter",
-              mode: "lines",
-              x,
-              y,
-              line: { color, width: 3.2 },
-              fill: "tozeroy",
-              fillcolor: bullish ? "rgba(34,197,94,0.2)" : "rgba(239,68,68,0.2)",
-              hovertemplate: "%{x}<br>%{y:.2f}<extra></extra>",
-            },
-          ],
+          [{ type: "scatter", mode: "lines", x, y, line: { color, width: 3 }, fill: "tozeroy", fillcolor: bullish ? "rgba(22,163,74,0.18)" : "rgba(220,38,38,0.16)", hovertemplate: "%{x}<br>%{y:.2f}<extra></extra>" }],
           {
             margin: { l: 44, r: 12, t: 8, b: 30 },
             paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(9,18,39,0.82)",
-            font: { family: "Sora, sans-serif", color: "#d7e6ff" },
+            plot_bgcolor: "rgba(255,255,255,0.72)",
+            font: { family: "Manrope, sans-serif", color: "#334155" },
             hovermode: "x unified",
-            xaxis: { type: "date", tickformat: "%H:%M", gridcolor: "rgba(120,150,205,0.17)" },
-            yaxis: { gridcolor: "rgba(120,150,205,0.22)", zeroline: false },
+            xaxis: { type: "date", tickformat: "%H:%M", gridcolor: "rgba(100,116,139,0.16)" },
+            yaxis: { gridcolor: "rgba(100,116,139,0.2)", zeroline: false },
           },
           { displayModeBar: false, responsive: true }
         );
@@ -945,14 +886,15 @@
 
       function renderWeeklyChart(market) {
         const history = Array.isArray(market.history) ? market.history : [];
+
         if (history.length < 2) {
           Plotly.react(
             "weekly-chart",
             [],
             {
-              margin: { l: 30, r: 10, t: 10, b: 24 },
+              margin: { l: 32, r: 10, t: 10, b: 24 },
               paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(9,18,39,0.82)",
+              plot_bgcolor: "rgba(255,255,255,0.72)",
               annotations: [{ text: "No weekly rows", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false }],
               xaxis: { visible: false },
               yaxis: { visible: false },
@@ -971,28 +913,18 @@
             Number(latest.leveraged_net || 0) - Number(prev.leveraged_net || 0),
             Number(latest.open_interest || 0) - Number(prev.open_interest || 0),
           ];
-          const colors = vals.map((v) => (v >= 0 ? "rgba(34,197,94,0.92)" : "rgba(239,68,68,0.92)"));
+          const colors = vals.map((v) => (v >= 0 ? "rgba(22,163,74,0.9)" : "rgba(220,38,38,0.9)"));
 
           Plotly.react(
             "weekly-chart",
-            [
-              {
-                type: "bar",
-                x: labels,
-                y: vals,
-                marker: { color: colors, line: { color: "rgba(7,12,24,1)", width: 1 } },
-                text: vals.map((v) => fmtSigned(v)),
-                textposition: "outside",
-                hovertemplate: "%{x} Δ %{y:,}<extra></extra>",
-              },
-            ],
+            [{ type: "bar", x: labels, y: vals, marker: { color: colors, line: { color: "rgba(15,23,42,0.3)", width: 1 } }, text: vals.map((v) => fmtSigned(v)), textposition: "outside", hovertemplate: "%{x} Δ %{y:,}<extra></extra>" }],
             {
-              margin: { l: 42, r: 12, t: 20, b: 36 },
+              margin: { l: 44, r: 12, t: 20, b: 36 },
               paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(9,18,39,0.82)",
-              font: { family: "Sora, sans-serif", color: "#d7e6ff" },
-              yaxis: { gridcolor: "rgba(120,150,205,0.22)", zerolinecolor: "rgba(150,170,220,0.45)" },
-              annotations: [{ text: `${fmtDate(prev.report_date)} → ${fmtDate(latest.report_date)}`, x: 0, y: 1.14, xref: "paper", yref: "paper", showarrow: false, font: { size: 11, color: "#9db4df" } }],
+              plot_bgcolor: "rgba(255,255,255,0.72)",
+              font: { family: "Manrope, sans-serif", color: "#334155" },
+              yaxis: { gridcolor: "rgba(100,116,139,0.2)", zerolinecolor: "rgba(100,116,139,0.35)" },
+              annotations: [{ text: `${fmtDate(prev.report_date)} → ${fmtDate(latest.report_date)}`, x: 0, y: 1.14, xref: "paper", yref: "paper", showarrow: false, font: { size: 11, color: "#64748b" } }],
             },
             { displayModeBar: false, responsive: true }
           );
@@ -1006,18 +938,18 @@
         Plotly.react(
           "weekly-chart",
           [
-            { type: "scatter", mode: "lines", x, y: asset, name: "Asset", line: { color: "#fbbf24", width: 3.2 } },
-            { type: "scatter", mode: "lines", x, y: lev, name: "Leveraged", line: { color: "#38bdf8", width: 3.2 } },
+            { type: "scatter", mode: "lines", x, y: asset, name: "Asset", line: { color: "#f59e0b", width: 3 } },
+            { type: "scatter", mode: "lines", x, y: lev, name: "Leveraged", line: { color: "#0284c7", width: 3 } },
           ],
           {
-            margin: { l: 42, r: 12, t: 10, b: 30 },
+            margin: { l: 44, r: 12, t: 10, b: 30 },
             paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(9,18,39,0.82)",
-            font: { family: "Sora, sans-serif", color: "#d7e6ff" },
+            plot_bgcolor: "rgba(255,255,255,0.72)",
+            font: { family: "Manrope, sans-serif", color: "#334155" },
             hovermode: "x unified",
             legend: { orientation: "h", y: 1.12, x: 0 },
-            xaxis: { type: "date", tickformat: "%b %Y", gridcolor: "rgba(120,150,205,0.17)" },
-            yaxis: { gridcolor: "rgba(120,150,205,0.22)", zerolinecolor: "rgba(150,170,220,0.45)" },
+            xaxis: { type: "date", tickformat: "%b %Y", gridcolor: "rgba(100,116,139,0.16)" },
+            yaxis: { gridcolor: "rgba(100,116,139,0.2)", zerolinecolor: "rgba(100,116,139,0.35)" },
           },
           { displayModeBar: false, responsive: true }
         );
@@ -1033,14 +965,14 @@
         el.rfMeta.textContent = `${list.length} events | ${state.newsFilter.toUpperCase()} | feed ${fetched}`;
 
         if (!show.length) {
-          el.rfStrip.innerHTML = `<div class="rf-card"><div class="rf-title">No high-impact events in this filter.</div></div>`;
+          el.rfStrip.innerHTML = `<div class="news-card"><div class="news-title">No high-impact events in this filter.</div></div>`;
           return;
         }
 
         el.rfStrip.innerHTML = show
           .map((e) => {
             const t = e.datetime_utc ? fmtTime(e.datetime_utc) : `${e.date || "--"} ${e.time || "--"}`;
-            return `<article class="rf-card"><div class="rf-time">${t}</div><div class="rf-title"><span class="cc">${e.country || "--"}</span>${e.title || "Event"}</div></article>`;
+            return `<article class="news-card"><div class="news-time">${t}</div><div class="news-title"><span class="cc">${e.country || "--"}</span>${e.title || "Event"}</div></article>`;
           })
           .join("");
       }
@@ -1057,7 +989,7 @@
         el.chipGenerated.textContent = `Generated ${fmtTime(state.snapshot.generated_at_utc)}`;
         el.chipReport.textContent = `Report ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
         el.chipIntraday.textContent = `Intraday ${fmtTime(intra.as_of_utc || state.snapshot.generated_at_utc)}`;
-        el.chipLastSync.textContent = `Last sync ${localStorage.getItem("aura_last_sync") || "--"}`;
+        el.chipLastSync.textContent = `Last sync ${localStorage.getItem("apple_last_sync") || "--"}`;
 
         el.intradayTitle.textContent = `${market.label} Intraday`;
         el.weeklyTitle.textContent = state.chartMode === "trend" ? "Weekly Trend" : "Weekly Shift";
@@ -1085,13 +1017,14 @@
           const payload = await res.json();
           if (!payload?.markets) throw new Error("Bad snapshot");
           state.snapshot = payload;
+
           if (!payload.markets[state.activeMarket]) {
             state.activeMarket = Object.keys(payload.markets)[0];
           }
 
-          if (manual || !localStorage.getItem("aura_last_sync")) {
+          if (manual || !localStorage.getItem("apple_last_sync")) {
             const now = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-            localStorage.setItem("aura_last_sync", now);
+            localStorage.setItem("apple_last_sync", now);
           }
 
           el.error.classList.remove("show");
