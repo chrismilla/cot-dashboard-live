@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COT Glance Board</title>
+    <title>COT Aura Board</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,16 +13,23 @@
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <style>
       :root {
-        --bg: #060d1d;
-        --panel: #0f1d3a;
-        --panel-soft: #142850;
-        --line: #243d6f;
-        --text: #eff4ff;
-        --muted: #9db4df;
+        --bg-0: #050b18;
+        --bg-1: #081631;
+        --bg-2: #112a58;
+        --panel: rgba(12, 26, 54, 0.78);
+        --panel-strong: rgba(14, 30, 62, 0.92);
+        --line: rgba(121, 159, 227, 0.28);
+        --line-strong: rgba(151, 188, 255, 0.42);
+        --text: #f1f5ff;
+        --muted: #a4badf;
         --bull: #22c55e;
         --bear: #ef4444;
-        --neutral: #94a3b8;
-        --warn: #f97316;
+        --neutral: #9ca3af;
+        --hot: #ff7a2f;
+        --pink: #f472b6;
+        --gold: #fbbf24;
+        --cyan: #38bdf8;
+        --shadow: 0 26px 70px rgba(2, 7, 19, 0.52);
       }
 
       * {
@@ -34,157 +41,252 @@
         color: var(--text);
         font-family: "Sora", sans-serif;
         background:
-          radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.26), transparent 34%),
-          radial-gradient(circle at 96% 4%, rgba(249, 115, 22, 0.24), transparent 30%),
-          linear-gradient(160deg, #060d1d 0%, #091630 55%, #0e1f42 100%);
+          radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.28), transparent 34%),
+          radial-gradient(circle at 100% 0%, rgba(255, 122, 47, 0.24), transparent 30%),
+          radial-gradient(circle at 50% 100%, rgba(244, 114, 182, 0.12), transparent 38%),
+          linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-2) 100%);
+        min-height: 100vh;
       }
 
-      .wrap {
-        width: min(1280px, calc(100% - 1rem));
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        z-index: -1;
+        width: 34vw;
+        height: 34vw;
+        border-radius: 999px;
+        filter: blur(82px);
+        opacity: 0.4;
+        pointer-events: none;
+      }
+
+      body::before {
+        left: -10vw;
+        top: 12vh;
+        background: rgba(56, 189, 248, 0.38);
+      }
+
+      body::after {
+        right: -8vw;
+        top: 18vh;
+        background: rgba(255, 122, 47, 0.34);
+      }
+
+      .shell {
+        width: min(1340px, calc(100% - 1rem));
         margin: 0 auto;
-        padding: 1rem 0 1.5rem;
+        padding: 0.95rem 0 1.3rem;
       }
 
-      .top {
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        background: linear-gradient(145deg, rgba(15, 29, 58, 0.96), rgba(10, 21, 45, 0.96));
-        padding: 0.95rem;
-        margin-bottom: 0.8rem;
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 28px;
+        border: 1px solid var(--line-strong);
+        background:
+          linear-gradient(140deg, rgba(18, 38, 78, 0.88), rgba(8, 19, 41, 0.9)),
+          radial-gradient(circle at 85% 10%, rgba(255, 122, 47, 0.24), transparent 40%),
+          radial-gradient(circle at 10% 90%, rgba(56, 189, 248, 0.2), transparent 42%);
+        box-shadow: var(--shadow);
+        padding: 1rem;
       }
 
-      .top-row {
+      .hero-grid {
         display: grid;
-        grid-template-columns: 1.2fr auto;
-        gap: 0.8rem;
-        align-items: center;
+        grid-template-columns: 1.45fr auto;
+        gap: 0.95rem;
+        align-items: start;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: #bad0f5;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 700;
       }
 
       h1 {
-        margin: 0;
-        font-size: clamp(1.28rem, 3.4vw, 2rem);
-        letter-spacing: 0.01em;
+        margin: 0.22rem 0 0;
+        font-size: clamp(1.35rem, 3.9vw, 2.55rem);
+        line-height: 1.04;
+        letter-spacing: -0.02em;
       }
 
-      .sub {
-        margin: 0.18rem 0 0;
+      .hero-sub {
+        margin: 0.36rem 0 0;
         color: var(--muted);
         font-size: 0.86rem;
       }
 
-      .actions {
+      .setup {
+        margin-top: 0.72rem;
+        border: 1px solid rgba(134, 171, 235, 0.36);
+        border-radius: 14px;
+        padding: 0.58rem 0.72rem;
+        background: rgba(11, 24, 48, 0.75);
+      }
+
+      .setup b {
+        font-size: 0.95rem;
+      }
+
+      .setup span {
+        display: block;
+        margin-top: 0.12rem;
+        color: #d8e4fb;
+        font-size: 0.82rem;
+      }
+
+      .chips {
+        margin-top: 0.65rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.45rem;
-        justify-content: flex-end;
-      }
-
-      .btn {
-        border: 1px solid #3d5f98;
-        border-radius: 999px;
-        padding: 0.45rem 0.84rem;
-        background: linear-gradient(145deg, #234582, #173262);
-        color: #e8f0ff;
-        font-family: inherit;
-        font-size: 0.79rem;
-        font-weight: 700;
-        cursor: pointer;
-      }
-
-      .btn:disabled {
-        opacity: 0.7;
-        cursor: wait;
-      }
-
-      .chip-row {
-        margin-top: 0.6rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
+        gap: 0.42rem;
       }
 
       .chip {
         border: 1px solid var(--line);
         border-radius: 999px;
-        background: rgba(14, 28, 58, 0.8);
+        padding: 0.28rem 0.58rem;
+        background: rgba(9, 20, 43, 0.72);
         color: var(--muted);
-        padding: 0.28rem 0.62rem;
-        font-size: 0.74rem;
+        font-size: 0.73rem;
         font-family: "IBM Plex Mono", monospace;
       }
 
+      .hero-right {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+      }
+
+      .sync-btn {
+        border: 1px solid #4570b5;
+        border-radius: 999px;
+        background: linear-gradient(145deg, #27519a, #1a3f7a);
+        color: #eef5ff;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 0.79rem;
+        padding: 0.45rem 0.88rem;
+        cursor: pointer;
+      }
+
+      .sync-btn:disabled {
+        opacity: 0.72;
+        cursor: wait;
+      }
+
+      .bias-pill {
+        border: 1px solid rgba(151, 188, 255, 0.4);
+        border-radius: 14px;
+        padding: 0.56rem 0.72rem;
+        min-width: 214px;
+        text-align: right;
+        background: rgba(11, 24, 48, 0.82);
+      }
+
+      .bias-pill .k {
+        margin: 0;
+        color: #bcd2f8;
+        font-size: 0.64rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .bias-pill .v {
+        margin: 0.1rem 0 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+      }
+
+      .bias-pill .m {
+        margin: 0.2rem 0 0;
+        color: var(--muted);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.74rem;
+      }
+
       .tabs {
+        margin-top: 0.78rem;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.5rem;
-        margin-top: 0.75rem;
+        gap: 0.46rem;
       }
 
       .tab {
         border: 1px solid var(--line);
         border-radius: 14px;
-        padding: 0.7rem;
-        background: #0f2247;
-        color: #aec3ea;
+        padding: 0.66rem;
+        background: rgba(13, 29, 59, 0.82);
+        color: #b3c8ef;
         font-family: inherit;
-        font-size: 0.84rem;
+        font-size: 0.83rem;
         font-weight: 700;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.03em;
         cursor: pointer;
+        transition: 120ms ease;
+      }
+
+      .tab:hover {
+        transform: translateY(-1px);
       }
 
       .tab.active {
-        color: #f3f7ff;
-        border-color: #6ea0ef;
-        background: linear-gradient(145deg, #234a8e, #183663);
-        box-shadow: 0 10px 28px rgba(10, 25, 52, 0.45);
+        border-color: #85b1f1;
+        color: #f3f8ff;
+        background: linear-gradient(145deg, rgba(42, 82, 154, 0.9), rgba(24, 55, 104, 0.88));
+        box-shadow: 0 10px 24px rgba(9, 21, 43, 0.42);
       }
 
-      .alert {
-        margin-top: 0.75rem;
-        border: 1px solid #3a5f9b;
-        border-radius: 16px;
-        padding: 0.62rem 0.8rem;
-        background: linear-gradient(145deg, rgba(29, 64, 129, 0.35), rgba(11, 27, 58, 0.92));
-      }
-
-      .alert b {
-        font-size: 0.95rem;
-      }
-
-      .alert span {
-        color: #cfdef7;
-        font-size: 0.84rem;
-      }
-
-      .glance {
-        margin-top: 0.82rem;
+      .grid-kpi {
+        margin-top: 0.66rem;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.6rem;
+        gap: 0.56rem;
       }
 
-      .card {
+      .kpi {
         border: 1px solid var(--line);
         border-radius: 18px;
-        padding: 0.85rem;
-        background: linear-gradient(180deg, rgba(15, 29, 58, 0.96), rgba(10, 20, 43, 0.96));
-        min-height: 155px;
+        padding: 0.78rem;
+        background: linear-gradient(180deg, rgba(13, 28, 58, 0.9), rgba(10, 21, 45, 0.88));
+        box-shadow: inset 0 0 0 1px rgba(111, 145, 207, 0.08);
+        min-height: 152px;
       }
 
-      .label {
+      .kpi.news {
+        border-color: rgba(171, 85, 109, 0.46);
+        background: linear-gradient(180deg, rgba(72, 24, 38, 0.58), rgba(35, 12, 22, 0.9));
+      }
+
+      .kpi .label {
         margin: 0;
         color: var(--muted);
-        font-size: 0.71rem;
+        font-size: 0.68rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
       }
 
-      .big {
-        margin: 0.32rem 0 0;
-        font-size: clamp(1.35rem, 3vw, 2.15rem);
+      .kpi.news .label {
+        color: #f1bdcc;
+      }
+
+      .kpi .big {
+        margin: 0.34rem 0 0;
+        font-size: clamp(1.35rem, 2.8vw, 2.08rem);
         line-height: 1;
         font-weight: 800;
+      }
+
+      .kpi .sub {
+        margin: 0.24rem 0 0;
+        color: var(--muted);
+        font-size: 0.74rem;
       }
 
       .mono {
@@ -192,8 +294,8 @@
       }
 
       .delta {
-        margin-top: 0.28rem;
-        font-size: 0.82rem;
+        margin-top: 0.24rem;
+        font-size: 0.8rem;
         font-family: "IBM Plex Mono", monospace;
       }
 
@@ -210,12 +312,12 @@
       }
 
       .gauge {
-        margin-top: 0.6rem;
+        margin-top: 0.58rem;
         height: 18px;
         position: relative;
         border-radius: 999px;
-        border: 1px solid #30508b;
-        background: linear-gradient(90deg, rgba(239, 68, 68, 0.45), rgba(148, 163, 184, 0.18), rgba(34, 197, 94, 0.45));
+        border: 1px solid #335797;
+        background: linear-gradient(90deg, rgba(239, 68, 68, 0.48), rgba(148, 163, 184, 0.2), rgba(34, 197, 94, 0.48));
       }
 
       .gauge-marker {
@@ -223,17 +325,17 @@
         top: -3px;
         width: 2px;
         height: 22px;
-        background: #ffffff;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+        background: #fff;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.95);
       }
 
       .range {
-        margin-top: 0.7rem;
-        height: 15px;
+        margin-top: 0.62rem;
+        height: 16px;
         position: relative;
         border-radius: 999px;
-        border: 1px solid #30508b;
-        background: rgba(148, 163, 184, 0.15);
+        border: 1px solid #335797;
+        background: rgba(148, 163, 184, 0.16);
       }
 
       .range-fill {
@@ -242,7 +344,7 @@
         top: 0;
         bottom: 0;
         border-radius: 999px;
-        background: linear-gradient(90deg, rgba(34, 197, 94, 0.86), rgba(56, 189, 248, 0.86));
+        background: linear-gradient(90deg, rgba(34, 197, 94, 0.9), rgba(56, 189, 248, 0.9));
       }
 
       .range-marker {
@@ -254,76 +356,58 @@
       }
 
       .range-meta {
-        margin-top: 0.35rem;
+        margin-top: 0.3rem;
         display: flex;
         justify-content: space-between;
-        font-size: 0.73rem;
         color: var(--muted);
-      }
-
-      .news-next {
-        border: 1px solid #6b3341;
-        background: linear-gradient(180deg, rgba(77, 26, 38, 0.55), rgba(36, 14, 22, 0.9));
-      }
-
-      .news-next .label {
-        color: #f2becd;
-      }
-
-      .news-next .big {
-        font-size: clamp(1.02rem, 2.2vw, 1.34rem);
-        line-height: 1.2;
-      }
-
-      .news-next .delta {
-        color: #f6d5dd;
+        font-size: 0.71rem;
       }
 
       .panels {
-        margin-top: 0.6rem;
+        margin-top: 0.56rem;
         display: grid;
-        grid-template-columns: 1.18fr 1fr;
-        gap: 0.6rem;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 0.56rem;
       }
 
       .panel {
         border: 1px solid var(--line);
         border-radius: 20px;
-        padding: 0.78rem;
-        background: linear-gradient(180deg, rgba(15, 29, 58, 0.96), rgba(10, 20, 43, 0.96));
+        padding: 0.72rem;
+        background: linear-gradient(180deg, rgba(13, 28, 58, 0.9), rgba(10, 21, 45, 0.88));
       }
 
       .panel-head {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.4rem;
         flex-wrap: wrap;
       }
 
       .panel-head h2,
       .panel-head h3 {
         margin: 0;
-        font-size: 1rem;
+        font-size: 0.98rem;
       }
 
       .toggle {
         display: inline-flex;
-        border: 1px solid #2f4f8b;
+        border: 1px solid #355a9b;
         border-radius: 10px;
         overflow: hidden;
       }
 
       .tbtn {
         border: none;
-        border-left: 1px solid #2f4f8b;
-        background: #122850;
-        color: #9db4df;
+        border-left: 1px solid #355a9b;
+        background: rgba(15, 32, 67, 0.86);
+        color: #a5bce3;
         font-family: inherit;
-        font-size: 0.73rem;
+        font-size: 0.71rem;
         text-transform: uppercase;
         font-weight: 700;
-        padding: 0.36rem 0.6rem;
+        padding: 0.34rem 0.56rem;
         cursor: pointer;
       }
 
@@ -332,42 +416,54 @@
       }
 
       .tbtn.active {
-        background: linear-gradient(145deg, #214581, #173463);
-        color: #edf3ff;
+        background: linear-gradient(145deg, rgba(45, 88, 167, 0.9), rgba(26, 58, 112, 0.9));
+        color: #f1f6ff;
       }
 
       #intraday-chart,
       #weekly-chart {
-        height: 320px;
-        margin-top: 0.45rem;
+        height: 325px;
+        margin-top: 0.4rem;
       }
 
-      .rf-header {
+      .news-board {
+        margin-top: 0.56rem;
+        border: 1px solid rgba(166, 78, 103, 0.48);
+        border-radius: 20px;
+        padding: 0.72rem;
+        background: linear-gradient(180deg, rgba(67, 22, 35, 0.56), rgba(30, 11, 19, 0.9));
+      }
+
+      .news-head {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 0.6rem;
+        gap: 0.48rem;
         flex-wrap: wrap;
-        margin-top: 0.6rem;
+      }
+
+      .news-head h3 {
+        margin: 0;
+        font-size: 0.98rem;
       }
 
       .rf-toggle {
         display: inline-flex;
-        border: 1px solid #724157;
+        border: 1px solid #8b4a63;
         border-radius: 10px;
         overflow: hidden;
       }
 
       .rf-btn {
         border: none;
-        border-left: 1px solid #724157;
-        background: #451b2a;
-        color: #e0b0bd;
+        border-left: 1px solid #8b4a63;
+        background: rgba(65, 24, 37, 0.84);
+        color: #e0b0bf;
         font-family: inherit;
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         text-transform: uppercase;
         font-weight: 700;
-        padding: 0.34rem 0.56rem;
+        padding: 0.32rem 0.52rem;
         cursor: pointer;
       }
 
@@ -376,79 +472,80 @@
       }
 
       .rf-btn.active {
-        background: linear-gradient(145deg, #7f3047, #602336);
-        color: #ffe7ed;
+        background: linear-gradient(145deg, rgba(136, 49, 74, 0.9), rgba(95, 33, 50, 0.9));
+        color: #ffe6ed;
       }
 
-      .rf-strip {
-        margin-top: 0.5rem;
+      .news-meta {
+        margin: 0.35rem 0 0;
+        color: #e2b9c5;
+        font-size: 0.73rem;
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .rf-grid {
+        margin-top: 0.46rem;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.55rem;
+        gap: 0.46rem;
       }
 
       .rf-card {
-        border: 1px solid #704154;
+        border: 1px solid rgba(148, 72, 95, 0.62);
         border-radius: 14px;
-        background: linear-gradient(180deg, rgba(82, 29, 44, 0.58), rgba(37, 14, 24, 0.9));
-        padding: 0.58rem;
+        padding: 0.56rem;
+        background: linear-gradient(180deg, rgba(84, 31, 47, 0.62), rgba(45, 15, 27, 0.9));
       }
 
       .rf-time {
-        color: #ffd8e2;
+        color: #ffd7e2;
         font-family: "IBM Plex Mono", monospace;
-        font-size: 0.74rem;
+        font-size: 0.73rem;
       }
 
       .rf-title {
         margin-top: 0.18rem;
-        font-size: 0.82rem;
         line-height: 1.28;
+        font-size: 0.81rem;
       }
 
       .cc {
         display: inline-block;
-        margin-right: 0.32rem;
-        border: 1px solid #8b5467;
+        margin-right: 0.3rem;
+        border: 1px solid #97617a;
         border-radius: 999px;
         padding: 0.08rem 0.35rem;
-        background: rgba(112, 65, 84, 0.35);
+        background: rgba(118, 59, 79, 0.38);
+        color: #ffe7ee;
         font-family: "IBM Plex Mono", monospace;
-        font-size: 0.68rem;
-        color: #ffe5ec;
+        font-size: 0.66rem;
       }
 
       .error {
-        margin-top: 0.6rem;
-        display: none;
-        border: 1px solid #8b3e4e;
+        margin-top: 0.56rem;
+        border: 1px solid rgba(179, 69, 89, 0.66);
         border-radius: 12px;
         padding: 0.65rem 0.78rem;
-        background: rgba(139, 62, 78, 0.18);
-        color: #ffd3dc;
-        font-size: 0.84rem;
+        background: rgba(179, 69, 89, 0.18);
+        color: #ffd2dd;
+        font-size: 0.82rem;
+        display: none;
       }
 
       .error.show {
         display: block;
       }
 
-      .mini {
-        margin-top: 0.42rem;
-        color: var(--muted);
-        font-size: 0.74rem;
-      }
-
       footer {
-        margin-top: 0.7rem;
-        color: #8ca3cb;
-        font-size: 0.72rem;
+        margin-top: 0.62rem;
         text-align: center;
+        color: #90a8d1;
+        font-size: 0.71rem;
       }
 
-      @media (max-width: 1120px) {
-        .glance,
-        .rf-strip {
+      @media (max-width: 1160px) {
+        .grid-kpi,
+        .rf-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
@@ -458,72 +555,77 @@
       }
 
       @media (max-width: 760px) {
-        .top-row {
+        .hero-grid {
           grid-template-columns: 1fr;
         }
 
-        .actions {
-          justify-content: flex-start;
+        .hero-right {
+          align-items: flex-start;
         }
 
         .tabs,
-        .glance,
-        .rf-strip {
+        .grid-kpi,
+        .rf-grid {
           grid-template-columns: 1fr;
         }
 
         #intraday-chart,
         #weekly-chart {
-          height: 255px;
+          height: 252px;
         }
       }
     </style>
   </head>
   <body>
-    <main class="wrap">
-      <section class="top">
-        <div class="top-row">
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-grid">
           <div>
-            <h1>COT Glance Board</h1>
-            <p class="sub">One-screen weekly bias + intraday + red-folder risk.</p>
+            <p class="eyebrow">COT Aura</p>
+            <h1 id="hero-market">Loading...</h1>
+            <p class="hero-sub">Beautiful, glanceable trading board.</p>
+            <div class="setup">
+              <b id="setup-title">Setup --</b>
+              <span id="setup-text">Waiting for data...</span>
+            </div>
+            <div class="chips">
+              <span class="chip" id="chip-generated">Generated --</span>
+              <span class="chip" id="chip-report">Report --</span>
+              <span class="chip" id="chip-intraday">Intraday --</span>
+              <span class="chip" id="chip-next-cot">Next COT --</span>
+              <span class="chip" id="chip-last-sync">Last sync --</span>
+            </div>
           </div>
-          <div class="actions">
-            <button class="btn" id="sync-btn">Sync</button>
+          <div class="hero-right">
+            <button class="sync-btn" id="sync-btn">Sync</button>
+            <div class="bias-pill">
+              <p class="k">Weekly Bias</p>
+              <p class="v" id="hero-bias">--</p>
+              <p class="m" id="hero-bias-meta">--</p>
+            </div>
           </div>
-        </div>
-        <div class="chip-row">
-          <span class="chip" id="chip-generated">Generated --</span>
-          <span class="chip" id="chip-report">Report --</span>
-          <span class="chip" id="chip-intraday">Intraday --</span>
-          <span class="chip" id="chip-next-cot">Next COT --</span>
-          <span class="chip" id="chip-last-sync">Last sync --</span>
         </div>
 
         <div class="tabs" id="market-tabs"></div>
-
-        <div class="alert">
-          <b id="setup-title">Setup --</b>
-          <span id="setup-text">Waiting for data...</span>
-        </div>
       </section>
 
-      <section class="glance">
-        <article class="card">
-          <p class="label">Weekly Bias</p>
+      <section class="grid-kpi">
+        <article class="kpi">
+          <p class="label">Bias Gauge</p>
           <p class="big" id="bias-label">--</p>
           <p class="delta mono" id="bias-score">--</p>
           <div class="gauge"><span class="gauge-marker" id="bias-marker"></span></div>
-          <p class="mini" id="bias-mini">--</p>
+          <p class="sub" id="bias-mini">--</p>
         </article>
 
-        <article class="card">
+        <article class="kpi">
           <p class="label">Intraday Price</p>
           <p class="big mono" id="price-last">--</p>
           <p class="delta mono" id="price-change">--</p>
-          <p class="mini" id="price-state">--</p>
+          <p class="sub" id="price-state">--</p>
         </article>
 
-        <article class="card">
+        <article class="kpi">
           <p class="label">Session Range</p>
           <p class="big mono" id="range-pos">--</p>
           <div class="range">
@@ -536,15 +638,13 @@
           </div>
         </article>
 
-        <article class="card news-next">
+        <article class="kpi news">
           <p class="label">Next Red Folder</p>
           <p class="big" id="next-news-title">--</p>
           <p class="delta" id="next-news-time">--</p>
-          <p class="mini" id="next-news-meta">--</p>
+          <p class="sub" id="next-news-meta">--</p>
         </article>
       </section>
-
-      <div class="error" id="error-box"></div>
 
       <section class="panels">
         <article class="panel">
@@ -556,7 +656,7 @@
 
         <article class="panel">
           <div class="panel-head">
-            <h3 id="weekly-title">Weekly Structure</h3>
+            <h3 id="weekly-title">Weekly Trend</h3>
             <div class="toggle">
               <button class="tbtn" id="mode-trend">Trend</button>
               <button class="tbtn" id="mode-shift">Shift</button>
@@ -566,20 +666,22 @@
         </article>
       </section>
 
-      <section class="panel">
-        <div class="rf-header">
+      <section class="news-board">
+        <div class="news-head">
           <h3>Forex Factory Red Folder</h3>
           <div class="rf-toggle">
             <button class="rf-btn" id="rf-usd">USD</button>
             <button class="rf-btn" id="rf-all">All</button>
           </div>
         </div>
-        <p class="mini" id="rf-meta">--</p>
-        <div class="rf-strip" id="rf-strip"></div>
+        <p class="news-meta" id="rf-meta">--</p>
+        <div class="rf-grid" id="rf-strip"></div>
       </section>
 
+      <div class="error" id="error-box"></div>
+
       <footer>
-        CFTC + Yahoo + Forex Factory. Keep it simple: bias, price, risk.
+        CFTC + Yahoo + Forex Factory. Bias, price, event risk.
       </footer>
     </main>
 
@@ -590,21 +692,24 @@
       const state = {
         snapshot: null,
         activeMarket: "dow_jones",
-        chartMode: localStorage.getItem("glance_chart_mode") || "trend",
-        newsFilter: localStorage.getItem("glance_news_filter") || "usd",
+        chartMode: localStorage.getItem("aura_chart_mode") || "trend",
+        newsFilter: localStorage.getItem("aura_news_filter") || "usd",
         loading: false,
       };
 
       const el = {
         syncBtn: document.getElementById("sync-btn"),
+        heroMarket: document.getElementById("hero-market"),
+        heroBias: document.getElementById("hero-bias"),
+        heroBiasMeta: document.getElementById("hero-bias-meta"),
+        setupTitle: document.getElementById("setup-title"),
+        setupText: document.getElementById("setup-text"),
         chipGenerated: document.getElementById("chip-generated"),
         chipReport: document.getElementById("chip-report"),
         chipIntraday: document.getElementById("chip-intraday"),
         chipNextCot: document.getElementById("chip-next-cot"),
         chipLastSync: document.getElementById("chip-last-sync"),
         marketTabs: document.getElementById("market-tabs"),
-        setupTitle: document.getElementById("setup-title"),
-        setupText: document.getElementById("setup-text"),
         biasLabel: document.getElementById("bias-label"),
         biasScore: document.getElementById("bias-score"),
         biasMarker: document.getElementById("bias-marker"),
@@ -674,14 +779,14 @@
 
       function setChartMode(mode) {
         state.chartMode = mode === "shift" ? "shift" : "trend";
-        localStorage.setItem("glance_chart_mode", state.chartMode);
+        localStorage.setItem("aura_chart_mode", state.chartMode);
         el.modeTrend.classList.toggle("active", state.chartMode === "trend");
         el.modeShift.classList.toggle("active", state.chartMode === "shift");
       }
 
       function setNewsFilter(mode) {
         state.newsFilter = mode === "all" ? "all" : "usd";
-        localStorage.setItem("glance_news_filter", state.newsFilter);
+        localStorage.setItem("aura_news_filter", state.newsFilter);
         el.rfUsd.classList.toggle("active", state.newsFilter === "usd");
         el.rfAll.classList.toggle("active", state.newsFilter === "all");
       }
@@ -721,27 +826,26 @@
 
       function getUpcomingNews() {
         const rf = state.snapshot?.news?.red_folder || {};
-        const list = Array.isArray(rf.upcoming_high_impact) ? rf.upcoming_high_impact : [];
-        const filtered = state.newsFilter === "usd" ? list.filter((e) => e.country === "USD") : list;
-        return filtered;
+        const all = Array.isArray(rf.upcoming_high_impact) ? rf.upcoming_high_impact : [];
+        return state.newsFilter === "usd" ? all.filter((e) => e.country === "USD") : all;
       }
 
       function renderSetup(market) {
         const score = Number(market?.bias?.score || 0);
         const chg = Number(market?.intraday?.change_pct || 0);
-        let title = "Balanced";
-        let text = "Wait for clean break or rejection. Keep size tight.";
+        let title = "Neutral Zone";
+        let text = "Wait for clean level reaction before pressing size.";
 
         if (score >= 20) {
           title = "Bullish Week";
-          text = "Prefer long setups. Buy dips, avoid shorting random red candles.";
+          text = "Lean long. Buy pullbacks and avoid impulsive short fades.";
         } else if (score <= -20) {
           title = "Bearish Week";
-          text = "Prefer short setups. Sell pops, avoid chasing low-probability longs.";
+          text = "Lean short. Fade pops and avoid weak countertrend longs.";
         }
 
         if (Math.abs(chg) > 1.2) {
-          text += " Volatility expanded today.";
+          text += " Volatility elevated.";
         }
 
         el.setupTitle.textContent = title;
@@ -751,23 +855,19 @@
       function renderCards(market) {
         const bias = market?.bias || {};
         const intra = market?.intraday || {};
-        const latest = market?.latest || {};
 
         const score = Number(bias.score || 0);
-        const scoreClass = toneClass(score);
         el.biasLabel.textContent = bias.label || "Neutral";
-        el.biasScore.className = `delta mono ${scoreClass}`;
-        el.biasScore.textContent = `Score ${fmtSigned(score, 1)} | Conviction ${fmtNum(bias.conviction || 0, 0)}%`;
+        el.biasScore.className = `delta mono ${toneClass(score)}`;
+        el.biasScore.textContent = `Score ${fmtSigned(score, 1)} | Conv ${fmtNum(bias.conviction || 0, 0)}%`;
         el.biasMini.textContent = `Asset pct ${fmtNum(bias.asset_percentile || 0, 1)} | Lev pct ${fmtNum(bias.leveraged_percentile || 0, 1)}`;
-
-        const marker = Math.max(0, Math.min(100, ((score + 100) / 200) * 100));
-        el.biasMarker.style.left = `${marker}%`;
+        el.biasMarker.style.left = `${Math.max(0, Math.min(100, (score + 100) / 2))}%`;
 
         const ticker = intra.symbol || ETF[state.activeMarket] || "--";
+        const changePct = Number(intra.change_pct || 0);
         el.priceLast.textContent = `${ticker} ${fmtNum(intra.last, 2)}`;
-        const pc = Number(intra.change_pct || 0);
-        el.priceChange.className = `delta mono ${toneClass(pc)}`;
-        el.priceChange.textContent = `${fmtSigned(intra.change, 2)} (${fmtSigned(pc, 2, "%")})`;
+        el.priceChange.className = `delta mono ${toneClass(changePct)}`;
+        el.priceChange.textContent = `${fmtSigned(intra.change, 2)} (${fmtSigned(changePct, 2, "%")})`;
         el.priceState.textContent = intra.market_state ? `State ${intra.market_state}` : "State --";
 
         const rp = Math.max(0, Math.min(100, Number(intra.range_position_pct || 0)));
@@ -782,15 +882,12 @@
         if (next) {
           el.nextNewsTitle.textContent = `${next.country || "--"} ${next.title || "Event"}`;
           el.nextNewsTime.textContent = fmtTime(next.datetime_utc || `${next.date} ${next.time}`);
-          el.nextNewsMeta.textContent = `${news.length} upcoming (${state.newsFilter.toUpperCase()})`;
+          el.nextNewsMeta.textContent = `${news.length} upcoming ${state.newsFilter.toUpperCase()}`;
         } else {
           el.nextNewsTitle.textContent = "No upcoming red-folder";
           el.nextNewsTime.textContent = "--";
           el.nextNewsMeta.textContent = "No event risk in filter";
         }
-
-        el.chipReport.textContent = `Report ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
-        el.chipIntraday.textContent = `Intraday ${fmtTime(intra.as_of_utc || state.snapshot.generated_at_utc)}`;
       }
 
       function renderIntradayChart(market) {
@@ -803,11 +900,9 @@
             {
               margin: { l: 30, r: 10, t: 10, b: 24 },
               paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(10,20,44,0.85)",
+              plot_bgcolor: "rgba(9,18,39,0.82)",
               font: { family: "Sora, sans-serif", color: "#d7e6ff" },
-              annotations: [
-                { text: "No intraday bars", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false },
-              ],
+              annotations: [{ text: "No intraday bars", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false }],
               xaxis: { visible: false },
               yaxis: { visible: false },
             },
@@ -829,20 +924,20 @@
               mode: "lines",
               x,
               y,
-              line: { color, width: 3 },
+              line: { color, width: 3.2 },
               fill: "tozeroy",
-              fillcolor: bullish ? "rgba(34,197,94,0.18)" : "rgba(239,68,68,0.18)",
+              fillcolor: bullish ? "rgba(34,197,94,0.2)" : "rgba(239,68,68,0.2)",
               hovertemplate: "%{x}<br>%{y:.2f}<extra></extra>",
             },
           ],
           {
-            margin: { l: 42, r: 12, t: 8, b: 28 },
+            margin: { l: 44, r: 12, t: 8, b: 30 },
             paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(10,20,44,0.85)",
+            plot_bgcolor: "rgba(9,18,39,0.82)",
             font: { family: "Sora, sans-serif", color: "#d7e6ff" },
             hovermode: "x unified",
-            xaxis: { type: "date", tickformat: "%H:%M", gridcolor: "rgba(120,150,205,0.16)" },
-            yaxis: { gridcolor: "rgba(120,150,205,0.2)", zeroline: false },
+            xaxis: { type: "date", tickformat: "%H:%M", gridcolor: "rgba(120,150,205,0.17)" },
+            yaxis: { gridcolor: "rgba(120,150,205,0.22)", zeroline: false },
           },
           { displayModeBar: false, responsive: true }
         );
@@ -857,10 +952,8 @@
             {
               margin: { l: 30, r: 10, t: 10, b: 24 },
               paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(10,20,44,0.85)",
-              annotations: [
-                { text: "No weekly rows", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false },
-              ],
+              plot_bgcolor: "rgba(9,18,39,0.82)",
+              annotations: [{ text: "No weekly rows", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false }],
               xaxis: { visible: false },
               yaxis: { visible: false },
             },
@@ -878,7 +971,7 @@
             Number(latest.leveraged_net || 0) - Number(prev.leveraged_net || 0),
             Number(latest.open_interest || 0) - Number(prev.open_interest || 0),
           ];
-          const colors = vals.map((v) => (v >= 0 ? "rgba(34,197,94,0.9)" : "rgba(239,68,68,0.9)"));
+          const colors = vals.map((v) => (v >= 0 ? "rgba(34,197,94,0.92)" : "rgba(239,68,68,0.92)"));
 
           Plotly.react(
             "weekly-chart",
@@ -887,7 +980,7 @@
                 type: "bar",
                 x: labels,
                 y: vals,
-                marker: { color: colors, line: { color: "rgba(8,14,30,1)", width: 1 } },
+                marker: { color: colors, line: { color: "rgba(7,12,24,1)", width: 1 } },
                 text: vals.map((v) => fmtSigned(v)),
                 textposition: "outside",
                 hovertemplate: "%{x} Δ %{y:,}<extra></extra>",
@@ -896,20 +989,10 @@
             {
               margin: { l: 42, r: 12, t: 20, b: 36 },
               paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(10,20,44,0.85)",
+              plot_bgcolor: "rgba(9,18,39,0.82)",
               font: { family: "Sora, sans-serif", color: "#d7e6ff" },
-              yaxis: { gridcolor: "rgba(120,150,205,0.2)", zerolinecolor: "rgba(150,170,220,0.45)" },
-              annotations: [
-                {
-                  text: `${fmtDate(prev.report_date)} → ${fmtDate(latest.report_date)}`,
-                  x: 0,
-                  y: 1.14,
-                  xref: "paper",
-                  yref: "paper",
-                  showarrow: false,
-                  font: { size: 11, color: "#9db4df" },
-                },
-              ],
+              yaxis: { gridcolor: "rgba(120,150,205,0.22)", zerolinecolor: "rgba(150,170,220,0.45)" },
+              annotations: [{ text: `${fmtDate(prev.report_date)} → ${fmtDate(latest.report_date)}`, x: 0, y: 1.14, xref: "paper", yref: "paper", showarrow: false, font: { size: 11, color: "#9db4df" } }],
             },
             { displayModeBar: false, responsive: true }
           );
@@ -923,18 +1006,18 @@
         Plotly.react(
           "weekly-chart",
           [
-            { type: "scatter", mode: "lines", x, y: asset, name: "Asset", line: { color: "#f59e0b", width: 3 } },
-            { type: "scatter", mode: "lines", x, y: lev, name: "Leveraged", line: { color: "#38bdf8", width: 3 } },
+            { type: "scatter", mode: "lines", x, y: asset, name: "Asset", line: { color: "#fbbf24", width: 3.2 } },
+            { type: "scatter", mode: "lines", x, y: lev, name: "Leveraged", line: { color: "#38bdf8", width: 3.2 } },
           ],
           {
             margin: { l: 42, r: 12, t: 10, b: 30 },
             paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(10,20,44,0.85)",
+            plot_bgcolor: "rgba(9,18,39,0.82)",
             font: { family: "Sora, sans-serif", color: "#d7e6ff" },
             hovermode: "x unified",
             legend: { orientation: "h", y: 1.12, x: 0 },
-            xaxis: { type: "date", tickformat: "%b %Y", gridcolor: "rgba(120,150,205,0.16)" },
-            yaxis: { gridcolor: "rgba(120,150,205,0.2)", zerolinecolor: "rgba(150,170,220,0.45)" },
+            xaxis: { type: "date", tickformat: "%b %Y", gridcolor: "rgba(120,150,205,0.17)" },
+            yaxis: { gridcolor: "rgba(120,150,205,0.22)", zerolinecolor: "rgba(150,170,220,0.45)" },
           },
           { displayModeBar: false, responsive: true }
         );
@@ -947,7 +1030,7 @@
         const show = list.slice(0, 8);
 
         const fetched = rf.fetched_at_utc ? fmtTime(rf.fetched_at_utc) : "--";
-        el.rfMeta.textContent = `${list.length} events • filter ${state.newsFilter.toUpperCase()} • feed ${fetched}`;
+        el.rfMeta.textContent = `${list.length} events | ${state.newsFilter.toUpperCase()} | feed ${fetched}`;
 
         if (!show.length) {
           el.rfStrip.innerHTML = `<div class="rf-card"><div class="rf-title">No high-impact events in this filter.</div></div>`;
@@ -957,21 +1040,26 @@
         el.rfStrip.innerHTML = show
           .map((e) => {
             const t = e.datetime_utc ? fmtTime(e.datetime_utc) : `${e.date || "--"} ${e.time || "--"}`;
-            return `
-              <article class="rf-card">
-                <div class="rf-time">${t}</div>
-                <div class="rf-title"><span class="cc">${e.country || "--"}</span>${e.title || "Event"}</div>
-              </article>
-            `;
+            return `<article class="rf-card"><div class="rf-time">${t}</div><div class="rf-title"><span class="cc">${e.country || "--"}</span>${e.title || "Event"}</div></article>`;
           })
           .join("");
       }
 
       function renderHeader(market) {
+        const intra = market?.intraday || {};
+        const score = Number(market?.bias?.score || 0);
+
+        el.heroMarket.textContent = `${market.label} • ${intra.symbol || ETF[state.activeMarket] || "--"}`;
+        el.heroBias.textContent = market?.bias?.label || "Neutral";
+        el.heroBias.className = `v ${toneClass(score)}`;
+        el.heroBiasMeta.textContent = `Score ${fmtSigned(score, 1)} | Conv ${fmtNum(market?.bias?.conviction || 0, 0)}%`;
+
         el.chipGenerated.textContent = `Generated ${fmtTime(state.snapshot.generated_at_utc)}`;
-        const last = localStorage.getItem("glance_last_sync") || "--";
-        el.chipLastSync.textContent = `Last sync ${last}`;
-        el.intradayTitle.textContent = `${market.label} Intraday (${market.intraday?.symbol || ETF[state.activeMarket] || "--"})`;
+        el.chipReport.textContent = `Report ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
+        el.chipIntraday.textContent = `Intraday ${fmtTime(intra.as_of_utc || state.snapshot.generated_at_utc)}`;
+        el.chipLastSync.textContent = `Last sync ${localStorage.getItem("aura_last_sync") || "--"}`;
+
+        el.intradayTitle.textContent = `${market.label} Intraday`;
         el.weeklyTitle.textContent = state.chartMode === "trend" ? "Weekly Trend" : "Weekly Shift";
       }
 
@@ -1000,11 +1088,13 @@
           if (!payload.markets[state.activeMarket]) {
             state.activeMarket = Object.keys(payload.markets)[0];
           }
-          el.error.classList.remove("show");
-          if (manual || !localStorage.getItem("glance_last_sync")) {
+
+          if (manual || !localStorage.getItem("aura_last_sync")) {
             const now = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-            localStorage.setItem("glance_last_sync", now);
+            localStorage.setItem("aura_last_sync", now);
           }
+
+          el.error.classList.remove("show");
           render();
         } catch (e) {
           el.error.textContent = `Failed to load data: ${e.message}`;
