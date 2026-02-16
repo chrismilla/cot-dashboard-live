@@ -70,6 +70,35 @@
         color: var(--muted);
       }
 
+      .hero-actions {
+        margin-top: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .action-btn {
+        border: 1px solid #375184;
+        border-radius: 999px;
+        background: linear-gradient(145deg, #1a3670, #142a57);
+        color: #dbe7ff;
+        font-family: inherit;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.38rem 0.8rem;
+        cursor: pointer;
+        transition: 120ms ease;
+      }
+
+      .action-btn:hover {
+        filter: brightness(1.12);
+      }
+
+      .action-btn:disabled {
+        opacity: 0.7;
+        cursor: wait;
+      }
+
       .hero-meta {
         margin-top: 0.8rem;
         display: flex;
@@ -128,7 +157,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.55rem;
-        margin-bottom: 0.85rem;
+        margin-bottom: 0.7rem;
       }
 
       .tab {
@@ -314,6 +343,44 @@
         margin: 0;
       }
 
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .toggle-group {
+        display: inline-flex;
+        border: 1px solid #2a3f6d;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .toggle-btn {
+        border: none;
+        border-left: 1px solid #2a3f6d;
+        background: #0d1f43;
+        color: var(--muted);
+        font-family: inherit;
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        padding: 0.4rem 0.62rem;
+        cursor: pointer;
+      }
+
+      .toggle-btn:first-child {
+        border-left: none;
+      }
+
+      .toggle-btn.active {
+        background: linear-gradient(145deg, #1d3a76, #142c5e);
+        color: #e6efff;
+      }
+
       .subtle {
         margin-top: 0.25rem;
         color: var(--muted);
@@ -434,6 +501,25 @@
         padding-left: 1rem;
       }
 
+      .context-alert {
+        border: 1px solid #315084;
+        border-radius: 16px;
+        padding: 0.75rem 0.9rem;
+        margin-bottom: 0.8rem;
+        background: linear-gradient(145deg, rgba(29, 58, 118, 0.4), rgba(12, 26, 58, 0.86));
+      }
+
+      .context-alert h3 {
+        margin: 0.24rem 0 0.14rem;
+        font-size: 1.03rem;
+      }
+
+      .context-alert p {
+        margin: 0;
+        color: #d3def7;
+        font-size: 0.87rem;
+      }
+
       .context-list li {
         margin-bottom: 0.45rem;
         color: #d3def7;
@@ -478,6 +564,11 @@
         <div>
           <h1>COT Trader Dashboard</h1>
           <p>Weekly bias + intraday pulse for Dow, Nasdaq, and S&P setups.</p>
+          <div class="hero-actions">
+            <button class="action-btn" id="refresh-btn">Sync Now</button>
+            <span class="chip" id="last-synced">Last synced: --</span>
+            <span class="chip" id="next-report">Next COT: --</span>
+          </div>
           <div class="hero-meta">
             <span class="chip" id="generated-at">Refreshing data...</span>
             <span class="chip" id="latest-report">Waiting for snapshot...</span>
@@ -494,6 +585,11 @@
 
       <div class="error" id="error-box"></div>
       <div class="market-tabs" id="market-tabs"></div>
+      <section class="context-alert">
+        <p class="eyebrow">This Week Setup</p>
+        <h3 id="context-alert-title">-</h3>
+        <p id="context-alert-text">-</p>
+      </section>
 
       <section class="grid-top">
         <article class="card">
@@ -581,8 +677,16 @@
       </section>
 
       <section class="panel">
-        <h2 id="chart-title">Market Positioning</h2>
-        <p class="subtle" id="chart-subtitle"></p>
+        <div class="panel-head">
+          <div>
+            <h2 id="chart-title">Market Positioning</h2>
+            <p class="subtle" id="chart-subtitle"></p>
+          </div>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="mode-trend">Trend</button>
+            <button class="toggle-btn" id="mode-compare">Weekly Shift</button>
+          </div>
+        </div>
         <div id="positioning-chart"></div>
       </section>
 
@@ -623,14 +727,21 @@
       const state = {
         snapshot: null,
         activeMarket: "dow_jones",
+        chartMode: localStorage.getItem("cot_chart_mode") || "trend",
+        isRefreshing: false,
       };
 
       const el = {
         tabs: document.getElementById("market-tabs"),
+        refreshBtn: document.getElementById("refresh-btn"),
+        lastSynced: document.getElementById("last-synced"),
+        nextReport: document.getElementById("next-report"),
         generatedAt: document.getElementById("generated-at"),
         latestReport: document.getElementById("latest-report"),
         intradayUpdated: document.getElementById("intraday-updated"),
         errorBox: document.getElementById("error-box"),
+        contextAlertTitle: document.getElementById("context-alert-title"),
+        contextAlertText: document.getElementById("context-alert-text"),
         heroBiasLabel: document.getElementById("hero-bias-label"),
         heroBiasScore: document.getElementById("hero-bias-score"),
         heroBiasPlaybook: document.getElementById("hero-bias-playbook"),
@@ -661,6 +772,8 @@
         tradeList: document.getElementById("trade-list"),
         chartTitle: document.getElementById("chart-title"),
         chartSubtitle: document.getElementById("chart-subtitle"),
+        modeTrend: document.getElementById("mode-trend"),
+        modeCompare: document.getElementById("mode-compare"),
         historyBody: document.getElementById("history-body"),
         contextList: document.getElementById("context-list"),
       };
@@ -695,6 +808,49 @@
           minute: "2-digit",
           timeZoneName: "short",
         });
+      }
+
+      function updateLastSynced(label) {
+        const text = label || localStorage.getItem("cot_last_synced") || "--";
+        el.lastSynced.textContent = `Last synced: ${text}`;
+      }
+
+      function markSyncedNow() {
+        const label = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        localStorage.setItem("cot_last_synced", label);
+        updateLastSynced(label);
+      }
+
+      function updateNextReportCountdown() {
+        const nowNY = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+        const nextFriday = new Date(nowNY);
+        const dayDiff = (5 - nowNY.getDay() + 7) % 7;
+        nextFriday.setDate(nowNY.getDate() + dayDiff);
+        nextFriday.setHours(15, 30, 0, 0);
+
+        if (nowNY.getDay() === 5 && nowNY.getTime() >= nextFriday.getTime()) {
+          nextFriday.setDate(nextFriday.getDate() + 7);
+        }
+
+        const diff = Math.max(0, nextFriday.getTime() - nowNY.getTime());
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const releaseDate = nextFriday.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+        el.nextReport.textContent = `Next COT: ${d}d ${h}h ${m}m (${releaseDate} 3:30 PM ET)`;
+      }
+
+      function setChartMode(mode) {
+        state.chartMode = mode;
+        localStorage.setItem("cot_chart_mode", mode);
+        el.modeTrend.classList.toggle("active", mode === "trend");
+        el.modeCompare.classList.toggle("active", mode === "compare");
+      }
+
+      function setRefreshState(isRefreshing) {
+        state.isRefreshing = isRefreshing;
+        el.refreshBtn.disabled = isRefreshing;
+        el.refreshBtn.textContent = isRefreshing ? "Syncing..." : "Sync Now";
       }
 
       function biasClass(score) {
@@ -936,6 +1092,86 @@
 
       function renderPositioningChart(market) {
         const history = Array.isArray(market.history) ? market.history.slice() : [];
+        if (state.chartMode === "compare") {
+          if (history.length < 2) {
+            const layout = {
+              margin: { l: 40, r: 18, t: 14, b: 34 },
+              paper_bgcolor: "rgba(0,0,0,0)",
+              plot_bgcolor: "rgba(9,19,43,0.87)",
+              font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
+              annotations: [
+                {
+                  text: "Need at least 2 weekly rows for comparison view",
+                  xref: "paper",
+                  yref: "paper",
+                  x: 0.5,
+                  y: 0.5,
+                  showarrow: false,
+                  font: { size: 13, color: "#93a7ce" },
+                },
+              ],
+              xaxis: { visible: false },
+              yaxis: { visible: false },
+            };
+            Plotly.react("positioning-chart", [], layout, { displayModeBar: false, responsive: true });
+            return;
+          }
+
+          const latest = history[history.length - 1];
+          const previous = history[history.length - 2];
+
+          const labels = ["Asset Managers", "Leveraged Funds", "Open Interest"];
+          const deltas = [
+            Number(latest.asset_mgr_net || 0) - Number(previous.asset_mgr_net || 0),
+            Number(latest.leveraged_net || 0) - Number(previous.leveraged_net || 0),
+            Number(latest.open_interest || 0) - Number(previous.open_interest || 0),
+          ];
+          const colors = deltas.map((v) => (v >= 0 ? "rgba(34,197,94,0.85)" : "rgba(239,68,68,0.85)"));
+
+          const traces = [
+            {
+              type: "bar",
+              x: labels,
+              y: deltas,
+              marker: { color: colors, line: { color: "rgba(13, 20, 42, 1)", width: 1 } },
+              text: deltas.map((v) => fmtSigned(v)),
+              textposition: "outside",
+              cliponaxis: false,
+              hovertemplate: "%{x}<br>Weekly Δ %{y:,}<extra></extra>",
+            },
+          ];
+
+          const layout = {
+            margin: { l: 48, r: 24, t: 24, b: 50 },
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(9,19,43,0.87)",
+            font: { family: "Space Grotesk, sans-serif", color: "#dbe7ff" },
+            hovermode: "x",
+            yaxis: {
+              title: "Weekly Change (contracts)",
+              gridcolor: "rgba(110, 143, 201, 0.24)",
+              zerolinecolor: "rgba(140, 170, 220, 0.5)",
+            },
+            xaxis: {
+              tickfont: { size: 12 },
+            },
+            annotations: [
+              {
+                text: `Comparison: ${fmtDate(previous.report_date)} → ${fmtDate(latest.report_date)}`,
+                xref: "paper",
+                yref: "paper",
+                x: 0,
+                y: 1.16,
+                showarrow: false,
+                font: { size: 12, color: "#93a7ce" },
+              },
+            ],
+          };
+
+          Plotly.react("positioning-chart", traces, layout, { displayModeBar: false, responsive: true });
+          return;
+        }
+
         const dates = history.map((row) => row.report_date);
         const asset = history.map((row) => row.asset_mgr_net);
         const leveraged = history.map((row) => row.leveraged_net);
@@ -1026,6 +1262,38 @@
           .join("");
       }
 
+      function renderContextAlert(market) {
+        const bias = market.bias || {};
+        const intraday = market.intraday || {};
+        const score = Number(bias.score || 0);
+        const changePct = Number(intraday.change_pct || 0);
+        const rangePos = Number(intraday.range_position_pct || 50);
+
+        let title = "Neutral Setup";
+        let text = "Let intraday structure decide direction and avoid over-sizing in the middle of range.";
+
+        if (score >= 20) {
+          title = "Bullish Weekly Bias";
+          text = "Prefer longs on pullbacks into support. If a session is red inside bullish bias, look for reclaim setups instead of chasing breakdowns.";
+        } else if (score <= -20) {
+          title = "Bearish Weekly Bias";
+          text = "Prefer short setups on failed bounces. If sessions squeeze green, wait for rejection at resistance before re-shorting.";
+        }
+
+        if (rangePos >= 80) {
+          text += " Price is at upper range; expect either breakout follow-through or sharp mean reversion.";
+        } else if (rangePos <= 20) {
+          text += " Price is at lower range; watch for flush-and-reclaim vs trend continuation.";
+        }
+
+        if (Math.abs(changePct) > 1.2) {
+          text += " Session volatility is expanded today; tighten confirmation rules.";
+        }
+
+        el.contextAlertTitle.textContent = title;
+        el.contextAlertText.textContent = text;
+      }
+
       function renderContext(market) {
         const bias = market.bias || {};
         const intraday = market.intraday || {};
@@ -1053,8 +1321,13 @@
         el.heroBiasPlaybook.textContent = bias.playbook || "Use this bias to select direction each week.";
         applyDeltaStyle(el.heroBiasScore, score);
 
-        el.chartTitle.textContent = `${market.label} Positioning + Weekly Structure`;
-        el.chartSubtitle.textContent = market.market_name || "";
+        if (state.chartMode === "trend") {
+          el.chartTitle.textContent = `${market.label} Positioning + Weekly Structure`;
+          el.chartSubtitle.textContent = market.market_name || "";
+        } else {
+          el.chartTitle.textContent = `${market.label} Weekly Shift`;
+          el.chartSubtitle.textContent = `Latest report change snapshot (${market.contract_code})`;
+        }
       }
 
       function renderDashboard() {
@@ -1064,6 +1337,7 @@
 
         renderTabs();
         renderHeader(market);
+        renderContextAlert(market);
         renderTopCards(market);
         renderIntradayPanel(market);
         renderIntradayChart(market);
@@ -1074,7 +1348,8 @@
         renderContext(market);
       }
 
-      async function loadSnapshot() {
+      async function loadSnapshot(manual = false) {
+        setRefreshState(true);
         try {
           const response = await fetch(`./data/cot_snapshot.json?ts=${Date.now()}`, { cache: "no-store" });
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -1091,12 +1366,36 @@
 
           el.errorBox.textContent = "";
           el.errorBox.classList.remove("show");
+          if (manual || !localStorage.getItem("cot_last_synced")) {
+            markSyncedNow();
+          }
           renderDashboard();
         } catch (error) {
           el.errorBox.textContent = `Failed to load dashboard snapshot. ${error.message}`;
           el.errorBox.classList.add("show");
+        } finally {
+          setRefreshState(false);
         }
       }
+
+      el.refreshBtn.addEventListener("click", () => loadSnapshot(true));
+      el.modeTrend.addEventListener("click", () => {
+        setChartMode("trend");
+        if (state.snapshot) {
+          renderDashboard();
+        }
+      });
+      el.modeCompare.addEventListener("click", () => {
+        setChartMode("compare");
+        if (state.snapshot) {
+          renderDashboard();
+        }
+      });
+
+      updateLastSynced();
+      setChartMode(state.chartMode === "compare" ? "compare" : "trend");
+      updateNextReportCountdown();
+      setInterval(updateNextReportCountdown, 1000 * 30);
 
       loadSnapshot();
     </script>
