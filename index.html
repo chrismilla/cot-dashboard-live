@@ -899,7 +899,6 @@
             </div>
           </div>
           <button class="btn btn-sync" id="sync-btn">Sync</button>
-          <button class="btn btn-ghost" id="calendar-toggle">Calendar</button>
           <button class="btn btn-ghost" id="theme-toggle">Light</button>
         </div>
       </header>
@@ -1047,7 +1046,6 @@
         activeMarket: "sp_500",
         chartMode: "trend",
         theme: localStorage.getItem("cot_theme") || "dark",
-        showCalendar: localStorage.getItem("cot_show_calendar") !== "false",
         pinnedSymbols: [],
         lastPriceByMarket: {},
       };
@@ -1057,7 +1055,6 @@
         syncState: document.getElementById("sync-state"),
         syncTime: document.getElementById("sync-time"),
         syncBtn: document.getElementById("sync-btn"),
-        calendarToggle: document.getElementById("calendar-toggle"),
         themeToggle: document.getElementById("theme-toggle"),
         errorBox: document.getElementById("error-box"),
 
@@ -1108,13 +1105,6 @@
         document.documentElement.setAttribute("data-theme", theme);
         localStorage.setItem("cot_theme", theme);
         el.themeToggle.textContent = theme === "dark" ? "Light" : "Dark";
-      }
-
-      function setCalendarVisibility(show) {
-        state.showCalendar = show;
-        localStorage.setItem("cot_show_calendar", String(show));
-        el.redCard.classList.toggle("hidden", !show);
-        el.calendarToggle.textContent = show ? "Calendar" : "No Calendar";
       }
 
       function loadPinned() {
@@ -1652,7 +1642,6 @@
         renderPulseChart(market);
         renderWatchlist();
         renderHistory(market);
-        setCalendarVisibility(state.showCalendar);
       }
 
       function setLoadingSync(isLoading) {
@@ -1693,10 +1682,6 @@
         el.themeToggle.addEventListener("click", () => {
           setTheme(state.theme === "dark" ? "light" : "dark");
           renderDashboard();
-        });
-
-        el.calendarToggle.addEventListener("click", () => {
-          setCalendarVisibility(!state.showCalendar);
         });
 
         el.syncBtn.addEventListener("click", () => {
@@ -1757,7 +1742,6 @@
 
       loadPinned();
       setTheme(state.theme);
-      setCalendarVisibility(state.showCalendar);
       bindEvents();
       loadSnapshot();
     </script>
