@@ -28,7 +28,22 @@ Live site: https://chrismilla.github.io/cot-dashboard-live/
 GitHub Actions workflow: `.github/workflows/refresh-data.yml`
 
 Schedules:
-- Hourly during weekday US session window (`5 13-22 * * 1-5` UTC)
+- Every 20 minutes during weekday US session + overlap window (`*/20 12-23 * * 1-5` UTC)
 - Weekly post-CFTC refresh (`20 22 * * 5` UTC)
 
 The workflow updates `data/cot_snapshot.json` and pushes only when data changed.
+
+## Push Alerts (No open tab required)
+
+The workflow also sends pre-news push alerts through `ntfy` before major USD red-folder events.
+
+- Default topic: `cot-live-chrismilla-8c73`
+- Default lead time: 30 minutes before event
+- Alert dedupe state is stored in `data/news_alert_state.json`
+
+Setup:
+1. Install the `ntfy` app on your phone (or use `ntfy.sh` web).
+2. Subscribe to topic: `cot-live-chrismilla-8c73`
+3. Keep app notifications enabled.
+
+You will receive push notifications even when the dashboard tab is closed.

@@ -3,8 +3,8 @@ name: Refresh COT data
 on:
   workflow_dispatch:
   schedule:
-    # Hourly during US cash session window (roughly 8am-5pm ET weekdays).
-    - cron: "5 13-22 * * 1-5"
+    # Every 20 minutes during weekday US session + overlap windows.
+    - cron: "*/20 12-23 * * 1-5"
     # Weekly post-CFTC release refresh.
     - cron: "20 22 * * 5"
 
@@ -35,6 +35,12 @@ jobs:
             --history-weeks 104 \
             --output data/cot_snapshot.json
 
+      - name: Send pre-news push alerts
+        run: |
+          python -m cot_dashboard.news_alerts \
+            --snapshot data/cot_snapshot.json \
+            --state data/news_alert_state.json
+
       - name: Commit data update
         run: |
           if git diff --quiet; then
@@ -43,6 +49,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/cot_snapshot.json
-          git commit -m "Refresh COT and intraday snapshot"
+          git add data/cot_snapshot.json data/news_alert_state.json
+          git commit -m "Refresh snapshot and alert state"
           git push
