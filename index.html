@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,1058 +7,1758 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <style>
       :root {
-        --bg: #edf2f8;
-        --bg-2: #e7eef8;
-        --panel: rgba(255, 255, 255, 0.74);
-        --panel-strong: rgba(255, 255, 255, 0.92);
-        --line: rgba(15, 23, 42, 0.1);
-        --line-strong: rgba(15, 23, 42, 0.16);
-        --text: #0f172a;
-        --muted: #64748b;
-        --bull: #16a34a;
-        --bear: #dc2626;
-        --neutral: #64748b;
-        --shadow: 0 24px 50px rgba(15, 23, 42, 0.1);
+        --bg: #07090d;
+        --bg-soft: #0f131b;
+        --card: rgba(255, 255, 255, 0.05);
+        --card-strong: rgba(255, 255, 255, 0.08);
+        --line: rgba(255, 255, 255, 0.12);
+        --text: #f5f7fb;
+        --muted: #a1a7b5;
+        --soft: #7e8798;
+        --bull: #34d399;
+        --bear: #fb7185;
+        --neutral: #fbbf24;
+        --focus: #4f9cf7;
+        --track: rgba(255, 255, 255, 0.15);
+        --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+        --radius: 24px;
+      }
+
+      :root[data-theme="light"] {
+        --bg: #f4f6fb;
+        --bg-soft: #edf1f8;
+        --card: rgba(255, 255, 255, 0.76);
+        --card-strong: rgba(255, 255, 255, 0.92);
+        --line: rgba(15, 23, 42, 0.12);
+        --text: #101727;
+        --muted: #5f6a7f;
+        --soft: #7b879b;
+        --track: rgba(100, 116, 139, 0.2);
+        --shadow: 0 24px 66px rgba(15, 23, 42, 0.14);
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html,
       body {
         margin: 0;
-        min-height: 100vh;
-        color: var(--text);
-        font-family: "Manrope", sans-serif;
-        background:
-          radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.2), transparent 34%),
-          radial-gradient(circle at 100% 0%, rgba(14, 165, 233, 0.18), transparent 30%),
-          radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.12), transparent 42%),
-          linear-gradient(170deg, var(--bg) 0%, var(--bg-2) 100%);
+        min-height: 100%;
+        scroll-behavior: smooth;
       }
 
-      .shell {
-        width: min(1320px, calc(100% - 1rem));
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 11% -10%, rgba(16, 185, 129, 0.12), transparent 34%),
+          radial-gradient(circle at 91% -12%, rgba(59, 130, 246, 0.13), transparent 38%),
+          var(--bg);
+      }
+
+      .wrap {
+        width: min(1320px, calc(100% - 2rem));
         margin: 0 auto;
-        padding: 1rem 0 1.3rem;
+        padding: 1.2rem 0 2.4rem;
       }
 
       .glass {
-        background: var(--panel);
+        background: var(--card);
         border: 1px solid var(--line);
-        backdrop-filter: blur(18px) saturate(125%);
-        -webkit-backdrop-filter: blur(18px) saturate(125%);
-        border-radius: 28px;
         box-shadow: var(--shadow);
+        backdrop-filter: blur(18px) saturate(145%);
+        -webkit-backdrop-filter: blur(18px) saturate(145%);
+      }
+
+      .nav {
+        position: sticky;
+        top: 0.8rem;
+        z-index: 40;
+        border-radius: 16px;
+        padding: 0.68rem 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+      }
+
+      .brand-mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 9px;
+        background: linear-gradient(135deg, #22d3ee, #3b82f6);
+        display: grid;
+        place-items: center;
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: #fff;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .menu {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.18rem;
+        padding: 0.18rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--card-strong);
+      }
+
+      .menu a {
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.36rem 0.64rem;
+        border-radius: 999px;
+        transition: 140ms ease;
+      }
+
+      .menu a:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+
+      .sync-readout {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.52rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--card-strong);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--bull);
+        box-shadow: 0 0 16px var(--bull);
+        animation: blink 1.7s ease-in-out infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .sync-copy {
+        line-height: 1.15;
+      }
+
+      .sync-state {
+        font-size: 0.64rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--soft);
+      }
+
+      .sync-time {
+        margin-top: 0.11rem;
+        font-size: 0.76rem;
+        font-weight: 600;
+      }
+
+      .btn {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.44rem 0.78rem;
+        font: inherit;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        color: var(--text);
+        background: var(--card-strong);
+        transition: 130ms ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-sync {
+        border-color: rgba(52, 211, 153, 0.55);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.28), rgba(52, 211, 153, 0.08));
+      }
+
+      .btn-ghost {
+        background: transparent;
+      }
+
+      .mt {
+        margin-top: 0.9rem;
+      }
+
+      .market-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-top: 0.72rem;
+      }
+
+      .market-tab {
+        border: 1px solid var(--line);
+        color: var(--muted);
+        background: var(--card);
+        border-radius: 12px;
+        padding: 0.48rem 0.78rem;
+        font: inherit;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 130ms ease;
+      }
+
+      .market-tab.active {
+        color: var(--text);
+        border-color: rgba(79, 156, 247, 0.5);
+        background: linear-gradient(135deg, rgba(79, 156, 247, 0.2), rgba(79, 156, 247, 0.05));
       }
 
       .hero {
-        padding: 0.95rem;
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
       }
 
-      .hero-top {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 0.75rem;
-        align-items: start;
-      }
-
-      .eyebrow {
-        margin: 0;
-        color: #3b82f6;
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-        font-weight: 800;
-      }
-
-      h1 {
-        margin: 0.2rem 0 0;
-        font-size: clamp(1.42rem, 3.2vw, 2.4rem);
-        letter-spacing: -0.02em;
-        line-height: 1.03;
-      }
-
-      .sub {
-        margin: 0.34rem 0 0;
-        color: var(--muted);
-        font-size: 0.84rem;
-      }
-
-      .sync {
-        border: 1px solid rgba(15, 23, 42, 0.14);
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 380px;
+        height: 380px;
         border-radius: 999px;
-        background: linear-gradient(140deg, #ffffff, #eef5ff);
-        color: #0f172a;
-        font-family: inherit;
-        font-weight: 700;
-        font-size: 0.78rem;
-        padding: 0.44rem 0.86rem;
-        cursor: pointer;
-        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+        right: -150px;
+        top: -200px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.26), transparent 68%);
+        pointer-events: none;
       }
 
-      .sync:disabled {
-        opacity: 0.65;
-        cursor: wait;
-      }
-
-      .hero-bias {
-        margin-top: 0.62rem;
-        border-radius: 18px;
-        padding: 0.66rem 0.74rem;
-        border: 1px solid var(--line);
-        background: var(--panel-strong);
-      }
-
-      .hero-bias .k {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-      }
-
-      .hero-bias .v {
-        margin: 0.16rem 0 0;
-        font-size: 1.08rem;
-        font-weight: 800;
-      }
-
-      .hero-bias .m {
-        margin: 0.18rem 0 0;
-        color: var(--muted);
-        font-size: 0.73rem;
-        font-family: "IBM Plex Mono", monospace;
-      }
-
-      .chips {
-        margin-top: 0.62rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.38rem;
-      }
-
-      .chip {
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.82);
-        padding: 0.24rem 0.54rem;
-        color: var(--muted);
-        font-size: 0.71rem;
-        font-family: "IBM Plex Mono", monospace;
-      }
-
-      .tabs {
-        margin-top: 0.62rem;
+      .hero-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.42rem;
-      }
-
-      .tab {
-        border-radius: 14px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.72);
-        color: var(--muted);
-        padding: 0.62rem;
-        font-family: inherit;
-        font-size: 0.82rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 120ms ease;
-      }
-
-      .tab.active {
-        background: linear-gradient(145deg, #ffffff, #f0f6ff);
-        border-color: rgba(59, 130, 246, 0.35);
-        color: #0f172a;
-        box-shadow: 0 8px 22px rgba(37, 99, 235, 0.15);
-      }
-
-      .plan {
-        margin-top: 0.62rem;
-        border-radius: 16px;
-        border: 1px solid rgba(59, 130, 246, 0.24);
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(239, 246, 255, 0.86));
-        padding: 0.62rem 0.74rem;
-      }
-
-      .plan b {
-        font-size: 0.92rem;
-      }
-
-      .plan span {
-        display: block;
-        margin-top: 0.12rem;
-        color: #334155;
-        font-size: 0.79rem;
-      }
-
-      .grid {
-        margin-top: 0.58rem;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.5rem;
-      }
-
-      .card {
-        padding: 0.72rem;
-        border-radius: 20px;
-        border: 1px solid var(--line);
-        background: var(--panel-strong);
-        box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
-        min-height: 152px;
-      }
-
-      .card.red {
-        border-color: rgba(225, 29, 72, 0.24);
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 241, 244, 0.92));
-      }
-
-      .label {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.67rem;
-        text-transform: uppercase;
-        letter-spacing: 0.11em;
-      }
-
-      .card.red .label {
-        color: #be123c;
-      }
-
-      .big {
-        margin: 0.32rem 0 0;
-        font-size: clamp(1.36rem, 2.6vw, 2rem);
-        line-height: 1;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-      }
-
-      .mono {
-        font-family: "IBM Plex Mono", monospace;
-      }
-
-      .delta {
-        margin-top: 0.22rem;
-        font-size: 0.79rem;
-        font-family: "IBM Plex Mono", monospace;
-      }
-
-      .up {
-        color: var(--bull);
-      }
-
-      .down {
-        color: var(--bear);
-      }
-
-      .flat {
-        color: var(--neutral);
-      }
-
-      .mini {
-        margin-top: 0.2rem;
-        color: var(--muted);
-        font-size: 0.72rem;
+        grid-template-columns: 230px 1fr;
+        gap: 1.35rem;
+        align-items: center;
       }
 
       .gauge {
-        margin-top: 0.56rem;
-        height: 16px;
-        border-radius: 999px;
-        border: 1px solid var(--line-strong);
-        background: linear-gradient(90deg, rgba(220, 38, 38, 0.36), rgba(148, 163, 184, 0.16), rgba(22, 163, 74, 0.36));
-        position: relative;
-      }
-
-      .gauge-marker {
-        position: absolute;
-        top: -3px;
-        width: 2px;
-        height: 21px;
-        background: #0f172a;
-        box-shadow: 0 0 8px rgba(15, 23, 42, 0.35);
-      }
-
-      .range {
-        margin-top: 0.56rem;
-        height: 14px;
-        border-radius: 999px;
-        border: 1px solid var(--line-strong);
-        background: rgba(148, 163, 184, 0.2);
-        position: relative;
-      }
-
-      .range-fill {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        border-radius: 999px;
-        background: linear-gradient(90deg, rgba(22, 163, 74, 0.76), rgba(14, 165, 233, 0.78));
-      }
-
-      .range-marker {
-        position: absolute;
-        top: -3px;
-        width: 2px;
-        height: 20px;
-        background: #0f172a;
-      }
-
-      .range-meta {
-        margin-top: 0.26rem;
-        display: flex;
-        justify-content: space-between;
-        color: var(--muted);
-        font-size: 0.69rem;
-      }
-
-      .panels {
-        margin-top: 0.5rem;
+        --score: 50;
+        --accent: var(--neutral);
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
         display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 0.5rem;
+        place-items: center;
+        background: conic-gradient(var(--accent) calc(var(--score) * 1%), var(--track) 0);
+        position: relative;
+      }
+
+      .gauge::before {
+        content: "";
+        width: 172px;
+        height: 172px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: var(--bg-soft);
+      }
+
+      .gauge.pulse {
+        animation: gaugePulse 2.5s ease-in-out infinite;
+      }
+
+      @keyframes gaugePulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        }
+        50% {
+          box-shadow: 0 0 48px color-mix(in srgb, var(--accent) 32%, transparent);
+        }
+      }
+
+      .gauge-copy {
+        position: absolute;
+        text-align: center;
+      }
+
+      .gauge-score {
+        font-size: 3.1rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+
+      .gauge-label {
+        font-size: 0.66rem;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 0.2rem;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-market {
+        margin: 0;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--soft);
+      }
+
+      .bias-word {
+        margin: 0.38rem 0 0;
+        font-size: clamp(2.5rem, 8.1vw, 6.9rem);
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        line-height: 0.92;
+      }
+
+      .is-bull {
+        color: var(--bull);
+      }
+
+      .is-bear {
+        color: var(--bear);
+      }
+
+      .is-neutral {
+        color: var(--neutral);
+      }
+
+      .confluence-line {
+        margin-top: 0.72rem;
+        font-size: 1.02rem;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .bar {
+        margin-top: 0.56rem;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--track);
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        width: 0;
+        transition: width 280ms ease;
+      }
+
+      .playbook {
+        margin-top: 1rem;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--card-strong);
+        padding: 0.85rem 1rem;
+      }
+
+      .playbook-line {
+        margin: 0;
+        font-size: 0.96rem;
+        font-weight: 600;
+      }
+
+      .playbook-list {
+        list-style: none;
+        margin: 0.58rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .playbook-list li {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .grid-2 {
+        margin-top: 0.9rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.9rem;
       }
 
       .panel {
-        padding: 0.68rem;
-        border-radius: 20px;
-        border: 1px solid var(--line);
-        background: var(--panel);
-        backdrop-filter: blur(16px) saturate(118%);
-        -webkit-backdrop-filter: blur(16px) saturate(118%);
-        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+        padding: 1.1rem;
+        transition: transform 160ms ease, border-color 160ms ease;
+      }
+
+      .panel:hover {
+        transform: translateY(-4px);
+        border-color: color-mix(in srgb, var(--focus) 40%, var(--line));
       }
 
       .panel-head {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        gap: 0.35rem;
-        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.65rem;
       }
 
-      .panel-head h2,
-      .panel-head h3 {
+      .panel h2,
+      .panel h3 {
         margin: 0;
-        font-size: 0.95rem;
       }
 
-      .toggle {
-        display: inline-flex;
-        border: 1px solid var(--line-strong);
-        border-radius: 10px;
+      .kicker {
+        margin: 0.3rem 0 0;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .pulse-meta {
+        margin-top: 0.72rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.62rem;
+        background: var(--card-strong);
+      }
+
+      .metric .k {
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--soft);
+      }
+
+      .metric .v {
+        margin-top: 0.2rem;
+        font-size: 1.08rem;
+        font-weight: 700;
+      }
+
+      .pulse-score {
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+
+      .pulse-tag {
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .price {
+        font-size: 1.9rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        transition: color 220ms ease, text-shadow 220ms ease;
+      }
+
+      .price.flash-up {
+        color: var(--bull);
+        text-shadow: 0 0 28px rgba(52, 211, 153, 0.45);
+      }
+
+      .price.flash-down {
+        color: var(--bear);
+        text-shadow: 0 0 28px rgba(251, 113, 133, 0.38);
+      }
+
+      .price-change {
+        margin-top: 0.2rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .chips {
+        margin-top: 0.65rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.3rem 0.55rem;
+        font-size: 0.72rem;
+        color: var(--muted);
+        background: var(--card-strong);
+      }
+
+      #pulse-chart {
+        margin-top: 0.8rem;
+        height: 280px;
+      }
+
+      .detail-grid {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.52rem;
+      }
+
+      .row {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card-strong);
+        padding: 0.56rem 0.65rem;
+      }
+
+      .row-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.76rem;
+      }
+
+      .row-value {
+        font-size: 0.84rem;
+        font-weight: 700;
+      }
+
+      .mini-bar {
+        margin-top: 0.38rem;
+        height: 7px;
+        border-radius: 999px;
         overflow: hidden;
-        background: rgba(255, 255, 255, 0.7);
+        background: var(--track);
       }
 
-      .tbtn {
-        border: none;
-        border-left: 1px solid var(--line-strong);
+      .mini-bar > span {
+        display: block;
+        height: 100%;
+        width: 0;
+      }
+
+      .split {
+        margin-top: 0.9rem;
+        display: grid;
+        grid-template-columns: 1.36fr 0.84fr;
+        gap: 0.9rem;
+      }
+
+      .segment {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--card-strong);
+        padding: 0.18rem;
+      }
+
+      .segment button {
+        border: 0;
         background: transparent;
         color: var(--muted);
-        padding: 0.32rem 0.52rem;
-        font-family: inherit;
-        font-size: 0.69rem;
+        font: inherit;
+        font-size: 0.73rem;
         font-weight: 700;
-        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        border-radius: 999px;
+        padding: 0.35rem 0.62rem;
         cursor: pointer;
       }
 
-      .tbtn:first-child {
-        border-left: none;
+      .segment button.active {
+        color: var(--text);
+        background: rgba(79, 156, 247, 0.2);
       }
 
-      .tbtn.active {
-        background: #ffffff;
-        color: #0f172a;
+      #cot-chart {
+        margin-top: 0.85rem;
+        height: 355px;
       }
 
-      #intraday-chart,
-      #weekly-chart {
-        height: 320px;
-        margin-top: 0.36rem;
+      .event-list {
+        margin-top: 0.72rem;
+        display: grid;
+        gap: 0.45rem;
+        max-height: 355px;
+        overflow: auto;
+        padding-right: 0.2rem;
       }
 
-      .news {
-        margin-top: 0.5rem;
-        padding: 0.68rem;
-        border-radius: 20px;
-        border: 1px solid rgba(225, 29, 72, 0.22);
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(255, 240, 244, 0.9));
-        box-shadow: var(--shadow);
+      .event {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card-strong);
+        padding: 0.58rem 0.65rem;
       }
 
-      .news-head {
+      .event-top {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        gap: 0.35rem;
-        flex-wrap: wrap;
+        gap: 0.5rem;
       }
 
-      .news-head h3 {
-        margin: 0;
-        font-size: 0.95rem;
-      }
-
-      .rf-toggle {
-        display: inline-flex;
-        border: 1px solid rgba(225, 29, 72, 0.24);
-        border-radius: 10px;
-        overflow: hidden;
-        background: rgba(255, 255, 255, 0.84);
-      }
-
-      .rf-btn {
-        border: none;
-        border-left: 1px solid rgba(225, 29, 72, 0.24);
-        background: transparent;
-        color: #9f1239;
-        padding: 0.3rem 0.5rem;
-        font-family: inherit;
-        font-size: 0.68rem;
+      .event-title {
+        font-size: 0.84rem;
         font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .event-tag {
+        color: var(--bear);
+        font-size: 0.66rem;
+        letter-spacing: 0.09em;
         text-transform: uppercase;
-        cursor: pointer;
       }
 
-      .rf-btn:first-child {
-        border-left: none;
+      .event-meta {
+        margin-top: 0.28rem;
+        color: var(--muted);
+        font-size: 0.74rem;
       }
 
-      .rf-btn.active {
-        background: #ffe4eb;
-        color: #881337;
+      .watch-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
       }
 
-      .news-meta {
-        margin: 0.34rem 0 0;
-        color: #9f1239;
-        font-size: 0.71rem;
-        font-family: "IBM Plex Mono", monospace;
-      }
-
-      .news-grid {
-        margin-top: 0.42rem;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+      .watch-controls {
+        display: flex;
+        align-items: center;
         gap: 0.42rem;
       }
 
-      .news-card {
+      select {
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: var(--card-strong);
+        color: var(--text);
+        padding: 0.4rem 0.48rem;
+        font: inherit;
+        font-size: 0.78rem;
+      }
+
+      .watch-grid {
+        margin-top: 0.62rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.52rem;
+      }
+
+      .watch {
         border-radius: 14px;
-        border: 1px solid rgba(225, 29, 72, 0.24);
-        background: rgba(255, 255, 255, 0.86);
-        padding: 0.5rem;
+        border: 1px solid var(--line);
+        background: var(--card-strong);
+        padding: 0.54rem;
+        cursor: pointer;
+        transition: 130ms ease;
       }
 
-      .news-time {
-        color: #be123c;
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.7rem;
+      .watch:hover {
+        border-color: color-mix(in srgb, var(--focus) 38%, var(--line));
       }
 
-      .news-title {
-        margin-top: 0.15rem;
+      .watch.active {
+        border-color: color-mix(in srgb, var(--focus) 56%, var(--line));
+      }
+
+      .watch-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .watch-symbol {
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .watch-remove {
+        border: 0;
+        background: transparent;
+        color: var(--soft);
+        font-size: 0.86rem;
+        cursor: pointer;
+      }
+
+      .watch-score {
+        margin-top: 0.22rem;
         font-size: 0.79rem;
-        line-height: 1.26;
-        color: #3f0d1f;
+        font-weight: 700;
       }
 
-      .cc {
+      .watch-meta {
+        margin-top: 0.2rem;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+
+      .history {
+        margin-top: 0.9rem;
+      }
+
+      .table-wrap {
+        margin-top: 0.5rem;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 640px;
+      }
+
+      th,
+      td {
+        border-top: 1px solid var(--line);
+        padding: 0.52rem 0.4rem;
+        text-align: right;
+        font-size: 0.78rem;
+      }
+
+      th {
+        color: var(--soft);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.66rem;
+        border-top: none;
+      }
+
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+
+      .pill {
         display: inline-block;
-        margin-right: 0.28rem;
-        border: 1px solid rgba(225, 29, 72, 0.34);
+        border: 1px solid var(--line);
         border-radius: 999px;
-        padding: 0.06rem 0.3rem;
-        background: #ffe6ee;
-        color: #881337;
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.64rem;
+        padding: 0.22rem 0.5rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .muted {
+        color: var(--muted);
       }
 
       .error {
-        margin-top: 0.5rem;
-        border-radius: 12px;
-        border: 1px solid rgba(220, 38, 38, 0.26);
-        background: rgba(254, 226, 226, 0.86);
-        color: #991b1b;
-        padding: 0.62rem 0.74rem;
-        font-size: 0.79rem;
-        display: none;
+        margin-top: 0.8rem;
+        border-radius: 14px;
+        border: 1px solid rgba(251, 113, 133, 0.42);
+        background: rgba(251, 113, 133, 0.14);
+        color: #fecdd3;
+        padding: 0.65rem 0.75rem;
+        font-size: 0.82rem;
       }
 
-      .error.show {
-        display: block;
+      .hidden {
+        display: none !important;
       }
 
-      footer {
-        margin-top: 0.54rem;
-        text-align: center;
-        color: #64748b;
-        font-size: 0.69rem;
-      }
+      @media (max-width: 1120px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          text-align: center;
+          gap: 1rem;
+        }
 
-      @media (max-width: 1140px) {
-        .grid,
-        .news-grid {
+        .hero-copy {
+          width: 100%;
+        }
+
+        .confluence-line {
+          font-size: 0.9rem;
+        }
+
+        .grid-2,
+        .split {
+          grid-template-columns: 1fr;
+        }
+
+        .watch-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-
-        .panels {
-          grid-template-columns: 1fr;
-        }
       }
 
-      @media (max-width: 760px) {
-        .hero-top {
+      @media (max-width: 820px) {
+        .wrap {
+          width: min(1320px, calc(100% - 1rem));
+        }
+
+        .nav {
+          top: 0.45rem;
+          border-radius: 14px;
+          flex-wrap: wrap;
+          gap: 0.6rem;
+        }
+
+        .menu {
+          order: 3;
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .menu a {
+          flex: 1;
+          text-align: center;
+          font-size: 0.67rem;
+          padding: 0.34rem 0.25rem;
+        }
+
+        .hero {
+          padding: 1rem;
+        }
+
+        .gauge {
+          width: 180px;
+          height: 180px;
+        }
+
+        .gauge::before {
+          width: 138px;
+          height: 138px;
+        }
+
+        .gauge-score {
+          font-size: 2.45rem;
+        }
+
+        .pulse-meta {
           grid-template-columns: 1fr;
         }
 
-        .tabs,
-        .grid,
-        .news-grid {
+        .watch-grid {
           grid-template-columns: 1fr;
-        }
-
-        #intraday-chart,
-        #weekly-chart {
-          height: 250px;
         }
       }
     </style>
   </head>
   <body>
-    <main class="shell">
-      <section class="hero glass">
-        <div class="hero-top">
-          <div>
-            <p class="eyebrow">COT Studio</p>
-            <h1 id="hero-market">Loading…</h1>
-            <p class="sub">Apple-like, minimal, glance-first.</p>
-            <div class="hero-bias">
-              <p class="k">Weekly Bias</p>
-              <p class="v" id="hero-bias">--</p>
-              <p class="m" id="hero-bias-meta">--</p>
-            </div>
-            <div class="chips">
-              <span class="chip" id="chip-generated">Generated --</span>
-              <span class="chip" id="chip-report">Report --</span>
-              <span class="chip" id="chip-intraday">Intraday --</span>
-              <span class="chip" id="chip-next-cot">Next COT --</span>
-              <span class="chip" id="chip-last-sync">Last sync --</span>
-            </div>
-          </div>
-          <div><button class="sync" id="sync-btn">Sync</button></div>
+    <div class="wrap">
+      <header class="nav glass">
+        <div class="brand">
+          <div class="brand-mark">COT</div>
+          <h1>COT Studio</h1>
         </div>
 
-        <div class="tabs" id="market-tabs"></div>
+        <nav class="menu">
+          <a href="#bias-section">Bias</a>
+          <a href="#intraday-section">Intraday</a>
+          <a href="#reports-section">Reports</a>
+          <a href="#events-section">Next COT</a>
+        </nav>
 
-        <div class="plan">
-          <b id="setup-title">Setup --</b>
-          <span id="setup-text">Waiting for data...</span>
+        <div class="nav-right">
+          <div class="sync-readout">
+            <span class="dot" id="sync-dot"></span>
+            <div class="sync-copy">
+              <div class="sync-state" id="sync-state">Live</div>
+              <div class="sync-time" id="sync-time">Waiting for snapshot...</div>
+            </div>
+          </div>
+          <button class="btn btn-sync" id="sync-btn">Sync</button>
+          <button class="btn btn-ghost" id="calendar-toggle">Calendar</button>
+          <button class="btn btn-ghost" id="theme-toggle">Light</button>
+        </div>
+      </header>
+
+      <div id="error-box" class="error hidden"></div>
+
+      <section class="hero glass mt" id="bias-section">
+        <div class="market-tabs" id="market-tabs"></div>
+        <div class="hero-grid">
+          <div class="gauge" id="bias-gauge">
+            <div class="gauge-copy">
+              <div class="gauge-score" id="bias-score">--</div>
+              <div class="gauge-label">Confluence</div>
+            </div>
+          </div>
+
+          <div class="hero-copy">
+            <p class="hero-market" id="hero-market">--</p>
+            <h2 class="bias-word is-neutral" id="bias-word">NEUTRAL</h2>
+            <div class="confluence-line" id="confluence-line">COT -- + Technical --</div>
+            <div class="bar"><div class="bar-fill" id="confluence-fill"></div></div>
+            <div class="playbook">
+              <p class="playbook-line" id="playbook-line">Waiting for updated bias...</p>
+              <ul class="playbook-list" id="playbook-list"></ul>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="grid">
-        <article class="card">
-          <p class="label">Bias Gauge</p>
-          <p class="big" id="bias-label">--</p>
-          <p class="delta mono" id="bias-score">--</p>
-          <div class="gauge"><span class="gauge-marker" id="bias-marker"></span></div>
-          <p class="mini" id="bias-mini">--</p>
-        </article>
-
-        <article class="card">
-          <p class="label">Intraday Price</p>
-          <p class="big mono" id="price-last">--</p>
-          <p class="delta mono" id="price-change">--</p>
-          <p class="mini" id="price-state">--</p>
-        </article>
-
-        <article class="card">
-          <p class="label">Session Range</p>
-          <p class="big mono" id="range-pos">--</p>
-          <div class="range">
-            <span class="range-fill" id="range-fill"></span>
-            <span class="range-marker" id="range-marker"></span>
-          </div>
-          <div class="range-meta">
-            <span id="range-low">Low --</span>
-            <span id="range-high">High --</span>
-          </div>
-        </article>
-
-        <article class="card red">
-          <p class="label">Next Red Folder</p>
-          <p class="big" id="next-news-title">--</p>
-          <p class="delta" id="next-news-time">--</p>
-          <p class="mini" id="next-news-meta">--</p>
-        </article>
-      </section>
-
-      <section class="panels">
-        <article class="panel">
-          <div class="panel-head"><h2 id="intraday-title">Intraday</h2></div>
-          <div id="intraday-chart"></div>
-        </article>
-
-        <article class="panel">
+      <section class="grid-2" id="intraday-section">
+        <article class="panel glass">
           <div class="panel-head">
-            <h3 id="weekly-title">Weekly Trend</h3>
-            <div class="toggle">
-              <button class="tbtn" id="mode-trend">Trend</button>
-              <button class="tbtn" id="mode-shift">Shift</button>
+            <div>
+              <h2>Intraday Pulse</h2>
+              <p class="kicker" id="pulse-kicker">5m structure + session filters</p>
+            </div>
+            <span class="pill" id="pulse-tag">--</span>
+          </div>
+
+          <div class="pulse-meta">
+            <div class="metric">
+              <div class="k">Pulse Score</div>
+              <div class="v pulse-score" id="pulse-score">--</div>
+            </div>
+            <div class="metric">
+              <div class="k">Price</div>
+              <div class="v price" id="price-value">--</div>
+              <div class="price-change" id="price-change">--</div>
+            </div>
+            <div class="metric">
+              <div class="k">Session</div>
+              <div class="v" id="session-structure">--</div>
+              <div class="price-change" id="session-time">--</div>
             </div>
           </div>
-          <div id="weekly-chart"></div>
+
+          <div class="chips" id="intraday-metrics"></div>
+          <div id="pulse-chart"></div>
+        </article>
+
+        <article class="panel glass">
+          <div class="panel-head">
+            <div>
+              <h2>Weekly Bias Detail</h2>
+              <p class="kicker" id="detail-kicker">COT component pressure + technical levels</p>
+            </div>
+            <span class="pill" id="next-release">--</span>
+          </div>
+
+          <div class="detail-grid" id="component-grid"></div>
+          <div class="detail-grid" id="level-grid"></div>
         </article>
       </section>
 
-      <section class="news">
-        <div class="news-head">
-          <h3>Forex Factory Red Folder</h3>
-          <div class="rf-toggle">
-            <button class="rf-btn" id="rf-usd">USD</button>
-            <button class="rf-btn" id="rf-all">All</button>
+      <section class="split" id="reports-section">
+        <article class="panel glass">
+          <div class="panel-head">
+            <div>
+              <h2 id="chart-title">Positioning Trend</h2>
+              <p class="kicker" id="chart-sub">--</p>
+            </div>
+            <div class="segment">
+              <button id="mode-trend" class="active">Trend</button>
+              <button id="mode-shift">Shift</button>
+            </div>
           </div>
-        </div>
-        <p class="news-meta" id="rf-meta">--</p>
-        <div class="news-grid" id="rf-strip"></div>
+          <div id="cot-chart"></div>
+        </article>
+
+        <article class="panel glass" id="events-section">
+          <div class="panel-head">
+            <div>
+              <h3>Red Folder</h3>
+              <p class="kicker">Forex Factory high-impact events</p>
+            </div>
+            <span class="pill" id="red-count">0 events</span>
+          </div>
+          <div class="event-list" id="red-events"></div>
+        </article>
       </section>
 
-      <div class="error" id="error-box"></div>
+      <section class="panel glass watch-section">
+        <div class="watch-head">
+          <div>
+            <h3>Watchlist</h3>
+            <p class="kicker">Pin up to 6 symbols (local storage)</p>
+          </div>
+          <div class="watch-controls">
+            <select id="symbol-picker"></select>
+            <button class="btn btn-ghost" id="pin-symbol">Pin</button>
+          </div>
+        </div>
+        <div class="watch-grid" id="watch-grid"></div>
+      </section>
 
-      <footer>CFTC + Yahoo + Forex Factory</footer>
-    </main>
+      <section class="panel glass history">
+        <div class="panel-head">
+          <div>
+            <h3>Latest Reports</h3>
+            <p class="kicker" id="history-caption">--</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Report Date</th>
+                <th>Asset Net</th>
+                <th>Lev Net</th>
+                <th>Open Interest</th>
+              </tr>
+            </thead>
+            <tbody id="history-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
 
     <script>
-      const MARKET_ORDER = ["dow_jones", "nasdaq_100", "sp_500"];
-      const ETF = { dow_jones: "DIA", nasdaq_100: "QQQ", sp_500: "SPY" };
+      const DEFAULT_MARKET_ORDER = ["dow_jones", "nasdaq_100", "sp_500"];
+      const DEFAULT_PINNED = ["DIA", "QQQ", "SPY"];
 
       const state = {
         snapshot: null,
-        activeMarket: "dow_jones",
-        chartMode: localStorage.getItem("apple_chart_mode") || "trend",
-        newsFilter: localStorage.getItem("apple_news_filter") || "usd",
-        loading: false,
+        activeMarket: "sp_500",
+        chartMode: "trend",
+        theme: localStorage.getItem("cot_theme") || "dark",
+        showCalendar: localStorage.getItem("cot_show_calendar") !== "false",
+        pinnedSymbols: [],
+        lastPriceByMarket: {},
       };
 
       const el = {
+        syncDot: document.getElementById("sync-dot"),
+        syncState: document.getElementById("sync-state"),
+        syncTime: document.getElementById("sync-time"),
         syncBtn: document.getElementById("sync-btn"),
-        heroMarket: document.getElementById("hero-market"),
-        heroBias: document.getElementById("hero-bias"),
-        heroBiasMeta: document.getElementById("hero-bias-meta"),
-        setupTitle: document.getElementById("setup-title"),
-        setupText: document.getElementById("setup-text"),
-        chipGenerated: document.getElementById("chip-generated"),
-        chipReport: document.getElementById("chip-report"),
-        chipIntraday: document.getElementById("chip-intraday"),
-        chipNextCot: document.getElementById("chip-next-cot"),
-        chipLastSync: document.getElementById("chip-last-sync"),
+        calendarToggle: document.getElementById("calendar-toggle"),
+        themeToggle: document.getElementById("theme-toggle"),
+        errorBox: document.getElementById("error-box"),
+
         marketTabs: document.getElementById("market-tabs"),
-        biasLabel: document.getElementById("bias-label"),
+
+        biasGauge: document.getElementById("bias-gauge"),
         biasScore: document.getElementById("bias-score"),
-        biasMarker: document.getElementById("bias-marker"),
-        biasMini: document.getElementById("bias-mini"),
-        priceLast: document.getElementById("price-last"),
+        biasWord: document.getElementById("bias-word"),
+        heroMarket: document.getElementById("hero-market"),
+        confluenceLine: document.getElementById("confluence-line"),
+        confluenceFill: document.getElementById("confluence-fill"),
+        playbookLine: document.getElementById("playbook-line"),
+        playbookList: document.getElementById("playbook-list"),
+
+        pulseTag: document.getElementById("pulse-tag"),
+        pulseScore: document.getElementById("pulse-score"),
+        priceValue: document.getElementById("price-value"),
         priceChange: document.getElementById("price-change"),
-        priceState: document.getElementById("price-state"),
-        rangePos: document.getElementById("range-pos"),
-        rangeFill: document.getElementById("range-fill"),
-        rangeMarker: document.getElementById("range-marker"),
-        rangeLow: document.getElementById("range-low"),
-        rangeHigh: document.getElementById("range-high"),
-        nextNewsTitle: document.getElementById("next-news-title"),
-        nextNewsTime: document.getElementById("next-news-time"),
-        nextNewsMeta: document.getElementById("next-news-meta"),
-        intradayTitle: document.getElementById("intraday-title"),
-        weeklyTitle: document.getElementById("weekly-title"),
+        sessionStructure: document.getElementById("session-structure"),
+        sessionTime: document.getElementById("session-time"),
+        pulseKicker: document.getElementById("pulse-kicker"),
+        intradayMetrics: document.getElementById("intraday-metrics"),
+
+        detailKicker: document.getElementById("detail-kicker"),
+        nextRelease: document.getElementById("next-release"),
+        componentGrid: document.getElementById("component-grid"),
+        levelGrid: document.getElementById("level-grid"),
+
+        chartTitle: document.getElementById("chart-title"),
+        chartSub: document.getElementById("chart-sub"),
         modeTrend: document.getElementById("mode-trend"),
         modeShift: document.getElementById("mode-shift"),
-        rfUsd: document.getElementById("rf-usd"),
-        rfAll: document.getElementById("rf-all"),
-        rfMeta: document.getElementById("rf-meta"),
-        rfStrip: document.getElementById("rf-strip"),
-        error: document.getElementById("error-box"),
+
+        redCard: document.getElementById("events-section"),
+        redCount: document.getElementById("red-count"),
+        redEvents: document.getElementById("red-events"),
+
+        symbolPicker: document.getElementById("symbol-picker"),
+        pinSymbol: document.getElementById("pin-symbol"),
+        watchGrid: document.getElementById("watch-grid"),
+
+        historyCaption: document.getElementById("history-caption"),
+        historyBody: document.getElementById("history-body"),
       };
 
-      function fmtNum(v, d = 0) {
-        const n = Number(v);
-        if (!Number.isFinite(n)) return "--";
-        return n.toLocaleString(undefined, { minimumFractionDigits: d, maximumFractionDigits: d });
+      function setTheme(theme) {
+        state.theme = theme;
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("cot_theme", theme);
+        el.themeToggle.textContent = theme === "dark" ? "Light" : "Dark";
       }
 
-      function fmtSigned(v, d = 0, suffix = "") {
-        const n = Number(v);
-        if (!Number.isFinite(n)) return "--";
-        return `${n > 0 ? "+" : ""}${fmtNum(n, d)}${suffix}`;
+      function setCalendarVisibility(show) {
+        state.showCalendar = show;
+        localStorage.setItem("cot_show_calendar", String(show));
+        el.redCard.classList.toggle("hidden", !show);
+        el.calendarToggle.textContent = show ? "Calendar" : "No Calendar";
       }
 
-      function toneClass(v) {
-        const n = Number(v);
-        if (!Number.isFinite(n) || n === 0) return "flat";
-        return n > 0 ? "up" : "down";
-      }
-
-      function fmtDate(v) {
-        const d = new Date(v);
-        if (Number.isNaN(d.getTime())) return v || "--";
-        return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
-      }
-
-      function fmtTime(v) {
-        const d = new Date(v);
-        if (Number.isNaN(d.getTime())) return v || "--";
-        return d.toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
-      }
-
-      function setLoading(flag) {
-        state.loading = flag;
-        el.syncBtn.disabled = flag;
-        el.syncBtn.textContent = flag ? "Syncing..." : "Sync";
-      }
-
-      function setChartMode(mode) {
-        state.chartMode = mode === "shift" ? "shift" : "trend";
-        localStorage.setItem("apple_chart_mode", state.chartMode);
-        el.modeTrend.classList.toggle("active", state.chartMode === "trend");
-        el.modeShift.classList.toggle("active", state.chartMode === "shift");
-      }
-
-      function setNewsFilter(mode) {
-        state.newsFilter = mode === "all" ? "all" : "usd";
-        localStorage.setItem("apple_news_filter", state.newsFilter);
-        el.rfUsd.classList.toggle("active", state.newsFilter === "usd");
-        el.rfAll.classList.toggle("active", state.newsFilter === "all");
-      }
-
-      function updateNextCotCountdown() {
-        const nowNY = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
-        const next = new Date(nowNY);
-        const dayDiff = (5 - nowNY.getDay() + 7) % 7;
-        next.setDate(nowNY.getDate() + dayDiff);
-        next.setHours(15, 30, 0, 0);
-        if (nowNY.getDay() === 5 && nowNY.getTime() >= next.getTime()) {
-          next.setDate(next.getDate() + 7);
+      function loadPinned() {
+        try {
+          const stored = JSON.parse(localStorage.getItem("cot_pinned_symbols") || "[]");
+          if (Array.isArray(stored) && stored.length) {
+            state.pinnedSymbols = stored;
+            return;
+          }
+        } catch (_) {
+          // Ignore malformed storage values.
         }
-        const diff = Math.max(0, next.getTime() - nowNY.getTime());
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        el.chipNextCot.textContent = `Next COT ${d}d ${h}h ${m}m`;
+        state.pinnedSymbols = [...DEFAULT_PINNED];
       }
 
-      function buildTabs() {
-        const markets = state.snapshot?.markets || {};
-        el.marketTabs.innerHTML = "";
-        MARKET_ORDER.forEach((key) => {
-          const market = markets[key];
-          if (!market) return;
-          const btn = document.createElement("button");
-          btn.className = `tab ${key === state.activeMarket ? "active" : ""}`;
-          btn.textContent = market.label;
-          btn.addEventListener("click", () => {
-            state.activeMarket = key;
-            render();
-          });
-          el.marketTabs.appendChild(btn);
+      function savePinned() {
+        localStorage.setItem("cot_pinned_symbols", JSON.stringify(state.pinnedSymbols));
+      }
+
+      function fmtNum(value, digits = 0) {
+        const num = Number(value);
+        if (Number.isNaN(num)) return "--";
+        return num.toLocaleString(undefined, { minimumFractionDigits: digits, maximumFractionDigits: digits });
+      }
+
+      function fmtSigned(value, digits = 0) {
+        const num = Number(value);
+        if (Number.isNaN(num)) return "--";
+        return `${num > 0 ? "+" : ""}${fmtNum(num, digits)}`;
+      }
+
+      function fmtPct(value, digits = 2) {
+        const num = Number(value);
+        if (Number.isNaN(num)) return "--";
+        return `${num > 0 ? "+" : ""}${num.toFixed(digits)}%`;
+      }
+
+      function fmtDate(value) {
+        if (!value) return "--";
+        const dt = new Date(value);
+        if (Number.isNaN(dt.getTime())) return String(value);
+        return dt.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+      }
+
+      function fmtET(value, withYear = false) {
+        if (!value) return "--";
+        const dt = new Date(value);
+        if (Number.isNaN(dt.getTime())) return String(value);
+        return dt.toLocaleString(undefined, {
+          timeZone: "America/New_York",
+          month: "short",
+          day: "numeric",
+          year: withYear ? "numeric" : undefined,
+          hour: "2-digit",
+          minute: "2-digit",
         });
       }
 
-      function getUpcomingNews() {
-        const rf = state.snapshot?.news?.red_folder || {};
-        const all = Array.isArray(rf.upcoming_high_impact) ? rf.upcoming_high_impact : [];
-        return state.newsFilter === "usd" ? all.filter((e) => e.country === "USD") : all;
+      function safeScore(value) {
+        const num = Number(value);
+        if (Number.isNaN(num)) return 50;
+        return Math.max(0, Math.min(100, num));
       }
 
-      function renderSetup(market) {
-        const score = Number(market?.bias?.score || 0);
-        const chg = Number(market?.intraday?.change_pct || 0);
-
-        let title = "Neutral Week";
-        let text = "Wait for clean confirmation before sizing up.";
-        if (score >= 20) {
-          title = "Bullish Week";
-          text = "Favor long continuation setups on controlled pullbacks.";
-        } else if (score <= -20) {
-          title = "Bearish Week";
-          text = "Favor short continuation setups after bounce failures.";
-        }
-        if (Math.abs(chg) > 1.2) {
-          text += " Volatility elevated.";
-        }
-
-        el.setupTitle.textContent = title;
-        el.setupText.textContent = text;
+      function tone(label) {
+        if (label === "BULLISH") return "is-bull";
+        if (label === "BEARISH") return "is-bear";
+        return "is-neutral";
       }
 
-      function renderCards(market) {
-        const bias = market?.bias || {};
-        const intra = market?.intraday || {};
-
-        const score = Number(bias.score || 0);
-        el.biasLabel.textContent = bias.label || "Neutral";
-        el.biasScore.className = `delta mono ${toneClass(score)}`;
-        el.biasScore.textContent = `Score ${fmtSigned(score, 1)} | Conv ${fmtNum(bias.conviction || 0, 0)}%`;
-        el.biasMini.textContent = `Asset pct ${fmtNum(bias.asset_percentile || 0, 1)} | Lev pct ${fmtNum(bias.leveraged_percentile || 0, 1)}`;
-        el.biasMarker.style.left = `${Math.max(0, Math.min(100, (score + 100) / 2))}%`;
-
-        const ticker = intra.symbol || ETF[state.activeMarket] || "--";
-        const chgPct = Number(intra.change_pct || 0);
-        el.priceLast.textContent = `${ticker} ${fmtNum(intra.last, 2)}`;
-        el.priceChange.className = `delta mono ${toneClass(chgPct)}`;
-        el.priceChange.textContent = `${fmtSigned(intra.change, 2)} (${fmtSigned(chgPct, 2, "%")})`;
-        el.priceState.textContent = intra.market_state ? `State ${intra.market_state}` : "State --";
-
-        const rp = Math.max(0, Math.min(100, Number(intra.range_position_pct || 0)));
-        el.rangePos.textContent = `${fmtNum(rp, 1)}%`;
-        el.rangeFill.style.width = `${rp}%`;
-        el.rangeMarker.style.left = `${rp}%`;
-        el.rangeLow.textContent = `Low ${fmtNum(intra.day_low, 2)}`;
-        el.rangeHigh.textContent = `High ${fmtNum(intra.day_high, 2)}`;
-
-        const news = getUpcomingNews();
-        const next = news[0];
-        if (next) {
-          el.nextNewsTitle.textContent = `${next.country || "--"} ${next.title || "Event"}`;
-          el.nextNewsTime.textContent = fmtTime(next.datetime_utc || `${next.date} ${next.time}`);
-          el.nextNewsMeta.textContent = `${news.length} upcoming ${state.newsFilter.toUpperCase()}`;
-        } else {
-          el.nextNewsTitle.textContent = "No upcoming red-folder";
-          el.nextNewsTime.textContent = "--";
-          el.nextNewsMeta.textContent = "No events in filter";
-        }
+      function accent(label) {
+        if (label === "BULLISH") return "var(--bull)";
+        if (label === "BEARISH") return "var(--bear)";
+        return "var(--neutral)";
       }
 
-      function renderIntradayChart(market) {
-        const intra = market?.intraday || {};
-        const bars = Array.isArray(intra.bars) ? intra.bars : [];
+      function marketOrder() {
+        const markets = state.snapshot?.markets || {};
+        const base = state.snapshot?.market_order || DEFAULT_MARKET_ORDER;
+        return base.filter((key) => markets[key]).concat(Object.keys(markets).filter((key) => !base.includes(key)));
+      }
 
-        if (bars.length < 2 || intra.error) {
-          Plotly.react(
-            "intraday-chart",
-            [],
-            {
-              margin: { l: 32, r: 10, t: 10, b: 24 },
-              paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(255,255,255,0.72)",
-              font: { family: "Manrope, sans-serif", color: "#334155" },
-              annotations: [{ text: "No intraday bars", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false }],
-              xaxis: { visible: false },
-              yaxis: { visible: false },
-            },
-            { displayModeBar: false, responsive: true }
-          );
+      function activeMarket() {
+        const markets = state.snapshot?.markets || {};
+        if (markets[state.activeMarket]) {
+          return markets[state.activeMarket];
+        }
+        const key = marketOrder()[0];
+        if (!key) return null;
+        state.activeMarket = key;
+        return markets[key];
+      }
+
+      function renderTabs() {
+        const markets = state.snapshot?.markets || {};
+        el.marketTabs.innerHTML = "";
+
+        marketOrder().forEach((key) => {
+          const market = markets[key];
+          const button = document.createElement("button");
+          button.className = `market-tab ${key === state.activeMarket ? "active" : ""}`;
+          button.textContent = `${market.label} (${market.symbol || ""})`;
+          button.addEventListener("click", () => {
+            state.activeMarket = key;
+            renderDashboard();
+          });
+          el.marketTabs.appendChild(button);
+        });
+      }
+
+      function renderSync(market) {
+        const generated = state.snapshot?.generated_at_utc;
+        const pulse = market?.intraday?.as_of_utc;
+        const latestReport = market?.latest_report_date;
+
+        el.syncState.textContent = "Live";
+        el.syncDot.style.background = "var(--bull)";
+        el.syncDot.style.boxShadow = "0 0 16px var(--bull)";
+        el.syncTime.textContent = `COT ${fmtDate(latestReport)} | Pulse ${fmtET(pulse || generated)} ET`;
+      }
+
+      function renderHero(market) {
+        const confluence = market.confluence || {};
+        const label = confluence.label || "NEUTRAL";
+        const score = safeScore(confluence.score);
+        const accentColor = accent(label);
+
+        el.heroMarket.textContent = `${market.label} bias for next 1-5 sessions`;
+
+        el.biasScore.textContent = fmtNum(score);
+        el.biasWord.textContent = label;
+        el.biasWord.className = `bias-word ${tone(label)}`;
+
+        el.biasGauge.style.setProperty("--score", score);
+        el.biasGauge.style.setProperty("--accent", accentColor);
+        el.biasGauge.classList.toggle("pulse", score >= 85);
+
+        el.confluenceLine.textContent = `COT ${fmtNum(confluence.cot_score)} + Technical ${fmtNum(
+          confluence.technical_score
+        )} = ${fmtNum(score)}% confluence`;
+        el.confluenceFill.style.width = `${score}%`;
+        el.confluenceFill.style.background = accentColor;
+
+        el.playbookLine.textContent = confluence.headline || "Waiting for confluence playbook.";
+        el.playbookList.innerHTML = (confluence.bullets || []).map((line) => `<li>${line}</li>`).join("");
+      }
+
+      function renderIntraday(market) {
+        const intraday = market.intraday;
+        if (!intraday) {
+          el.pulseTag.textContent = "No data";
+          el.pulseTag.className = "pill";
+          el.pulseScore.textContent = "--";
+          el.priceValue.textContent = "--";
+          el.priceChange.textContent = "Intraday feed unavailable";
+          el.sessionStructure.textContent = "--";
+          el.sessionTime.textContent = "--";
+          el.intradayMetrics.innerHTML = "";
           return;
         }
 
-        const x = bars.map((b) => b.t);
-        const y = bars.map((b) => b.c);
-        const bullish = Number(intra.change_pct || 0) >= 0;
-        const color = bullish ? "#16a34a" : "#dc2626";
+        const m = intraday.metrics || {};
+        const pulseScore = safeScore(intraday.pulse_score);
 
-        Plotly.react(
-          "intraday-chart",
-          [{ type: "scatter", mode: "lines", x, y, line: { color, width: 3 }, fill: "tozeroy", fillcolor: bullish ? "rgba(22,163,74,0.18)" : "rgba(220,38,38,0.16)", hovertemplate: "%{x}<br>%{y:.2f}<extra></extra>" }],
-          {
-            margin: { l: 44, r: 12, t: 8, b: 30 },
-            paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(255,255,255,0.72)",
-            font: { family: "Manrope, sans-serif", color: "#334155" },
-            hovermode: "x unified",
-            xaxis: { type: "date", tickformat: "%H:%M", gridcolor: "rgba(100,116,139,0.16)" },
-            yaxis: { gridcolor: "rgba(100,116,139,0.2)", zeroline: false },
-          },
-          { displayModeBar: false, responsive: true }
-        );
+        el.pulseTag.textContent = intraday.pulse_label || "--";
+        el.pulseTag.className = `pill ${tone(intraday.pulse_label)}`;
+        el.pulseScore.textContent = fmtNum(pulseScore);
+        el.pulseScore.className = `v pulse-score ${tone(intraday.pulse_label)}`;
+
+        const previousPrice = state.lastPriceByMarket[market.key];
+        const currentPrice = Number(intraday.last_price);
+        el.priceValue.textContent = `${intraday.symbol} ${fmtNum(currentPrice, 2)}`;
+        if (!Number.isNaN(currentPrice) && previousPrice !== undefined && previousPrice !== currentPrice) {
+          el.priceValue.classList.remove("flash-up", "flash-down");
+          // Restart CSS animation by forcing reflow.
+          void el.priceValue.offsetWidth;
+          el.priceValue.classList.add(currentPrice > previousPrice ? "flash-up" : "flash-down");
+          setTimeout(() => el.priceValue.classList.remove("flash-up", "flash-down"), 650);
+        }
+        if (!Number.isNaN(currentPrice)) {
+          state.lastPriceByMarket[market.key] = currentPrice;
+        }
+
+        const dayChange = Number(intraday.day_change_pct);
+        el.priceChange.textContent = `${fmtPct(dayChange)} today`;
+        el.priceChange.className = `price-change ${dayChange >= 0 ? "is-bull" : "is-bear"}`;
+
+        el.sessionStructure.textContent = m.session_structure || "--";
+        el.sessionTime.textContent = `As of ${fmtET(intraday.as_of_utc)} ET`;
+        el.pulseKicker.textContent = `${m.opening_range_state || ""} | ${m.ema_stack || ""}`;
+
+        const chips = [
+          `VWAP ${fmtPct(m.price_vs_vwap_pct)}`,
+          `Pivot ${fmtPct(m.price_vs_pivot_pct)}`,
+          `OR ${fmtNum(m.opening_range_low, 2)}-${fmtNum(m.opening_range_high, 2)}`,
+          `EMA20 ${fmtNum(m.ema20, 2)} / EMA50 ${fmtNum(m.ema50, 2)}`,
+        ];
+        el.intradayMetrics.innerHTML = chips.map((item) => `<span class="chip">${item}</span>`).join("");
       }
 
-      function renderWeeklyChart(market) {
-        const history = Array.isArray(market.history) ? market.history : [];
+      function scoreRow(label, value, groupLabel) {
+        const score = safeScore(value);
+        const fill = score >= 60 ? "var(--bull)" : score <= 40 ? "var(--bear)" : "var(--neutral)";
+        return `
+          <div class="row">
+            <div class="row-head">
+              <span class="muted">${label}</span>
+              <span class="row-value">${fmtNum(score)}</span>
+            </div>
+            <div class="mini-bar"><span style="width:${score}%; background:${fill}"></span></div>
+            <div class="kicker" style="margin:0.33rem 0 0">${groupLabel}</div>
+          </div>
+        `;
+      }
 
-        if (history.length < 2) {
-          Plotly.react(
-            "weekly-chart",
-            [],
-            {
-              margin: { l: 32, r: 10, t: 10, b: 24 },
-              paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(255,255,255,0.72)",
-              annotations: [{ text: "No weekly rows", x: 0.5, y: 0.5, xref: "paper", yref: "paper", showarrow: false }],
-              xaxis: { visible: false },
-              yaxis: { visible: false },
-            },
-            { displayModeBar: false, responsive: true }
-          );
+      function valueRow(label, value, suffix = "") {
+        return `
+          <div class="row">
+            <div class="row-head">
+              <span class="muted">${label}</span>
+              <span class="row-value">${value}${suffix}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      function renderDetails(market) {
+        const comp = market.cot_bias?.components || {};
+        el.componentGrid.innerHTML = [
+          scoreRow("Institutional", comp.institutional_pressure, "Asset managers positioning"),
+          scoreRow("Fast Money", comp.fast_money_pressure, "Leveraged fund pressure"),
+          scoreRow("Momentum", comp.position_momentum, "Weekly directional shift"),
+          scoreRow("Alignment", comp.alignment, "Institutional vs fast money agreement"),
+        ].join("");
+
+        const intraday = market.intraday;
+        const latest = market.latest || {};
+        const m = intraday?.metrics || {};
+
+        el.levelGrid.innerHTML = [
+          valueRow("VWAP", fmtNum(m.vwap, 2)),
+          valueRow("Pivot", fmtNum(m.pivot, 2)),
+          valueRow("Prior Day High", fmtNum(m.prior_day_high, 2)),
+          valueRow("Prior Day Low", fmtNum(m.prior_day_low, 2)),
+          valueRow("Asset Net", fmtSigned(latest.asset_mgr_net)),
+          valueRow("Lev Net", fmtSigned(latest.leveraged_net)),
+        ].join("");
+
+        const releaseUtc = state.snapshot?.meta?.next_cot_release_utc;
+        el.nextRelease.textContent = `Next COT: ${fmtET(releaseUtc)}`;
+        el.detailKicker.textContent = `${market.contract_code} | Report ${fmtDate(market.latest_report_date)}`;
+      }
+
+      function renderEvents() {
+        const rows = state.snapshot?.forex_factory?.upcoming_red_folder || [];
+        el.redCount.textContent = `${rows.length} events`;
+
+        if (!rows.length) {
+          el.redEvents.innerHTML = `<div class="event"><div class="event-title">No high-impact events in feed</div></div>`;
           return;
         }
 
-        if (state.chartMode === "shift") {
-          const latest = history[history.length - 1];
-          const prev = history[history.length - 2];
-          const labels = ["Asset", "Leveraged", "OI"];
-          const vals = [
-            Number(latest.asset_mgr_net || 0) - Number(prev.asset_mgr_net || 0),
-            Number(latest.leveraged_net || 0) - Number(prev.leveraged_net || 0),
-            Number(latest.open_interest || 0) - Number(prev.open_interest || 0),
+        el.redEvents.innerHTML = rows
+          .map(
+            (item) => `
+              <article class="event">
+                <div class="event-top">
+                  <div class="event-title">${item.title || "Event"}</div>
+                  <div class="event-tag">Red</div>
+                </div>
+                <div class="event-meta">${item.country || "--"} | ${fmtET(item.datetime_utc, true)} ET</div>
+              </article>
+            `
+          )
+          .join("");
+      }
+
+      function renderCOTChart(market) {
+        const history = market.history || [];
+        if (!history.length) return;
+
+        const x = history.map((row) => row.report_date);
+
+        let traces = [];
+        if (state.chartMode === "trend") {
+          traces = [
+            {
+              type: "scatter",
+              mode: "lines+markers",
+              name: "Asset Net",
+              x,
+              y: history.map((row) => row.asset_mgr_net),
+              line: { color: "#f59e0b", width: 2.4 },
+              marker: { size: 4, color: "#f59e0b" },
+            },
+            {
+              type: "scatter",
+              mode: "lines+markers",
+              name: "Lev Net",
+              x,
+              y: history.map((row) => row.leveraged_net),
+              line: { color: "#38bdf8", width: 2.4 },
+              marker: { size: 4, color: "#38bdf8" },
+            },
+            {
+              type: "bar",
+              name: "Open Interest",
+              x,
+              y: history.map((row) => row.open_interest),
+              yaxis: "y2",
+              marker: { color: "rgba(148, 163, 184, 0.24)" },
+            },
           ];
-          const colors = vals.map((v) => (v >= 0 ? "rgba(22,163,74,0.9)" : "rgba(220,38,38,0.9)"));
+          el.chartTitle.textContent = `${market.label} Positioning Trend`;
+        } else {
+          const shift = history.map((row, idx) => {
+            if (idx === 0) return 0;
+            const curr = row.asset_mgr_net + row.leveraged_net;
+            const prev = history[idx - 1].asset_mgr_net + history[idx - 1].leveraged_net;
+            return curr - prev;
+          });
 
-          Plotly.react(
-            "weekly-chart",
-            [{ type: "bar", x: labels, y: vals, marker: { color: colors, line: { color: "rgba(15,23,42,0.3)", width: 1 } }, text: vals.map((v) => fmtSigned(v)), textposition: "outside", hovertemplate: "%{x} Δ %{y:,}<extra></extra>" }],
+          traces = [
             {
-              margin: { l: 44, r: 12, t: 20, b: 36 },
+              type: "bar",
+              name: "Weekly Net Shift",
+              x,
+              y: shift,
+              marker: {
+                color: shift.map((val) => (val >= 0 ? "rgba(52,211,153,0.76)" : "rgba(251,113,133,0.76)")),
+              },
+            },
+          ];
+          el.chartTitle.textContent = `${market.label} Weekly Shift`;
+        }
+
+        el.chartSub.textContent = `${market.contract_code} | latest report ${fmtDate(market.latest_report_date)}`;
+
+        const dark = state.theme === "dark";
+        const layout = {
+          margin: { l: 48, r: 52, t: 8, b: 36 },
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: dark ? "rgba(14,18,26,0.78)" : "rgba(255,255,255,0.74)",
+          font: { family: "Inter, -apple-system, BlinkMacSystemFont, sans-serif", color: dark ? "#d5dbe8" : "#334155" },
+          hovermode: "x unified",
+          legend: { orientation: "h", y: 1.12, x: 0 },
+          xaxis: {
+            type: "date",
+            tickformat: "%b '%y",
+            gridcolor: dark ? "rgba(148,163,184,0.12)" : "rgba(100,116,139,0.16)",
+          },
+          yaxis: {
+            title: state.chartMode === "trend" ? "Net Contracts" : "Weekly Shift",
+            gridcolor: dark ? "rgba(148,163,184,0.12)" : "rgba(100,116,139,0.16)",
+          },
+          yaxis2: {
+            title: "Open Interest",
+            overlaying: "y",
+            side: "right",
+            showgrid: false,
+          },
+        };
+
+        Plotly.react("cot-chart", traces, layout, { displayModeBar: false, responsive: true });
+      }
+
+      function renderPulseChart(market) {
+        const intraday = market.intraday;
+        if (!intraday) {
+          Plotly.react(
+            "pulse-chart",
+            [],
+            {
+              margin: { l: 20, r: 20, t: 12, b: 20 },
               paper_bgcolor: "rgba(0,0,0,0)",
-              plot_bgcolor: "rgba(255,255,255,0.72)",
-              font: { family: "Manrope, sans-serif", color: "#334155" },
-              yaxis: { gridcolor: "rgba(100,116,139,0.2)", zerolinecolor: "rgba(100,116,139,0.35)" },
-              annotations: [{ text: `${fmtDate(prev.report_date)} → ${fmtDate(latest.report_date)}`, x: 0, y: 1.14, xref: "paper", yref: "paper", showarrow: false, font: { size: 11, color: "#64748b" } }],
+              plot_bgcolor: "rgba(0,0,0,0)",
+              annotations: [
+                {
+                  text: "Intraday data unavailable",
+                  showarrow: false,
+                  x: 0.5,
+                  y: 0.5,
+                  xref: "paper",
+                  yref: "paper",
+                  font: { color: "#94a3b8" },
+                },
+              ],
             },
             { displayModeBar: false, responsive: true }
           );
           return;
         }
 
-        const x = history.map((h) => h.report_date);
-        const asset = history.map((h) => h.asset_mgr_net);
-        const lev = history.map((h) => h.leveraged_net);
+        const today = intraday.spark?.today || [];
+        const yesterday = intraday.spark?.yesterday || [];
 
-        Plotly.react(
-          "weekly-chart",
-          [
-            { type: "scatter", mode: "lines", x, y: asset, name: "Asset", line: { color: "#f59e0b", width: 3 } },
-            { type: "scatter", mode: "lines", x, y: lev, name: "Leveraged", line: { color: "#0284c7", width: 3 } },
-          ],
+        const traces = [
           {
-            margin: { l: 44, r: 12, t: 10, b: 30 },
-            paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(255,255,255,0.72)",
-            font: { family: "Manrope, sans-serif", color: "#334155" },
-            hovermode: "x unified",
-            legend: { orientation: "h", y: 1.12, x: 0 },
-            xaxis: { type: "date", tickformat: "%b %Y", gridcolor: "rgba(100,116,139,0.16)" },
-            yaxis: { gridcolor: "rgba(100,116,139,0.2)", zerolinecolor: "rgba(100,116,139,0.35)" },
+            type: "scatter",
+            mode: "lines",
+            name: "Today",
+            x: today.map((row) => row.t),
+            y: today.map((row) => row.p),
+            line: { color: "#4f9cf7", width: 2.4 },
           },
-          { displayModeBar: false, responsive: true }
-        );
+          {
+            type: "scatter",
+            mode: "lines",
+            name: "Yesterday",
+            x: yesterday.map((row) => row.t),
+            y: yesterday.map((row) => row.p),
+            line: { color: "#9ca3af", width: 1.8, dash: "dot" },
+          },
+        ];
+
+        const dark = state.theme === "dark";
+        const layout = {
+          margin: { l: 46, r: 12, t: 8, b: 30 },
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: dark ? "rgba(14,18,26,0.78)" : "rgba(255,255,255,0.74)",
+          font: { family: "Inter, -apple-system, BlinkMacSystemFont, sans-serif", color: dark ? "#d5dbe8" : "#334155" },
+          legend: { orientation: "h", y: 1.14, x: 0 },
+          hovermode: "x",
+          xaxis: {
+            type: "date",
+            tickformat: "%H:%M",
+            gridcolor: dark ? "rgba(148,163,184,0.1)" : "rgba(100,116,139,0.13)",
+          },
+          yaxis: {
+            tickformat: ".2f",
+            gridcolor: dark ? "rgba(148,163,184,0.1)" : "rgba(100,116,139,0.13)",
+          },
+        };
+
+        Plotly.react("pulse-chart", traces, layout, { displayModeBar: false, responsive: true });
       }
 
-      function renderNewsStrip() {
-        const rf = state.snapshot?.news?.red_folder || {};
-        const all = Array.isArray(rf.upcoming_high_impact) ? rf.upcoming_high_impact : [];
-        const list = state.newsFilter === "usd" ? all.filter((e) => e.country === "USD") : all;
-        const show = list.slice(0, 8);
+      function renderHistory(market) {
+        const rows = (market.history || []).slice(-10).reverse();
+        el.historyCaption.textContent = `${market.label} | ${market.contract_code}`;
+        el.historyBody.innerHTML = rows
+          .map(
+            (row) => `
+              <tr>
+                <td>${fmtDate(row.report_date)}</td>
+                <td>${fmtSigned(row.asset_mgr_net)}</td>
+                <td>${fmtSigned(row.leveraged_net)}</td>
+                <td>${fmtNum(row.open_interest)}</td>
+              </tr>
+            `
+          )
+          .join("");
+      }
 
-        const fetched = rf.fetched_at_utc ? fmtTime(rf.fetched_at_utc) : "--";
-        el.rfMeta.textContent = `${list.length} events | ${state.newsFilter.toUpperCase()} | feed ${fetched}`;
+      function watchCard(item) {
+        const score = item.confluence_score;
+        const label = item.confluence_label || item.pulse_label || "NEUTRAL";
+        const scoreText = score === null || score === undefined ? "N/A" : `${fmtNum(score)} ${label}`;
 
-        if (!show.length) {
-          el.rfStrip.innerHTML = `<div class="news-card"><div class="news-title">No high-impact events in this filter.</div></div>`;
+        return `
+          <article class="watch ${item.market_key === state.activeMarket ? "active" : ""}" data-symbol="${item.symbol}" data-market="${
+          item.market_key || ""
+        }">
+            <div class="watch-top">
+              <span class="watch-symbol">${item.symbol}</span>
+              <button class="watch-remove" data-remove="${item.symbol}" aria-label="Remove ${item.symbol}">×</button>
+            </div>
+            <div class="watch-score ${tone(label)}">${scoreText}</div>
+            <div class="watch-meta">${item.cot_score === null ? "COT N/A" : `COT ${fmtNum(item.cot_score)}`} | ${
+          item.pulse_score === null ? "Pulse N/A" : `Pulse ${fmtNum(item.pulse_score)}`
+        }</div>
+          </article>
+        `;
+      }
+
+      function renderWatchlist() {
+        const watchlist = state.snapshot?.watchlist || {};
+        const symbols = Object.keys(watchlist);
+        if (!symbols.length) {
+          el.watchGrid.innerHTML = "";
           return;
         }
 
-        el.rfStrip.innerHTML = show
-          .map((e) => {
-            const t = e.datetime_utc ? fmtTime(e.datetime_utc) : `${e.date || "--"} ${e.time || "--"}`;
-            return `<article class="news-card"><div class="news-time">${t}</div><div class="news-title"><span class="cc">${e.country || "--"}</span>${e.title || "Event"}</div></article>`;
+        state.pinnedSymbols = state.pinnedSymbols.filter((symbol) => symbols.includes(symbol));
+        if (!state.pinnedSymbols.length) {
+          state.pinnedSymbols = symbols.slice(0, 3);
+        }
+
+        el.watchGrid.innerHTML = state.pinnedSymbols.map((symbol) => watchCard(watchlist[symbol])).join("");
+
+        el.watchGrid.querySelectorAll("[data-remove]").forEach((node) => {
+          node.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const symbol = node.getAttribute("data-remove");
+            state.pinnedSymbols = state.pinnedSymbols.filter((key) => key !== symbol);
+            if (!state.pinnedSymbols.length) {
+              state.pinnedSymbols = symbols.slice(0, 1);
+            }
+            savePinned();
+            renderWatchlist();
+          });
+        });
+
+        el.watchGrid.querySelectorAll(".watch").forEach((card) => {
+          card.addEventListener("click", () => {
+            const marketKey = card.getAttribute("data-market");
+            if (marketKey && state.snapshot.markets[marketKey]) {
+              state.activeMarket = marketKey;
+              renderDashboard();
+            }
+          });
+        });
+
+        el.symbolPicker.innerHTML = symbols
+          .map((symbol) => {
+            const item = watchlist[symbol];
+            const disabled = state.pinnedSymbols.includes(symbol) ? "disabled" : "";
+            return `<option value="${symbol}" ${disabled}>${item.label}</option>`;
           })
           .join("");
       }
 
-      function renderHeader(market) {
-        const intra = market?.intraday || {};
-        const score = Number(market?.bias?.score || 0);
-
-        el.heroMarket.textContent = `${market.label} • ${intra.symbol || ETF[state.activeMarket] || "--"}`;
-        el.heroBias.textContent = market?.bias?.label || "Neutral";
-        el.heroBias.className = `v ${toneClass(score)}`;
-        el.heroBiasMeta.textContent = `Score ${fmtSigned(score, 1)} | Conv ${fmtNum(market?.bias?.conviction || 0, 0)}%`;
-
-        el.chipGenerated.textContent = `Generated ${fmtTime(state.snapshot.generated_at_utc)}`;
-        el.chipReport.textContent = `Report ${fmtDate(market.latest_report_date)} (${market.contract_code})`;
-        el.chipIntraday.textContent = `Intraday ${fmtTime(intra.as_of_utc || state.snapshot.generated_at_utc)}`;
-        el.chipLastSync.textContent = `Last sync ${localStorage.getItem("apple_last_sync") || "--"}`;
-
-        el.intradayTitle.textContent = `${market.label} Intraday`;
-        el.weeklyTitle.textContent = state.chartMode === "trend" ? "Weekly Trend" : "Weekly Shift";
-      }
-
-      function render() {
+      function renderDashboard() {
         if (!state.snapshot?.markets) return;
-        const market = state.snapshot.markets[state.activeMarket];
+        const market = activeMarket();
         if (!market) return;
 
-        buildTabs();
-        renderHeader(market);
-        renderSetup(market);
-        renderCards(market);
-        renderIntradayChart(market);
-        renderWeeklyChart(market);
-        renderNewsStrip();
+        renderTabs();
+        renderSync(market);
+        renderHero(market);
+        renderIntraday(market);
+        renderDetails(market);
+        renderEvents();
+        renderCOTChart(market);
+        renderPulseChart(market);
+        renderWatchlist();
+        renderHistory(market);
+        setCalendarVisibility(state.showCalendar);
+      }
+
+      function setLoadingSync(isLoading) {
+        el.syncBtn.disabled = isLoading;
+        el.syncBtn.textContent = isLoading ? "Syncing..." : "Sync";
       }
 
       async function loadSnapshot(manual = false) {
-        setLoading(true);
+        setLoadingSync(manual);
         try {
-          const res = await fetch(`./data/cot_snapshot.json?ts=${Date.now()}`, { cache: "no-store" });
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const payload = await res.json();
-          if (!payload?.markets) throw new Error("Bad snapshot");
+          const response = await fetch(`./data/cot_snapshot.json?ts=${Date.now()}`, { cache: "no-store" });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const payload = await response.json();
+          if (!payload?.markets || !Object.keys(payload.markets).length) {
+            throw new Error("Snapshot format invalid");
+          }
+
           state.snapshot = payload;
-
           if (!payload.markets[state.activeMarket]) {
-            state.activeMarket = Object.keys(payload.markets)[0];
+            state.activeMarket = marketOrder()[0] || Object.keys(payload.markets)[0];
           }
 
-          if (manual || !localStorage.getItem("apple_last_sync")) {
-            const now = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-            localStorage.setItem("apple_last_sync", now);
-          }
-
-          el.error.classList.remove("show");
-          render();
-        } catch (e) {
-          el.error.textContent = `Failed to load data: ${e.message}`;
-          el.error.classList.add("show");
+          el.errorBox.classList.add("hidden");
+          el.errorBox.textContent = "";
+          renderDashboard();
+        } catch (error) {
+          el.syncDot.style.background = "var(--bear)";
+          el.syncDot.style.boxShadow = "0 0 16px var(--bear)";
+          el.syncState.textContent = "Offline";
+          el.errorBox.classList.remove("hidden");
+          el.errorBox.textContent = `Failed to load snapshot: ${error.message}`;
         } finally {
-          setLoading(false);
+          setLoadingSync(false);
         }
       }
 
-      el.syncBtn.addEventListener("click", () => loadSnapshot(true));
-      el.modeTrend.addEventListener("click", () => {
-        setChartMode("trend");
-        if (state.snapshot) render();
-      });
-      el.modeShift.addEventListener("click", () => {
-        setChartMode("shift");
-        if (state.snapshot) render();
-      });
-      el.rfUsd.addEventListener("click", () => {
-        setNewsFilter("usd");
-        if (state.snapshot) render();
-      });
-      el.rfAll.addEventListener("click", () => {
-        setNewsFilter("all");
-        if (state.snapshot) render();
-      });
+      function bindEvents() {
+        el.themeToggle.addEventListener("click", () => {
+          setTheme(state.theme === "dark" ? "light" : "dark");
+          renderDashboard();
+        });
 
-      setChartMode(state.chartMode);
-      setNewsFilter(state.newsFilter);
-      updateNextCotCountdown();
-      setInterval(updateNextCotCountdown, 30000);
+        el.calendarToggle.addEventListener("click", () => {
+          setCalendarVisibility(!state.showCalendar);
+        });
+
+        el.syncBtn.addEventListener("click", () => {
+          loadSnapshot(true);
+        });
+
+        el.modeTrend.addEventListener("click", () => {
+          state.chartMode = "trend";
+          el.modeTrend.classList.add("active");
+          el.modeShift.classList.remove("active");
+          renderCOTChart(activeMarket());
+        });
+
+        el.modeShift.addEventListener("click", () => {
+          state.chartMode = "shift";
+          el.modeShift.classList.add("active");
+          el.modeTrend.classList.remove("active");
+          renderCOTChart(activeMarket());
+        });
+
+        el.pinSymbol.addEventListener("click", () => {
+          const symbol = el.symbolPicker.value;
+          if (!symbol || state.pinnedSymbols.includes(symbol)) {
+            return;
+          }
+          state.pinnedSymbols.push(symbol);
+          if (state.pinnedSymbols.length > 6) {
+            state.pinnedSymbols = state.pinnedSymbols.slice(-6);
+          }
+          savePinned();
+          renderWatchlist();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          const tag = String(event.target?.tagName || "").toLowerCase();
+          if (["input", "textarea", "select"].includes(tag)) {
+            return;
+          }
+
+          if (event.key === "1") {
+            state.activeMarket = "dow_jones";
+            renderDashboard();
+          }
+          if (event.key === "2") {
+            state.activeMarket = "nasdaq_100";
+            renderDashboard();
+          }
+          if (event.key === "3") {
+            state.activeMarket = "sp_500";
+            renderDashboard();
+          }
+          if (event.key === "/") {
+            event.preventDefault();
+            el.symbolPicker.focus();
+          }
+        });
+      }
+
+      loadPinned();
+      setTheme(state.theme);
+      setCalendarVisibility(state.showCalendar);
+      bindEvents();
       loadSnapshot();
     </script>
   </body>
