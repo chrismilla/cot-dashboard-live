@@ -662,6 +662,20 @@
         font-size: 0.74rem;
       }
 
+      .alert-row {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.42rem;
+        align-items: center;
+      }
+
+      .alert-status {
+        margin-top: 0.4rem;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+
       .watch-head {
         display: flex;
         align-items: center;
@@ -1020,6 +1034,17 @@
             </div>
             <span class="pill" id="red-count">0 events</span>
           </div>
+          <div class="alert-row">
+            <select id="alert-lead" aria-label="Alert lead time">
+              <option value="60">60 min before</option>
+              <option value="30">30 min before</option>
+              <option value="15" selected>15 min before</option>
+              <option value="10">10 min before</option>
+              <option value="5">5 min before</option>
+            </select>
+            <button class="btn btn-ghost" id="alert-toggle">Enable Alerts</button>
+          </div>
+          <div class="alert-status" id="alert-status">Alerts off</div>
           <div class="event-list" id="red-events"></div>
         </article>
       </section>
@@ -1071,6 +1096,11 @@
         ref: "main",
         tokenStorageKey: "cot_github_pat",
       };
+      const ALERT_STORAGE = {
+        enabled: "cot_news_alerts_enabled",
+        lead: "cot_news_alert_lead_minutes",
+        seen: "cot_news_alert_seen",
+      };
 
       const state = {
         snapshot: null,
@@ -1080,6 +1110,10 @@
         pinnedSymbols: [],
         lastPriceByMarket: {},
         refreshInFlight: false,
+        alertsEnabled: false,
+        alertLeadMinutes: 15,
+        alertedEventKeys: new Set(),
+        alertTimerId: null,
       };
 
       const el = {
@@ -1123,6 +1157,9 @@
         redCard: document.getElementById("events-section"),
         redCount: document.getElementById("red-count"),
         redEvents: document.getElementById("red-events"),
+        alertLead: document.getElementById("alert-lead"),
+        alertToggle: document.getElementById("alert-toggle"),
+        alertStatus: document.getElementById("alert-status"),
 
         symbolPicker: document.getElementById("symbol-picker"),
         pinSymbol: document.getElementById("pin-symbol"),
@@ -1154,6 +1191,158 @@
 
       function savePinned() {
         localStorage.setItem("cot_pinned_symbols", JSON.stringify(state.pinnedSymbols));
+      }
+
+      function browserNotificationsSupported() {
+        return typeof window !== "undefined" && "Notification" in window;
+      }
+
+      function saveAlertPreferences() {
+        localStorage.setItem(ALERT_STORAGE.enabled, state.alertsEnabled ? "true" : "false");
+        localStorage.setItem(ALERT_STORAGE.lead, String(state.alertLeadMinutes));
+      }
+
+      function saveAlertedEventKeys() {
+        const keys = Array.from(state.alertedEventKeys);
+        localStorage.setItem(ALERT_STORAGE.seen, JSON.stringify(keys.slice(-300)));
+      }
+
+      function loadAlertPreferences() {
+        const leadRaw = Number(localStorage.getItem(ALERT_STORAGE.lead) || "15");
+        state.alertLeadMinutes = [5, 10, 15, 30, 60].includes(leadRaw) ? leadRaw : 15;
+        state.alertsEnabled = localStorage.getItem(ALERT_STORAGE.enabled) === "true";
+        try {
+          const parsed = JSON.parse(localStorage.getItem(ALERT_STORAGE.seen) || "[]");
+          state.alertedEventKeys = new Set(Array.isArray(parsed) ? parsed : []);
+        } catch (_) {
+          state.alertedEventKeys = new Set();
+        }
+      }
+
+      function updateAlertUI() {
+        if (!el.alertLead || !el.alertToggle || !el.alertStatus) {
+          return;
+        }
+
+        el.alertLead.value = String(state.alertLeadMinutes);
+        const supported = browserNotificationsSupported();
+
+        if (!supported) {
+          el.alertLead.disabled = true;
+          el.alertToggle.disabled = true;
+          el.alertToggle.textContent = "Not Supported";
+          el.alertStatus.textContent = "Browser notifications are not supported on this device.";
+          return;
+        }
+
+        if (Notification.permission === "denied") {
+          state.alertsEnabled = false;
+          saveAlertPreferences();
+          el.alertLead.disabled = true;
+          el.alertToggle.disabled = false;
+          el.alertToggle.textContent = "Alerts Blocked";
+          el.alertStatus.textContent = "Notifications are blocked in browser settings.";
+          return;
+        }
+
+        el.alertLead.disabled = false;
+        el.alertToggle.disabled = false;
+        if (state.alertsEnabled && Notification.permission === "granted") {
+          el.alertToggle.textContent = "Alerts On";
+          el.alertStatus.textContent = `Will alert ${state.alertLeadMinutes} min before each major event (while tab is open).`;
+        } else {
+          el.alertToggle.textContent = "Enable Alerts";
+          el.alertStatus.textContent = `Alerts off. Enable browser notifications for ${state.alertLeadMinutes} min pre-news popups.`;
+        }
+      }
+
+      function scheduleNewsAlertPolling() {
+        if (state.alertTimerId) {
+          clearInterval(state.alertTimerId);
+          state.alertTimerId = null;
+        }
+        if (!state.alertsEnabled) {
+          return;
+        }
+        state.alertTimerId = window.setInterval(() => {
+          maybeSendNewsAlerts();
+        }, 30000);
+      }
+
+      async function enableNewsAlerts() {
+        if (!browserNotificationsSupported()) {
+          updateAlertUI();
+          return;
+        }
+
+        let permission = Notification.permission;
+        if (permission !== "granted") {
+          permission = await Notification.requestPermission();
+        }
+        if (permission === "granted") {
+          state.alertsEnabled = true;
+          saveAlertPreferences();
+          scheduleNewsAlertPolling();
+          maybeSendNewsAlerts();
+        } else {
+          state.alertsEnabled = false;
+          saveAlertPreferences();
+        }
+        updateAlertUI();
+      }
+
+      function disableNewsAlerts() {
+        state.alertsEnabled = false;
+        saveAlertPreferences();
+        scheduleNewsAlertPolling();
+        updateAlertUI();
+      }
+
+      function maybeSendNewsAlerts() {
+        if (!state.alertsEnabled) return;
+        if (!browserNotificationsSupported() || Notification.permission !== "granted") return;
+
+        const events = state.snapshot?.forex_factory?.upcoming_red_folder || [];
+        const nowMs = Date.now();
+        let changed = false;
+
+        for (const key of Array.from(state.alertedEventKeys)) {
+          const parts = key.split("|");
+          const stamp = Date.parse(parts[0] || "");
+          if (Number.isFinite(stamp) && stamp < nowMs - 36 * 60 * 60 * 1000) {
+            state.alertedEventKeys.delete(key);
+            changed = true;
+          }
+        }
+
+        for (const event of events) {
+          const eventMs = Date.parse(event.datetime_utc || "");
+          if (!Number.isFinite(eventMs)) continue;
+
+          const leadMs = state.alertLeadMinutes * 60 * 1000;
+          const triggerMs = eventMs - leadMs;
+          if (nowMs < triggerMs || nowMs > eventMs + 5 * 60 * 1000) continue;
+
+          const key = `${event.datetime_utc || ""}|${event.title || ""}|${state.alertLeadMinutes}`;
+          if (state.alertedEventKeys.has(key)) continue;
+
+          const minsLeft = Math.max(0, Math.round((eventMs - nowMs) / 60000));
+          const title = `${event.country || "USD"} news in ${minsLeft}m`;
+          const body = `${event.title || "Major event"} • ${fmtLocal(event.datetime_utc, true)}`;
+
+          try {
+            new Notification(title, { body, tag: key, renotify: false });
+          } catch (_) {
+            continue;
+          }
+
+          state.alertedEventKeys.add(key);
+          changed = true;
+        }
+
+        if (changed) {
+          saveAlertedEventKeys();
+        }
       }
 
       function githubApiHeaders(token) {
@@ -1795,6 +1984,7 @@
         renderPulseChart(market);
         renderWatchlist();
         renderHistory(market);
+        updateAlertUI();
       }
 
       function setLoadingSync(isLoading, loadingText = "Syncing...") {
@@ -1820,6 +2010,7 @@
           el.errorBox.classList.add("hidden");
           el.errorBox.textContent = "";
           renderDashboard();
+          maybeSendNewsAlerts();
         } catch (error) {
           el.syncDot.style.background = "var(--bear)";
           el.syncDot.style.boxShadow = "0 0 16px var(--bear)";
@@ -1883,6 +2074,30 @@
           renderDashboard();
         });
 
+        if (el.alertToggle) {
+          el.alertToggle.addEventListener("click", async () => {
+            if (state.alertsEnabled) {
+              disableNewsAlerts();
+            } else {
+              await enableNewsAlerts();
+            }
+          });
+        }
+
+        if (el.alertLead) {
+          el.alertLead.addEventListener("change", () => {
+            const lead = Number(el.alertLead.value);
+            if ([5, 10, 15, 30, 60].includes(lead)) {
+              state.alertLeadMinutes = lead;
+              state.alertedEventKeys = new Set();
+              saveAlertedEventKeys();
+              saveAlertPreferences();
+              updateAlertUI();
+              maybeSendNewsAlerts();
+            }
+          });
+        }
+
         el.syncBtn.addEventListener("click", () => {
           runSyncAction();
         });
@@ -1940,7 +2155,10 @@
       }
 
       loadPinned();
+      loadAlertPreferences();
       setTheme(state.theme);
+      updateAlertUI();
+      scheduleNewsAlertPolling();
       bindEvents();
       loadSnapshot();
     </script>
