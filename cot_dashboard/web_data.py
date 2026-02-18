@@ -48,6 +48,29 @@ WATCHLIST_CANDIDATES: list[dict[str, Optional[str]]] = [
 ]
 
 FF_CALENDAR_URL = "https://nfs.faireconomy.media/ff_calendar_thisweek.xml"
+US_MAJOR_INDEX_NEWS_KEYWORDS: tuple[str, ...] = (
+    "fomc",
+    "federal funds rate",
+    "fed chair",
+    "powell",
+    "cpi",
+    "pce",
+    "ppi",
+    "non-farm",
+    "nfp",
+    "unemployment rate",
+    "average hourly earnings",
+    "jobless claims",
+    "gdp",
+    "retail sales",
+    "ism",
+    "jolts",
+    "consumer confidence",
+    "durable goods",
+    "personal income",
+    "personal spending",
+    "pmi",
+)
 
 
 def _clamp(value: float, low: float, high: float) -> float:
@@ -432,6 +455,15 @@ def _parse_forex_factory_datetime(date_text: str, time_text: str) -> Optional[da
     return parsed.replace(tzinfo=NY_TZ)
 
 
+def _is_major_us_index_event(item: dict[str, Any]) -> bool:
+    if str(item.get("country") or "").upper() != "USD":
+        return False
+    if str(item.get("impact") or "").title() != "High":
+        return False
+    title = str(item.get("title") or "").lower()
+    return any(keyword in title for keyword in US_MAJOR_INDEX_NEWS_KEYWORDS)
+
+
 def _fetch_red_folder_events(limit: int = 10) -> dict[str, Any]:
     now_utc = datetime.now(timezone.utc)
     response = requests.get(FF_CALENDAR_URL, timeout=20, headers={"User-Agent": "cot-dashboard/1.1"})
@@ -491,12 +523,30 @@ def _fetch_red_folder_events(limit: int = 10) -> dict[str, Any]:
         if dt >= (now_utc - timedelta(hours=1)):
             upcoming.append(event)
 
-    selected = (upcoming or red_events)[:limit]
+    relevant_events = [event for event in red_events if _is_major_us_index_event(event)]
+    if not relevant_events:
+        # Fallback: keep high-impact USD events if keyword filter is temporarily too strict.
+        relevant_events = [event for event in red_events if str(event.get("country") or "").upper() == "USD"]
+
+    relevant_events = sorted(relevant_events, key=sort_key)
+
+    relevant_upcoming: list[dict[str, Any]] = []
+    for event in relevant_events:
+        stamp = event.get("datetime_utc")
+        if not stamp:
+            continue
+        dt = datetime.fromisoformat(str(stamp).replace("Z", "+00:00"))
+        if dt >= (now_utc - timedelta(hours=1)):
+            relevant_upcoming.append(event)
+
+    selected = (relevant_upcoming or relevant_events)[:limit]
 
     return {
         "source": FF_CALENDAR_URL,
         "fetched_at_utc": _fmt_utc(now_utc),
-        "red_folder_count": len(red_events),
+        "red_folder_count": len(selected),
+        "high_impact_total_count": len(red_events),
+        "relevance_filter": "Major USD macro/Fed events for US index trading",
         "upcoming_red_folder": selected,
     }
 
