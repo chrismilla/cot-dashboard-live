@@ -32,12 +32,14 @@ MARKET_SYMBOLS: dict[str, str] = {
     "dow_jones": "DIA",
     "nasdaq_100": "QQQ",
     "sp_500": "SPY",
+    "dxy": "DX-Y.NYB",
 }
 
 WATCHLIST_CANDIDATES: list[dict[str, Optional[str]]] = [
     {"symbol": "DIA", "label": "Dow (DIA)", "market_key": "dow_jones"},
     {"symbol": "QQQ", "label": "Nasdaq-100 (QQQ)", "market_key": "nasdaq_100"},
     {"symbol": "SPY", "label": "S&P 500 (SPY)", "market_key": "sp_500"},
+    {"symbol": "DX-Y.NYB", "label": "Dollar Index (DXY)", "market_key": "dxy"},
     {"symbol": "ES=F", "label": "E-mini S&P (ES)", "market_key": None},
     {"symbol": "NQ=F", "label": "E-mini Nasdaq (NQ)", "market_key": None},
     {"symbol": "YM=F", "label": "Mini Dow (YM)", "market_key": None},

@@ -1087,8 +1087,8 @@
     </div>
 
     <script>
-      const DEFAULT_MARKET_ORDER = ["dow_jones", "nasdaq_100", "sp_500"];
-      const DEFAULT_PINNED = ["DIA", "QQQ", "SPY"];
+      const DEFAULT_MARKET_ORDER = ["dow_jones", "nasdaq_100", "sp_500", "dxy"];
+      const DEFAULT_PINNED = ["DIA", "QQQ", "SPY", "DX-Y.NYB"];
       const GITHUB_REFRESH = {
         owner: "chrismilla",
         repo: "cot-dashboard-live",
@@ -2145,6 +2145,10 @@
           }
           if (event.key === "3") {
             state.activeMarket = "sp_500";
+            renderDashboard();
+          }
+          if (event.key === "4") {
+            state.activeMarket = "dxy";
             renderDashboard();
           }
           if (event.key === "/") {

@@ -15,16 +15,17 @@ DEFAULT_COT_URL = os.getenv("COT_FINANCIAL_URL", DEFAULT_COT_JSON_URL)
 CACHE_PATH = Path(os.getenv("COT_CACHE_PATH", "build/cot_financial.csv"))
 SAMPLE_PATH = Path(__file__).resolve().parent.parent / "data" / "sample_financial_futures.csv"
 
-DEFAULT_INDEX_ORDER = ("dow_jones", "nasdaq_100", "sp_500")
+DEFAULT_INDEX_ORDER = ("dow_jones", "nasdaq_100", "sp_500", "dxy")
 
-# Focus the Socrata query to the three requested equity indexes.
+# Focus the Socrata query to the requested equity indexes + dollar index.
 INDEX_QUERY_WHERE = (
     "(futonly_or_combined = 'FutOnly' OR futonly_or_combined is null) AND ("
     "cftc_contract_market_code in "
-    "('12460+','124603','124601','20974+','209742','13874+','13874A','138741') "
+    "('12460+','124603','124601','20974+','209742','13874+','13874A','138741','098662') "
     "OR market_and_exchange_names like '%DJIA Consolidated%' "
     "OR market_and_exchange_names like '%NASDAQ-100 Consolidated%' "
-    "OR market_and_exchange_names like '%S&P 500 Consolidated%')"
+    "OR market_and_exchange_names like '%S&P 500 Consolidated%' "
+    "OR market_and_exchange_names like '%DOLLAR INDEX%')"
 )
 
 
@@ -54,6 +55,12 @@ INDEX_MARKETS: dict[str, IndexMarket] = {
         label="S&P 500",
         preferred_codes=("13874+", "13874A", "138741"),
         name_patterns=(r"S&P 500 Consolidated", r"E-MINI S&P 500", r"S&P 500 STOCK INDEX"),
+    ),
+    "dxy": IndexMarket(
+        key="dxy",
+        label="U.S. Dollar Index",
+        preferred_codes=("098662",),
+        name_patterns=(r"U\\.S\\. DOLLAR INDEX", r"US DOLLAR INDEX", r"DOLLAR INDEX"),
     ),
 }
 
