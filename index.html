@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COT Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        content: ["./**/*.{html,js}"],
+        theme: { extend: { fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] } } },
+      };
+      document.documentElement.classList.add("dark");
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -57,6 +66,7 @@
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         color: var(--text);
+        background-color: #0a0a0a;
         background:
           radial-gradient(circle at 11% -10%, rgba(16, 185, 129, 0.12), transparent 34%),
           radial-gradient(circle at 91% -12%, rgba(59, 130, 246, 0.13), transparent 38%),
@@ -70,11 +80,11 @@
       }
 
       .glass {
-        background: var(--card);
-        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: var(--shadow);
-        backdrop-filter: blur(18px) saturate(145%);
-        -webkit-backdrop-filter: blur(18px) saturate(145%);
+        backdrop-filter: blur(24px) saturate(145%);
+        -webkit-backdrop-filter: blur(24px) saturate(145%);
       }
 
       .nav {
@@ -905,25 +915,39 @@
 
       <div id="error-box" class="error hidden"></div>
 
-      <section class="hero glass mt" id="bias-section">
+      <section class="mt" id="bias-section">
         <div class="market-tabs" id="market-tabs"></div>
-        <div class="hero-grid">
-          <div class="gauge" id="bias-gauge">
-            <div class="gauge-copy">
-              <div class="gauge-score" id="bias-score">--</div>
-              <div class="gauge-label">Confluence</div>
-            </div>
-          </div>
+        <div class="max-w-5xl mx-auto px-2 pt-3">
+          <div class="glass rounded-3xl p-12 shadow-2xl">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+              <div class="min-w-0">
+                <p class="hero-market text-zinc-500" id="hero-market">--</p>
+                <h2
+                  class="font-black leading-none tracking-[-4px] text-[clamp(3rem,9vw,6rem)] text-emerald-400"
+                  id="bias-word"
+                >
+                  NEUTRAL
+                </h2>
+                <div id="confluence-line" class="text-[clamp(1.45rem,3.8vw,2.75rem)] font-light text-zinc-400 mt-3">
+                  COT -- + Technical --
+                </div>
+                <div class="mt-4 h-2.5 rounded-full bg-white/10 overflow-hidden">
+                  <div id="confluence-fill" class="h-full rounded-full transition-all duration-300"></div>
+                </div>
+              </div>
 
-          <div class="hero-copy">
-            <p class="hero-market" id="hero-market">--</p>
-            <h2 class="bias-word is-neutral" id="bias-word">NEUTRAL</h2>
-            <div class="confluence-line" id="confluence-line">COT -- + Technical --</div>
-            <div class="bar"><div class="bar-fill" id="confluence-fill"></div></div>
-            <div class="playbook">
-              <p class="playbook-line" id="playbook-line">Waiting for updated bias...</p>
-              <ul class="playbook-list" id="playbook-list"></ul>
+              <div id="bias-gauge" class="gauge shrink-0 mx-auto lg:mx-0">
+                <div class="gauge-copy">
+                  <div class="gauge-score" id="bias-score">--</div>
+                  <div class="gauge-label">Confluence</div>
+                </div>
+              </div>
             </div>
+
+            <p id="playbook-line" class="mt-8 text-[clamp(1.1rem,2.8vw,1.7rem)] text-zinc-300 leading-tight">
+              Waiting for updated bias...
+            </p>
+            <ul id="playbook-list" class="mt-4 text-zinc-400 text-base leading-relaxed space-y-1"></ul>
           </div>
         </div>
       </section>
@@ -1236,7 +1260,14 @@
 
         el.biasScore.textContent = fmtNum(score);
         el.biasWord.textContent = label;
-        el.biasWord.className = `bias-word ${tone(label)}`;
+        el.biasWord.classList.remove("is-bull", "is-bear", "is-neutral", "text-emerald-400", "text-rose-400", "text-amber-400");
+        if (label === "BULLISH") {
+          el.biasWord.classList.add("is-bull", "text-emerald-400");
+        } else if (label === "BEARISH") {
+          el.biasWord.classList.add("is-bear", "text-rose-400");
+        } else {
+          el.biasWord.classList.add("is-neutral", "text-amber-400");
+        }
 
         el.biasGauge.style.setProperty("--score", score);
         el.biasGauge.style.setProperty("--accent", accentColor);
@@ -1249,7 +1280,7 @@
         el.confluenceFill.style.background = accentColor;
 
         el.playbookLine.textContent = confluence.headline || "Waiting for confluence playbook.";
-        el.playbookList.innerHTML = (confluence.bullets || []).map((line) => `<li>${line}</li>`).join("");
+        el.playbookList.innerHTML = (confluence.bullets || []).map((line) => `<li class="list-disc ml-5">${line}</li>`).join("");
       }
 
       function renderIntraday(market) {
