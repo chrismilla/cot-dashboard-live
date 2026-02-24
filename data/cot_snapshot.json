@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-02-24T14:37:17Z",
+  "generated_at_utc": "2026-02-24T15:39:05Z",
   "source_url": "https://publicreporting.cftc.gov/resource/udgc-27he.json",
   "history_weeks": 104,
   "market_order": [
@@ -673,43 +673,103 @@
       "intraday": {
         "symbol": "DIA",
         "label": "Dow Jones",
-        "as_of_utc": "2026-02-24T14:37:17Z",
-        "last_price": 489.48,
-        "day_change_pct": 0.31,
-        "pulse_score": 82,
+        "as_of_utc": "2026-02-24T15:39:00Z",
+        "last_price": 491.8,
+        "day_change_pct": 0.78,
+        "pulse_score": 100,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 489.188,
-          "price_vs_vwap_pct": 0.06,
-          "opening_range_high": 489.79,
-          "opening_range_low": 487.47,
+          "vwap": 490.7279,
+          "price_vs_vwap_pct": 0.22,
+          "opening_range_high": 492.53,
+          "opening_range_low": 487.45,
           "opening_range_state": "Inside OR",
-          "ema20": 489.2021,
-          "ema50": 489.172,
+          "ema20": 490.8896,
+          "ema50": 490.1051,
           "ema_stack": "Bull Stack",
           "pivot": 490.7133,
-          "price_vs_pivot_pct": -0.25,
+          "price_vs_pivot_pct": 0.22,
           "prior_day_high": 496.99,
           "prior_day_low": 487.15,
-          "price_vs_prior_high_pct": -1.51,
-          "price_vs_prior_low_pct": 0.48,
-          "session_structure": "Rotation Around VWAP"
+          "price_vs_prior_high_pct": -1.04,
+          "price_vs_prior_low_pct": 0.95,
+          "session_structure": "Trend Continuation"
         },
         "spark": {
           "today": [
             {
               "t": "2026-02-24T14:30:00Z",
               "p": 489.15,
-              "v": 680541
+              "v": 680498
             },
             {
               "t": "2026-02-24T14:35:00Z",
-              "p": 489.39,
-              "v": 127986
+              "p": 490.68,
+              "v": 376816
             },
             {
-              "t": "2026-02-24T14:37:17Z",
-              "p": 489.48,
+              "t": "2026-02-24T14:40:00Z",
+              "p": 491.87,
+              "v": 277719
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 492.05,
+              "v": 261960
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 491.12,
+              "v": 127095
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 490.355,
+              "v": 104045
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 490.07,
+              "v": 129822
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 490.75,
+              "v": 115496
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 490.5,
+              "v": 87114
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 491.41,
+              "v": 92675
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 491.9,
+              "v": 86972
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 492.35,
+              "v": 91409
+            },
+            {
+              "t": "2026-02-24T15:30:00Z",
+              "p": 491.94,
+              "v": 104583
+            },
+            {
+              "t": "2026-02-24T15:35:00Z",
+              "p": 491.79,
+              "v": 75149
+            },
+            {
+              "t": "2026-02-24T15:39:00Z",
+              "p": 491.8,
               "v": 0
             }
           ],
@@ -1108,17 +1168,17 @@
         }
       },
       "confluence": {
-        "score": 58,
-        "label": "NEUTRAL",
+        "score": 66,
+        "label": "BULLISH",
         "cot_score": 39,
-        "technical_score": 82,
+        "technical_score": 100,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias neutral: balance around 489.19, wait for range break.",
+        "headline": "Bias bullish: expect dips bought while price holds above 490.73.",
         "bullets": [
-          "Respect OR boundaries 487.47-489.79.",
-          "Take quicker profits in choppy structure.",
-          "Switch directional only after clean acceptance outside range."
+          "Long bias above VWAP 490.73.",
+          "Momentum confirmation on breaks through OR high 492.53.",
+          "If structure rotates below VWAP, reduce long aggression."
         ]
       }
     },
@@ -1781,27 +1841,27 @@
       "intraday": {
         "symbol": "QQQ",
         "label": "Nasdaq-100",
-        "as_of_utc": "2026-02-24T14:37:17Z",
-        "last_price": 599.85,
-        "day_change_pct": -0.26,
-        "pulse_score": 0,
-        "pulse_label": "BEARISH",
+        "as_of_utc": "2026-02-24T15:39:04Z",
+        "last_price": 607.16,
+        "day_change_pct": 0.96,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 600.6094,
-          "price_vs_vwap_pct": -0.13,
-          "opening_range_high": 602.87,
-          "opening_range_low": 599.78,
-          "opening_range_state": "Inside OR",
-          "ema20": 600.6593,
-          "ema50": 600.7323,
-          "ema_stack": "Bear Stack",
+          "vwap": 605.2878,
+          "price_vs_vwap_pct": 0.31,
+          "opening_range_high": 606.22,
+          "opening_range_low": 599.7391,
+          "opening_range_state": "Above OR High",
+          "ema20": 604.4956,
+          "ema50": 602.7749,
+          "ema_stack": "Bull Stack",
           "pivot": 602.8267,
-          "price_vs_pivot_pct": -0.49,
+          "price_vs_pivot_pct": 0.72,
           "prior_day_high": 608.01,
           "prior_day_low": 599.05,
-          "price_vs_prior_high_pct": -1.34,
-          "price_vs_prior_low_pct": 0.13,
-          "session_structure": "Rotation Around VWAP"
+          "price_vs_prior_high_pct": -0.14,
+          "price_vs_prior_low_pct": 1.35,
+          "session_structure": "AM Range Breakout Up"
         },
         "spark": {
           "today": [
@@ -1812,12 +1872,72 @@
             },
             {
               "t": "2026-02-24T14:35:00Z",
-              "p": 600.36,
-              "v": 2381085
+              "p": 602.39,
+              "v": 2766477
             },
             {
-              "t": "2026-02-24T14:37:17Z",
-              "p": 599.85,
+              "t": "2026-02-24T14:40:00Z",
+              "p": 604.94,
+              "v": 915496
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 605.755,
+              "v": 5721501
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 605.03,
+              "v": 752776
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 604.115,
+              "v": 11963168
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 603.2499,
+              "v": 6712667
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 604.6607,
+              "v": 6878844
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 603.86,
+              "v": 7710143
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 604.5332,
+              "v": 544111
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 605.84,
+              "v": 16030885
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 607.38,
+              "v": 8983701
+            },
+            {
+              "t": "2026-02-24T15:30:00Z",
+              "p": 607.32,
+              "v": 9490744
+            },
+            {
+              "t": "2026-02-24T15:35:00Z",
+              "p": 607.11,
+              "v": 9658286
+            },
+            {
+              "t": "2026-02-24T15:39:04Z",
+              "p": 607.16,
               "v": 0
             }
           ],
@@ -2216,17 +2336,17 @@
         }
       },
       "confluence": {
-        "score": 32,
-        "label": "BEARISH",
+        "score": 77,
+        "label": "BULLISH",
         "cot_score": 59,
-        "technical_score": 0,
+        "technical_score": 100,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias bearish: favor failed bounces below 600.61.",
+        "headline": "Bias bullish: expect dips bought while price holds above 605.29.",
         "bullets": [
-          "Short bias below VWAP 600.61.",
-          "Acceleration setup under OR low 599.78.",
-          "If price reclaims and holds above VWAP, stand down."
+          "Long bias above VWAP 605.29.",
+          "Momentum confirmation on breaks through OR high 606.22.",
+          "If structure rotates below VWAP, reduce long aggression."
         ]
       }
     },
@@ -2889,43 +3009,103 @@
       "intraday": {
         "symbol": "SPY",
         "label": "S&P 500",
-        "as_of_utc": "2026-02-24T14:37:16Z",
-        "last_price": 680.4,
-        "day_change_pct": -0.29,
-        "pulse_score": 0,
-        "pulse_label": "BEARISH",
+        "as_of_utc": "2026-02-24T15:39:03Z",
+        "last_price": 685.9641,
+        "day_change_pct": 0.52,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 680.7272,
-          "price_vs_vwap_pct": -0.05,
-          "opening_range_high": 682.2175,
+          "vwap": 683.6454,
+          "price_vs_vwap_pct": 0.34,
+          "opening_range_high": 685.46,
           "opening_range_low": 680.0,
-          "opening_range_state": "Inside OR",
-          "ema20": 680.7253,
-          "ema50": 680.7626,
-          "ema_stack": "Bear Stack",
+          "opening_range_state": "Above OR High",
+          "ema20": 683.8377,
+          "ema50": 682.4234,
+          "ema_stack": "Bull Stack",
           "pivot": 684.2603,
-          "price_vs_pivot_pct": -0.56,
+          "price_vs_pivot_pct": 0.25,
           "prior_day_high": 690.0,
           "prior_day_low": 680.371,
-          "price_vs_prior_high_pct": -1.39,
-          "price_vs_prior_low_pct": 0.0,
-          "session_structure": "Rotation Around VWAP"
+          "price_vs_prior_high_pct": -0.58,
+          "price_vs_prior_low_pct": 0.82,
+          "session_structure": "AM Range Breakout Up"
         },
         "spark": {
           "today": [
             {
               "t": "2026-02-24T14:30:00Z",
               "p": 680.79,
-              "v": 3614185
+              "v": 3614177
             },
             {
               "t": "2026-02-24T14:35:00Z",
-              "p": 680.47,
-              "v": 882861
+              "p": 682.279,
+              "v": 2206600
             },
             {
-              "t": "2026-02-24T14:37:16Z",
-              "p": 680.4,
+              "t": "2026-02-24T14:40:00Z",
+              "p": 684.32,
+              "v": 1753819
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 684.87,
+              "v": 1929663
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 684.12,
+              "v": 1320953
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 683.15,
+              "v": 1490247
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 682.69,
+              "v": 1141100
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 683.9,
+              "v": 1189015
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 683.24,
+              "v": 1056459
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 684.15,
+              "v": 808245
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 685.165,
+              "v": 934987
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 686.33,
+              "v": 1510498
+            },
+            {
+              "t": "2026-02-24T15:30:00Z",
+              "p": 686.14,
+              "v": 1343099
+            },
+            {
+              "t": "2026-02-24T15:35:00Z",
+              "p": 685.905,
+              "v": 832953
+            },
+            {
+              "t": "2026-02-24T15:39:03Z",
+              "p": 685.9641,
               "v": 0
             }
           ],
@@ -3324,17 +3504,17 @@
         }
       },
       "confluence": {
-        "score": 29,
-        "label": "BEARISH",
+        "score": 74,
+        "label": "BULLISH",
         "cot_score": 53,
-        "technical_score": 0,
+        "technical_score": 100,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias bearish: favor failed bounces below 680.73.",
+        "headline": "Bias bullish: expect dips bought while price holds above 683.65.",
         "bullets": [
-          "Short bias below VWAP 680.73.",
-          "Acceleration setup under OR low 680.00.",
-          "If price reclaims and holds above VWAP, stand down."
+          "Long bias above VWAP 683.65.",
+          "Momentum confirmation on breaks through OR high 685.46.",
+          "If structure rotates below VWAP, reduce long aggression."
         ]
       }
     },
@@ -3997,30 +4177,97 @@
       "intraday": {
         "symbol": "DX-Y.NYB",
         "label": "U.S. Dollar Index",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 97.704,
-        "day_change_pct": -0.0,
-        "pulse_score": 84,
-        "pulse_label": "BULLISH",
+        "as_of_utc": "2026-02-24T15:29:04Z",
+        "last_price": 97.923,
+        "day_change_pct": 0.22,
+        "pulse_score": 52,
+        "pulse_label": "NEUTRAL",
         "metrics": {
-          "vwap": 97.6479,
-          "price_vs_vwap_pct": 0.06,
-          "opening_range_high": 97.675,
-          "opening_range_low": 97.561,
-          "opening_range_state": "Above OR High",
-          "ema20": 97.7022,
-          "ema50": 97.6779,
-          "ema_stack": "Bull Stack",
-          "pivot": 97.7787,
-          "price_vs_pivot_pct": -0.08,
-          "prior_day_high": 98.001,
-          "prior_day_low": 97.589,
-          "price_vs_prior_high_pct": -0.3,
-          "price_vs_prior_low_pct": 0.12,
-          "session_structure": "AM Range Breakout Up"
+          "vwap": 97.9312,
+          "price_vs_vwap_pct": -0.01,
+          "opening_range_high": 97.957,
+          "opening_range_low": 97.896,
+          "opening_range_state": "Inside OR",
+          "ema20": 97.9289,
+          "ema50": 97.9253,
+          "ema_stack": "Mixed Stack",
+          "pivot": 97.657,
+          "price_vs_pivot_pct": 0.27,
+          "prior_day_high": 97.735,
+          "prior_day_low": 97.532,
+          "price_vs_prior_high_pct": 0.19,
+          "price_vs_prior_low_pct": 0.4,
+          "session_structure": "Rotation Around VWAP"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 97.921,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 97.913,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 97.945,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 97.938,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 97.941,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 97.912,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 97.935,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 97.925,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 97.928,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 97.95,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 97.95,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 97.925,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:29:04Z",
+              "p": 97.923,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 97.655,
@@ -4416,418 +4663,21 @@
               "p": 97.704,
               "v": 0
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 97.96,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 97.984,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 97.942,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 97.944,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 97.903,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 97.907,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 97.918,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 97.801,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 97.691,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 97.63,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 97.691,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 97.626,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 97.698,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 97.661,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 97.657,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 97.737,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 97.711,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 97.712,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 97.673,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 97.665,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 97.679,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 97.728,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 97.778,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 97.779,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 97.813,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 97.801,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 97.816,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 97.822,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 97.768,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 97.78,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 97.774,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 97.809,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 97.824,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 97.874,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 97.902,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 97.876,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 97.823,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 97.82,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 97.815,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 97.781,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 97.749,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 97.777,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 97.763,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 97.768,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 97.768,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 97.778,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 97.73,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 97.727,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 97.71,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 97.683,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 97.686,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 97.689,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 97.699,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 97.742,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 97.731,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 97.754,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 97.758,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 97.76,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 97.779,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 97.785,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 97.791,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 97.802,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 97.795,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 97.788,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 97.793,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 97.796,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 97.812,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 97.792,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 97.796,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 97.789,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 97.776,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 97.778,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 97.769,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 97.751,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 97.753,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 97.76,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 97.753,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 97.758,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 97.746,
-              "v": 0
-            }
           ]
         }
       },
       "confluence": {
-        "score": 50,
-        "label": "NEUTRAL",
+        "score": 36,
+        "label": "BEARISH",
         "cot_score": 22,
-        "technical_score": 84,
+        "technical_score": 52,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias neutral: balance around 97.65, wait for range break.",
+        "headline": "Bias bearish: favor failed bounces below 97.93.",
         "bullets": [
-          "Respect OR boundaries 97.56-97.67.",
-          "Take quicker profits in choppy structure.",
-          "Switch directional only after clean acceptance outside range."
+          "Short bias below VWAP 97.93.",
+          "Acceleration setup under OR low 97.90.",
+          "If price reclaims and holds above VWAP, stand down."
         ]
       }
     }
@@ -4896,50 +4746,110 @@
       "market_key": "dow_jones",
       "cot_score": 39,
       "cot_label": "BEARISH",
-      "pulse_score": 82,
+      "pulse_score": 100,
       "pulse_label": "BULLISH",
-      "confluence_score": 58,
-      "confluence_label": "NEUTRAL",
+      "confluence_score": 66,
+      "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "DIA",
         "label": "Dow Jones",
-        "as_of_utc": "2026-02-24T14:37:17Z",
-        "last_price": 489.48,
-        "day_change_pct": 0.31,
-        "pulse_score": 82,
+        "as_of_utc": "2026-02-24T15:39:00Z",
+        "last_price": 491.8,
+        "day_change_pct": 0.78,
+        "pulse_score": 100,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 489.188,
-          "price_vs_vwap_pct": 0.06,
-          "opening_range_high": 489.79,
-          "opening_range_low": 487.47,
+          "vwap": 490.7279,
+          "price_vs_vwap_pct": 0.22,
+          "opening_range_high": 492.53,
+          "opening_range_low": 487.45,
           "opening_range_state": "Inside OR",
-          "ema20": 489.2021,
-          "ema50": 489.172,
+          "ema20": 490.8896,
+          "ema50": 490.1051,
           "ema_stack": "Bull Stack",
           "pivot": 490.7133,
-          "price_vs_pivot_pct": -0.25,
+          "price_vs_pivot_pct": 0.22,
           "prior_day_high": 496.99,
           "prior_day_low": 487.15,
-          "price_vs_prior_high_pct": -1.51,
-          "price_vs_prior_low_pct": 0.48,
-          "session_structure": "Rotation Around VWAP"
+          "price_vs_prior_high_pct": -1.04,
+          "price_vs_prior_low_pct": 0.95,
+          "session_structure": "Trend Continuation"
         },
         "spark": {
           "today": [
             {
               "t": "2026-02-24T14:30:00Z",
               "p": 489.15,
-              "v": 680541
+              "v": 680498
             },
             {
               "t": "2026-02-24T14:35:00Z",
-              "p": 489.39,
-              "v": 127986
+              "p": 490.68,
+              "v": 376816
             },
             {
-              "t": "2026-02-24T14:37:17Z",
-              "p": 489.48,
+              "t": "2026-02-24T14:40:00Z",
+              "p": 491.87,
+              "v": 277719
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 492.05,
+              "v": 261960
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 491.12,
+              "v": 127095
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 490.355,
+              "v": 104045
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 490.07,
+              "v": 129822
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 490.75,
+              "v": 115496
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 490.5,
+              "v": 87114
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 491.41,
+              "v": 92675
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 491.9,
+              "v": 86972
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 492.35,
+              "v": 91409
+            },
+            {
+              "t": "2026-02-24T15:30:00Z",
+              "p": 491.94,
+              "v": 104583
+            },
+            {
+              "t": "2026-02-24T15:35:00Z",
+              "p": 491.79,
+              "v": 75149
+            },
+            {
+              "t": "2026-02-24T15:39:00Z",
+              "p": 491.8,
               "v": 0
             }
           ],
@@ -5344,34 +5254,34 @@
       "market_key": "nasdaq_100",
       "cot_score": 59,
       "cot_label": "NEUTRAL",
-      "pulse_score": 0,
-      "pulse_label": "BEARISH",
-      "confluence_score": 32,
-      "confluence_label": "BEARISH",
+      "pulse_score": 100,
+      "pulse_label": "BULLISH",
+      "confluence_score": 77,
+      "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "QQQ",
         "label": "Nasdaq-100",
-        "as_of_utc": "2026-02-24T14:37:17Z",
-        "last_price": 599.85,
-        "day_change_pct": -0.26,
-        "pulse_score": 0,
-        "pulse_label": "BEARISH",
+        "as_of_utc": "2026-02-24T15:39:04Z",
+        "last_price": 607.16,
+        "day_change_pct": 0.96,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 600.6094,
-          "price_vs_vwap_pct": -0.13,
-          "opening_range_high": 602.87,
-          "opening_range_low": 599.78,
-          "opening_range_state": "Inside OR",
-          "ema20": 600.6593,
-          "ema50": 600.7323,
-          "ema_stack": "Bear Stack",
+          "vwap": 605.2878,
+          "price_vs_vwap_pct": 0.31,
+          "opening_range_high": 606.22,
+          "opening_range_low": 599.7391,
+          "opening_range_state": "Above OR High",
+          "ema20": 604.4956,
+          "ema50": 602.7749,
+          "ema_stack": "Bull Stack",
           "pivot": 602.8267,
-          "price_vs_pivot_pct": -0.49,
+          "price_vs_pivot_pct": 0.72,
           "prior_day_high": 608.01,
           "prior_day_low": 599.05,
-          "price_vs_prior_high_pct": -1.34,
-          "price_vs_prior_low_pct": 0.13,
-          "session_structure": "Rotation Around VWAP"
+          "price_vs_prior_high_pct": -0.14,
+          "price_vs_prior_low_pct": 1.35,
+          "session_structure": "AM Range Breakout Up"
         },
         "spark": {
           "today": [
@@ -5382,12 +5292,72 @@
             },
             {
               "t": "2026-02-24T14:35:00Z",
-              "p": 600.36,
-              "v": 2381085
+              "p": 602.39,
+              "v": 2766477
             },
             {
-              "t": "2026-02-24T14:37:17Z",
-              "p": 599.85,
+              "t": "2026-02-24T14:40:00Z",
+              "p": 604.94,
+              "v": 915496
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 605.755,
+              "v": 5721501
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 605.03,
+              "v": 752776
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 604.115,
+              "v": 11963168
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 603.2499,
+              "v": 6712667
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 604.6607,
+              "v": 6878844
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 603.86,
+              "v": 7710143
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 604.5332,
+              "v": 544111
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 605.84,
+              "v": 16030885
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 607.38,
+              "v": 8983701
+            },
+            {
+              "t": "2026-02-24T15:30:00Z",
+              "p": 607.32,
+              "v": 9490744
+            },
+            {
+              "t": "2026-02-24T15:35:00Z",
+              "p": 607.11,
+              "v": 9658286
+            },
+            {
+              "t": "2026-02-24T15:39:04Z",
+              "p": 607.16,
               "v": 0
             }
           ],
@@ -5792,50 +5762,110 @@
       "market_key": "sp_500",
       "cot_score": 53,
       "cot_label": "NEUTRAL",
-      "pulse_score": 0,
-      "pulse_label": "BEARISH",
-      "confluence_score": 29,
-      "confluence_label": "BEARISH",
+      "pulse_score": 100,
+      "pulse_label": "BULLISH",
+      "confluence_score": 74,
+      "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "SPY",
         "label": "S&P 500",
-        "as_of_utc": "2026-02-24T14:37:16Z",
-        "last_price": 680.4,
-        "day_change_pct": -0.29,
-        "pulse_score": 0,
-        "pulse_label": "BEARISH",
+        "as_of_utc": "2026-02-24T15:39:03Z",
+        "last_price": 685.9641,
+        "day_change_pct": 0.52,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 680.7272,
-          "price_vs_vwap_pct": -0.05,
-          "opening_range_high": 682.2175,
+          "vwap": 683.6454,
+          "price_vs_vwap_pct": 0.34,
+          "opening_range_high": 685.46,
           "opening_range_low": 680.0,
-          "opening_range_state": "Inside OR",
-          "ema20": 680.7253,
-          "ema50": 680.7626,
-          "ema_stack": "Bear Stack",
+          "opening_range_state": "Above OR High",
+          "ema20": 683.8377,
+          "ema50": 682.4234,
+          "ema_stack": "Bull Stack",
           "pivot": 684.2603,
-          "price_vs_pivot_pct": -0.56,
+          "price_vs_pivot_pct": 0.25,
           "prior_day_high": 690.0,
           "prior_day_low": 680.371,
-          "price_vs_prior_high_pct": -1.39,
-          "price_vs_prior_low_pct": 0.0,
-          "session_structure": "Rotation Around VWAP"
+          "price_vs_prior_high_pct": -0.58,
+          "price_vs_prior_low_pct": 0.82,
+          "session_structure": "AM Range Breakout Up"
         },
         "spark": {
           "today": [
             {
               "t": "2026-02-24T14:30:00Z",
               "p": 680.79,
-              "v": 3614185
+              "v": 3614177
             },
             {
               "t": "2026-02-24T14:35:00Z",
-              "p": 680.47,
-              "v": 882861
+              "p": 682.279,
+              "v": 2206600
             },
             {
-              "t": "2026-02-24T14:37:16Z",
-              "p": 680.4,
+              "t": "2026-02-24T14:40:00Z",
+              "p": 684.32,
+              "v": 1753819
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 684.87,
+              "v": 1929663
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 684.12,
+              "v": 1320953
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 683.15,
+              "v": 1490247
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 682.69,
+              "v": 1141100
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 683.9,
+              "v": 1189015
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 683.24,
+              "v": 1056459
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 684.15,
+              "v": 808245
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 685.165,
+              "v": 934987
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 686.33,
+              "v": 1510498
+            },
+            {
+              "t": "2026-02-24T15:30:00Z",
+              "p": 686.14,
+              "v": 1343099
+            },
+            {
+              "t": "2026-02-24T15:35:00Z",
+              "p": 685.905,
+              "v": 832953
+            },
+            {
+              "t": "2026-02-24T15:39:03Z",
+              "p": 685.9641,
               "v": 0
             }
           ],
@@ -6240,37 +6270,104 @@
       "market_key": "dxy",
       "cot_score": 22,
       "cot_label": "BEARISH",
-      "pulse_score": 84,
-      "pulse_label": "BULLISH",
-      "confluence_score": 50,
-      "confluence_label": "NEUTRAL",
+      "pulse_score": 52,
+      "pulse_label": "NEUTRAL",
+      "confluence_score": 36,
+      "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "DX-Y.NYB",
         "label": "U.S. Dollar Index",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 97.704,
-        "day_change_pct": -0.0,
-        "pulse_score": 84,
-        "pulse_label": "BULLISH",
+        "as_of_utc": "2026-02-24T15:29:04Z",
+        "last_price": 97.923,
+        "day_change_pct": 0.22,
+        "pulse_score": 52,
+        "pulse_label": "NEUTRAL",
         "metrics": {
-          "vwap": 97.6479,
-          "price_vs_vwap_pct": 0.06,
-          "opening_range_high": 97.675,
-          "opening_range_low": 97.561,
-          "opening_range_state": "Above OR High",
-          "ema20": 97.7022,
-          "ema50": 97.6779,
-          "ema_stack": "Bull Stack",
-          "pivot": 97.7787,
-          "price_vs_pivot_pct": -0.08,
-          "prior_day_high": 98.001,
-          "prior_day_low": 97.589,
-          "price_vs_prior_high_pct": -0.3,
-          "price_vs_prior_low_pct": 0.12,
-          "session_structure": "AM Range Breakout Up"
+          "vwap": 97.9312,
+          "price_vs_vwap_pct": -0.01,
+          "opening_range_high": 97.957,
+          "opening_range_low": 97.896,
+          "opening_range_state": "Inside OR",
+          "ema20": 97.9289,
+          "ema50": 97.9253,
+          "ema_stack": "Mixed Stack",
+          "pivot": 97.657,
+          "price_vs_pivot_pct": 0.27,
+          "prior_day_high": 97.735,
+          "prior_day_low": 97.532,
+          "price_vs_prior_high_pct": 0.19,
+          "price_vs_prior_low_pct": 0.4,
+          "session_structure": "Rotation Around VWAP"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 97.921,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 97.913,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 97.945,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 97.938,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 97.941,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 97.912,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 97.935,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 97.925,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 97.928,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 97.95,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 97.95,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 97.925,
+              "v": 0
+            },
+            {
+              "t": "2026-02-24T15:29:04Z",
+              "p": 97.923,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 97.655,
@@ -6666,403 +6763,6 @@
               "p": 97.704,
               "v": 0
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 97.96,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 97.984,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 97.942,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 97.944,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 97.903,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 97.907,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 97.918,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 97.801,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 97.691,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 97.63,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 97.691,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 97.626,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 97.698,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 97.661,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 97.657,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 97.737,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 97.711,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 97.712,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 97.673,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 97.665,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 97.679,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 97.728,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 97.778,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 97.779,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 97.813,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 97.801,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 97.816,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 97.822,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 97.768,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 97.78,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 97.774,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 97.809,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 97.824,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 97.874,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 97.902,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 97.876,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 97.823,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 97.82,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 97.815,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 97.781,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 97.749,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 97.777,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 97.763,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 97.768,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 97.768,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 97.778,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 97.73,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 97.727,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 97.71,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 97.683,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 97.686,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 97.689,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 97.699,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 97.742,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 97.731,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 97.754,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 97.758,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 97.76,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 97.779,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 97.785,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 97.791,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 97.802,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 97.795,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 97.788,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 97.793,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 97.796,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 97.812,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 97.792,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 97.796,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 97.789,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 97.776,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 97.778,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 97.769,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 97.751,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 97.753,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 97.76,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 97.753,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 97.758,
-              "v": 0
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 97.746,
-              "v": 0
-            }
           ]
         }
       }
@@ -7073,37 +6773,104 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 10,
-      "pulse_label": "BEARISH",
-      "confluence_score": 10,
-      "confluence_label": "BEARISH",
+      "pulse_score": 100,
+      "pulse_label": "BULLISH",
+      "confluence_score": 100,
+      "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "ES=F",
         "label": "E-mini S&P (ES)",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 6854.75,
-        "day_change_pct": 0.05,
-        "pulse_score": 10,
-        "pulse_label": "BEARISH",
+        "as_of_utc": "2026-02-24T15:29:06Z",
+        "last_price": 6889.5,
+        "day_change_pct": 0.55,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 6862.5877,
-          "price_vs_vwap_pct": -0.11,
-          "opening_range_high": 6930.25,
-          "opening_range_low": 6892.5,
-          "opening_range_state": "Below OR Low",
-          "ema20": 6846.4071,
-          "ema50": 6851.9809,
-          "ema_stack": "Mixed Stack",
-          "pivot": 6902.0,
-          "price_vs_pivot_pct": -0.68,
-          "prior_day_high": 6931.5,
-          "prior_day_low": 6847.25,
-          "price_vs_prior_high_pct": -1.11,
-          "price_vs_prior_low_pct": 0.11,
-          "session_structure": "AM Range Breakout Down"
+          "vwap": 6864.3958,
+          "price_vs_vwap_pct": 0.37,
+          "opening_range_high": 6883.75,
+          "opening_range_low": 6828.5,
+          "opening_range_state": "Above OR High",
+          "ema20": 6862.4625,
+          "ema50": 6849.8772,
+          "ema_stack": "Bull Stack",
+          "pivot": 6872.5833,
+          "price_vs_pivot_pct": 0.25,
+          "prior_day_high": 6930.25,
+          "prior_day_low": 6832.75,
+          "price_vs_prior_high_pct": -0.59,
+          "price_vs_prior_low_pct": 0.83,
+          "session_structure": "AM Range Breakout Up"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 6836.25,
+              "v": 44332
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 6851.5,
+              "v": 42966
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 6872.25,
+              "v": 33276
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 6877.75,
+              "v": 36529
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 6870.25,
+              "v": 26374
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 6861.0,
+              "v": 22876
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 6855.75,
+              "v": 28604
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 6867.5,
+              "v": 27390
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 6861.25,
+              "v": 19842
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 6870.75,
+              "v": 20414
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 6880.75,
+              "v": 24334
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 6892.5,
+              "v": 23946
+            },
+            {
+              "t": "2026-02-24T15:29:06Z",
+              "p": 6889.5,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 6924.0,
@@ -7499,403 +7266,6 @@
               "p": 6854.75,
               "v": 29336
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 6863.25,
-              "v": 42927
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 6869.0,
-              "v": 32258
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 6878.5,
-              "v": 26746
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 6871.5,
-              "v": 20637
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 6871.5,
-              "v": 24981
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 6878.75,
-              "v": 19011
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 6900.25,
-              "v": 69231
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 6901.75,
-              "v": 48709
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 6884.75,
-              "v": 33250
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 6896.5,
-              "v": 36280
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 6904.5,
-              "v": 28304
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 6898.75,
-              "v": 25666
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 6891.25,
-              "v": 25855
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 6903.0,
-              "v": 19772
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 6911.25,
-              "v": 22710
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 6912.5,
-              "v": 22969
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 6919.5,
-              "v": 18549
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 6919.0,
-              "v": 20125
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 6919.75,
-              "v": 19975
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 6914.25,
-              "v": 14780
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 6911.25,
-              "v": 13654
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 6907.5,
-              "v": 20943
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 6900.5,
-              "v": 20238
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 6891.75,
-              "v": 19452
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 6903.5,
-              "v": 24116
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 6911.75,
-              "v": 14794
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 6915.5,
-              "v": 15834
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 6920.75,
-              "v": 16907
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 6920.0,
-              "v": 12429
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 6916.75,
-              "v": 14017
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 6909.5,
-              "v": 16238
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 6901.75,
-              "v": 12124
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 6891.5,
-              "v": 24341
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 6881.0,
-              "v": 31055
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 6872.75,
-              "v": 21391
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 6882.5,
-              "v": 20806
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 6888.0,
-              "v": 18655
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 6889.5,
-              "v": 14478
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 6890.5,
-              "v": 15609
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 6898.75,
-              "v": 14553
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 6904.5,
-              "v": 17841
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 6905.25,
-              "v": 20816
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 6901.0,
-              "v": 17089
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 6903.25,
-              "v": 12645
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 6901.75,
-              "v": 10685
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 6897.75,
-              "v": 9475
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 6900.0,
-              "v": 22928
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 6895.5,
-              "v": 17710
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 6909.25,
-              "v": 33131
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 6908.5,
-              "v": 34747
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 6918.0,
-              "v": 18607
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 6922.0,
-              "v": 29738
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 6925.0,
-              "v": 22017
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 6924.0,
-              "v": 10966
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 6925.75,
-              "v": 11992
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 6922.25,
-              "v": 11464
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 6916.25,
-              "v": 9211
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 6915.25,
-              "v": 8805
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 6918.25,
-              "v": 9420
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 6917.0,
-              "v": 9387
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 6918.75,
-              "v": 7696
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 6915.5,
-              "v": 6311
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 6911.25,
-              "v": 8550
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 6911.5,
-              "v": 8139
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 6912.0,
-              "v": 8601
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 6911.25,
-              "v": 7066
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 6917.25,
-              "v": 9034
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 6921.5,
-              "v": 10720
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 6922.25,
-              "v": 8327
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 6917.0,
-              "v": 8389
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 6915.75,
-              "v": 6684
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 6914.5,
-              "v": 6321
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 6915.5,
-              "v": 8800
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 6917.75,
-              "v": 6343
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 6921.75,
-              "v": 10237
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 6918.0,
-              "v": 9626
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 6919.25,
-              "v": 18050
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 6924.75,
-              "v": 57657
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 6927.25,
-              "v": 27253
-            }
           ]
         }
       }
@@ -7906,37 +7276,104 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 10,
-      "pulse_label": "BEARISH",
-      "confluence_score": 10,
-      "confluence_label": "BEARISH",
+      "pulse_score": 100,
+      "pulse_label": "BULLISH",
+      "confluence_score": 100,
+      "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "NQ=F",
         "label": "E-mini Nasdaq (NQ)",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 24778.25,
-        "day_change_pct": 0.06,
-        "pulse_score": 10,
-        "pulse_label": "BEARISH",
+        "as_of_utc": "2026-02-24T15:29:06Z",
+        "last_price": 24995.0,
+        "day_change_pct": 0.94,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 24793.4238,
-          "price_vs_vwap_pct": -0.06,
-          "opening_range_high": 25040.0,
-          "opening_range_low": 24857.75,
-          "opening_range_state": "Below OR Low",
-          "ema20": 24731.0219,
-          "ema50": 24750.2778,
-          "ema_stack": "Mixed Stack",
-          "pivot": 24967.5,
-          "price_vs_pivot_pct": -0.76,
-          "prior_day_high": 25139.5,
-          "prior_day_low": 24678.5,
-          "price_vs_prior_high_pct": -1.44,
-          "price_vs_prior_low_pct": 0.4,
-          "session_structure": "AM Range Breakout Down"
+          "vwap": 24875.6278,
+          "price_vs_vwap_pct": 0.48,
+          "opening_range_high": 24964.25,
+          "opening_range_low": 24694.5,
+          "opening_range_state": "Above OR High",
+          "ema20": 24866.8191,
+          "ema50": 24805.6399,
+          "ema_stack": "Bull Stack",
+          "pivot": 24828.75,
+          "price_vs_pivot_pct": 0.67,
+          "prior_day_high": 25040.0,
+          "prior_day_low": 24668.0,
+          "price_vs_prior_high_pct": -0.18,
+          "price_vs_prior_low_pct": 1.33,
+          "session_structure": "AM Range Breakout Up"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 24739.0,
+              "v": 20128
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 24803.0,
+              "v": 17798
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 24910.75,
+              "v": 15446
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 24943.5,
+              "v": 17613
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 24914.25,
+              "v": 11455
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 24877.25,
+              "v": 9121
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 24841.25,
+              "v": 10957
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 24899.0,
+              "v": 9320
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 24865.75,
+              "v": 8248
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 24894.0,
+              "v": 6611
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 24948.75,
+              "v": 8965
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 25011.75,
+              "v": 9630
+            },
+            {
+              "t": "2026-02-24T15:29:06Z",
+              "p": 24995.0,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 25005.0,
@@ -8332,403 +7769,6 @@
               "p": 24778.25,
               "v": 7971
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 24805.25,
-              "v": 18483
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 24848.75,
-              "v": 14861
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 24926.0,
-              "v": 11154
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 24896.5,
-              "v": 10600
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 24875.5,
-              "v": 11480
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 24897.5,
-              "v": 7538
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 24974.5,
-              "v": 22027
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 24981.25,
-              "v": 12412
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 24928.0,
-              "v": 10396
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 24966.0,
-              "v": 11899
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 25005.0,
-              "v": 8174
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 24974.0,
-              "v": 8489
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 24940.0,
-              "v": 8672
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 25007.75,
-              "v": 6301
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 25060.5,
-              "v": 9009
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 25075.5,
-              "v": 8925
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 25113.5,
-              "v": 7375
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 25118.75,
-              "v": 6889
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 25123.5,
-              "v": 6990
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 25105.5,
-              "v": 4610
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 25075.75,
-              "v": 5484
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 25043.25,
-              "v": 7864
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 25011.0,
-              "v": 6765
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 24977.5,
-              "v": 5792
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 25040.0,
-              "v": 7484
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 25073.0,
-              "v": 5366
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 25092.75,
-              "v": 4711
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 25124.5,
-              "v": 5175
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 25122.25,
-              "v": 5042
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 25098.0,
-              "v": 4593
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 25067.25,
-              "v": 5912
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 25034.0,
-              "v": 4418
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 24982.25,
-              "v": 8015
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 24926.75,
-              "v": 10121
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 24886.5,
-              "v": 8200
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 24926.25,
-              "v": 7523
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 24954.0,
-              "v": 7182
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 24963.25,
-              "v": 6571
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 24963.0,
-              "v": 4390
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 25002.75,
-              "v": 5791
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 25027.0,
-              "v": 5333
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 25034.25,
-              "v": 5798
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 25006.0,
-              "v": 5121
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 25023.75,
-              "v": 3719
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 25003.25,
-              "v": 3898
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 24979.25,
-              "v": 3937
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 24983.25,
-              "v": 7329
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 24964.75,
-              "v": 4963
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 25027.5,
-              "v": 8869
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 25023.75,
-              "v": 9209
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 25071.0,
-              "v": 5281
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 25084.5,
-              "v": 6777
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 25101.5,
-              "v": 6080
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 25097.75,
-              "v": 3037
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 25103.0,
-              "v": 3428
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 25081.5,
-              "v": 3691
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 25062.75,
-              "v": 2972
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 25060.5,
-              "v": 2673
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 25071.75,
-              "v": 2895
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 25052.75,
-              "v": 2996
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 25062.5,
-              "v": 2613
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 25049.75,
-              "v": 2116
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 25038.5,
-              "v": 2305
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 25039.0,
-              "v": 2598
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 25038.75,
-              "v": 2721
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 25023.0,
-              "v": 2269
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 25044.75,
-              "v": 3090
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 25066.25,
-              "v": 3838
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 25067.5,
-              "v": 2212
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 25045.5,
-              "v": 2684
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 25029.25,
-              "v": 2016
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 25020.25,
-              "v": 2165
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 25026.25,
-              "v": 2580
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 25043.25,
-              "v": 1925
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 25059.5,
-              "v": 2901
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 25044.75,
-              "v": 3014
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 25054.0,
-              "v": 4717
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 25074.0,
-              "v": 13145
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 25084.5,
-              "v": 6320
-            }
           ]
         }
       }
@@ -8739,37 +7779,104 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 10,
-      "pulse_label": "BEARISH",
-      "confluence_score": 10,
-      "confluence_label": "BEARISH",
+      "pulse_score": 100,
+      "pulse_label": "BULLISH",
+      "confluence_score": 100,
+      "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "YM=F",
         "label": "Mini Dow (YM)",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 48860.0,
-        "day_change_pct": 0.02,
-        "pulse_score": 10,
-        "pulse_label": "BEARISH",
+        "as_of_utc": "2026-02-24T15:29:05Z",
+        "last_price": 49262.0,
+        "day_change_pct": 0.85,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 49063.2298,
-          "price_vs_vwap_pct": -0.41,
-          "opening_range_high": 49765.0,
-          "opening_range_low": 49261.0,
-          "opening_range_state": "Below OR Low",
-          "ema20": 48858.042,
-          "ema50": 48926.423,
-          "ema_stack": "Mixed Stack",
-          "pivot": 49557.3333,
-          "price_vs_pivot_pct": -1.41,
-          "prior_day_high": 49775.0,
-          "prior_day_low": 49204.0,
-          "price_vs_prior_high_pct": -1.84,
-          "price_vs_prior_low_pct": -0.7,
-          "session_structure": "AM Range Breakout Down"
+          "vwap": 49125.073,
+          "price_vs_vwap_pct": 0.28,
+          "opening_range_high": 49311.0,
+          "opening_range_low": 48801.0,
+          "opening_range_state": "Inside OR",
+          "ema20": 49126.7426,
+          "ema50": 49052.8776,
+          "ema_stack": "Bull Stack",
+          "pivot": 49133.3333,
+          "price_vs_pivot_pct": 0.26,
+          "prior_day_high": 49765.0,
+          "prior_day_low": 48775.0,
+          "price_vs_prior_high_pct": -1.01,
+          "price_vs_prior_low_pct": 1.0,
+          "session_structure": "Trend Continuation"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 48970.0,
+              "v": 10415
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 49119.0,
+              "v": 6592
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 49242.0,
+              "v": 5148
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 49268.0,
+              "v": 4158
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 49176.0,
+              "v": 2549
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 49097.0,
+              "v": 2186
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 49065.0,
+              "v": 2750
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 49131.0,
+              "v": 1914
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 49109.0,
+              "v": 1470
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 49194.0,
+              "v": 1796
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 49248.0,
+              "v": 1572
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 49292.0,
+              "v": 1503
+            },
+            {
+              "t": "2026-02-24T15:29:05Z",
+              "p": 49262.0,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 49713.0,
@@ -9165,403 +8272,6 @@
               "p": 48860.0,
               "v": 1530
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 49274.0,
-              "v": 9260
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 49295.0,
-              "v": 3474
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 49295.0,
-              "v": 2894
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 49245.0,
-              "v": 1513
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 49313.0,
-              "v": 2250
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 49406.0,
-              "v": 1653
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 49612.0,
-              "v": 6584
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 49597.0,
-              "v": 3879
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 49443.0,
-              "v": 2415
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 49557.0,
-              "v": 2663
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 49614.0,
-              "v": 2061
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 49568.0,
-              "v": 2079
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 49489.0,
-              "v": 1750
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 49557.0,
-              "v": 1496
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 49566.0,
-              "v": 1686
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 49556.0,
-              "v": 1323
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 49581.0,
-              "v": 1167
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 49576.0,
-              "v": 1129
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 49571.0,
-              "v": 1020
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 49539.0,
-              "v": 595
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 49550.0,
-              "v": 668
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 49543.0,
-              "v": 917
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 49497.0,
-              "v": 974
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 49425.0,
-              "v": 1098
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 49484.0,
-              "v": 1376
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 49555.0,
-              "v": 895
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 49562.0,
-              "v": 912
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 49578.0,
-              "v": 748
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 49584.0,
-              "v": 731
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 49554.0,
-              "v": 810
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 49499.0,
-              "v": 764
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 49432.0,
-              "v": 764
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 49383.0,
-              "v": 1804
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 49308.0,
-              "v": 1820
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 49275.0,
-              "v": 1426
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 49314.0,
-              "v": 1329
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 49335.0,
-              "v": 880
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 49361.0,
-              "v": 756
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 49378.0,
-              "v": 1079
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 49439.0,
-              "v": 869
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 49480.0,
-              "v": 1449
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 49487.0,
-              "v": 1192
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 49459.0,
-              "v": 773
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 49454.0,
-              "v": 656
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 49450.0,
-              "v": 630
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 49433.0,
-              "v": 663
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 49441.0,
-              "v": 1766
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 49413.0,
-              "v": 1330
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 49514.0,
-              "v": 2713
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 49522.0,
-              "v": 2851
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 49576.0,
-              "v": 1554
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 49627.0,
-              "v": 1637
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 49653.0,
-              "v": 1444
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 49652.0,
-              "v": 491
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 49658.0,
-              "v": 646
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 49636.0,
-              "v": 695
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 49589.0,
-              "v": 445
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 49569.0,
-              "v": 389
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 49594.0,
-              "v": 412
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 49605.0,
-              "v": 430
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 49613.0,
-              "v": 508
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 49593.0,
-              "v": 297
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 49560.0,
-              "v": 447
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 49560.0,
-              "v": 503
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 49565.0,
-              "v": 341
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 49578.0,
-              "v": 348
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 49611.0,
-              "v": 470
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 49648.0,
-              "v": 705
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 49667.0,
-              "v": 475
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 49628.0,
-              "v": 378
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 49647.0,
-              "v": 367
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 49634.0,
-              "v": 385
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 49636.0,
-              "v": 582
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 49637.0,
-              "v": 322
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 49656.0,
-              "v": 619
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 49635.0,
-              "v": 529
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 49640.0,
-              "v": 1049
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 49678.0,
-              "v": 2640
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 49693.0,
-              "v": 905
-            }
           ]
         }
       }
@@ -9572,37 +8282,104 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 70,
+      "pulse_score": 100,
       "pulse_label": "BULLISH",
-      "confluence_score": 70,
+      "confluence_score": 100,
       "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "RTY=F",
         "label": "Russell 2000 (RTY)",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 2627.8,
-        "day_change_pct": 0.06,
-        "pulse_score": 70,
+        "as_of_utc": "2026-02-24T15:29:06Z",
+        "last_price": 2658.3999,
+        "day_change_pct": 1.22,
+        "pulse_score": 100,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 2624.4565,
-          "price_vs_vwap_pct": 0.13,
-          "opening_range_high": 2666.3,
-          "opening_range_low": 2639.8999,
-          "opening_range_state": "Below OR Low",
-          "ema20": 2622.36,
-          "ema50": 2621.8945,
+          "vwap": 2642.7146,
+          "price_vs_vwap_pct": 0.59,
+          "opening_range_high": 2650.3999,
+          "opening_range_low": 2620.1001,
+          "opening_range_state": "Above OR High",
+          "ema20": 2642.3368,
+          "ema50": 2634.4312,
           "ema_stack": "Bull Stack",
-          "pivot": 2669.8,
-          "price_vs_pivot_pct": -1.57,
-          "prior_day_high": 2696.0,
-          "prior_day_low": 2643.5,
-          "price_vs_prior_high_pct": -2.53,
-          "price_vs_prior_low_pct": -0.59,
-          "session_structure": "Rotation Around VWAP"
+          "pivot": 2632.2667,
+          "price_vs_pivot_pct": 0.99,
+          "prior_day_high": 2666.3,
+          "prior_day_low": 2602.7,
+          "price_vs_prior_high_pct": -0.3,
+          "price_vs_prior_low_pct": 2.14,
+          "session_structure": "AM Range Breakout Up"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 2626.0,
+              "v": 7793
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 2635.3999,
+              "v": 5250
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 2642.2,
+              "v": 4994
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 2647.5,
+              "v": 6252
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 2646.3999,
+              "v": 3830
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 2643.5,
+              "v": 3011
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 2640.5,
+              "v": 3452
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 2645.8999,
+              "v": 3066
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 2643.5,
+              "v": 2549
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 2648.6001,
+              "v": 3292
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 2655.6001,
+              "v": 4045
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 2660.0,
+              "v": 2847
+            },
+            {
+              "t": "2026-02-24T15:29:06Z",
+              "p": 2658.3999,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 2658.7,
@@ -9998,403 +8775,6 @@
               "p": 2627.8,
               "v": 4965
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 2653.6001,
-              "v": 11113
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 2654.8999,
-              "v": 5233
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 2656.3,
-              "v": 2773
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 2655.8,
-              "v": 2426
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 2656.6001,
-              "v": 2870
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 2659.0,
-              "v": 2349
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 2682.2,
-              "v": 18068
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 2678.0,
-              "v": 7555
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 2663.5,
-              "v": 7340
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 2668.7,
-              "v": 5600
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 2673.1001,
-              "v": 4082
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 2672.7,
-              "v": 3591
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 2667.0,
-              "v": 2513
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 2669.6001,
-              "v": 2202
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 2667.3999,
-              "v": 2695
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 2667.1001,
-              "v": 2092
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 2671.2,
-              "v": 1905
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 2668.8999,
-              "v": 1780
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 2672.2,
-              "v": 1914
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 2672.6001,
-              "v": 1219
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 2671.7,
-              "v": 1266
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 2668.8999,
-              "v": 2813
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 2663.6001,
-              "v": 2377
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 2659.2,
-              "v": 1980
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 2664.1001,
-              "v": 3183
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 2665.7,
-              "v": 1613
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 2666.0,
-              "v": 1544
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 2668.3999,
-              "v": 1517
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 2670.0,
-              "v": 964
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 2669.3,
-              "v": 2095
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 2664.6001,
-              "v": 1585
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 2660.7,
-              "v": 1171
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 2653.8999,
-              "v": 3237
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 2646.5,
-              "v": 3501
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 2644.5,
-              "v": 2686
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 2647.2,
-              "v": 1852
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 2652.0,
-              "v": 1707
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 2653.6001,
-              "v": 1221
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 2653.2,
-              "v": 1365
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 2658.8,
-              "v": 1414
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 2662.1001,
-              "v": 1517
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 2663.3,
-              "v": 2137
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 2661.8999,
-              "v": 1569
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 2662.0,
-              "v": 1503
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 2660.8,
-              "v": 748
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 2658.2,
-              "v": 725
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 2657.1001,
-              "v": 2234
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 2654.7,
-              "v": 1513
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 2662.1001,
-              "v": 3522
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 2663.7,
-              "v": 3365
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 2669.1001,
-              "v": 1643
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 2673.0,
-              "v": 3042
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 2676.7,
-              "v": 1701
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 2677.2,
-              "v": 1027
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 2677.5,
-              "v": 1133
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 2673.6001,
-              "v": 1250
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 2669.7,
-              "v": 946
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 2667.3,
-              "v": 959
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 2666.8,
-              "v": 1253
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 2665.0,
-              "v": 917
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 2666.5,
-              "v": 1129
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 2665.0,
-              "v": 560
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 2660.3,
-              "v": 899
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 2659.6001,
-              "v": 1233
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 2658.1001,
-              "v": 1079
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 2657.1001,
-              "v": 1341
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 2659.8,
-              "v": 1059
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 2662.8,
-              "v": 1378
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 2665.1001,
-              "v": 711
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 2662.3,
-              "v": 769
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 2664.3,
-              "v": 661
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 2663.1001,
-              "v": 648
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 2664.1001,
-              "v": 746
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 2665.3999,
-              "v": 789
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 2667.5,
-              "v": 915
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 2664.8,
-              "v": 886
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 2666.5,
-              "v": 1621
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 2668.8999,
-              "v": 12683
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 2669.8999,
-              "v": 3309
-            }
           ]
         }
       }
@@ -10405,37 +8785,104 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 34,
+      "pulse_score": 0,
       "pulse_label": "BEARISH",
-      "confluence_score": 34,
+      "confluence_score": 0,
       "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "CL=F",
         "label": "Crude Oil (CL)",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 66.44,
-        "day_change_pct": 0.2,
-        "pulse_score": 34,
+        "as_of_utc": "2026-02-24T15:29:06Z",
+        "last_price": 66.03,
+        "day_change_pct": -0.42,
+        "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 66.6115,
-          "price_vs_vwap_pct": -0.26,
-          "opening_range_high": 67.22,
-          "opening_range_low": 66.92,
+          "vwap": 66.2886,
+          "price_vs_vwap_pct": -0.39,
+          "opening_range_high": 66.7,
+          "opening_range_low": 66.37,
           "opening_range_state": "Below OR Low",
-          "ema20": 66.3809,
-          "ema50": 66.4154,
-          "ema_stack": "Mixed Stack",
-          "pivot": 66.3233,
-          "price_vs_pivot_pct": 0.18,
-          "prior_day_high": 66.73,
-          "prior_day_low": 65.83,
-          "price_vs_prior_high_pct": -0.43,
-          "price_vs_prior_low_pct": 0.93,
+          "ema20": 66.3844,
+          "ema50": 66.4538,
+          "ema_stack": "Bear Stack",
+          "pivot": 66.6067,
+          "price_vs_pivot_pct": -0.87,
+          "prior_day_high": 67.28,
+          "prior_day_low": 66.1,
+          "price_vs_prior_high_pct": -1.86,
+          "price_vs_prior_low_pct": -0.11,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 66.51,
+              "v": 3459
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 66.42,
+              "v": 4794
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 66.5,
+              "v": 4175
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 66.48,
+              "v": 2423
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 66.63,
+              "v": 2057
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 66.53,
+              "v": 1549
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 66.46,
+              "v": 3422
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 66.37,
+              "v": 5253
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 66.42,
+              "v": 1502
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 66.42,
+              "v": 1792
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 66.43,
+              "v": 1674
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 65.9,
+              "v": 14156
+            },
+            {
+              "t": "2026-02-24T15:29:06Z",
+              "p": 66.03,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 67.13,
@@ -10831,403 +9278,6 @@
               "p": 66.44,
               "v": 204
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 66.26,
-              "v": 3068
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 66.41,
-              "v": 11337
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 66.33,
-              "v": 3632
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 66.18,
-              "v": 1757
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 66.28,
-              "v": 2161
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 66.25,
-              "v": 2699
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 66.48,
-              "v": 8669
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 66.35,
-              "v": 4339
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 66.17,
-              "v": 1713
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 66.32,
-              "v": 3527
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 66.18,
-              "v": 1306
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 66.2,
-              "v": 1425
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 65.91,
-              "v": 5307
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 66.02,
-              "v": 2041
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 66.14,
-              "v": 1994
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 66.14,
-              "v": 2051
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 66.04,
-              "v": 2478
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 65.96,
-              "v": 2903
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 65.93,
-              "v": 1962
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 66.0,
-              "v": 1959
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 66.04,
-              "v": 4514
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 66.03,
-              "v": 4154
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 65.93,
-              "v": 3218
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 66.03,
-              "v": 2663
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 66.14,
-              "v": 2874
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 66.14,
-              "v": 1752
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 66.31,
-              "v": 3585
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 66.23,
-              "v": 1788
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 66.18,
-              "v": 2700
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 66.19,
-              "v": 2234
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 66.31,
-              "v": 2975
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 66.31,
-              "v": 2282
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 66.25,
-              "v": 2327
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 66.21,
-              "v": 3547
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 66.27,
-              "v": 1372
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 66.2,
-              "v": 2074
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 66.23,
-              "v": 1638
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 66.23,
-              "v": 2576
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 66.24,
-              "v": 1043
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 66.34,
-              "v": 1163
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 66.4,
-              "v": 2068
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 66.45,
-              "v": 1395
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 66.61,
-              "v": 2170
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 66.69,
-              "v": 3888
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 66.64,
-              "v": 2040
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 66.44,
-              "v": 2191
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 66.38,
-              "v": 3482
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 66.32,
-              "v": 2715
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 66.46,
-              "v": 1924
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 66.51,
-              "v": 2000
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 66.59,
-              "v": 1192
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 66.54,
-              "v": 1771
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 66.62,
-              "v": 2959
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 66.56,
-              "v": 3064
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 66.42,
-              "v": 5614
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 66.32,
-              "v": 4334
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 66.38,
-              "v": 6068
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 66.32,
-              "v": 3506
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 66.29,
-              "v": 3863
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 66.49,
-              "v": 14820
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 66.42,
-              "v": 2818
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 66.37,
-              "v": 3458
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 66.41,
-              "v": 997
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 66.41,
-              "v": 1718
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 66.48,
-              "v": 835
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 66.46,
-              "v": 647
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 66.47,
-              "v": 445
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 66.34,
-              "v": 1582
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 66.32,
-              "v": 643
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 66.3,
-              "v": 410
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 66.32,
-              "v": 296
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 66.29,
-              "v": 784
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 66.28,
-              "v": 682
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 66.32,
-              "v": 402
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 66.32,
-              "v": 392
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 66.28,
-              "v": 289
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 66.29,
-              "v": 349
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 66.37,
-              "v": 913
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 66.41,
-              "v": 553
-            }
           ]
         }
       }
@@ -11238,37 +9288,104 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 100,
+      "pulse_score": 84,
       "pulse_label": "BULLISH",
-      "confluence_score": 100,
+      "confluence_score": 84,
       "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "GC=F",
         "label": "Gold (GC)",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 5254.1001,
-        "day_change_pct": 0.55,
-        "pulse_score": 100,
+        "as_of_utc": "2026-02-24T15:29:03Z",
+        "last_price": 5161.6001,
+        "day_change_pct": -1.22,
+        "pulse_score": 84,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 5223.4361,
-          "price_vs_vwap_pct": 0.59,
-          "opening_range_high": 5221.8999,
-          "opening_range_low": 5185.1001,
+          "vwap": 5149.7445,
+          "price_vs_vwap_pct": 0.23,
+          "opening_range_high": 5157.0,
+          "opening_range_low": 5127.3999,
           "opening_range_state": "Above OR High",
-          "ema20": 5244.4144,
-          "ema50": 5235.2905,
+          "ema20": 5148.8778,
+          "ema50": 5142.3985,
           "ema_stack": "Bull Stack",
-          "pivot": 5081.7334,
-          "price_vs_pivot_pct": 3.39,
-          "prior_day_high": 5121.7002,
-          "prior_day_low": 5005.5,
-          "price_vs_prior_high_pct": 2.59,
-          "price_vs_prior_low_pct": 4.97,
+          "pivot": 5232.1667,
+          "price_vs_pivot_pct": -1.35,
+          "prior_day_high": 5257.2998,
+          "prior_day_low": 5185.1001,
+          "price_vs_prior_high_pct": -1.82,
+          "price_vs_prior_low_pct": -0.45,
           "session_structure": "AM Range Breakout Up"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 5135.2998,
+              "v": 2125
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 5151.7002,
+              "v": 1770
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 5155.1001,
+              "v": 1594
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 5150.6001,
+              "v": 1612
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 5147.6001,
+              "v": 862
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 5145.5,
+              "v": 615
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 5143.7002,
+              "v": 1732
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 5154.0,
+              "v": 861
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 5155.0,
+              "v": 711
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 5158.1001,
+              "v": 896
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 5161.7002,
+              "v": 938
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 5156.3999,
+              "v": 923
+            },
+            {
+              "t": "2026-02-24T15:29:03Z",
+              "p": 5161.6001,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 5192.0,
@@ -11664,403 +9781,6 @@
               "p": 5254.1001,
               "v": 345
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 5066.6001,
-              "v": 2258
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 5067.0,
-              "v": 2002
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 5072.7998,
-              "v": 1628
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 5077.6001,
-              "v": 1231
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 5079.1001,
-              "v": 825
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 5074.7998,
-              "v": 861
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 5046.5,
-              "v": 4605
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 5041.0,
-              "v": 5844
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 5041.2998,
-              "v": 2341
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 5055.2002,
-              "v": 1983
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 5043.5,
-              "v": 1895
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 5044.6001,
-              "v": 1778
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 5044.7998,
-              "v": 1049
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 5055.7002,
-              "v": 1237
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 5065.0,
-              "v": 1216
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 5067.1001,
-              "v": 1370
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 5063.2998,
-              "v": 949
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 5062.2998,
-              "v": 579
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 5062.8999,
-              "v": 640
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 5069.0,
-              "v": 908
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 5075.0,
-              "v": 852
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 5069.7002,
-              "v": 720
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 5071.5,
-              "v": 662
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 5073.7002,
-              "v": 582
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 5088.0,
-              "v": 1631
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 5085.2002,
-              "v": 839
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 5083.7002,
-              "v": 613
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 5085.0,
-              "v": 486
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 5084.2998,
-              "v": 774
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 5087.0,
-              "v": 651
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 5087.0,
-              "v": 687
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 5091.2998,
-              "v": 927
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 5087.5,
-              "v": 1035
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 5081.3999,
-              "v": 689
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 5076.2002,
-              "v": 863
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 5085.2002,
-              "v": 789
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 5085.2998,
-              "v": 488
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 5087.7002,
-              "v": 411
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 5089.0,
-              "v": 655
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 5094.7002,
-              "v": 512
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 5096.2002,
-              "v": 709
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 5093.7002,
-              "v": 706
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 5092.7002,
-              "v": 404
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 5091.5,
-              "v": 652
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 5090.6001,
-              "v": 410
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 5087.1001,
-              "v": 666
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 5090.8999,
-              "v": 799
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 5079.8999,
-              "v": 2491
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 5087.0,
-              "v": 1205
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 5093.2998,
-              "v": 1843
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 5088.7998,
-              "v": 652
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 5094.7998,
-              "v": 351
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 5093.6001,
-              "v": 658
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 5094.0,
-              "v": 336
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 5094.7002,
-              "v": 437
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 5094.2002,
-              "v": 269
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 5094.2002,
-              "v": 312
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 5096.6001,
-              "v": 632
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 5095.7998,
-              "v": 503
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 5092.7002,
-              "v": 469
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 5094.5,
-              "v": 204
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 5095.5,
-              "v": 233
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 5096.3999,
-              "v": 139
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 5095.3999,
-              "v": 261
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 5098.8999,
-              "v": 345
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 5102.3999,
-              "v": 794
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 5101.0,
-              "v": 360
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 5103.0,
-              "v": 309
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 5102.2998,
-              "v": 272
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 5105.7002,
-              "v": 458
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 5109.1001,
-              "v": 562
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 5107.7002,
-              "v": 244
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 5107.3999,
-              "v": 449
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 5108.7002,
-              "v": 293
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 5107.5,
-              "v": 430
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 5107.2002,
-              "v": 401
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 5110.6001,
-              "v": 295
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 5119.3999,
-              "v": 1185
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 5118.0,
-              "v": 591
-            }
           ]
         }
       }
@@ -12071,37 +9791,104 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 34,
+      "pulse_score": 0,
       "pulse_label": "BEARISH",
-      "confluence_score": 34,
+      "confluence_score": 0,
       "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "6E=F",
         "label": "Euro FX (6E)",
-        "as_of_utc": "2026-02-23T21:00:00Z",
-        "last_price": 1.1803,
-        "day_change_pct": 0.0,
-        "pulse_score": 34,
+        "as_of_utc": "2026-02-24T15:29:02Z",
+        "last_price": 1.1782,
+        "day_change_pct": -0.18,
+        "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 1.1809,
-          "price_vs_vwap_pct": -0.05,
-          "opening_range_high": 1.1822,
-          "opening_range_low": 1.1806,
-          "opening_range_state": "Below OR Low",
-          "ema20": 1.1803,
-          "ema50": 1.1806,
-          "ema_stack": "Mixed Stack",
-          "pivot": 1.1796,
-          "price_vs_pivot_pct": 0.07,
-          "prior_day_high": 1.182,
-          "prior_day_low": 1.1768,
-          "price_vs_prior_high_pct": -0.14,
-          "price_vs_prior_low_pct": 0.3,
-          "session_structure": "AM Range Breakout Down"
+          "vwap": 1.1783,
+          "price_vs_vwap_pct": -0.01,
+          "opening_range_high": 1.1789,
+          "opening_range_low": 1.1781,
+          "opening_range_state": "Inside OR",
+          "ema20": 1.1783,
+          "ema50": 1.1785,
+          "ema_stack": "Bear Stack",
+          "pivot": 1.1808,
+          "price_vs_pivot_pct": -0.22,
+          "prior_day_high": 1.1822,
+          "prior_day_low": 1.1799,
+          "price_vs_prior_high_pct": -0.34,
+          "price_vs_prior_low_pct": -0.14,
+          "session_structure": "Rotation Around VWAP"
         },
         "spark": {
           "today": [
+            {
+              "t": "2026-02-24T14:30:00Z",
+              "p": 1.1787,
+              "v": 751
+            },
+            {
+              "t": "2026-02-24T14:35:00Z",
+              "p": 1.1787,
+              "v": 866
+            },
+            {
+              "t": "2026-02-24T14:40:00Z",
+              "p": 1.1784,
+              "v": 822
+            },
+            {
+              "t": "2026-02-24T14:45:00Z",
+              "p": 1.1784,
+              "v": 875
+            },
+            {
+              "t": "2026-02-24T14:50:00Z",
+              "p": 1.1782,
+              "v": 695
+            },
+            {
+              "t": "2026-02-24T14:55:00Z",
+              "p": 1.1785,
+              "v": 1090
+            },
+            {
+              "t": "2026-02-24T15:00:00Z",
+              "p": 1.1782,
+              "v": 1632
+            },
+            {
+              "t": "2026-02-24T15:05:00Z",
+              "p": 1.1782,
+              "v": 783
+            },
+            {
+              "t": "2026-02-24T15:10:00Z",
+              "p": 1.1781,
+              "v": 1318
+            },
+            {
+              "t": "2026-02-24T15:15:00Z",
+              "p": 1.1778,
+              "v": 719
+            },
+            {
+              "t": "2026-02-24T15:20:00Z",
+              "p": 1.1779,
+              "v": 806
+            },
+            {
+              "t": "2026-02-24T15:25:00Z",
+              "p": 1.1783,
+              "v": 844
+            },
+            {
+              "t": "2026-02-24T15:29:02Z",
+              "p": 1.1782,
+              "v": 0
+            }
+          ],
+          "yesterday": [
             {
               "t": "2026-02-23T14:30:00Z",
               "p": 1.1809,
@@ -12497,403 +10284,6 @@
               "p": 1.1803,
               "v": 322
             }
-          ],
-          "yesterday": [
-            {
-              "t": "2026-02-20T14:30:00Z",
-              "p": 1.1774,
-              "v": 1000
-            },
-            {
-              "t": "2026-02-20T14:35:00Z",
-              "p": 1.1769,
-              "v": 1986
-            },
-            {
-              "t": "2026-02-20T14:40:00Z",
-              "p": 1.1776,
-              "v": 1066
-            },
-            {
-              "t": "2026-02-20T14:45:00Z",
-              "p": 1.1775,
-              "v": 2115
-            },
-            {
-              "t": "2026-02-20T14:50:00Z",
-              "p": 1.1781,
-              "v": 1502
-            },
-            {
-              "t": "2026-02-20T14:55:00Z",
-              "p": 1.1781,
-              "v": 1054
-            },
-            {
-              "t": "2026-02-20T15:00:00Z",
-              "p": 1.1777,
-              "v": 7926
-            },
-            {
-              "t": "2026-02-20T15:05:00Z",
-              "p": 1.1791,
-              "v": 4248
-            },
-            {
-              "t": "2026-02-20T15:10:00Z",
-              "p": 1.1808,
-              "v": 5937
-            },
-            {
-              "t": "2026-02-20T15:15:00Z",
-              "p": 1.1815,
-              "v": 6135
-            },
-            {
-              "t": "2026-02-20T15:20:00Z",
-              "p": 1.1806,
-              "v": 3651
-            },
-            {
-              "t": "2026-02-20T15:25:00Z",
-              "p": 1.1812,
-              "v": 3081
-            },
-            {
-              "t": "2026-02-20T15:30:00Z",
-              "p": 1.1804,
-              "v": 3178
-            },
-            {
-              "t": "2026-02-20T15:35:00Z",
-              "p": 1.1808,
-              "v": 1436
-            },
-            {
-              "t": "2026-02-20T15:40:00Z",
-              "p": 1.1809,
-              "v": 1320
-            },
-            {
-              "t": "2026-02-20T15:45:00Z",
-              "p": 1.1797,
-              "v": 1506
-            },
-            {
-              "t": "2026-02-20T15:50:00Z",
-              "p": 1.1801,
-              "v": 1383
-            },
-            {
-              "t": "2026-02-20T15:55:00Z",
-              "p": 1.1801,
-              "v": 2982
-            },
-            {
-              "t": "2026-02-20T16:00:00Z",
-              "p": 1.1806,
-              "v": 2998
-            },
-            {
-              "t": "2026-02-20T16:05:00Z",
-              "p": 1.1808,
-              "v": 1337
-            },
-            {
-              "t": "2026-02-20T16:10:00Z",
-              "p": 1.1805,
-              "v": 747
-            },
-            {
-              "t": "2026-02-20T16:15:00Z",
-              "p": 1.1799,
-              "v": 1022
-            },
-            {
-              "t": "2026-02-20T16:20:00Z",
-              "p": 1.1795,
-              "v": 1118
-            },
-            {
-              "t": "2026-02-20T16:25:00Z",
-              "p": 1.1794,
-              "v": 1323
-            },
-            {
-              "t": "2026-02-20T16:30:00Z",
-              "p": 1.1789,
-              "v": 739
-            },
-            {
-              "t": "2026-02-20T16:35:00Z",
-              "p": 1.179,
-              "v": 591
-            },
-            {
-              "t": "2026-02-20T16:40:00Z",
-              "p": 1.1789,
-              "v": 657
-            },
-            {
-              "t": "2026-02-20T16:45:00Z",
-              "p": 1.1787,
-              "v": 485
-            },
-            {
-              "t": "2026-02-20T16:50:00Z",
-              "p": 1.1794,
-              "v": 1440
-            },
-            {
-              "t": "2026-02-20T16:55:00Z",
-              "p": 1.1793,
-              "v": 684
-            },
-            {
-              "t": "2026-02-20T17:00:00Z",
-              "p": 1.1795,
-              "v": 753
-            },
-            {
-              "t": "2026-02-20T17:05:00Z",
-              "p": 1.179,
-              "v": 454
-            },
-            {
-              "t": "2026-02-20T17:10:00Z",
-              "p": 1.1789,
-              "v": 510
-            },
-            {
-              "t": "2026-02-20T17:15:00Z",
-              "p": 1.1783,
-              "v": 653
-            },
-            {
-              "t": "2026-02-20T17:20:00Z",
-              "p": 1.1779,
-              "v": 872
-            },
-            {
-              "t": "2026-02-20T17:25:00Z",
-              "p": 1.1782,
-              "v": 681
-            },
-            {
-              "t": "2026-02-20T17:30:00Z",
-              "p": 1.1789,
-              "v": 832
-            },
-            {
-              "t": "2026-02-20T17:35:00Z",
-              "p": 1.1789,
-              "v": 350
-            },
-            {
-              "t": "2026-02-20T17:40:00Z",
-              "p": 1.1789,
-              "v": 864
-            },
-            {
-              "t": "2026-02-20T17:45:00Z",
-              "p": 1.1794,
-              "v": 561
-            },
-            {
-              "t": "2026-02-20T17:50:00Z",
-              "p": 1.1796,
-              "v": 631
-            },
-            {
-              "t": "2026-02-20T17:55:00Z",
-              "p": 1.1793,
-              "v": 854
-            },
-            {
-              "t": "2026-02-20T18:00:00Z",
-              "p": 1.1796,
-              "v": 432
-            },
-            {
-              "t": "2026-02-20T18:05:00Z",
-              "p": 1.1795,
-              "v": 540
-            },
-            {
-              "t": "2026-02-20T18:10:00Z",
-              "p": 1.1795,
-              "v": 182
-            },
-            {
-              "t": "2026-02-20T18:15:00Z",
-              "p": 1.1795,
-              "v": 257
-            },
-            {
-              "t": "2026-02-20T18:20:00Z",
-              "p": 1.1802,
-              "v": 801
-            },
-            {
-              "t": "2026-02-20T18:25:00Z",
-              "p": 1.1801,
-              "v": 1523
-            },
-            {
-              "t": "2026-02-20T18:30:00Z",
-              "p": 1.1803,
-              "v": 1803
-            },
-            {
-              "t": "2026-02-20T18:35:00Z",
-              "p": 1.1806,
-              "v": 1977
-            },
-            {
-              "t": "2026-02-20T18:40:00Z",
-              "p": 1.1806,
-              "v": 1329
-            },
-            {
-              "t": "2026-02-20T18:45:00Z",
-              "p": 1.1805,
-              "v": 869
-            },
-            {
-              "t": "2026-02-20T18:50:00Z",
-              "p": 1.1803,
-              "v": 780
-            },
-            {
-              "t": "2026-02-20T18:55:00Z",
-              "p": 1.1799,
-              "v": 549
-            },
-            {
-              "t": "2026-02-20T19:00:00Z",
-              "p": 1.1801,
-              "v": 376
-            },
-            {
-              "t": "2026-02-20T19:05:00Z",
-              "p": 1.1797,
-              "v": 1357
-            },
-            {
-              "t": "2026-02-20T19:10:00Z",
-              "p": 1.1796,
-              "v": 988
-            },
-            {
-              "t": "2026-02-20T19:15:00Z",
-              "p": 1.1796,
-              "v": 142
-            },
-            {
-              "t": "2026-02-20T19:20:00Z",
-              "p": 1.1794,
-              "v": 134
-            },
-            {
-              "t": "2026-02-20T19:25:00Z",
-              "p": 1.1794,
-              "v": 259
-            },
-            {
-              "t": "2026-02-20T19:30:00Z",
-              "p": 1.1794,
-              "v": 209
-            },
-            {
-              "t": "2026-02-20T19:35:00Z",
-              "p": 1.1793,
-              "v": 292
-            },
-            {
-              "t": "2026-02-20T19:40:00Z",
-              "p": 1.1794,
-              "v": 162
-            },
-            {
-              "t": "2026-02-20T19:45:00Z",
-              "p": 1.1795,
-              "v": 605
-            },
-            {
-              "t": "2026-02-20T19:50:00Z",
-              "p": 1.1793,
-              "v": 1075
-            },
-            {
-              "t": "2026-02-20T19:55:00Z",
-              "p": 1.1793,
-              "v": 1251
-            },
-            {
-              "t": "2026-02-20T20:00:00Z",
-              "p": 1.1791,
-              "v": 1135
-            },
-            {
-              "t": "2026-02-20T20:05:00Z",
-              "p": 1.1794,
-              "v": 390
-            },
-            {
-              "t": "2026-02-20T20:10:00Z",
-              "p": 1.1792,
-              "v": 204
-            },
-            {
-              "t": "2026-02-20T20:15:00Z",
-              "p": 1.1794,
-              "v": 93
-            },
-            {
-              "t": "2026-02-20T20:20:00Z",
-              "p": 1.1795,
-              "v": 180
-            },
-            {
-              "t": "2026-02-20T20:25:00Z",
-              "p": 1.1795,
-              "v": 339
-            },
-            {
-              "t": "2026-02-20T20:30:00Z",
-              "p": 1.1797,
-              "v": 192
-            },
-            {
-              "t": "2026-02-20T20:35:00Z",
-              "p": 1.1798,
-              "v": 214
-            },
-            {
-              "t": "2026-02-20T20:40:00Z",
-              "p": 1.1798,
-              "v": 153
-            },
-            {
-              "t": "2026-02-20T20:45:00Z",
-              "p": 1.1797,
-              "v": 169
-            },
-            {
-              "t": "2026-02-20T20:50:00Z",
-              "p": 1.1798,
-              "v": 198
-            },
-            {
-              "t": "2026-02-20T20:55:00Z",
-              "p": 1.1798,
-              "v": 629
-            },
-            {
-              "t": "2026-02-20T21:00:00Z",
-              "p": 1.1799,
-              "v": 327
-            }
           ]
         }
       }
@@ -12901,7 +10291,7 @@
   },
   "forex_factory": {
     "source": "https://nfs.faireconomy.media/ff_calendar_thisweek.xml",
-    "fetched_at_utc": "2026-02-24T14:37:17Z",
+    "fetched_at_utc": "2026-02-24T15:39:06Z",
     "red_folder_count": 2,
     "high_impact_total_count": 8,
     "relevance_filter": "Major USD macro/Fed events for US index trading",
