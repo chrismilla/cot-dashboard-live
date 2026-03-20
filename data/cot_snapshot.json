@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-03-20T18:59:32Z",
+  "generated_at_utc": "2026-03-20T19:43:28Z",
   "source_url": "https://publicreporting.cftc.gov/resource/udgc-27he.json",
   "history_weeks": 104,
   "market_order": [
@@ -10,7 +10,7 @@
   ],
   "meta": {
     "timezone": "America/New_York",
-    "next_cot_release_utc": "2026-03-20T19:30:00Z",
+    "next_cot_release_utc": "2026-03-27T19:30:00Z",
     "refresh_policy": "Hourly during US cash session, plus post-CFTC Friday refresh."
   },
   "markets": {
@@ -20,23 +20,17 @@
       "symbol": "DIA",
       "contract_code": "12460+",
       "market_name": "DJIA Consolidated - CHICAGO BOARD OF TRADE",
-      "latest_report_date": "2026-03-10",
+      "latest_report_date": "2026-03-17",
       "latest": {
-        "asset_mgr_net": 353,
-        "leveraged_net": -310,
-        "open_interest": 74984,
-        "asset_mgr_change": 2438,
-        "leveraged_change": 1561,
-        "open_interest_change": -994
+        "asset_mgr_net": 3939,
+        "leveraged_net": -366,
+        "open_interest": 96572,
+        "asset_mgr_change": 3586,
+        "leveraged_change": -56,
+        "open_interest_change": 21588
       },
-      "previous_report_date": "2026-03-03",
+      "previous_report_date": "2026-03-10",
       "history": [
-        {
-          "report_date": "2024-03-19",
-          "asset_mgr_net": 12050,
-          "leveraged_net": 13175,
-          "open_interest": 93851
-        },
         {
           "report_date": "2024-03-26",
           "asset_mgr_net": 13753,
@@ -654,45 +648,51 @@
           "asset_mgr_net": 353,
           "leveraged_net": -310,
           "open_interest": 74984
+        },
+        {
+          "report_date": "2026-03-17",
+          "asset_mgr_net": 3939,
+          "leveraged_net": -366,
+          "open_interest": 96572
         }
       ],
       "cot_bias": {
-        "score": 55,
-        "label": "NEUTRAL",
+        "score": 64,
+        "label": "BULLISH",
         "components": {
-          "institutional_pressure": 51,
+          "institutional_pressure": 63,
           "fast_money_pressure": 49,
-          "position_momentum": 100,
-          "alignment": 20
+          "position_momentum": 96,
+          "alignment": 50
         },
         "extremes": {
-          "asset_manager_percentile_3y": 12,
+          "asset_manager_percentile_3y": 30,
           "leveraged_percentile_3y": 51
         }
       },
       "intraday": {
         "symbol": "DIA",
         "label": "Dow Jones",
-        "as_of_utc": "2026-03-20T18:59:26Z",
-        "last_price": 455.3,
-        "day_change_pct": -1.04,
+        "as_of_utc": "2026-03-20T19:43:26Z",
+        "last_price": 454.755,
+        "day_change_pct": -1.15,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 457.6069,
-          "price_vs_vwap_pct": -0.5,
+          "vwap": 457.4068,
+          "price_vs_vwap_pct": -0.58,
           "opening_range_high": 460.57,
           "opening_range_low": 458.37,
           "opening_range_state": "Below OR Low",
-          "ema20": 456.2736,
-          "ema50": 457.1214,
+          "ema20": 455.377,
+          "ema50": 456.4273,
           "ema_stack": "Bear Stack",
           "pivot": 460.8667,
-          "price_vs_pivot_pct": -1.21,
+          "price_vs_pivot_pct": -1.33,
           "prior_day_high": 463.37,
           "prior_day_low": 458.16,
-          "price_vs_prior_high_pct": -1.74,
-          "price_vs_prior_low_pct": -0.62,
+          "price_vs_prior_high_pct": -1.86,
+          "price_vs_prior_low_pct": -0.74,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -1009,27 +1009,72 @@
             },
             {
               "t": "2026-03-20T18:40:00Z",
-              "p": 455.195,
-              "v": 48926
+              "p": 455.2,
+              "v": 57418
             },
             {
               "t": "2026-03-20T18:45:00Z",
-              "p": 455.12,
-              "v": 57159
+              "p": 455.08,
+              "v": 56618
             },
             {
               "t": "2026-03-20T18:50:00Z",
-              "p": 455.21,
-              "v": 48552
+              "p": 455.23,
+              "v": 48913
             },
             {
               "t": "2026-03-20T18:55:00Z",
-              "p": 455.18,
-              "v": 130184
+              "p": 455.29,
+              "v": 159385
             },
             {
-              "t": "2026-03-20T18:59:26Z",
-              "p": 455.3,
+              "t": "2026-03-20T19:00:00Z",
+              "p": 455.52,
+              "v": 127591
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 455.45,
+              "v": 38798
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 455.355,
+              "v": 67448
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 455.45,
+              "v": 50085
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 454.715,
+              "v": 62858
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 455.0,
+              "v": 39780
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 454.41,
+              "v": 83546
+            },
+            {
+              "t": "2026-03-20T19:35:00Z",
+              "p": 454.0,
+              "v": 104901
+            },
+            {
+              "t": "2026-03-20T19:40:00Z",
+              "p": 454.39,
+              "v": 82751
+            },
+            {
+              "t": "2026-03-20T19:43:26Z",
+              "p": 454.755,
               "v": 0
             }
           ],
@@ -1428,15 +1473,15 @@
         }
       },
       "confluence": {
-        "score": 30,
+        "score": 35,
         "label": "BEARISH",
-        "cot_score": 55,
+        "cot_score": 64,
         "technical_score": 0,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias bearish: favor failed bounces below 457.61.",
+        "headline": "Bias bearish: favor failed bounces below 457.41.",
         "bullets": [
-          "Short bias below VWAP 457.61.",
+          "Short bias below VWAP 457.41.",
           "Acceleration setup under OR low 458.37.",
           "If price reclaims and holds above VWAP, stand down."
         ]
@@ -1448,23 +1493,17 @@
       "symbol": "QQQ",
       "contract_code": "20974+",
       "market_name": "NASDAQ-100 Consolidated - CHICAGO MERCANTILE EXCHANGE",
-      "latest_report_date": "2026-03-10",
+      "latest_report_date": "2026-03-17",
       "latest": {
-        "asset_mgr_net": 65518,
-        "leveraged_net": -33944,
-        "open_interest": 275311,
-        "asset_mgr_change": -3100,
-        "leveraged_change": -1363,
-        "open_interest_change": -15080
+        "asset_mgr_net": 61391,
+        "leveraged_net": -41041,
+        "open_interest": 318004,
+        "asset_mgr_change": -4127,
+        "leveraged_change": -7097,
+        "open_interest_change": 42693
       },
-      "previous_report_date": "2026-03-03",
+      "previous_report_date": "2026-03-10",
       "history": [
-        {
-          "report_date": "2024-03-19",
-          "asset_mgr_net": 87485,
-          "leveraged_net": -37582,
-          "open_interest": 255935
-        },
         {
           "report_date": "2024-03-26",
           "asset_mgr_net": 83463,
@@ -2082,45 +2121,51 @@
           "asset_mgr_net": 65518,
           "leveraged_net": -33944,
           "open_interest": 275311
+        },
+        {
+          "report_date": "2026-03-17",
+          "asset_mgr_net": 61391,
+          "leveraged_net": -41041,
+          "open_interest": 318004
         }
       ],
       "cot_bias": {
-        "score": 51,
+        "score": 46,
         "label": "NEUTRAL",
         "components": {
           "institutional_pressure": 100,
-          "fast_money_pressure": 11,
-          "position_momentum": 30,
+          "fast_money_pressure": 10,
+          "position_momentum": 6,
           "alignment": 20
         },
         "extremes": {
-          "asset_manager_percentile_3y": 29,
-          "leveraged_percentile_3y": 55
+          "asset_manager_percentile_3y": 25,
+          "leveraged_percentile_3y": 42
         }
       },
       "intraday": {
         "symbol": "QQQ",
         "label": "Nasdaq-100",
-        "as_of_utc": "2026-03-20T18:59:31Z",
-        "last_price": 581.65,
-        "day_change_pct": -1.92,
+        "as_of_utc": "2026-03-20T19:43:26Z",
+        "last_price": 580.09,
+        "day_change_pct": -2.18,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 585.8771,
-          "price_vs_vwap_pct": -0.72,
+          "vwap": 585.0327,
+          "price_vs_vwap_pct": -0.84,
           "opening_range_high": 591.15,
           "opening_range_low": 586.16,
           "opening_range_state": "Below OR Low",
-          "ema20": 582.9709,
-          "ema50": 584.5952,
+          "ema20": 581.4287,
+          "ema50": 583.3492,
           "ema_stack": "Bear Stack",
           "pivot": 591.9533,
-          "price_vs_pivot_pct": -1.74,
+          "price_vs_pivot_pct": -2.0,
           "prior_day_high": 595.8,
           "prior_day_low": 587.08,
-          "price_vs_prior_high_pct": -2.37,
-          "price_vs_prior_low_pct": -0.92,
+          "price_vs_prior_high_pct": -2.64,
+          "price_vs_prior_low_pct": -1.19,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -2452,12 +2497,57 @@
             },
             {
               "t": "2026-03-20T18:55:00Z",
-              "p": 581.37,
-              "v": 823271
+              "p": 581.55,
+              "v": 1053320
             },
             {
-              "t": "2026-03-20T18:59:31Z",
-              "p": 581.65,
+              "t": "2026-03-20T19:00:00Z",
+              "p": 581.63,
+              "v": 776141
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 581.38,
+              "v": 839835
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 581.36,
+              "v": 1000860
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 581.62,
+              "v": 905947
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 580.55,
+              "v": 1288880
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 580.7,
+              "v": 1272366
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 580.0298,
+              "v": 1663356
+            },
+            {
+              "t": "2026-03-20T19:35:00Z",
+              "p": 579.32,
+              "v": 1860351
+            },
+            {
+              "t": "2026-03-20T19:40:00Z",
+              "p": 579.7,
+              "v": 1745155
+            },
+            {
+              "t": "2026-03-20T19:43:26Z",
+              "p": 580.09,
               "v": 0
             }
           ],
@@ -2856,15 +2946,15 @@
         }
       },
       "confluence": {
-        "score": 28,
+        "score": 25,
         "label": "BEARISH",
-        "cot_score": 51,
+        "cot_score": 46,
         "technical_score": 0,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias bearish: favor failed bounces below 585.88.",
+        "headline": "Bias bearish: favor failed bounces below 585.03.",
         "bullets": [
-          "Short bias below VWAP 585.88.",
+          "Short bias below VWAP 585.03.",
           "Acceleration setup under OR low 586.16.",
           "If price reclaims and holds above VWAP, stand down."
         ]
@@ -2876,23 +2966,17 @@
       "symbol": "SPY",
       "contract_code": "13874+",
       "market_name": "S&P 500 Consolidated - CHICAGO MERCANTILE EXCHANGE",
-      "latest_report_date": "2026-03-10",
+      "latest_report_date": "2026-03-17",
       "latest": {
-        "asset_mgr_net": 901066,
-        "leveraged_net": -358096,
-        "open_interest": 2023096,
-        "asset_mgr_change": -106860,
-        "leveraged_change": 53262,
-        "open_interest_change": -62320
+        "asset_mgr_net": 889442,
+        "leveraged_net": -347577,
+        "open_interest": 2359720,
+        "asset_mgr_change": -11624,
+        "leveraged_change": 10519,
+        "open_interest_change": 336624
       },
-      "previous_report_date": "2026-03-03",
+      "previous_report_date": "2026-03-10",
       "history": [
-        {
-          "report_date": "2024-03-19",
-          "asset_mgr_net": 948785,
-          "leveraged_net": -430385,
-          "open_interest": 2111429
-        },
         {
           "report_date": "2024-03-26",
           "asset_mgr_net": 954844,
@@ -3510,45 +3594,51 @@
           "asset_mgr_net": 901066,
           "leveraged_net": -358096,
           "open_interest": 2023096
+        },
+        {
+          "report_date": "2026-03-17",
+          "asset_mgr_net": 889442,
+          "leveraged_net": -347577,
+          "open_interest": 2359720
         }
       ],
       "cot_bias": {
-        "score": 45,
+        "score": 53,
         "label": "NEUTRAL",
         "components": {
           "institutional_pressure": 100,
-          "fast_money_pressure": 0,
-          "position_momentum": 17,
+          "fast_money_pressure": 4,
+          "position_momentum": 49,
           "alignment": 20
         },
         "extremes": {
-          "asset_manager_percentile_3y": 33,
-          "leveraged_percentile_3y": 37
+          "asset_manager_percentile_3y": 30,
+          "leveraged_percentile_3y": 43
         }
       },
       "intraday": {
         "symbol": "SPY",
         "label": "S&P 500",
-        "as_of_utc": "2026-03-20T18:59:31Z",
-        "last_price": 648.1384,
-        "day_change_pct": -1.5,
+        "as_of_utc": "2026-03-20T19:43:28Z",
+        "last_price": 646.51,
+        "day_change_pct": -1.75,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 652.0448,
-          "price_vs_vwap_pct": -0.6,
+          "vwap": 651.1746,
+          "price_vs_vwap_pct": -0.72,
           "opening_range_high": 656.69,
           "opening_range_low": 653.0,
           "opening_range_state": "Below OR Low",
-          "ema20": 649.6387,
-          "ema50": 651.1792,
+          "ema20": 647.9035,
+          "ema50": 649.8633,
           "ema_stack": "Bear Stack",
           "pivot": 659.29,
-          "price_vs_pivot_pct": -1.69,
+          "price_vs_pivot_pct": -1.94,
           "prior_day_high": 662.98,
           "prior_day_low": 655.17,
-          "price_vs_prior_high_pct": -2.24,
-          "price_vs_prior_low_pct": -1.07,
+          "price_vs_prior_high_pct": -2.48,
+          "price_vs_prior_low_pct": -1.32,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -3866,26 +3956,71 @@
             {
               "t": "2026-03-20T18:40:00Z",
               "p": 648.16,
-              "v": 1545458
+              "v": 1950519
             },
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 647.94,
-              "v": 1632961
+              "v": 1633131
             },
             {
               "t": "2026-03-20T18:50:00Z",
               "p": 647.97,
-              "v": 1451401
+              "v": 1451381
             },
             {
               "t": "2026-03-20T18:55:00Z",
-              "p": 647.875,
-              "v": 1374223
+              "p": 648.08,
+              "v": 1826564
             },
             {
-              "t": "2026-03-20T18:59:31Z",
-              "p": 648.1384,
+              "t": "2026-03-20T19:00:00Z",
+              "p": 648.17,
+              "v": 1848755
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 647.94,
+              "v": 1782911
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 647.76,
+              "v": 1696959
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 648.02,
+              "v": 1059166
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 646.87,
+              "v": 2445381
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 647.12,
+              "v": 2059203
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 646.18,
+              "v": 2555722
+            },
+            {
+              "t": "2026-03-20T19:35:00Z",
+              "p": 645.57,
+              "v": 3380265
+            },
+            {
+              "t": "2026-03-20T19:40:00Z",
+              "p": 645.95,
+              "v": 1671700
+            },
+            {
+              "t": "2026-03-20T19:43:28Z",
+              "p": 646.51,
               "v": 0
             }
           ],
@@ -4284,15 +4419,15 @@
         }
       },
       "confluence": {
-        "score": 25,
+        "score": 29,
         "label": "BEARISH",
-        "cot_score": 45,
+        "cot_score": 53,
         "technical_score": 0,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias bearish: favor failed bounces below 652.04.",
+        "headline": "Bias bearish: favor failed bounces below 651.17.",
         "bullets": [
-          "Short bias below VWAP 652.04.",
+          "Short bias below VWAP 651.17.",
           "Acceleration setup under OR low 653.00.",
           "If price reclaims and holds above VWAP, stand down."
         ]
@@ -4304,23 +4439,17 @@
       "symbol": "DX-Y.NYB",
       "contract_code": "098662",
       "market_name": "USD INDEX - ICE FUTURES U.S.",
-      "latest_report_date": "2026-03-10",
+      "latest_report_date": "2026-03-17",
       "latest": {
-        "asset_mgr_net": 7156,
-        "leveraged_net": -11683,
-        "open_interest": 32012,
-        "asset_mgr_change": 6167,
-        "leveraged_change": -7136,
-        "open_interest_change": 2141
+        "asset_mgr_net": 10757,
+        "leveraged_net": -5615,
+        "open_interest": 35456,
+        "asset_mgr_change": 3601,
+        "leveraged_change": 6068,
+        "open_interest_change": 3444
       },
-      "previous_report_date": "2026-03-03",
+      "previous_report_date": "2026-03-10",
       "history": [
-        {
-          "report_date": "2024-03-19",
-          "asset_mgr_net": 7115,
-          "leveraged_net": -5787,
-          "open_interest": 23819
-        },
         {
           "report_date": "2024-03-26",
           "asset_mgr_net": 10510,
@@ -4938,45 +5067,51 @@
           "asset_mgr_net": 7156,
           "leveraged_net": -11683,
           "open_interest": 32012
+        },
+        {
+          "report_date": "2026-03-17",
+          "asset_mgr_net": 10757,
+          "leveraged_net": -5615,
+          "open_interest": 35456
         }
       ],
       "cot_bias": {
-        "score": 44,
-        "label": "NEUTRAL",
+        "score": 62,
+        "label": "BULLISH",
         "components": {
           "institutional_pressure": 100,
-          "fast_money_pressure": 0,
-          "position_momentum": 12,
+          "fast_money_pressure": 1,
+          "position_momentum": 100,
           "alignment": 20
         },
         "extremes": {
-          "asset_manager_percentile_3y": 61,
-          "leveraged_percentile_3y": 28
+          "asset_manager_percentile_3y": 69,
+          "leveraged_percentile_3y": 39
         }
       },
       "intraday": {
         "symbol": "DX-Y.NYB",
         "label": "U.S. Dollar Index",
-        "as_of_utc": "2026-03-20T18:49:29Z",
-        "last_price": 99.591,
-        "day_change_pct": 0.36,
-        "pulse_score": 52,
-        "pulse_label": "NEUTRAL",
+        "as_of_utc": "2026-03-20T19:33:27Z",
+        "last_price": 99.611,
+        "day_change_pct": 0.38,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 99.607,
-          "price_vs_vwap_pct": -0.02,
+          "vwap": 99.6095,
+          "price_vs_vwap_pct": 0.0,
           "opening_range_high": 99.641,
           "opening_range_low": 99.485,
           "opening_range_state": "Inside OR",
-          "ema20": 99.5572,
-          "ema50": 99.572,
-          "ema_stack": "Mixed Stack",
+          "ema20": 99.5972,
+          "ema50": 99.5883,
+          "ema_stack": "Bull Stack",
           "pivot": 99.4177,
-          "price_vs_pivot_pct": 0.17,
+          "price_vs_pivot_pct": 0.19,
           "prior_day_high": 100.085,
           "prior_day_low": 98.975,
-          "price_vs_prior_high_pct": -0.49,
-          "price_vs_prior_low_pct": 0.62,
+          "price_vs_prior_high_pct": -0.47,
+          "price_vs_prior_low_pct": 0.64,
           "session_structure": "Rotation Around VWAP"
         },
         "spark": {
@@ -5298,12 +5433,57 @@
             },
             {
               "t": "2026-03-20T18:45:00Z",
-              "p": 99.597,
+              "p": 99.594,
               "v": 0
             },
             {
-              "t": "2026-03-20T18:49:29Z",
-              "p": 99.591,
+              "t": "2026-03-20T18:50:00Z",
+              "p": 99.605,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 99.647,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 99.626,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 99.637,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 99.632,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 99.607,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 99.633,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 99.62,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 99.62,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:33:27Z",
+              "p": 99.611,
               "v": 0
             }
           ],
@@ -5707,17 +5887,17 @@
         }
       },
       "confluence": {
-        "score": 48,
-        "label": "NEUTRAL",
-        "cot_score": 44,
-        "technical_score": 52,
+        "score": 79,
+        "label": "BULLISH",
+        "cot_score": 62,
+        "technical_score": 100,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias neutral: balance around 99.61, wait for range break.",
+        "headline": "Bias bullish: expect dips bought while price holds above 99.61.",
         "bullets": [
-          "Respect OR boundaries 99.48-99.64.",
-          "Take quicker profits in choppy structure.",
-          "Switch directional only after clean acceptance outside range."
+          "Long bias above VWAP 99.61.",
+          "Momentum confirmation on breaks through OR high 99.64.",
+          "If structure rotates below VWAP, reduce long aggression."
         ]
       }
     }
@@ -5784,35 +5964,35 @@
       "symbol": "DIA",
       "label": "Dow (DIA)",
       "market_key": "dow_jones",
-      "cot_score": 55,
-      "cot_label": "NEUTRAL",
+      "cot_score": 64,
+      "cot_label": "BULLISH",
       "pulse_score": 0,
       "pulse_label": "BEARISH",
-      "confluence_score": 30,
+      "confluence_score": 35,
       "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "DIA",
         "label": "Dow Jones",
-        "as_of_utc": "2026-03-20T18:59:26Z",
-        "last_price": 455.3,
-        "day_change_pct": -1.04,
+        "as_of_utc": "2026-03-20T19:43:26Z",
+        "last_price": 454.755,
+        "day_change_pct": -1.15,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 457.6069,
-          "price_vs_vwap_pct": -0.5,
+          "vwap": 457.4068,
+          "price_vs_vwap_pct": -0.58,
           "opening_range_high": 460.57,
           "opening_range_low": 458.37,
           "opening_range_state": "Below OR Low",
-          "ema20": 456.2736,
-          "ema50": 457.1214,
+          "ema20": 455.377,
+          "ema50": 456.4273,
           "ema_stack": "Bear Stack",
           "pivot": 460.8667,
-          "price_vs_pivot_pct": -1.21,
+          "price_vs_pivot_pct": -1.33,
           "prior_day_high": 463.37,
           "prior_day_low": 458.16,
-          "price_vs_prior_high_pct": -1.74,
-          "price_vs_prior_low_pct": -0.62,
+          "price_vs_prior_high_pct": -1.86,
+          "price_vs_prior_low_pct": -0.74,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -6129,27 +6309,72 @@
             },
             {
               "t": "2026-03-20T18:40:00Z",
-              "p": 455.195,
-              "v": 48926
+              "p": 455.2,
+              "v": 57418
             },
             {
               "t": "2026-03-20T18:45:00Z",
-              "p": 455.12,
-              "v": 57159
+              "p": 455.08,
+              "v": 56618
             },
             {
               "t": "2026-03-20T18:50:00Z",
-              "p": 455.21,
-              "v": 48552
+              "p": 455.23,
+              "v": 48913
             },
             {
               "t": "2026-03-20T18:55:00Z",
-              "p": 455.18,
-              "v": 130184
+              "p": 455.29,
+              "v": 159385
             },
             {
-              "t": "2026-03-20T18:59:26Z",
-              "p": 455.3,
+              "t": "2026-03-20T19:00:00Z",
+              "p": 455.52,
+              "v": 127591
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 455.45,
+              "v": 38798
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 455.355,
+              "v": 67448
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 455.45,
+              "v": 50085
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 454.715,
+              "v": 62858
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 455.0,
+              "v": 39780
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 454.41,
+              "v": 83546
+            },
+            {
+              "t": "2026-03-20T19:35:00Z",
+              "p": 454.0,
+              "v": 104901
+            },
+            {
+              "t": "2026-03-20T19:40:00Z",
+              "p": 454.39,
+              "v": 82751
+            },
+            {
+              "t": "2026-03-20T19:43:26Z",
+              "p": 454.755,
               "v": 0
             }
           ],
@@ -6552,35 +6777,35 @@
       "symbol": "QQQ",
       "label": "Nasdaq-100 (QQQ)",
       "market_key": "nasdaq_100",
-      "cot_score": 51,
+      "cot_score": 46,
       "cot_label": "NEUTRAL",
       "pulse_score": 0,
       "pulse_label": "BEARISH",
-      "confluence_score": 28,
+      "confluence_score": 25,
       "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "QQQ",
         "label": "Nasdaq-100",
-        "as_of_utc": "2026-03-20T18:59:31Z",
-        "last_price": 581.65,
-        "day_change_pct": -1.92,
+        "as_of_utc": "2026-03-20T19:43:26Z",
+        "last_price": 580.09,
+        "day_change_pct": -2.18,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 585.8771,
-          "price_vs_vwap_pct": -0.72,
+          "vwap": 585.0327,
+          "price_vs_vwap_pct": -0.84,
           "opening_range_high": 591.15,
           "opening_range_low": 586.16,
           "opening_range_state": "Below OR Low",
-          "ema20": 582.9709,
-          "ema50": 584.5952,
+          "ema20": 581.4287,
+          "ema50": 583.3492,
           "ema_stack": "Bear Stack",
           "pivot": 591.9533,
-          "price_vs_pivot_pct": -1.74,
+          "price_vs_pivot_pct": -2.0,
           "prior_day_high": 595.8,
           "prior_day_low": 587.08,
-          "price_vs_prior_high_pct": -2.37,
-          "price_vs_prior_low_pct": -0.92,
+          "price_vs_prior_high_pct": -2.64,
+          "price_vs_prior_low_pct": -1.19,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -6912,12 +7137,57 @@
             },
             {
               "t": "2026-03-20T18:55:00Z",
-              "p": 581.37,
-              "v": 823271
+              "p": 581.55,
+              "v": 1053320
             },
             {
-              "t": "2026-03-20T18:59:31Z",
-              "p": 581.65,
+              "t": "2026-03-20T19:00:00Z",
+              "p": 581.63,
+              "v": 776141
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 581.38,
+              "v": 839835
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 581.36,
+              "v": 1000860
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 581.62,
+              "v": 905947
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 580.55,
+              "v": 1288880
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 580.7,
+              "v": 1272366
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 580.0298,
+              "v": 1663356
+            },
+            {
+              "t": "2026-03-20T19:35:00Z",
+              "p": 579.32,
+              "v": 1860351
+            },
+            {
+              "t": "2026-03-20T19:40:00Z",
+              "p": 579.7,
+              "v": 1745155
+            },
+            {
+              "t": "2026-03-20T19:43:26Z",
+              "p": 580.09,
               "v": 0
             }
           ],
@@ -7320,35 +7590,35 @@
       "symbol": "SPY",
       "label": "S&P 500 (SPY)",
       "market_key": "sp_500",
-      "cot_score": 45,
+      "cot_score": 53,
       "cot_label": "NEUTRAL",
       "pulse_score": 0,
       "pulse_label": "BEARISH",
-      "confluence_score": 25,
+      "confluence_score": 29,
       "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "SPY",
         "label": "S&P 500",
-        "as_of_utc": "2026-03-20T18:59:31Z",
-        "last_price": 648.1384,
-        "day_change_pct": -1.5,
+        "as_of_utc": "2026-03-20T19:43:28Z",
+        "last_price": 646.51,
+        "day_change_pct": -1.75,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 652.0448,
-          "price_vs_vwap_pct": -0.6,
+          "vwap": 651.1746,
+          "price_vs_vwap_pct": -0.72,
           "opening_range_high": 656.69,
           "opening_range_low": 653.0,
           "opening_range_state": "Below OR Low",
-          "ema20": 649.6387,
-          "ema50": 651.1792,
+          "ema20": 647.9035,
+          "ema50": 649.8633,
           "ema_stack": "Bear Stack",
           "pivot": 659.29,
-          "price_vs_pivot_pct": -1.69,
+          "price_vs_pivot_pct": -1.94,
           "prior_day_high": 662.98,
           "prior_day_low": 655.17,
-          "price_vs_prior_high_pct": -2.24,
-          "price_vs_prior_low_pct": -1.07,
+          "price_vs_prior_high_pct": -2.48,
+          "price_vs_prior_low_pct": -1.32,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -7666,26 +7936,71 @@
             {
               "t": "2026-03-20T18:40:00Z",
               "p": 648.16,
-              "v": 1545458
+              "v": 1950519
             },
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 647.94,
-              "v": 1632961
+              "v": 1633131
             },
             {
               "t": "2026-03-20T18:50:00Z",
               "p": 647.97,
-              "v": 1451401
+              "v": 1451381
             },
             {
               "t": "2026-03-20T18:55:00Z",
-              "p": 647.875,
-              "v": 1374223
+              "p": 648.08,
+              "v": 1826564
             },
             {
-              "t": "2026-03-20T18:59:31Z",
-              "p": 648.1384,
+              "t": "2026-03-20T19:00:00Z",
+              "p": 648.17,
+              "v": 1848755
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 647.94,
+              "v": 1782911
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 647.76,
+              "v": 1696959
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 648.02,
+              "v": 1059166
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 646.87,
+              "v": 2445381
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 647.12,
+              "v": 2059203
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 646.18,
+              "v": 2555722
+            },
+            {
+              "t": "2026-03-20T19:35:00Z",
+              "p": 645.57,
+              "v": 3380265
+            },
+            {
+              "t": "2026-03-20T19:40:00Z",
+              "p": 645.95,
+              "v": 1671700
+            },
+            {
+              "t": "2026-03-20T19:43:28Z",
+              "p": 646.51,
               "v": 0
             }
           ],
@@ -8088,35 +8403,35 @@
       "symbol": "DX-Y.NYB",
       "label": "Dollar Index (DXY)",
       "market_key": "dxy",
-      "cot_score": 44,
-      "cot_label": "NEUTRAL",
-      "pulse_score": 52,
-      "pulse_label": "NEUTRAL",
-      "confluence_score": 48,
-      "confluence_label": "NEUTRAL",
+      "cot_score": 62,
+      "cot_label": "BULLISH",
+      "pulse_score": 100,
+      "pulse_label": "BULLISH",
+      "confluence_score": 79,
+      "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "DX-Y.NYB",
         "label": "U.S. Dollar Index",
-        "as_of_utc": "2026-03-20T18:49:29Z",
-        "last_price": 99.591,
-        "day_change_pct": 0.36,
-        "pulse_score": 52,
-        "pulse_label": "NEUTRAL",
+        "as_of_utc": "2026-03-20T19:33:27Z",
+        "last_price": 99.611,
+        "day_change_pct": 0.38,
+        "pulse_score": 100,
+        "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 99.607,
-          "price_vs_vwap_pct": -0.02,
+          "vwap": 99.6095,
+          "price_vs_vwap_pct": 0.0,
           "opening_range_high": 99.641,
           "opening_range_low": 99.485,
           "opening_range_state": "Inside OR",
-          "ema20": 99.5572,
-          "ema50": 99.572,
-          "ema_stack": "Mixed Stack",
+          "ema20": 99.5972,
+          "ema50": 99.5883,
+          "ema_stack": "Bull Stack",
           "pivot": 99.4177,
-          "price_vs_pivot_pct": 0.17,
+          "price_vs_pivot_pct": 0.19,
           "prior_day_high": 100.085,
           "prior_day_low": 98.975,
-          "price_vs_prior_high_pct": -0.49,
-          "price_vs_prior_low_pct": 0.62,
+          "price_vs_prior_high_pct": -0.47,
+          "price_vs_prior_low_pct": 0.64,
           "session_structure": "Rotation Around VWAP"
         },
         "spark": {
@@ -8438,12 +8753,57 @@
             },
             {
               "t": "2026-03-20T18:45:00Z",
-              "p": 99.597,
+              "p": 99.594,
               "v": 0
             },
             {
-              "t": "2026-03-20T18:49:29Z",
-              "p": 99.591,
+              "t": "2026-03-20T18:50:00Z",
+              "p": 99.605,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 99.647,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 99.626,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 99.637,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 99.632,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 99.607,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 99.633,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 99.62,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 99.62,
+              "v": 0
+            },
+            {
+              "t": "2026-03-20T19:33:27Z",
+              "p": 99.611,
               "v": 0
             }
           ],
@@ -8860,26 +9220,26 @@
       "intraday": {
         "symbol": "ES=F",
         "label": "E-mini S&P (ES)",
-        "as_of_utc": "2026-03-20T18:49:31Z",
-        "last_price": 6555.5,
-        "day_change_pct": -1.57,
+        "as_of_utc": "2026-03-20T19:33:28Z",
+        "last_price": 6545.0,
+        "day_change_pct": -1.73,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 6599.8619,
-          "price_vs_vwap_pct": -0.67,
+          "vwap": 6594.7976,
+          "price_vs_vwap_pct": -0.76,
           "opening_range_high": 6643.0,
           "opening_range_low": 6605.5,
           "opening_range_state": "Below OR Low",
-          "ema20": 6575.9603,
-          "ema50": 6590.4109,
+          "ema20": 6560.4179,
+          "ema50": 6578.3617,
           "ema_stack": "Bear Stack",
           "pivot": 6655.0833,
-          "price_vs_pivot_pct": -1.5,
+          "price_vs_pivot_pct": -1.65,
           "prior_day_high": 6692.0,
           "prior_day_low": 6611.75,
-          "price_vs_prior_high_pct": -2.04,
-          "price_vs_prior_low_pct": -0.85,
+          "price_vs_prior_high_pct": -2.2,
+          "price_vs_prior_low_pct": -1.01,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -9202,11 +9562,56 @@
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 6555.25,
-              "v": 9340
+              "v": 12441
             },
             {
-              "t": "2026-03-20T18:49:31Z",
+              "t": "2026-03-20T18:50:00Z",
               "p": 6555.5,
+              "v": 12419
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 6556.75,
+              "v": 13127
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 6557.75,
+              "v": 15739
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 6555.5,
+              "v": 11009
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 6553.5,
+              "v": 15168
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 6556.25,
+              "v": 12082
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 6545.0,
+              "v": 15004
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 6547.75,
+              "v": 16593
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 6542.25,
+              "v": 9957
+            },
+            {
+              "t": "2026-03-20T19:33:28Z",
+              "p": 6545.0,
               "v": 0
             }
           ],
@@ -9623,26 +10028,26 @@
       "intraday": {
         "symbol": "NQ=F",
         "label": "E-mini Nasdaq (NQ)",
-        "as_of_utc": "2026-03-20T18:49:32Z",
-        "last_price": 24089.75,
-        "day_change_pct": -1.99,
+        "as_of_utc": "2026-03-20T19:33:28Z",
+        "last_price": 24051.5,
+        "day_change_pct": -2.15,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 24277.0153,
-          "price_vs_vwap_pct": -0.77,
+          "vwap": 24256.538,
+          "price_vs_vwap_pct": -0.85,
           "opening_range_high": 24491.25,
           "opening_range_low": 24279.75,
           "opening_range_state": "Below OR Low",
-          "ema20": 24163.973,
-          "ema50": 24227.5285,
+          "ema20": 24107.6323,
+          "ema50": 24180.4435,
           "ema_stack": "Bear Stack",
           "pivot": 24536.25,
-          "price_vs_pivot_pct": -1.82,
+          "price_vs_pivot_pct": -1.98,
           "prior_day_high": 24691.5,
           "prior_day_low": 24326.75,
-          "price_vs_prior_high_pct": -2.44,
-          "price_vs_prior_low_pct": -0.97,
+          "price_vs_prior_high_pct": -2.59,
+          "price_vs_prior_low_pct": -1.13,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -9965,11 +10370,56 @@
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 24089.0,
-              "v": 2562
+              "v": 3606
             },
             {
-              "t": "2026-03-20T18:49:32Z",
-              "p": 24089.75,
+              "t": "2026-03-20T18:50:00Z",
+              "p": 24086.25,
+              "v": 3376
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 24094.25,
+              "v": 3584
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 24096.5,
+              "v": 4993
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 24086.0,
+              "v": 3150
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 24086.5,
+              "v": 3997
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 24097.5,
+              "v": 3862
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 24052.0,
+              "v": 5361
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 24059.75,
+              "v": 4082
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 24042.0,
+              "v": 3100
+            },
+            {
+              "t": "2026-03-20T19:33:28Z",
+              "p": 24051.5,
               "v": 0
             }
           ],
@@ -10386,26 +10836,26 @@
       "intraday": {
         "symbol": "YM=F",
         "label": "Mini Dow (YM)",
-        "as_of_utc": "2026-03-20T18:49:31Z",
-        "last_price": 45821.0,
-        "day_change_pct": -1.12,
+        "as_of_utc": "2026-03-20T19:33:26Z",
+        "last_price": 45804.0,
+        "day_change_pct": -1.16,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 46094.3296,
+          "vwap": 46075.0258,
           "price_vs_vwap_pct": -0.59,
           "opening_range_high": 46368.0,
           "opening_range_low": 46146.0,
           "opening_range_state": "Below OR Low",
-          "ema20": 45954.8778,
-          "ema50": 46033.8612,
+          "ema20": 45874.523,
+          "ema50": 45970.0609,
           "ema_stack": "Bear Stack",
           "pivot": 46319.0,
-          "price_vs_pivot_pct": -1.08,
+          "price_vs_pivot_pct": -1.11,
           "prior_day_high": 46566.0,
           "prior_day_low": 46039.0,
-          "price_vs_prior_high_pct": -1.6,
-          "price_vs_prior_low_pct": -0.47,
+          "price_vs_prior_high_pct": -1.64,
+          "price_vs_prior_low_pct": -0.51,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -10728,11 +11178,56 @@
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 45815.0,
-              "v": 453
+              "v": 635
             },
             {
-              "t": "2026-03-20T18:49:31Z",
-              "p": 45821.0,
+              "t": "2026-03-20T18:50:00Z",
+              "p": 45829.0,
+              "v": 612
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 45835.0,
+              "v": 1023
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 45858.0,
+              "v": 905
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 45850.0,
+              "v": 620
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 45842.0,
+              "v": 702
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 45850.0,
+              "v": 624
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 45779.0,
+              "v": 855
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 45809.0,
+              "v": 812
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 45791.0,
+              "v": 518
+            },
+            {
+              "t": "2026-03-20T19:33:26Z",
+              "p": 45804.0,
               "v": 0
             }
           ],
@@ -11149,26 +11644,26 @@
       "intraday": {
         "symbol": "RTY=F",
         "label": "Russell 2000 (RTY)",
-        "as_of_utc": "2026-03-20T18:49:32Z",
-        "last_price": 2449.6001,
-        "day_change_pct": -2.49,
+        "as_of_utc": "2026-03-20T19:33:28Z",
+        "last_price": 2442.8,
+        "day_change_pct": -2.76,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 2477.7935,
-          "price_vs_vwap_pct": -1.14,
+          "vwap": 2474.9663,
+          "price_vs_vwap_pct": -1.3,
           "opening_range_high": 2509.7,
           "opening_range_low": 2483.8,
           "opening_range_state": "Below OR Low",
-          "ema20": 2460.1914,
-          "ema50": 2468.9958,
+          "ema20": 2451.5517,
+          "ema50": 2462.0265,
           "ema_stack": "Bear Stack",
           "pivot": 2503.1667,
-          "price_vs_pivot_pct": -2.14,
+          "price_vs_pivot_pct": -2.41,
           "prior_day_high": 2536.6001,
           "prior_day_low": 2459.6001,
-          "price_vs_prior_high_pct": -3.43,
-          "price_vs_prior_low_pct": -0.41,
+          "price_vs_prior_high_pct": -3.7,
+          "price_vs_prior_low_pct": -0.68,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -11491,11 +11986,56 @@
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 2449.2,
-              "v": 1182
+              "v": 1419
             },
             {
-              "t": "2026-03-20T18:49:32Z",
-              "p": 2449.6001,
+              "t": "2026-03-20T18:50:00Z",
+              "p": 2449.3,
+              "v": 1528
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 2448.3,
+              "v": 2423
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 2447.8999,
+              "v": 2620
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 2447.6001,
+              "v": 1257
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 2447.6001,
+              "v": 1842
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 2448.8999,
+              "v": 1410
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 2444.2,
+              "v": 1510
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 2446.1001,
+              "v": 1618
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 2442.2,
+              "v": 1601
+            },
+            {
+              "t": "2026-03-20T19:33:28Z",
+              "p": 2442.8,
               "v": 0
             }
           ],
@@ -11912,26 +12452,26 @@
       "intraday": {
         "symbol": "CL=F",
         "label": "Crude Oil (CL)",
-        "as_of_utc": "2026-03-20T18:49:32Z",
-        "last_price": 98.6,
-        "day_change_pct": 3.19,
+        "as_of_utc": "2026-03-20T19:33:26Z",
+        "last_price": 98.35,
+        "day_change_pct": 2.93,
         "pulse_score": 100,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 97.2002,
-          "price_vs_vwap_pct": 1.44,
+          "vwap": 97.2881,
+          "price_vs_vwap_pct": 1.09,
           "opening_range_high": 96.22,
           "opening_range_low": 95.0,
           "opening_range_state": "Above OR High",
-          "ema20": 98.0332,
-          "ema50": 97.4684,
+          "ema20": 98.249,
+          "ema50": 97.7529,
           "ema_stack": "Bull Stack",
           "pivot": 95.64,
-          "price_vs_pivot_pct": 3.09,
+          "price_vs_pivot_pct": 2.83,
           "prior_day_high": 100.48,
           "prior_day_low": 92.1,
-          "price_vs_prior_high_pct": -1.87,
-          "price_vs_prior_low_pct": 7.06,
+          "price_vs_prior_high_pct": -2.12,
+          "price_vs_prior_low_pct": 6.79,
           "session_structure": "AM Range Breakout Up"
         },
         "spark": {
@@ -12254,11 +12794,56 @@
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 98.52,
-              "v": 1829
+              "v": 2183
             },
             {
-              "t": "2026-03-20T18:49:32Z",
-              "p": 98.6,
+              "t": "2026-03-20T18:50:00Z",
+              "p": 98.54,
+              "v": 3305
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 98.59,
+              "v": 2043
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 98.46,
+              "v": 1259
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 98.58,
+              "v": 1466
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 98.67,
+              "v": 1885
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 98.21,
+              "v": 1857
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 98.35,
+              "v": 2132
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 98.26,
+              "v": 1181
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 98.35,
+              "v": 462
+            },
+            {
+              "t": "2026-03-20T19:33:26Z",
+              "p": 98.35,
               "v": 0
             }
           ],
@@ -12675,26 +13260,26 @@
       "intraday": {
         "symbol": "GC=F",
         "label": "Gold (GC)",
-        "as_of_utc": "2026-03-20T18:49:32Z",
-        "last_price": 4513.6001,
-        "day_change_pct": -2.0,
+        "as_of_utc": "2026-03-20T19:33:29Z",
+        "last_price": 4510.3999,
+        "day_change_pct": -2.07,
         "pulse_score": 0,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 4582.8246,
-          "price_vs_vwap_pct": -1.51,
+          "vwap": 4573.01,
+          "price_vs_vwap_pct": -1.37,
           "opening_range_high": 4666.6001,
           "opening_range_low": 4613.1001,
           "opening_range_state": "Below OR Low",
-          "ema20": 4553.5225,
-          "ema50": 4571.9596,
+          "ema20": 4522.9489,
+          "ema50": 4550.6577,
           "ema_stack": "Bear Stack",
           "pivot": 4620.4001,
-          "price_vs_pivot_pct": -2.31,
+          "price_vs_pivot_pct": -2.38,
           "prior_day_high": 4666.8999,
           "prior_day_low": 4540.7002,
-          "price_vs_prior_high_pct": -3.28,
-          "price_vs_prior_low_pct": -0.6,
+          "price_vs_prior_high_pct": -3.35,
+          "price_vs_prior_low_pct": -0.67,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -13017,11 +13602,56 @@
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 4512.8999,
-              "v": 1810
+              "v": 2226
             },
             {
-              "t": "2026-03-20T18:49:32Z",
-              "p": 4513.6001,
+              "t": "2026-03-20T18:50:00Z",
+              "p": 4504.6001,
+              "v": 2920
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 4500.7002,
+              "v": 3894
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 4501.6001,
+              "v": 1740
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 4504.8999,
+              "v": 1162
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 4501.5,
+              "v": 795
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 4503.6001,
+              "v": 568
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 4489.2002,
+              "v": 624
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 4500.0,
+              "v": 683
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 4507.5,
+              "v": 473
+            },
+            {
+              "t": "2026-03-20T19:33:29Z",
+              "p": 4510.3999,
               "v": 0
             }
           ],
@@ -13431,33 +14061,33 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 48,
-      "pulse_label": "NEUTRAL",
-      "confluence_score": 48,
-      "confluence_label": "NEUTRAL",
+      "pulse_score": 30,
+      "pulse_label": "BEARISH",
+      "confluence_score": 30,
+      "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "6E=F",
         "label": "Euro FX (6E)",
-        "as_of_utc": "2026-03-20T18:49:32Z",
-        "last_price": 1.1603,
-        "day_change_pct": -0.22,
-        "pulse_score": 48,
-        "pulse_label": "NEUTRAL",
+        "as_of_utc": "2026-03-20T19:33:20Z",
+        "last_price": 1.16,
+        "day_change_pct": -0.25,
+        "pulse_score": 30,
+        "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 1.1595,
-          "price_vs_vwap_pct": 0.07,
+          "vwap": 1.1596,
+          "price_vs_vwap_pct": 0.03,
           "opening_range_high": 1.1606,
           "opening_range_low": 1.1587,
           "opening_range_state": "Inside OR",
-          "ema20": 1.1607,
-          "ema50": 1.1604,
-          "ema_stack": "Mixed Stack",
+          "ema20": 1.1602,
+          "ema50": 1.1602,
+          "ema_stack": "Bear Stack",
           "pivot": 1.1605,
-          "price_vs_pivot_pct": -0.01,
+          "price_vs_pivot_pct": -0.04,
           "prior_day_high": 1.1664,
           "prior_day_low": 1.1517,
-          "price_vs_prior_high_pct": -0.52,
-          "price_vs_prior_low_pct": 0.75,
+          "price_vs_prior_high_pct": -0.55,
+          "price_vs_prior_low_pct": 0.72,
           "session_structure": "Rotation Around VWAP"
         },
         "spark": {
@@ -13780,11 +14410,56 @@
             {
               "t": "2026-03-20T18:45:00Z",
               "p": 1.1602,
-              "v": 1032
+              "v": 1353
             },
             {
-              "t": "2026-03-20T18:49:32Z",
-              "p": 1.1603,
+              "t": "2026-03-20T18:50:00Z",
+              "p": 1.1602,
+              "v": 737
+            },
+            {
+              "t": "2026-03-20T18:55:00Z",
+              "p": 1.1596,
+              "v": 2594
+            },
+            {
+              "t": "2026-03-20T19:00:00Z",
+              "p": 1.1599,
+              "v": 942
+            },
+            {
+              "t": "2026-03-20T19:05:00Z",
+              "p": 1.1597,
+              "v": 636
+            },
+            {
+              "t": "2026-03-20T19:10:00Z",
+              "p": 1.1597,
+              "v": 512
+            },
+            {
+              "t": "2026-03-20T19:15:00Z",
+              "p": 1.1601,
+              "v": 687
+            },
+            {
+              "t": "2026-03-20T19:20:00Z",
+              "p": 1.1597,
+              "v": 568
+            },
+            {
+              "t": "2026-03-20T19:25:00Z",
+              "p": 1.1599,
+              "v": 327
+            },
+            {
+              "t": "2026-03-20T19:30:00Z",
+              "p": 1.1599,
+              "v": 215
+            },
+            {
+              "t": "2026-03-20T19:33:20Z",
+              "p": 1.16,
               "v": 0
             }
           ],
@@ -14191,7 +14866,7 @@
   },
   "forex_factory": {
     "source": "https://nfs.faireconomy.media/ff_calendar_thisweek.xml",
-    "fetched_at_utc": "2026-03-20T18:59:33Z",
+    "fetched_at_utc": "2026-03-20T19:43:28Z",
     "red_folder_count": 6,
     "high_impact_total_count": 32,
     "relevance_filter": "Major USD macro/Fed events for US index trading",
