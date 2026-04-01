@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-01T18:06:48Z",
+  "generated_at_utc": "2026-04-01T19:34:01Z",
   "source_url": "https://publicreporting.cftc.gov/resource/udgc-27he.json",
   "history_weeks": 104,
   "market_order": [
@@ -673,26 +673,26 @@
       "intraday": {
         "symbol": "DIA",
         "label": "Dow Jones",
-        "as_of_utc": "2026-04-01T18:06:42Z",
-        "last_price": 466.36,
-        "day_change_pct": 0.68,
-        "pulse_score": 52,
-        "pulse_label": "NEUTRAL",
+        "as_of_utc": "2026-04-01T19:33:58Z",
+        "last_price": 466.1,
+        "day_change_pct": 0.63,
+        "pulse_score": 34,
+        "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 466.5955,
-          "price_vs_vwap_pct": -0.05,
+          "vwap": 466.4505,
+          "price_vs_vwap_pct": -0.08,
           "opening_range_high": 467.24,
           "opening_range_low": 464.5,
           "opening_range_state": "Inside OR",
-          "ema20": 467.0876,
-          "ema50": 467.0384,
-          "ema_stack": "Mixed Stack",
+          "ema20": 466.1011,
+          "ema50": 466.4305,
+          "ema_stack": "Bear Stack",
           "pivot": 460.5433,
-          "price_vs_pivot_pct": 1.26,
+          "price_vs_pivot_pct": 1.21,
           "prior_day_high": 463.8,
           "prior_day_low": 454.67,
-          "price_vs_prior_high_pct": 0.55,
-          "price_vs_prior_low_pct": 2.57,
+          "price_vs_prior_high_pct": 0.5,
+          "price_vs_prior_low_pct": 2.51,
           "session_structure": "Rotation Around VWAP"
         },
         "spark": {
@@ -959,27 +959,112 @@
             },
             {
               "t": "2026-04-01T17:50:00Z",
-              "p": 467.17,
-              "v": 43745
+              "p": 467.18,
+              "v": 51344
             },
             {
               "t": "2026-04-01T17:55:00Z",
               "p": 466.613,
-              "v": 83738
+              "v": 83919
             },
             {
               "t": "2026-04-01T18:00:00Z",
-              "p": 466.2501,
-              "v": 129767
+              "p": 466.26,
+              "v": 129624
             },
             {
               "t": "2026-04-01T18:05:00Z",
-              "p": 466.48,
-              "v": 23223
+              "p": 466.4,
+              "v": 78891
             },
             {
-              "t": "2026-04-01T18:06:42Z",
-              "p": 466.36,
+              "t": "2026-04-01T18:10:00Z",
+              "p": 466.29,
+              "v": 70558
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 465.82,
+              "v": 66457
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 465.25,
+              "v": 87638
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 465.22,
+              "v": 76089
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 465.28,
+              "v": 54203
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 465.58,
+              "v": 85569
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 465.66,
+              "v": 65292
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 465.68,
+              "v": 53139
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 465.67,
+              "v": 45645
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 465.66,
+              "v": 60036
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 465.83,
+              "v": 64345
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 465.88,
+              "v": 60529
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 465.86,
+              "v": 63272
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 466.01,
+              "v": 39753
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 466.02,
+              "v": 40647
+            },
+            {
+              "t": "2026-04-01T19:25:00Z",
+              "p": 466.34,
+              "v": 63222
+            },
+            {
+              "t": "2026-04-01T19:30:00Z",
+              "p": 466.08,
+              "v": 73327
+            },
+            {
+              "t": "2026-04-01T19:33:58Z",
+              "p": 466.1,
               "v": 0
             }
           ],
@@ -1378,17 +1463,17 @@
         }
       },
       "confluence": {
-        "score": 42,
-        "label": "NEUTRAL",
+        "score": 34,
+        "label": "BEARISH",
         "cot_score": 34,
-        "technical_score": 52,
+        "technical_score": 34,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias neutral: balance around 466.60, wait for range break.",
+        "headline": "Bias bearish: favor failed bounces below 466.45.",
         "bullets": [
-          "Respect OR boundaries 464.50-467.24.",
-          "Take quicker profits in choppy structure.",
-          "Switch directional only after clean acceptance outside range."
+          "Short bias below VWAP 466.45.",
+          "Acceleration setup under OR low 464.50.",
+          "If price reclaims and holds above VWAP, stand down."
         ]
       }
     },
@@ -2051,26 +2136,26 @@
       "intraday": {
         "symbol": "QQQ",
         "label": "Nasdaq-100",
-        "as_of_utc": "2026-04-01T18:06:47Z",
-        "last_price": 584.98,
-        "day_change_pct": 1.33,
+        "as_of_utc": "2026-04-01T19:34:01Z",
+        "last_price": 584.61,
+        "day_change_pct": 1.27,
         "pulse_score": 100,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 584.8606,
-          "price_vs_vwap_pct": 0.02,
+          "vwap": 584.5708,
+          "price_vs_vwap_pct": 0.01,
           "opening_range_high": 584.026,
           "opening_range_low": 580.42,
           "opening_range_state": "Above OR High",
-          "ema20": 586.3016,
-          "ema50": 585.8745,
+          "ema20": 584.4608,
+          "ema50": 584.89,
           "ema_stack": "Mixed Stack",
           "pivot": 573.3467,
-          "price_vs_pivot_pct": 2.03,
+          "price_vs_pivot_pct": 1.96,
           "prior_day_high": 578.64,
           "prior_day_low": 564.21,
-          "price_vs_prior_high_pct": 1.1,
-          "price_vs_prior_low_pct": 3.68,
+          "price_vs_prior_high_pct": 1.03,
+          "price_vs_prior_low_pct": 3.62,
           "session_structure": "AM Range Breakout Up"
         },
         "spark": {
@@ -2352,12 +2437,97 @@
             },
             {
               "t": "2026-04-01T18:05:00Z",
-              "p": 585.1,
-              "v": 542050
+              "p": 584.935,
+              "v": 1268476
             },
             {
-              "t": "2026-04-01T18:06:47Z",
-              "p": 584.98,
+              "t": "2026-04-01T18:10:00Z",
+              "p": 584.7899,
+              "v": 677674
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 583.85,
+              "v": 1493805
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 582.97,
+              "v": 1686106
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 583.025,
+              "v": 1323852
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 582.785,
+              "v": 1258801
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 583.23,
+              "v": 1370070
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 583.67,
+              "v": 1198322
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 583.3902,
+              "v": 941244
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 583.355,
+              "v": 516708
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 583.17,
+              "v": 522457
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 583.545,
+              "v": 701614
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 584.035,
+              "v": 760129
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 584.0,
+              "v": 711945
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 584.48,
+              "v": 869119
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 584.635,
+              "v": 983502
+            },
+            {
+              "t": "2026-04-01T19:25:00Z",
+              "p": 585.03,
+              "v": 1261327
+            },
+            {
+              "t": "2026-04-01T19:30:00Z",
+              "p": 584.535,
+              "v": 836127
+            },
+            {
+              "t": "2026-04-01T19:34:01Z",
+              "p": 584.61,
               "v": 0
             }
           ],
@@ -2762,9 +2932,9 @@
         "technical_score": 100,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias bullish: expect dips bought while price holds above 584.86.",
+        "headline": "Bias bullish: expect dips bought while price holds above 584.57.",
         "bullets": [
-          "Long bias above VWAP 584.86.",
+          "Long bias above VWAP 584.57.",
           "Momentum confirmation on breaks through OR high 584.03.",
           "If structure rotates below VWAP, reduce long aggression."
         ]
@@ -3429,27 +3599,27 @@
       "intraday": {
         "symbol": "SPY",
         "label": "S&P 500",
-        "as_of_utc": "2026-04-01T18:06:46Z",
-        "last_price": 656.07,
-        "day_change_pct": 0.88,
-        "pulse_score": 100,
+        "as_of_utc": "2026-04-01T19:34:01Z",
+        "last_price": 655.84,
+        "day_change_pct": 0.85,
+        "pulse_score": 88,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 655.9827,
-          "price_vs_vwap_pct": 0.01,
+          "vwap": 655.7331,
+          "price_vs_vwap_pct": 0.02,
           "opening_range_high": 656.05,
           "opening_range_low": 653.0,
-          "opening_range_state": "Above OR High",
-          "ema20": 657.2769,
-          "ema50": 656.945,
+          "opening_range_state": "Inside OR",
+          "ema20": 655.6014,
+          "ema50": 656.0164,
           "ema_stack": "Mixed Stack",
           "pivot": 646.5866,
-          "price_vs_pivot_pct": 1.47,
+          "price_vs_pivot_pct": 1.43,
           "prior_day_high": 651.54,
           "prior_day_low": 637.98,
-          "price_vs_prior_high_pct": 0.7,
-          "price_vs_prior_low_pct": 2.84,
-          "session_structure": "AM Range Breakout Up"
+          "price_vs_prior_high_pct": 0.66,
+          "price_vs_prior_low_pct": 2.8,
+          "session_structure": "Rotation Around VWAP"
         },
         "spark": {
           "today": [
@@ -3716,26 +3886,111 @@
             {
               "t": "2026-04-01T17:50:00Z",
               "p": 657.55,
-              "v": 440920
+              "v": 541905
             },
             {
               "t": "2026-04-01T17:55:00Z",
               "p": 656.79,
-              "v": 1032800
+              "v": 1032720
             },
             {
               "t": "2026-04-01T18:00:00Z",
               "p": 655.96,
-              "v": 1750485
+              "v": 1750532
             },
             {
               "t": "2026-04-01T18:05:00Z",
-              "p": 656.19,
-              "v": 402279
+              "p": 656.1098,
+              "v": 934794
             },
             {
-              "t": "2026-04-01T18:06:46Z",
-              "p": 656.07,
+              "t": "2026-04-01T18:10:00Z",
+              "p": 655.905,
+              "v": 1005832
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 654.975,
+              "v": 1366746
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 654.13,
+              "v": 1328568
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 654.23,
+              "v": 1289684
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 654.005,
+              "v": 1114150
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 654.46,
+              "v": 1436769
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 654.86,
+              "v": 1276264
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 654.645,
+              "v": 1596761
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 654.57,
+              "v": 725423
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 654.41,
+              "v": 676012
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 654.81,
+              "v": 920526
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 655.17,
+              "v": 888493
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 655.19,
+              "v": 729791
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 655.565,
+              "v": 674003
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 655.695,
+              "v": 835060
+            },
+            {
+              "t": "2026-04-01T19:25:00Z",
+              "p": 656.1,
+              "v": 1217784
+            },
+            {
+              "t": "2026-04-01T19:30:00Z",
+              "p": 655.76,
+              "v": 1038712
+            },
+            {
+              "t": "2026-04-01T19:34:01Z",
+              "p": 655.84,
               "v": 0
             }
           ],
@@ -4134,15 +4389,15 @@
         }
       },
       "confluence": {
-        "score": 74,
+        "score": 68,
         "label": "BULLISH",
         "cot_score": 52,
-        "technical_score": 100,
+        "technical_score": 88,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias bullish: expect dips bought while price holds above 655.98.",
+        "headline": "Bias bullish: expect dips bought while price holds above 655.73.",
         "bullets": [
-          "Long bias above VWAP 655.98.",
+          "Long bias above VWAP 655.73.",
           "Momentum confirmation on breaks through OR high 656.05.",
           "If structure rotates below VWAP, reduce long aggression."
         ]
@@ -4807,26 +5062,26 @@
       "intraday": {
         "symbol": "DX-Y.NYB",
         "label": "U.S. Dollar Index",
-        "as_of_utc": "2026-04-01T17:56:46Z",
-        "last_price": 99.499,
-        "day_change_pct": -0.46,
+        "as_of_utc": "2026-04-01T19:24:00Z",
+        "last_price": 99.654,
+        "day_change_pct": -0.31,
         "pulse_score": 84,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 99.4106,
-          "price_vs_vwap_pct": 0.09,
+          "vwap": 99.4606,
+          "price_vs_vwap_pct": 0.19,
           "opening_range_high": 99.436,
           "opening_range_low": 99.32,
           "opening_range_state": "Above OR High",
-          "ema20": 99.4386,
-          "ema50": 99.4138,
+          "ema20": 99.5949,
+          "ema50": 99.5182,
           "ema_stack": "Bull Stack",
           "pivot": 99.961,
-          "price_vs_pivot_pct": -0.46,
+          "price_vs_pivot_pct": -0.31,
           "prior_day_high": 100.239,
           "prior_day_low": 99.82,
-          "price_vs_prior_high_pct": -0.74,
-          "price_vs_prior_low_pct": -0.32,
+          "price_vs_prior_high_pct": -0.58,
+          "price_vs_prior_low_pct": -0.17,
           "session_structure": "AM Range Breakout Up"
         },
         "spark": {
@@ -5098,12 +5353,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 99.502,
+              "p": 99.522,
               "v": 0
             },
             {
-              "t": "2026-04-01T17:56:46Z",
-              "p": 99.499,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 99.56,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 99.553,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 99.578,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 99.591,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 99.607,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 99.609,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 99.629,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 99.635,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 99.592,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 99.599,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 99.606,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 99.651,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 99.654,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 99.628,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 99.626,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 99.636,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 99.654,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:24:00Z",
+              "p": 99.654,
               "v": 0
             }
           ],
@@ -5513,9 +5853,9 @@
         "technical_score": 84,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias bullish: expect dips bought while price holds above 99.41.",
+        "headline": "Bias bullish: expect dips bought while price holds above 99.46.",
         "bullets": [
-          "Long bias above VWAP 99.41.",
+          "Long bias above VWAP 99.46.",
           "Momentum confirmation on breaks through OR high 99.44.",
           "If structure rotates below VWAP, reduce long aggression."
         ]
@@ -5586,33 +5926,33 @@
       "market_key": "dow_jones",
       "cot_score": 34,
       "cot_label": "BEARISH",
-      "pulse_score": 52,
-      "pulse_label": "NEUTRAL",
-      "confluence_score": 42,
-      "confluence_label": "NEUTRAL",
+      "pulse_score": 34,
+      "pulse_label": "BEARISH",
+      "confluence_score": 34,
+      "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "DIA",
         "label": "Dow Jones",
-        "as_of_utc": "2026-04-01T18:06:42Z",
-        "last_price": 466.36,
-        "day_change_pct": 0.68,
-        "pulse_score": 52,
-        "pulse_label": "NEUTRAL",
+        "as_of_utc": "2026-04-01T19:33:58Z",
+        "last_price": 466.1,
+        "day_change_pct": 0.63,
+        "pulse_score": 34,
+        "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 466.5955,
-          "price_vs_vwap_pct": -0.05,
+          "vwap": 466.4505,
+          "price_vs_vwap_pct": -0.08,
           "opening_range_high": 467.24,
           "opening_range_low": 464.5,
           "opening_range_state": "Inside OR",
-          "ema20": 467.0876,
-          "ema50": 467.0384,
-          "ema_stack": "Mixed Stack",
+          "ema20": 466.1011,
+          "ema50": 466.4305,
+          "ema_stack": "Bear Stack",
           "pivot": 460.5433,
-          "price_vs_pivot_pct": 1.26,
+          "price_vs_pivot_pct": 1.21,
           "prior_day_high": 463.8,
           "prior_day_low": 454.67,
-          "price_vs_prior_high_pct": 0.55,
-          "price_vs_prior_low_pct": 2.57,
+          "price_vs_prior_high_pct": 0.5,
+          "price_vs_prior_low_pct": 2.51,
           "session_structure": "Rotation Around VWAP"
         },
         "spark": {
@@ -5879,27 +6219,112 @@
             },
             {
               "t": "2026-04-01T17:50:00Z",
-              "p": 467.17,
-              "v": 43745
+              "p": 467.18,
+              "v": 51344
             },
             {
               "t": "2026-04-01T17:55:00Z",
               "p": 466.613,
-              "v": 83738
+              "v": 83919
             },
             {
               "t": "2026-04-01T18:00:00Z",
-              "p": 466.2501,
-              "v": 129767
+              "p": 466.26,
+              "v": 129624
             },
             {
               "t": "2026-04-01T18:05:00Z",
-              "p": 466.48,
-              "v": 23223
+              "p": 466.4,
+              "v": 78891
             },
             {
-              "t": "2026-04-01T18:06:42Z",
-              "p": 466.36,
+              "t": "2026-04-01T18:10:00Z",
+              "p": 466.29,
+              "v": 70558
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 465.82,
+              "v": 66457
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 465.25,
+              "v": 87638
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 465.22,
+              "v": 76089
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 465.28,
+              "v": 54203
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 465.58,
+              "v": 85569
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 465.66,
+              "v": 65292
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 465.68,
+              "v": 53139
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 465.67,
+              "v": 45645
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 465.66,
+              "v": 60036
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 465.83,
+              "v": 64345
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 465.88,
+              "v": 60529
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 465.86,
+              "v": 63272
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 466.01,
+              "v": 39753
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 466.02,
+              "v": 40647
+            },
+            {
+              "t": "2026-04-01T19:25:00Z",
+              "p": 466.34,
+              "v": 63222
+            },
+            {
+              "t": "2026-04-01T19:30:00Z",
+              "p": 466.08,
+              "v": 73327
+            },
+            {
+              "t": "2026-04-01T19:33:58Z",
+              "p": 466.1,
               "v": 0
             }
           ],
@@ -6311,26 +6736,26 @@
       "intraday": {
         "symbol": "QQQ",
         "label": "Nasdaq-100",
-        "as_of_utc": "2026-04-01T18:06:47Z",
-        "last_price": 584.98,
-        "day_change_pct": 1.33,
+        "as_of_utc": "2026-04-01T19:34:01Z",
+        "last_price": 584.61,
+        "day_change_pct": 1.27,
         "pulse_score": 100,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 584.8606,
-          "price_vs_vwap_pct": 0.02,
+          "vwap": 584.5708,
+          "price_vs_vwap_pct": 0.01,
           "opening_range_high": 584.026,
           "opening_range_low": 580.42,
           "opening_range_state": "Above OR High",
-          "ema20": 586.3016,
-          "ema50": 585.8745,
+          "ema20": 584.4608,
+          "ema50": 584.89,
           "ema_stack": "Mixed Stack",
           "pivot": 573.3467,
-          "price_vs_pivot_pct": 2.03,
+          "price_vs_pivot_pct": 1.96,
           "prior_day_high": 578.64,
           "prior_day_low": 564.21,
-          "price_vs_prior_high_pct": 1.1,
-          "price_vs_prior_low_pct": 3.68,
+          "price_vs_prior_high_pct": 1.03,
+          "price_vs_prior_low_pct": 3.62,
           "session_structure": "AM Range Breakout Up"
         },
         "spark": {
@@ -6612,12 +7037,97 @@
             },
             {
               "t": "2026-04-01T18:05:00Z",
-              "p": 585.1,
-              "v": 542050
+              "p": 584.935,
+              "v": 1268476
             },
             {
-              "t": "2026-04-01T18:06:47Z",
-              "p": 584.98,
+              "t": "2026-04-01T18:10:00Z",
+              "p": 584.7899,
+              "v": 677674
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 583.85,
+              "v": 1493805
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 582.97,
+              "v": 1686106
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 583.025,
+              "v": 1323852
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 582.785,
+              "v": 1258801
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 583.23,
+              "v": 1370070
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 583.67,
+              "v": 1198322
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 583.3902,
+              "v": 941244
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 583.355,
+              "v": 516708
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 583.17,
+              "v": 522457
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 583.545,
+              "v": 701614
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 584.035,
+              "v": 760129
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 584.0,
+              "v": 711945
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 584.48,
+              "v": 869119
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 584.635,
+              "v": 983502
+            },
+            {
+              "t": "2026-04-01T19:25:00Z",
+              "p": 585.03,
+              "v": 1261327
+            },
+            {
+              "t": "2026-04-01T19:30:00Z",
+              "p": 584.535,
+              "v": 836127
+            },
+            {
+              "t": "2026-04-01T19:34:01Z",
+              "p": 584.61,
               "v": 0
             }
           ],
@@ -7022,34 +7532,34 @@
       "market_key": "sp_500",
       "cot_score": 52,
       "cot_label": "NEUTRAL",
-      "pulse_score": 100,
+      "pulse_score": 88,
       "pulse_label": "BULLISH",
-      "confluence_score": 74,
+      "confluence_score": 68,
       "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "SPY",
         "label": "S&P 500",
-        "as_of_utc": "2026-04-01T18:06:46Z",
-        "last_price": 656.07,
-        "day_change_pct": 0.88,
-        "pulse_score": 100,
+        "as_of_utc": "2026-04-01T19:34:01Z",
+        "last_price": 655.84,
+        "day_change_pct": 0.85,
+        "pulse_score": 88,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 655.9827,
-          "price_vs_vwap_pct": 0.01,
+          "vwap": 655.7331,
+          "price_vs_vwap_pct": 0.02,
           "opening_range_high": 656.05,
           "opening_range_low": 653.0,
-          "opening_range_state": "Above OR High",
-          "ema20": 657.2769,
-          "ema50": 656.945,
+          "opening_range_state": "Inside OR",
+          "ema20": 655.6014,
+          "ema50": 656.0164,
           "ema_stack": "Mixed Stack",
           "pivot": 646.5866,
-          "price_vs_pivot_pct": 1.47,
+          "price_vs_pivot_pct": 1.43,
           "prior_day_high": 651.54,
           "prior_day_low": 637.98,
-          "price_vs_prior_high_pct": 0.7,
-          "price_vs_prior_low_pct": 2.84,
-          "session_structure": "AM Range Breakout Up"
+          "price_vs_prior_high_pct": 0.66,
+          "price_vs_prior_low_pct": 2.8,
+          "session_structure": "Rotation Around VWAP"
         },
         "spark": {
           "today": [
@@ -7316,26 +7826,111 @@
             {
               "t": "2026-04-01T17:50:00Z",
               "p": 657.55,
-              "v": 440920
+              "v": 541905
             },
             {
               "t": "2026-04-01T17:55:00Z",
               "p": 656.79,
-              "v": 1032800
+              "v": 1032720
             },
             {
               "t": "2026-04-01T18:00:00Z",
               "p": 655.96,
-              "v": 1750485
+              "v": 1750532
             },
             {
               "t": "2026-04-01T18:05:00Z",
-              "p": 656.19,
-              "v": 402279
+              "p": 656.1098,
+              "v": 934794
             },
             {
-              "t": "2026-04-01T18:06:46Z",
-              "p": 656.07,
+              "t": "2026-04-01T18:10:00Z",
+              "p": 655.905,
+              "v": 1005832
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 654.975,
+              "v": 1366746
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 654.13,
+              "v": 1328568
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 654.23,
+              "v": 1289684
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 654.005,
+              "v": 1114150
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 654.46,
+              "v": 1436769
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 654.86,
+              "v": 1276264
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 654.645,
+              "v": 1596761
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 654.57,
+              "v": 725423
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 654.41,
+              "v": 676012
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 654.81,
+              "v": 920526
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 655.17,
+              "v": 888493
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 655.19,
+              "v": 729791
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 655.565,
+              "v": 674003
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 655.695,
+              "v": 835060
+            },
+            {
+              "t": "2026-04-01T19:25:00Z",
+              "p": 656.1,
+              "v": 1217784
+            },
+            {
+              "t": "2026-04-01T19:30:00Z",
+              "p": 655.76,
+              "v": 1038712
+            },
+            {
+              "t": "2026-04-01T19:34:01Z",
+              "p": 655.84,
               "v": 0
             }
           ],
@@ -7747,26 +8342,26 @@
       "intraday": {
         "symbol": "DX-Y.NYB",
         "label": "U.S. Dollar Index",
-        "as_of_utc": "2026-04-01T17:56:46Z",
-        "last_price": 99.499,
-        "day_change_pct": -0.46,
+        "as_of_utc": "2026-04-01T19:24:00Z",
+        "last_price": 99.654,
+        "day_change_pct": -0.31,
         "pulse_score": 84,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 99.4106,
-          "price_vs_vwap_pct": 0.09,
+          "vwap": 99.4606,
+          "price_vs_vwap_pct": 0.19,
           "opening_range_high": 99.436,
           "opening_range_low": 99.32,
           "opening_range_state": "Above OR High",
-          "ema20": 99.4386,
-          "ema50": 99.4138,
+          "ema20": 99.5949,
+          "ema50": 99.5182,
           "ema_stack": "Bull Stack",
           "pivot": 99.961,
-          "price_vs_pivot_pct": -0.46,
+          "price_vs_pivot_pct": -0.31,
           "prior_day_high": 100.239,
           "prior_day_low": 99.82,
-          "price_vs_prior_high_pct": -0.74,
-          "price_vs_prior_low_pct": -0.32,
+          "price_vs_prior_high_pct": -0.58,
+          "price_vs_prior_low_pct": -0.17,
           "session_structure": "AM Range Breakout Up"
         },
         "spark": {
@@ -8038,12 +8633,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 99.502,
+              "p": 99.522,
               "v": 0
             },
             {
-              "t": "2026-04-01T17:56:46Z",
-              "p": 99.499,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 99.56,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 99.553,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 99.578,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 99.591,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 99.607,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 99.609,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 99.629,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 99.635,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 99.592,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 99.599,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 99.606,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 99.651,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 99.654,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 99.628,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 99.626,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 99.636,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 99.654,
+              "v": 0
+            },
+            {
+              "t": "2026-04-01T19:24:00Z",
+              "p": 99.654,
               "v": 0
             }
           ],
@@ -8453,34 +9133,34 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 100,
-      "pulse_label": "BULLISH",
-      "confluence_score": 100,
-      "confluence_label": "BULLISH",
+      "pulse_score": 52,
+      "pulse_label": "NEUTRAL",
+      "confluence_score": 52,
+      "confluence_label": "NEUTRAL",
       "intraday": {
         "symbol": "ES=F",
         "label": "E-mini S&P (ES)",
-        "as_of_utc": "2026-04-01T17:56:48Z",
-        "last_price": 6642.25,
-        "day_change_pct": 1.09,
-        "pulse_score": 100,
-        "pulse_label": "BULLISH",
+        "as_of_utc": "2026-04-01T19:24:01Z",
+        "last_price": 6623.75,
+        "day_change_pct": 0.81,
+        "pulse_score": 52,
+        "pulse_label": "NEUTRAL",
         "metrics": {
-          "vwap": 6629.3892,
-          "price_vs_vwap_pct": 0.19,
+          "vwap": 6626.4601,
+          "price_vs_vwap_pct": -0.04,
           "opening_range_high": 6628.5,
           "opening_range_low": 6598.0,
-          "opening_range_state": "Above OR High",
-          "ema20": 6645.4694,
-          "ema50": 6639.1188,
+          "opening_range_state": "Inside OR",
+          "ema20": 6622.7511,
+          "ema50": 6628.0009,
           "ema_stack": "Mixed Stack",
           "pivot": 6531.5,
-          "price_vs_pivot_pct": 1.7,
+          "price_vs_pivot_pct": 1.41,
           "prior_day_high": 6583.25,
           "prior_day_low": 6447.0,
-          "price_vs_prior_high_pct": 0.9,
-          "price_vs_prior_low_pct": 3.03,
-          "session_structure": "AM Range Breakout Up"
+          "price_vs_prior_high_pct": 0.62,
+          "price_vs_prior_low_pct": 2.74,
+          "session_structure": "Rotation Around VWAP"
         },
         "spark": {
           "today": [
@@ -8751,12 +9431,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 6642.5,
-              "v": 889
+              "p": 6635.75,
+              "v": 13824
             },
             {
-              "t": "2026-04-01T17:56:48Z",
-              "p": 6642.25,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 6627.25,
+              "v": 26213
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 6629.0,
+              "v": 17364
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 6626.5,
+              "v": 11081
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 6617.5,
+              "v": 22275
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 6608.75,
+              "v": 21295
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 6609.75,
+              "v": 19549
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 6607.5,
+              "v": 15050
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 6612.25,
+              "v": 19295
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 6616.0,
+              "v": 18895
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 6614.0,
+              "v": 12791
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 6613.25,
+              "v": 11861
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 6611.5,
+              "v": 8994
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 6615.75,
+              "v": 12859
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 6619.5,
+              "v": 10600
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 6619.25,
+              "v": 9306
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 6623.25,
+              "v": 10008
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 6624.25,
+              "v": 7668
+            },
+            {
+              "t": "2026-04-01T19:24:01Z",
+              "p": 6623.75,
               "v": 0
             }
           ],
@@ -9173,26 +9938,26 @@
       "intraday": {
         "symbol": "NQ=F",
         "label": "E-mini Nasdaq (NQ)",
-        "as_of_utc": "2026-04-01T17:56:47Z",
-        "last_price": 24292.75,
-        "day_change_pct": 1.58,
+        "as_of_utc": "2026-04-01T19:24:01Z",
+        "last_price": 24215.75,
+        "day_change_pct": 1.26,
         "pulse_score": 100,
         "pulse_label": "BULLISH",
         "metrics": {
-          "vwap": 24224.3403,
-          "price_vs_vwap_pct": 0.28,
+          "vwap": 24215.0972,
+          "price_vs_vwap_pct": 0.0,
           "opening_range_high": 24194.75,
           "opening_range_low": 24043.25,
           "opening_range_state": "Above OR High",
-          "ema20": 24309.2844,
-          "ema50": 24278.0613,
+          "ema20": 24209.3541,
+          "ema50": 24230.8429,
           "ema_stack": "Mixed Stack",
           "pivot": 23743.25,
-          "price_vs_pivot_pct": 2.31,
+          "price_vs_pivot_pct": 1.99,
           "prior_day_high": 23975.25,
           "prior_day_low": 23376.5,
-          "price_vs_prior_high_pct": 1.32,
-          "price_vs_prior_low_pct": 3.92,
+          "price_vs_prior_high_pct": 1.0,
+          "price_vs_prior_low_pct": 3.59,
           "session_structure": "AM Range Breakout Up"
         },
         "spark": {
@@ -9464,12 +10229,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 24294.25,
-              "v": 327
+              "p": 24266.75,
+              "v": 3982
             },
             {
-              "t": "2026-04-01T17:56:47Z",
-              "p": 24292.75,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 24229.5,
+              "v": 7784
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 24233.5,
+              "v": 5811
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 24227.0,
+              "v": 4340
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 24187.5,
+              "v": 7098
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 24151.75,
+              "v": 7367
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 24154.0,
+              "v": 6481
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 24143.75,
+              "v": 5180
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 24162.0,
+              "v": 6055
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 24180.5,
+              "v": 5216
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 24169.75,
+              "v": 4161
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 24167.25,
+              "v": 3730
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 24159.0,
+              "v": 2445
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 24174.25,
+              "v": 3571
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 24193.75,
+              "v": 3533
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 24193.0,
+              "v": 3090
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 24210.75,
+              "v": 3178
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 24217.25,
+              "v": 2533
+            },
+            {
+              "t": "2026-04-01T19:24:01Z",
+              "p": 24215.75,
               "v": 0
             }
           ],
@@ -9879,33 +10729,33 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 88,
-      "pulse_label": "BULLISH",
-      "confluence_score": 88,
-      "confluence_label": "BULLISH",
+      "pulse_score": 34,
+      "pulse_label": "BEARISH",
+      "confluence_score": 34,
+      "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "YM=F",
         "label": "Mini Dow (YM)",
-        "as_of_utc": "2026-04-01T17:56:43Z",
-        "last_price": 46961.0,
-        "day_change_pct": 0.81,
-        "pulse_score": 88,
-        "pulse_label": "BULLISH",
+        "as_of_utc": "2026-04-01T19:23:59Z",
+        "last_price": 46854.0,
+        "day_change_pct": 0.58,
+        "pulse_score": 34,
+        "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 46912.1449,
-          "price_vs_vwap_pct": 0.1,
+          "vwap": 46895.7896,
+          "price_vs_vwap_pct": -0.09,
           "opening_range_high": 46983.0,
           "opening_range_low": 46707.0,
           "opening_range_state": "Inside OR",
-          "ema20": 46991.5962,
-          "ema50": 46970.8948,
-          "ema_stack": "Mixed Stack",
+          "ema20": 46862.3195,
+          "ema50": 46900.69,
+          "ema_stack": "Bear Stack",
           "pivot": 46308.0,
-          "price_vs_pivot_pct": 1.41,
+          "price_vs_pivot_pct": 1.18,
           "prior_day_high": 46643.0,
           "prior_day_low": 45723.0,
-          "price_vs_prior_high_pct": 0.68,
-          "price_vs_prior_low_pct": 2.71,
+          "price_vs_prior_high_pct": 0.45,
+          "price_vs_prior_low_pct": 2.47,
           "session_structure": "Rotation Around VWAP"
         },
         "spark": {
@@ -10177,12 +11027,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 46961.0,
-              "v": 60
+              "p": 46918.0,
+              "v": 671
             },
             {
-              "t": "2026-04-01T17:56:43Z",
-              "p": 46961.0,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 46882.0,
+              "v": 1442
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 46894.0,
+              "v": 811
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 46885.0,
+              "v": 614
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 46836.0,
+              "v": 929
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 46783.0,
+              "v": 992
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 46777.0,
+              "v": 1046
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 46783.0,
+              "v": 724
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 46812.0,
+              "v": 1175
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 46829.0,
+              "v": 1215
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 46823.0,
+              "v": 777
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 46824.0,
+              "v": 615
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 46821.0,
+              "v": 522
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 46838.0,
+              "v": 650
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 46843.0,
+              "v": 597
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 46840.0,
+              "v": 534
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 46855.0,
+              "v": 403
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 46854.0,
+              "v": 249
+            },
+            {
+              "t": "2026-04-01T19:23:59Z",
+              "p": 46854.0,
               "v": 0
             }
           ],
@@ -10592,34 +11527,34 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 100,
-      "pulse_label": "BULLISH",
-      "confluence_score": 100,
-      "confluence_label": "BULLISH",
+      "pulse_score": 34,
+      "pulse_label": "BEARISH",
+      "confluence_score": 34,
+      "confluence_label": "BEARISH",
       "intraday": {
         "symbol": "RTY=F",
         "label": "Russell 2000 (RTY)",
-        "as_of_utc": "2026-04-01T17:56:49Z",
-        "last_price": 2546.8,
-        "day_change_pct": 1.38,
-        "pulse_score": 100,
-        "pulse_label": "BULLISH",
+        "as_of_utc": "2026-04-01T19:23:58Z",
+        "last_price": 2532.5,
+        "day_change_pct": 0.81,
+        "pulse_score": 34,
+        "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 2544.7575,
-          "price_vs_vwap_pct": 0.08,
+          "vwap": 2541.5558,
+          "price_vs_vwap_pct": -0.36,
           "opening_range_high": 2545.7,
           "opening_range_low": 2530.8999,
-          "opening_range_state": "Above OR High",
-          "ema20": 2549.9412,
-          "ema50": 2548.4459,
-          "ema_stack": "Mixed Stack",
+          "opening_range_state": "Inside OR",
+          "ema20": 2533.8154,
+          "ema50": 2539.3477,
+          "ema_stack": "Bear Stack",
           "pivot": 2495.2667,
-          "price_vs_pivot_pct": 2.07,
+          "price_vs_pivot_pct": 1.49,
           "prior_day_high": 2522.5,
           "prior_day_low": 2454.5,
-          "price_vs_prior_high_pct": 0.96,
-          "price_vs_prior_low_pct": 3.76,
-          "session_structure": "AM Range Breakout Up"
+          "price_vs_prior_high_pct": 0.4,
+          "price_vs_prior_low_pct": 3.18,
+          "session_structure": "Trend Continuation"
         },
         "spark": {
           "today": [
@@ -10890,12 +11825,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 2547.1001,
-              "v": 90
+              "p": 2543.8999,
+              "v": 851
             },
             {
-              "t": "2026-04-01T17:56:49Z",
-              "p": 2546.8,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 2538.8999,
+              "v": 3004
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 2538.3,
+              "v": 1369
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 2536.2,
+              "v": 1643
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 2531.8999,
+              "v": 2541
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 2528.8,
+              "v": 1764
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 2529.2,
+              "v": 2056
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 2526.3999,
+              "v": 1980
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 2528.7,
+              "v": 3061
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 2530.7,
+              "v": 1642
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 2528.8,
+              "v": 1315
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 2528.8,
+              "v": 1165
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 2527.2,
+              "v": 757
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 2527.3,
+              "v": 1110
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 2529.3,
+              "v": 931
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 2530.1001,
+              "v": 826
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 2532.7,
+              "v": 778
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 2532.5,
+              "v": 663
+            },
+            {
+              "t": "2026-04-01T19:23:58Z",
+              "p": 2532.5,
               "v": 0
             }
           ],
@@ -11305,33 +12325,33 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 0,
-      "pulse_label": "BEARISH",
-      "confluence_score": 0,
-      "confluence_label": "BEARISH",
+      "pulse_score": 48,
+      "pulse_label": "NEUTRAL",
+      "confluence_score": 48,
+      "confluence_label": "NEUTRAL",
       "intraday": {
         "symbol": "CL=F",
         "label": "Crude Oil (CL)",
-        "as_of_utc": "2026-04-01T17:56:47Z",
-        "last_price": 99.02,
-        "day_change_pct": -2.33,
-        "pulse_score": 0,
-        "pulse_label": "BEARISH",
+        "as_of_utc": "2026-04-01T19:24:00Z",
+        "last_price": 99.74,
+        "day_change_pct": -1.62,
+        "pulse_score": 48,
+        "pulse_label": "NEUTRAL",
         "metrics": {
-          "vwap": 99.4079,
-          "price_vs_vwap_pct": -0.39,
+          "vwap": 99.5382,
+          "price_vs_vwap_pct": 0.2,
           "opening_range_high": 100.25,
           "opening_range_low": 98.44,
           "opening_range_state": "Inside OR",
-          "ema20": 99.3467,
-          "ema50": 99.4883,
-          "ema_stack": "Bear Stack",
+          "ema20": 99.7614,
+          "ema50": 99.6825,
+          "ema_stack": "Mixed Stack",
           "pivot": 102.2333,
-          "price_vs_pivot_pct": -3.14,
+          "price_vs_pivot_pct": -2.44,
           "prior_day_high": 105.04,
           "prior_day_low": 99.62,
-          "price_vs_prior_high_pct": -5.73,
-          "price_vs_prior_low_pct": -0.6,
+          "price_vs_prior_high_pct": -5.05,
+          "price_vs_prior_low_pct": 0.12,
           "session_structure": "Trend Continuation"
         },
         "spark": {
@@ -11603,12 +12623,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 99.02,
-              "v": 456
+              "p": 99.31,
+              "v": 3769
             },
             {
-              "t": "2026-04-01T17:56:47Z",
-              "p": 99.02,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 99.71,
+              "v": 3549
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 99.59,
+              "v": 2101
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 99.4,
+              "v": 3253
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 99.83,
+              "v": 2834
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 99.56,
+              "v": 4233
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 100.14,
+              "v": 16118
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 100.38,
+              "v": 2935
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 100.22,
+              "v": 2651
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 99.87,
+              "v": 1983
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 99.94,
+              "v": 1109
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 99.95,
+              "v": 918
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 99.83,
+              "v": 1073
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 99.83,
+              "v": 761
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 99.8,
+              "v": 1117
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 99.8,
+              "v": 700
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 99.73,
+              "v": 632
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 99.74,
+              "v": 679
+            },
+            {
+              "t": "2026-04-01T19:24:00Z",
+              "p": 99.74,
               "v": 0
             }
           ],
@@ -12018,34 +13123,34 @@
       "market_key": null,
       "cot_score": null,
       "cot_label": "N/A",
-      "pulse_score": 100,
-      "pulse_label": "BULLISH",
-      "confluence_score": 100,
-      "confluence_label": "BULLISH",
+      "pulse_score": 46,
+      "pulse_label": "NEUTRAL",
+      "confluence_score": 46,
+      "confluence_label": "NEUTRAL",
       "intraday": {
         "symbol": "GC=F",
         "label": "Gold (GC)",
-        "as_of_utc": "2026-04-01T17:56:47Z",
-        "last_price": 4803.5,
-        "day_change_pct": 2.67,
-        "pulse_score": 100,
-        "pulse_label": "BULLISH",
+        "as_of_utc": "2026-04-01T19:24:00Z",
+        "last_price": 4787.8999,
+        "day_change_pct": 2.34,
+        "pulse_score": 46,
+        "pulse_label": "NEUTRAL",
         "metrics": {
-          "vwap": 4792.0596,
-          "price_vs_vwap_pct": 0.24,
+          "vwap": 4790.7838,
+          "price_vs_vwap_pct": -0.06,
           "opening_range_high": 4776.7998,
           "opening_range_low": 4758.0,
           "opening_range_state": "Above OR High",
-          "ema20": 4808.3422,
-          "ema50": 4800.557,
-          "ema_stack": "Mixed Stack",
+          "ema20": 4789.0755,
+          "ema50": 4792.614,
+          "ema_stack": "Bear Stack",
           "pivot": 4675.8,
-          "price_vs_pivot_pct": 2.73,
+          "price_vs_pivot_pct": 2.4,
           "prior_day_high": 4717.6001,
           "prior_day_low": 4598.2998,
-          "price_vs_prior_high_pct": 1.82,
-          "price_vs_prior_low_pct": 4.46,
-          "session_structure": "AM Range Breakout Up"
+          "price_vs_prior_high_pct": 1.49,
+          "price_vs_prior_low_pct": 4.12,
+          "session_structure": "Rotation Around VWAP"
         },
         "spark": {
           "today": [
@@ -12316,12 +13421,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 4803.8999,
-              "v": 29
+              "p": 4801.3999,
+              "v": 377
             },
             {
-              "t": "2026-04-01T17:56:47Z",
-              "p": 4803.5,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 4791.3999,
+              "v": 1554
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 4794.2002,
+              "v": 944
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 4798.5,
+              "v": 227
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 4788.7002,
+              "v": 510
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 4782.2002,
+              "v": 943
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 4780.5,
+              "v": 333
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 4782.5,
+              "v": 352
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 4776.0,
+              "v": 1549
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 4783.7002,
+              "v": 1425
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 4782.2998,
+              "v": 494
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 4781.5,
+              "v": 406
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 4779.5,
+              "v": 122
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 4784.5,
+              "v": 274
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 4784.7002,
+              "v": 459
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 4786.3999,
+              "v": 138
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 4787.2002,
+              "v": 103
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 4787.7002,
+              "v": 203
+            },
+            {
+              "t": "2026-04-01T19:24:00Z",
+              "p": 4787.8999,
               "v": 0
             }
           ],
@@ -12738,26 +13928,26 @@
       "intraday": {
         "symbol": "6E=F",
         "label": "Euro FX (6E)",
-        "as_of_utc": "2026-04-01T17:56:40Z",
-        "last_price": 1.1636,
-        "day_change_pct": 0.44,
+        "as_of_utc": "2026-04-01T19:23:44Z",
+        "last_price": 1.1617,
+        "day_change_pct": 0.28,
         "pulse_score": 16,
         "pulse_label": "BEARISH",
         "metrics": {
-          "vwap": 1.1652,
-          "price_vs_vwap_pct": -0.14,
+          "vwap": 1.1646,
+          "price_vs_vwap_pct": -0.25,
           "opening_range_high": 1.1662,
           "opening_range_low": 1.1645,
           "opening_range_state": "Below OR Low",
-          "ema20": 1.1644,
-          "ema50": 1.1649,
+          "ema20": 1.1625,
+          "ema50": 1.1635,
           "ema_stack": "Bear Stack",
           "pivot": 1.1585,
-          "price_vs_pivot_pct": 0.44,
+          "price_vs_pivot_pct": 0.28,
           "prior_day_high": 1.1603,
           "prior_day_low": 1.1551,
-          "price_vs_prior_high_pct": 0.28,
-          "price_vs_prior_low_pct": 0.74,
+          "price_vs_prior_high_pct": 0.12,
+          "price_vs_prior_low_pct": 0.58,
           "session_structure": "AM Range Breakout Down"
         },
         "spark": {
@@ -13029,12 +14219,97 @@
             },
             {
               "t": "2026-04-01T17:55:00Z",
-              "p": 1.1637,
-              "v": 157
+              "p": 1.1632,
+              "v": 1069
             },
             {
-              "t": "2026-04-01T17:56:40Z",
-              "p": 1.1636,
+              "t": "2026-04-01T18:00:00Z",
+              "p": 1.1629,
+              "v": 2431
+            },
+            {
+              "t": "2026-04-01T18:05:00Z",
+              "p": 1.163,
+              "v": 790
+            },
+            {
+              "t": "2026-04-01T18:10:00Z",
+              "p": 1.1627,
+              "v": 190
+            },
+            {
+              "t": "2026-04-01T18:15:00Z",
+              "p": 1.1625,
+              "v": 1215
+            },
+            {
+              "t": "2026-04-01T18:20:00Z",
+              "p": 1.1624,
+              "v": 1141
+            },
+            {
+              "t": "2026-04-01T18:25:00Z",
+              "p": 1.1623,
+              "v": 641
+            },
+            {
+              "t": "2026-04-01T18:30:00Z",
+              "p": 1.1619,
+              "v": 749
+            },
+            {
+              "t": "2026-04-01T18:35:00Z",
+              "p": 1.1618,
+              "v": 1463
+            },
+            {
+              "t": "2026-04-01T18:40:00Z",
+              "p": 1.1624,
+              "v": 1002
+            },
+            {
+              "t": "2026-04-01T18:45:00Z",
+              "p": 1.1624,
+              "v": 721
+            },
+            {
+              "t": "2026-04-01T18:50:00Z",
+              "p": 1.1623,
+              "v": 350
+            },
+            {
+              "t": "2026-04-01T18:55:00Z",
+              "p": 1.1617,
+              "v": 3891
+            },
+            {
+              "t": "2026-04-01T19:00:00Z",
+              "p": 1.1617,
+              "v": 3265
+            },
+            {
+              "t": "2026-04-01T19:05:00Z",
+              "p": 1.1621,
+              "v": 607
+            },
+            {
+              "t": "2026-04-01T19:10:00Z",
+              "p": 1.1621,
+              "v": 718
+            },
+            {
+              "t": "2026-04-01T19:15:00Z",
+              "p": 1.162,
+              "v": 328
+            },
+            {
+              "t": "2026-04-01T19:20:00Z",
+              "p": 1.1617,
+              "v": 194
+            },
+            {
+              "t": "2026-04-01T19:23:44Z",
+              "p": 1.1617,
               "v": 0
             }
           ],
@@ -13441,22 +14716,11 @@
   },
   "forex_factory": {
     "source": "https://nfs.faireconomy.media/ff_calendar_thisweek.xml",
-    "fetched_at_utc": "2026-04-01T18:06:48Z",
-    "red_folder_count": 4,
+    "fetched_at_utc": "2026-04-01T19:34:02Z",
+    "red_folder_count": 3,
     "high_impact_total_count": 12,
     "relevance_filter": "Major USD macro/Fed events for US index trading",
     "upcoming_red_folder": [
-      {
-        "title": "ISM Manufacturing PMI",
-        "country": "USD",
-        "date": "04-01-2026",
-        "time": "2:00pm",
-        "impact": "High",
-        "forecast": "52.3",
-        "previous": "52.4",
-        "url": "https://www.forexfactory.com/calendar/252-us-ism-manufacturing-pmi",
-        "datetime_utc": "2026-04-01T18:00:00Z"
-      },
       {
         "title": "Average Hourly Earnings m/m",
         "country": "USD",
