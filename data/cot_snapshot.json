@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-03T19:26:18Z",
+  "generated_at_utc": "2026-04-03T20:03:30Z",
   "source_url": "https://publicreporting.cftc.gov/resource/udgc-27he.json",
   "history_weeks": 104,
   "market_order": [
@@ -10,7 +10,7 @@
   ],
   "meta": {
     "timezone": "America/New_York",
-    "next_cot_release_utc": "2026-04-03T19:30:00Z",
+    "next_cot_release_utc": "2026-04-10T19:30:00Z",
     "refresh_policy": "Hourly during US cash session, plus post-CFTC Friday refresh."
   },
   "markets": {
@@ -20,23 +20,17 @@
       "symbol": "DIA",
       "contract_code": "12460+",
       "market_name": "DJIA Consolidated - CHICAGO BOARD OF TRADE",
-      "latest_report_date": "2026-03-24",
+      "latest_report_date": "2026-03-31",
       "latest": {
-        "asset_mgr_net": 1514,
-        "leveraged_net": -3059,
-        "open_interest": 67922,
-        "asset_mgr_change": -2425,
-        "leveraged_change": -2693,
-        "open_interest_change": -28650
+        "asset_mgr_net": 4156,
+        "leveraged_net": -6818,
+        "open_interest": 70828,
+        "asset_mgr_change": 2642,
+        "leveraged_change": -3759,
+        "open_interest_change": 2906
       },
-      "previous_report_date": "2026-03-17",
+      "previous_report_date": "2026-03-24",
       "history": [
-        {
-          "report_date": "2024-04-02",
-          "asset_mgr_net": 9005,
-          "leveraged_net": 15947,
-          "open_interest": 93520
-        },
         {
           "report_date": "2024-04-09",
           "asset_mgr_net": 7101,
@@ -654,20 +648,26 @@
           "asset_mgr_net": 1514,
           "leveraged_net": -3059,
           "open_interest": 67922
+        },
+        {
+          "report_date": "2026-03-31",
+          "asset_mgr_net": 4156,
+          "leveraged_net": -6818,
+          "open_interest": 70828
         }
       ],
       "cot_bias": {
-        "score": 34,
+        "score": 40,
         "label": "BEARISH",
         "components": {
-          "institutional_pressure": 57,
-          "fast_money_pressure": 36,
-          "position_momentum": 0,
+          "institutional_pressure": 68,
+          "fast_money_pressure": 20,
+          "position_momentum": 30,
           "alignment": 20
         },
         "extremes": {
-          "asset_manager_percentile_3y": 18,
-          "leveraged_percentile_3y": 37
+          "asset_manager_percentile_3y": 32,
+          "leveraged_percentile_3y": 28
         }
       },
       "intraday": {
@@ -1488,17 +1488,17 @@
         }
       },
       "confluence": {
-        "score": 57,
-        "label": "NEUTRAL",
-        "cot_score": 34,
+        "score": 60,
+        "label": "BULLISH",
+        "cot_score": 40,
         "technical_score": 84,
         "cot_weight": 55,
         "technical_weight": 45,
-        "headline": "Bias neutral: balance around 463.41, wait for range break.",
+        "headline": "Bias bullish: expect dips bought while price holds above 463.41.",
         "bullets": [
-          "Respect OR boundaries 458.88-461.36.",
-          "Take quicker profits in choppy structure.",
-          "Switch directional only after clean acceptance outside range."
+          "Long bias above VWAP 463.41.",
+          "Momentum confirmation on breaks through OR high 461.36.",
+          "If structure rotates below VWAP, reduce long aggression."
         ]
       }
     },
@@ -1508,23 +1508,17 @@
       "symbol": "QQQ",
       "contract_code": "20974+",
       "market_name": "NASDAQ-100 Consolidated - CHICAGO MERCANTILE EXCHANGE",
-      "latest_report_date": "2026-03-24",
+      "latest_report_date": "2026-03-31",
       "latest": {
-        "asset_mgr_net": 51458,
-        "leveraged_net": -42626,
-        "open_interest": 244680,
-        "asset_mgr_change": -9933,
-        "leveraged_change": -1585,
-        "open_interest_change": -73324
+        "asset_mgr_net": 58591,
+        "leveraged_net": -41577,
+        "open_interest": 256358,
+        "asset_mgr_change": 7133,
+        "leveraged_change": 1049,
+        "open_interest_change": 11678
       },
-      "previous_report_date": "2026-03-17",
+      "previous_report_date": "2026-03-24",
       "history": [
-        {
-          "report_date": "2024-04-02",
-          "asset_mgr_net": 82843,
-          "leveraged_net": -45373,
-          "open_interest": 266623
-        },
         {
           "report_date": "2024-04-09",
           "asset_mgr_net": 90648,
@@ -2142,20 +2136,26 @@
           "asset_mgr_net": 51458,
           "leveraged_net": -42626,
           "open_interest": 244680
+        },
+        {
+          "report_date": "2026-03-31",
+          "asset_mgr_net": 58591,
+          "leveraged_net": -41577,
+          "open_interest": 256358
         }
       ],
       "cot_bias": {
-        "score": 42,
-        "label": "NEUTRAL",
+        "score": 60,
+        "label": "BULLISH",
         "components": {
           "institutional_pressure": 100,
           "fast_money_pressure": 0,
-          "position_momentum": 0,
+          "position_momentum": 90,
           "alignment": 20
         },
         "extremes": {
-          "asset_manager_percentile_3y": 13,
-          "leveraged_percentile_3y": 38
+          "asset_manager_percentile_3y": 21,
+          "leveraged_percentile_3y": 41
         }
       },
       "intraday": {
@@ -2976,9 +2976,9 @@
         }
       },
       "confluence": {
-        "score": 68,
+        "score": 78,
         "label": "BULLISH",
-        "cot_score": 42,
+        "cot_score": 60,
         "technical_score": 100,
         "cot_weight": 55,
         "technical_weight": 45,
@@ -2996,23 +2996,17 @@
       "symbol": "SPY",
       "contract_code": "13874+",
       "market_name": "S&P 500 Consolidated - CHICAGO MERCANTILE EXCHANGE",
-      "latest_report_date": "2026-03-24",
+      "latest_report_date": "2026-03-31",
       "latest": {
-        "asset_mgr_net": 881068,
-        "leveraged_net": -341661,
-        "open_interest": 1897311,
-        "asset_mgr_change": -8374,
-        "leveraged_change": 5916,
-        "open_interest_change": -462409
+        "asset_mgr_net": 918367,
+        "leveraged_net": -230392,
+        "open_interest": 1966743,
+        "asset_mgr_change": 37299,
+        "leveraged_change": 111269,
+        "open_interest_change": 69432
       },
-      "previous_report_date": "2026-03-17",
+      "previous_report_date": "2026-03-24",
       "history": [
-        {
-          "report_date": "2024-04-02",
-          "asset_mgr_net": 936576,
-          "leveraged_net": -363322,
-          "open_interest": 2110281
-        },
         {
           "report_date": "2024-04-09",
           "asset_mgr_net": 946945,
@@ -3630,20 +3624,26 @@
           "asset_mgr_net": 881068,
           "leveraged_net": -341661,
           "open_interest": 1897311
+        },
+        {
+          "report_date": "2026-03-31",
+          "asset_mgr_net": 918367,
+          "leveraged_net": -230392,
+          "open_interest": 1966743
         }
       ],
       "cot_bias": {
-        "score": 52,
-        "label": "NEUTRAL",
+        "score": 66,
+        "label": "BULLISH",
         "components": {
           "institutional_pressure": 100,
-          "fast_money_pressure": 0,
-          "position_momentum": 48,
+          "fast_money_pressure": 13,
+          "position_momentum": 100,
           "alignment": 20
         },
         "extremes": {
-          "asset_manager_percentile_3y": 27,
-          "leveraged_percentile_3y": 46
+          "asset_manager_percentile_3y": 45,
+          "leveraged_percentile_3y": 93
         }
       },
       "intraday": {
@@ -4464,9 +4464,9 @@
         }
       },
       "confluence": {
-        "score": 74,
+        "score": 81,
         "label": "BULLISH",
-        "cot_score": 52,
+        "cot_score": 66,
         "technical_score": 100,
         "cot_weight": 55,
         "technical_weight": 45,
@@ -4484,23 +4484,17 @@
       "symbol": "DX-Y.NYB",
       "contract_code": "098662",
       "market_name": "USD INDEX - ICE FUTURES U.S.",
-      "latest_report_date": "2026-03-24",
+      "latest_report_date": "2026-03-31",
       "latest": {
-        "asset_mgr_net": 12403,
-        "leveraged_net": -6921,
-        "open_interest": 36113,
-        "asset_mgr_change": 1646,
-        "leveraged_change": -1306,
-        "open_interest_change": 657
+        "asset_mgr_net": 13754,
+        "leveraged_net": -8832,
+        "open_interest": 38735,
+        "asset_mgr_change": 1351,
+        "leveraged_change": -1911,
+        "open_interest_change": 2622
       },
-      "previous_report_date": "2026-03-17",
+      "previous_report_date": "2026-03-24",
       "history": [
-        {
-          "report_date": "2024-04-02",
-          "asset_mgr_net": 14392,
-          "leveraged_net": -15122,
-          "open_interest": 38130
-        },
         {
           "report_date": "2024-04-09",
           "asset_mgr_net": 17068,
@@ -5118,20 +5112,26 @@
           "asset_mgr_net": 12403,
           "leveraged_net": -6921,
           "open_interest": 36113
+        },
+        {
+          "report_date": "2026-03-31",
+          "asset_mgr_net": 13754,
+          "leveraged_net": -8832,
+          "open_interest": 38735
         }
       ],
       "cot_bias": {
-        "score": 54,
+        "score": 48,
         "label": "NEUTRAL",
         "components": {
           "institutional_pressure": 100,
           "fast_money_pressure": 0,
-          "position_momentum": 62,
+          "position_momentum": 32,
           "alignment": 20
         },
         "extremes": {
-          "asset_manager_percentile_3y": 71,
-          "leveraged_percentile_3y": 36
+          "asset_manager_percentile_3y": 80,
+          "leveraged_percentile_3y": 33
         }
       },
       "intraday": {
@@ -5957,9 +5957,9 @@
         }
       },
       "confluence": {
-        "score": 72,
+        "score": 69,
         "label": "BULLISH",
-        "cot_score": 54,
+        "cot_score": 48,
         "technical_score": 94,
         "cot_weight": 55,
         "technical_weight": 45,
@@ -6034,12 +6034,12 @@
       "symbol": "DIA",
       "label": "Dow (DIA)",
       "market_key": "dow_jones",
-      "cot_score": 34,
+      "cot_score": 40,
       "cot_label": "BEARISH",
       "pulse_score": 84,
       "pulse_label": "BULLISH",
-      "confluence_score": 57,
-      "confluence_label": "NEUTRAL",
+      "confluence_score": 60,
+      "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "DIA",
         "label": "Dow Jones",
@@ -6862,11 +6862,11 @@
       "symbol": "QQQ",
       "label": "Nasdaq-100 (QQQ)",
       "market_key": "nasdaq_100",
-      "cot_score": 42,
-      "cot_label": "NEUTRAL",
+      "cot_score": 60,
+      "cot_label": "BULLISH",
       "pulse_score": 100,
       "pulse_label": "BULLISH",
-      "confluence_score": 68,
+      "confluence_score": 78,
       "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "QQQ",
@@ -7690,11 +7690,11 @@
       "symbol": "SPY",
       "label": "S&P 500 (SPY)",
       "market_key": "sp_500",
-      "cot_score": 52,
-      "cot_label": "NEUTRAL",
+      "cot_score": 66,
+      "cot_label": "BULLISH",
       "pulse_score": 100,
       "pulse_label": "BULLISH",
-      "confluence_score": 74,
+      "confluence_score": 81,
       "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "SPY",
@@ -8518,11 +8518,11 @@
       "symbol": "DX-Y.NYB",
       "label": "Dollar Index (DXY)",
       "market_key": "dxy",
-      "cot_score": 54,
+      "cot_score": 48,
       "cot_label": "NEUTRAL",
       "pulse_score": 94,
       "pulse_label": "BULLISH",
-      "confluence_score": 72,
+      "confluence_score": 69,
       "confluence_label": "BULLISH",
       "intraday": {
         "symbol": "DX-Y.NYB",
@@ -15181,7 +15181,7 @@
   },
   "forex_factory": {
     "source": "https://nfs.faireconomy.media/ff_calendar_thisweek.xml",
-    "fetched_at_utc": "2026-04-03T19:26:18Z",
+    "fetched_at_utc": "2026-04-03T20:03:31Z",
     "red_folder_count": 9,
     "high_impact_total_count": 12,
     "relevance_filter": "Major USD macro/Fed events for US index trading",
